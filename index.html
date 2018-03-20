@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <title>Titolo Pagina</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<link rel="stylesheet" media="all" href="css/footer.css" />
+	<link rel="stylesheet" media="all" href="css/common.css" />
+	<link rel="stylesheet" media="all" href="css/Home.css" />
+	<script src="js/common.js"></script>
+
+</head>
+
+  <body>
+
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+		<div class="container-fluid">
+			<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" data-disabled="true">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="brand" href="#" name="top">Nome Sito</a>
+			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
+				<ul class="nav">
+					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="divider-vertical"></li>
+					<li><a href="#"><i class="icon-file icon-white"></i> Dati</a></li>
+					<li class="divider-vertical"></li>
+					<li><a href="#"><i class="icon-envelope icon-white"></i> Messaggi</a></li>
+					<li class="divider-vertical"></li>
+					<li><a href="#"><i class="icon-lock icon-white"></i> Permessi</a></li>
+					<li class="divider-vertical"></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right pull-right">
+				    <li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i> Nome User <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					    <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+					    <li class="divider"></li>
+					    <li><a href="#" onClick="show('logIn'); hide('signUpForm');"><i class="icon-user"></i>Log In</a></li>
+					    <li class="divider"></li>
+					    <li><a href="#"><i class="icon-share"></i>Logout</a></li>
+					</ul>
+				    </li>
+				</ul>
+				</div>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+		<!--/.container-fluid -->
+	</div>
+	<!--/.navbar-inner -->
+</div>
+
+
+<div class="slideshow">
+	<img src="https://www.tva.gov/file_source/TVA/Site%20Content/Environment/Environmental%20Stewardship/images/env-policy-hero2-TVA%20Norris_009.jpg" alt="pictures">
+</div>
+
+
+<div id="signUpForm">
+	<div class="exit"><a href="#" onClick="hide('signUpForm');"><i class="icon-share"></i></a></div>
+	<h1>Sign Up</h1>
+	<form action="#" method="POST" name="signup">
+		<table>
+			<tr><td><label>Name</label></td><td><input type="text" name="name"></td></tr>
+			<tr><td><label>Surname</label></td><td><input type="text" name="surname"></td></tr>
+			<tr><td><label>E-mail</label></td><td><input type="email" name="email"></td></tr>
+			<tr><td><label>Password</label></td><td><input type="password" name="psw"></td></tr>
+			<tr><td></td><td><input type="submit" value="Submit" name="sub"></td></tr>
+			<tr><td colspan="2"><p>Already registered? Log In <a href="#" onClick="hide('signUpForm');show('logIn');">here</a></p></td></tr>
+		</table>		
+	</form>
+</div>
+
+<div id="logIn">
+	<div class="exit"><a href="#" onClick="hide('logIn');"><i class="icon-share"></i></a></div>
+	<h1>Log In </h1>
+	<form action="#" method="POST" name="login">
+		<table>
+			<tr><td><label>E-mail</label></td><td><input type="email" name="email"></td></tr>
+			<tr><td><label>Password</label></td><td><input type="password" name="psw"></td></tr>
+			<tr><td></td><td><input type="submit" value="Submit" name="sub"></td></tr>
+			<tr><td colspan="2"><p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p></td></tr>
+		</table>		
+	</form>
+</div>
+
+
+<div class="picWithText">
+		<p class="Text4Pic">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<img class="roundyPic" src="http://mycrobz.com/wp/wp-content/uploads/plant-care-thumb.png" alt="pic"/>
+</div>
+
+
+<div class="picWithText">
+		<p class="Text4PicLeft">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<img class="roundyPicRight" src="http://mycrobz.com/wp/wp-content/uploads/plant-care-thumb.png" alt="pic"/>
+</div>
+
+
+<div class="picWithText">
+		<p class="Text4Pic">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<img class="roundyPic" src="http://mycrobz.com/wp/wp-content/uploads/plant-care-thumb.png" alt="pic"/>
+</div>
+
+
+
+
+
+<div class="myfooter">
+  <small>
+    Cose da scrivere nel footer
+  </small>
+  <div class="mynav">
+    <ul>
+      <li><a href="#"><i id="social-inf" class="fa fa-info fa-2x social"></i></a></li>
+      <li><a href="#"><i id="social-con" class="fa fa-address-book-o fa-2x social"></i></a></li>
+      <li><a itemprop="sameAs"href="#"><i id="social-fb" class="fa fa-facebook fa-2x social"></i></a></li>
+      <li><a itemprop="sameAs" href="#"><i id="social-tw" class="fa fa-instagram fa-2x social"></i></a></li>
+      <li><a itemprop="sameAs" href="#"><i id="social-li" class="fa fa-linkedin fa-2x social"></i></a></li>
+      <li><a itemprop="sameAs" href="mailto:boh@boh.it"><i id="social-em" class="fa fa-envelope fa-2x social"></i></a></li>
+    </ul>
+  </div>
+</div>
+ 
+</body>
+</html>

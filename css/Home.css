@@ -1,0 +1,114 @@
+.navbar{
+	margin-bottom:0px;
+}
+
+.slideshow>img{
+	max-height:45%;
+	width:100%;
+	overflow:hidden	;
+}
+
+/*Home*/
+
+.picWithText{
+	width:60%;
+	height:15%;
+	max-height:500px;
+	min-height:300px;
+	margin-top:2%;
+	margin-left:20%;
+	margin-right:20%;
+	display:block;
+	overflow:hidden;
+}
+
+
+.roundyPic{
+	width:35%;
+	height:35%;
+	border-radius:50%;
+	float:left;
+}
+
+.roundyPic{
+	width:35%;
+	height:35%;
+	border-radius:50%;
+	float:left;
+}
+.Text4Pic{
+	float:right;
+	font-size:160%;
+	width:65%;
+}
+
+.roundyPicRight{
+	border-radius:50%;	
+	height:30%;
+	float:right;
+	width:30%;	
+}
+.Text4PicLeft{
+	float:left;
+	font-size:160%;
+	width:65%;
+}
+
+/*Sign Up*/
+
+
+#signUpForm{
+	background-color:white;
+	position:absolute;
+	margin-left:35%;
+	height:55%;
+	top:18%;
+	width:27%;
+	overflow:auto;
+	visibility:hidden;
+}
+
+#signUpForm>h1{
+	text-align:center;
+	font-size:210%;
+}
+
+#signUpForm>form{
+    margin-left: 10%;
+}
+
+#signUpForm>form>table{
+	min-height:200px;
+}
+
+/* Log In */
+
+#logIn{
+	background-color:white;
+	position:absolute;
+	margin-left:35%;
+	height:55%;
+	top:18%;
+	width:27%;
+	overflow:auto;
+	visibility:hidden;
+}
+
+.exit{
+	margin-left:95%;
+	margin-top:1%;
+	position:absolute;
+}
+
+#logIn>h1{
+	text-align:center;
+	font-size:210%;
+}
+
+#logIn>form{
+    margin-left: 10%;
+}
+
+#logIn>form>table{
+	min-height:200px;
+}
