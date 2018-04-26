@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,10 +32,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="#" id="top">Site Name</a>
+			<a class="brand" href="index.html" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="active"><a href="index.html"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
 					<li class="divider-vertical"></li>
@@ -51,7 +50,7 @@
 					<ul class="dropdown-menu">
 					    <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 					    <li class="divider"></li>
-					    <li><a href="login.html"><i class="icon-user"></i>Log In</a></li>
+					    <li><a href="#" onClick="show('logIn'); hide('signUpForm');"><i class="icon-user"></i>Log In</a></li>
 					    <li class="divider"></li>
 					    <li><a href="#"><i class="icon-share"></i>Logout</a></li>
 					</ul>
@@ -65,44 +64,31 @@
 	<!--/.navbar-inner -->
 </div>
 
-
-<div class="slideshow">
-	<img src="http://minimaliv.com/wp-content/uploads/2014/10/Book.jpg" alt="pictures">
+<div id="signUpForm">
+	<h1>Sign Up</h1>
+	<form action="#" method="POST" name="signup">
+		<table>
+			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
+			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
+			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
+			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
+			<tr><td></td><td><input type="button" value="Submit" onClick="checkValue('emailSign');checkValue('pswSign');" name="sub"></td></tr>
+			<tr><td colspan="2"><p>Already registered? Log In <a href="#" onClick="hide('signUpForm');show('logIn');">here</a></p></td></tr>
+		</table>		
+	</form>
 </div>
 
-<div class="content">
-
-
-
-<!-- On click su href -> effettua la ricerca per categoria -->
-	<div class="typeHome">
-		<h1>Categories</h1>
-	</div>
-	<div id="categories">
-		<div class="category"> <a href="#"><img src="img/Science.png" alt=""/></a> </div>
-		<div class="category"> <a href="#"><img src="img/Technology.png" alt=""/></a> </div>
-		<div class="category"> <a href="#"><img src="img/History-Geo.png" alt=""/></a> </div>
-		<div class="category"> <a href="#"><img src="img/General.png" alt=""/></a> </div>
-		<div class="category"> <a href="#"><img src="img/Language.png" alt=""/></a> </div>
-		<div class="category"> <a href="#"><img src="img/Literature.png" alt=""/></a> </div>
-	</div>
-	
-	
-	<div class="typeHome">
-		<h1>Books</h1>
-	</div>
-	
-	<div class="book-content" onclick="window.location='PageBook.html';">
-		<div class="cover"><img src="https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg" alt="copertina" /></div>
-		<div class="description">
-		<p>La più classica e apprezzata introduzione al mondo delle reti è ora disponibile anche in una versione "essenziale", un'epitome ragionata che consegna al lettore un testo più compatto e concentrato sugli aspetti essenziali delle reti. Lo scopo è duplice: da un lato i docenti che dispongono di un numero limitato di ore per la didattica sono facilitati nel compito di selezionare le parti del libro sulle quali far concentrare gli studenti; dall'altro gli studenti possono usufruire di un testo meno imponente come numero di pagine e più agevole da consultare. Inalterata, naturalmente, la filosofia di fondo: il viaggio nel mondo delle telecomunicazioni avviene sempre partendo dai fondamenti fisici e crescendo progressivamente di astrazione attraverso i protocolli e le architetture di Internet e, soprattutto, i contenuti tecnici sono contestualizzati nella realtà industriale con la quale il lettore dovrà andarsi a confrontare.p>
-		</div>
-	</div>
-	<div class="separation-line"></div>
-	
+<div id="logIn">
+	<h1>Log In </h1>
+	<form action="#" method="POST" name="login">
+		<table>
+			<tr><td><label>E-mail</label></td><td><input type="text" id="emailLog" name="emailLog"></td></tr>
+			<tr><td><label>Password</label></td><td><input type="password" id="pswLog" name="pswLog"></td></tr>
+			<tr><td></td><td><input type="button" value="Submit" onClick="checkValue('emailLog');checkValue('pswLog');" name="sub"></td></tr>
+			<tr><td colspan="2"><p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p></td></tr>
+		</table>		
+	</form>
 </div>
-
-
 
 
 

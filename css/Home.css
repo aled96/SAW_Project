@@ -26,6 +26,7 @@
 /* Books */
 
 .book-content{
+	cursor:pointer;
 	display:block;
 	max-height:20vw;
 	margin-bottom:2%;
@@ -97,7 +98,7 @@
 	top:18%;
 	width:27%;
 	overflow:auto;
-	visibility:hidden;
+	visibility:visible;
 }
 
 .exit{

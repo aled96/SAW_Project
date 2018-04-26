@@ -1,0 +1,86 @@
+.navbar{
+	margin-bottom:0px;
+}
+/*Home*/
+
+.content{
+	width:80%;
+	margin-left:10%;
+	margin-right:10%;
+	margin-bottom:5%;
+	min-height:51vw;
+}
+
+/* Book View */
+
+#BookCover{
+	float:left;
+	margin-right:5%;
+	margin-top:4%;
+	width:17vw;
+}
+
+
+#BookDescription{
+	float:left;
+	margin-right:5%;
+	margin-top:4%;
+	width:38vw;
+}
+
+#SellerInfo{
+	padding:13px;
+    border: 3px solid #DDDDDD;
+	border-radius:5px;
+
+	float:left;
+	line-height:0.5;
+	margin-right:2%;
+	margin-top:4%;
+	width:12vw;
+}
+
+#Title{
+	color:black;
+	display:block;
+	font-size:160%;
+}
+
+#Author{
+	color:black;
+	display:block;
+	font-size:110%;
+}
+
+#Text{
+	color:black;
+	display:block;
+	margin-top:8%;
+}
+
+#Details{
+	display:block;
+	float:left;
+	margin-right:5%;
+	margin-top:4%;
+	width:60vw;
+}
+
+#Details>h2{
+	color:black;
+}
+
+.Info>h5{
+	color:black;
+	display:inline;
+}
+.Info>p{
+	display:inline;
+}
+
+.AddFavourite>a{
+	display:inline;
+}
+.AddFavourite>p{
+	display:inline;
+}

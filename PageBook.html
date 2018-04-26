@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +5,7 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
@@ -18,7 +17,7 @@
 
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
-	<link rel="stylesheet" media="all" href="css/Home.css" />
+	<link rel="stylesheet" media="all" href="css/BookPage.css" />
 	<script src="js/common.js"></script>
 
 </head>
@@ -51,7 +50,7 @@
 					<ul class="dropdown-menu">
 					    <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 					    <li class="divider"></li>
-					    <li><a href="#" onClick="show('logIn'); hide('signUpForm');"><i class="icon-user"></i>Log In</a></li>
+					    <li><a href="login.html"><i class="icon-user"></i>Log In</a></li>
 					    <li class="divider"></li>
 					    <li><a href="#"><i class="icon-share"></i>Logout</a></li>
 					</ul>
@@ -64,61 +63,35 @@
 	</div>
 	<!--/.navbar-inner -->
 </div>
-
-<div id="signUpForm">
-	<div class="exit"><a href="#" onClick="hide('signUpForm');"><i class="icon-share"></i></a></div>
-	<h1>Sign Up</h1>
-	<form action="#" method="POST" name="signup">
-		<table>
-			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
-			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
-			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkValue('emailSign');checkValue('pswSign');" name="sub"></td></tr>
-			<tr><td colspan="2"><p>Already registered? Log In <a href="#" onClick="hide('signUpForm');show('logIn');">here</a></p></td></tr>
-		</table>		
-	</form>
-</div>
-
-<div id="logIn">
-	<div class="exit"><a href="#" onClick="hide('logIn');"><i class="icon-share"></i></a></div>
-	<h1>Log In </h1>
-	<form action="#" method="POST" name="login">
-		<table>
-			<tr><td><label>E-mail</label></td><td><input type="text" id="emailLog" name="emailLog"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswLog" name="pswLog"></td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkValue('emailLog');checkValue('pswLog');" name="sub"></td></tr>
-			<tr><td colspan="2"><p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p></td></tr>
-		</table>		
-	</form>
-</div>
-
 <div class="content">
-	<div id="BookCover"><img src="https://images-na.ssl-images-amazon.com/images/I/41kTN9JjxPL._SX312_BO1,204,203,200_.jpg" alt="copertina" /></div>
+	<div id="BookCover"><img src="https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg" alt="copertina" /></div>
 	
 	<div id="BookDescription">
-		<div id="Title"><h1>Sono il numero quattro</h1></div>
+		<div id="Title"><h1>Computer Networks</h1></div>
+		<div id="Author"><p>by Andrew S. Tanenbaum, David J. Wetherall</p></div>
 		<div id="Text">
-		<p>Siamo arrivati in nove. In apparenza, siamo uguali a voi: vestiamo come voi. parliamo come voi, viviamo come voi. Ma non siamo affatto come voi. Siamo in grado di fare cose che voi non potete neanche sognare. Abbiamo poteri che voi non riuscite neanche a immaginare. Siamo più forti, più veloci e più abili di qualsiasi essere vivente del vostro pianeta. Avete presente i supereroi dei fumetti e quelli che ammirate al cinema? Una cosa del genere, però con una grossa differenza: noi siamo reali. Ci siamo rifugiati sulla Terra e ci siamo divisi per prepararci: dovevamo allenarci, scoprire tutti i nostri poteri e imparare a usarli. Poi ci saremmo riuniti, tutti e nove, e saremmo stati pronti. A combatterli. Ma loro hanno scoperto che siamo qui e adesso ci stanno dando la caccia. Vogliono eliminarci, l'uno dopo l'altro. Così siamo costretti a scappare, a spostarci in continuazione, ad avere paura della nostra stessa ombra. Attualmente mi faccio chiamare John Smith, e mi nascondo a Paradise, in Ohio. Credevo di essere al sicuro, ma ho commesso un errore gravissimo: mi sono innamorato di una mia compagna di scuola. E non potevo scegliere un momento peggiore. Perché loro hanno preso il Numero Uno in Malesia. Il Numero Due in Inghilterra. Il Numero Tre in Kenya. E li hanno uccisi. Io sono il Numero Quattro, lo sono il prossimo...</p>
+		<p>Computer Networks, 5/e is appropriate for Computer Networking or Introduction to Networking courses at both the undergraduate and graduate level in Computer Science, Electrical Engineering, CIS, MIS, and Business Departments.	
+		Tanenbaum takes a structured approach to explaining how networks work from the inside out. He starts with an explanation of the physical layer of networking, computer hardware and transmission systems; then works his way up to network applications. Tanenbaum's in-depth application coverage includes email; the domain name system; the World Wide Web (both client- and server-side); and multimedia (including voice over IP, Internet radio video on demand, video conferencing, and streaming media. Each chapter follows a consistent approach: Tanenbaum presents key principles, then illustrates them utilizing real-world example networks that run through the entire book—the Internet, and wireless networks, including Wireless LANs, broadband wireless and Bluetooth. The Fifth Edition includes a chapter devoted exclusively to network security. The textbook is supplemented by a Solutions Manual, as well as a Website containing PowerPoint slides, art in various forms, and other tools for instruction, including a protocol simulator whereby students can develop and test their own network protocols.</p>
 		</div>
-	</div>
-	
-	<!--
-	
-	<div class="typeHome">
-		<h1>Sono il numero quattro</h1>
-	</div>
-	
-	<div class="book-content">
-		<div class="cover"><img src="https://images-na.ssl-images-amazon.com/images/I/41kTN9JjxPL._SX312_BO1,204,203,200_.jpg" alt="copertina" /></div>
-		<div class="description">
-		<p>Siamo arrivati in nove. In apparenza, siamo uguali a voi: vestiamo come voi. parliamo come voi, viviamo come voi. Ma non siamo affatto come voi. Siamo in grado di fare cose che voi non potete neanche sognare. Abbiamo poteri che voi non riuscite neanche a immaginare. Siamo più forti, più veloci e più abili di qualsiasi essere vivente del vostro pianeta. Avete presente i supereroi dei fumetti e quelli che ammirate al cinema? Una cosa del genere, però con una grossa differenza: noi siamo reali. Ci siamo rifugiati sulla Terra e ci siamo divisi per prepararci: dovevamo allenarci, scoprire tutti i nostri poteri e imparare a usarli. Poi ci saremmo riuniti, tutti e nove, e saremmo stati pronti. A combatterli. Ma loro hanno scoperto che siamo qui e adesso ci stanno dando la caccia. Vogliono eliminarci, l'uno dopo l'altro. Così siamo costretti a scappare, a spostarci in continuazione, ad avere paura della nostra stessa ombra. Attualmente mi faccio chiamare John Smith, e mi nascondo a Paradise, in Ohio. Credevo di essere al sicuro, ma ho commesso un errore gravissimo: mi sono innamorato di una mia compagna di scuola. E non potevo scegliere un momento peggiore. Perché loro hanno preso il Numero Uno in Malesia. Il Numero Due in Inghilterra. Il Numero Tre in Kenya. E li hanno uccisi. Io sono il Numero Quattro, lo sono il prossimo...</p>
+	</div>	
+	<div id="SellerInfo">
+		<div id="Seller"><h5>Sold By: </h5><p>Alessio</p></div>
+		<br><br>
+		<div id="Seller"><h5>Price: </h5><p>15,00 €</p></div>
+		<br><br>
+		<div class="AddFavourite">
+			<a href="#"> <3 </a><p> Add Favourite</p>
 		</div>
+		
 	</div>
-	-->
+	<div id="Details">
+		<h2>Details</h2>
+		<div class="Info"><h5>Paperback: </h5><p>896 pages</p></div>
+		<div class="Info"><h5>Publisher: </h5><p>Pearson, 5th edition</p></div>
+		<div class="Info"><h5>ISBN: </h5><p>8871926404</p></div>
+		<div class="Info"><h5>Weight: </h5><p>1,3 Kg</p></div>
+	</div>
 </div>
-
-
 
 
 
