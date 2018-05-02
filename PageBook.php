@@ -96,7 +96,10 @@
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 		
 		while($row = mySQLi_fetch_array($result)){
-			echo"<div id='BookCover'><img src='https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg' alt='copertina' /></div>
+			echo"
+			<div id='BookCover'>
+				<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+			</div>
 			
 			<div id='BookDescription'>
 				<div id='Title'><h1>".$row[2]."</h1></div>

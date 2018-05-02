@@ -119,8 +119,9 @@
 		echo
 		"
 		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row[0].");'><img src='https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg' alt='copertina' /></div>
-			</form>
+			<div class='cover' onclick='goToPageBook(".$row[0].");'>
+			<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+			</div>
 			<div class='description'>
 			<h3>".$row[2]."</h3>
 			</div>
