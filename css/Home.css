@@ -55,6 +55,12 @@
 	max-width:20vw;
 }
 
+.title{
+	font-size:160%;
+	max-height:3vw;
+	overflow:hidden;
+}
+
 .description{
 	font-size:160%;
 	max-height:20vw;

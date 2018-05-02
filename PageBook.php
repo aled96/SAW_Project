@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 	session_start();
 ?>
@@ -9,7 +8,7 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
@@ -21,12 +20,12 @@
 
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
-	<link rel="stylesheet" media="all" href="css/Home.css" />
+	<link rel="stylesheet" media="all" href="css/BookPage.css" />
 	<script src="js/common.js"></script>
 
 </head>
 
-  <body>
+ <body>
 
     <div class="navbar navbar-inverse">
     <div class="navbar-inner">
@@ -36,10 +35,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="#" id="top">Site Name</a>
+			<a class="brand" href="index.php" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
 					<li class="divider-vertical"></li>
@@ -48,8 +47,6 @@
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
 					<li class="divider-vertical"></li>
 				</ul>
-
-
 
 				<?php
 					if(isset($_SESSION['username']))
@@ -76,9 +73,6 @@
 					}
 
 					?>
-
-
-
 			</div>
 			<!--/.nav-collapse -->
 		</div>
@@ -86,62 +80,50 @@
 	</div>
 	<!--/.navbar-inner -->
 </div>
-
-
-<div class="slideshow">
-	<img src="http://minimaliv.com/wp-content/uploads/2014/10/Book.jpg" alt="pictures">
-</div>
-
 <div class="content">
+	<?php
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "university_sharing";
+
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
 	
-	<div class='typeHome'>
-		<h1>Last Books Added</h1>
-	</div>
+		$id = $_GET['Id'];
+	
+		$sql = "SELECT * FROM book WHERE Id='".$id."'";
+		$result = mySQLi_query($conn, $sql) or die("Error query");
 		
-	<?php	
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "university_sharing";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
-	$sql = "SELECT * FROM book";
-	$result = mySQLi_query($conn, $sql) or die("Error query");
-
-	while($row = mySQLi_fetch_array($result)){
-		echo
-		"
-		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row[0].");'><img src='https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg' alt='copertina' /></div>
-			</form>
-			<div class='description'>
-			<h3>".$row[2]."</h3>
+		while($row = mySQLi_fetch_array($result)){
+			echo"<div id='BookCover'><img src='https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg' alt='copertina' /></div>
+			
+			<div id='BookDescription'>
+				<div id='Title'><h1>".$row[2]."</h1></div>
+				<div id='Author'><p>by ".$row[1]."</p></div>
+				<div id='Text'>
+				<p>".$row[3]."</p>
+				</div>
+			</div>	
+			<div id='SellerInfo'>
+				<div id='Seller'><h5>Sold By: </h5><p>Alessio</p></div>
+				<br><br>
+				<div id='Seller'><h5>Price: </h5><p>15,00 €</p></div>
+				<br><br>
+				<div class='AddFavourite'>
+					<a href=''> <3 </a><p> Add Favourite</p>
+				</div>
+				
 			</div>
-			<div class='description'>
-			<p>".$row[3]."</p>
-			</div>
-		</div>
-		<div class='separation-line'></div>";
-	
-	}
-	
-	
-	
-	
+			<div id='Details'>
+				<h2>Details</h2>
+				<div class='Info'><h5>Paperback: </h5><p>".$row[4]." pages</p></div>
+				<div class='Info'><h5>Publisher: </h5><p>".$row[5]."</p></div>
+				<div class='Info'><h5>ISBN: </h5><p>".$row[6]."</p></div>
+			</div>";
+			}
 	?>
-	
 </div>
-
-
-
-
 
 <div class="myfooter">
   <small>

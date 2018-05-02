@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 	session_start();
 ?>
@@ -36,10 +35,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="#" id="top">Site Name</a>
+			<a class="brand" href="index.html" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
 					<li class="divider-vertical"></li>
@@ -48,8 +47,7 @@
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
 					<li class="divider-vertical"></li>
 				</ul>
-
-
+				
 
 				<?php
 					if(isset($_SESSION['username']))
@@ -77,8 +75,6 @@
 
 					?>
 
-
-
 			</div>
 			<!--/.nav-collapse -->
 		</div>
@@ -88,60 +84,40 @@
 </div>
 
 
-<div class="slideshow">
-	<img src="http://minimaliv.com/wp-content/uploads/2014/10/Book.jpg" alt="pictures">
+
+<div id="signUpForm">
+	<h1>Change Info</h1>
+	<form action="changeSettings.php" method="POST" name="settings">
+		<table>
+			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
+			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
+			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
+			<tr><td><label>Nickname</label></td><td><input type="text" id=nickSign" name="nickSign"></td></tr>
+			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
+			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
+			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>
+			<tr><td><label>Gender</label></td><td>
+				<select name="gender">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				</select>
+			</td></tr>
+			<tr><td><label>Province</label></td><td>
+				<select name="province">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</td></tr>
+			<tr><td><label>City</label></td><td>
+				<select name="city">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</td></tr>
+			<tr><td></td><td><input type="button" value="Submit" onClick="checkBeforeSubmit();" name="sub"></td></tr>
+		</table>		
+	</form>
 </div>
-
-<div class="content">
-	
-	<div class='typeHome'>
-		<h1>Last Books Added</h1>
-	</div>
-		
-	<?php	
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "university_sharing";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
-	$sql = "SELECT * FROM book";
-	$result = mySQLi_query($conn, $sql) or die("Error query");
-
-	while($row = mySQLi_fetch_array($result)){
-		echo
-		"
-		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row[0].");'><img src='https://images-na.ssl-images-amazon.com/images/I/81MNCD5acgL.jpg' alt='copertina' /></div>
-			</form>
-			<div class='description'>
-			<h3>".$row[2]."</h3>
-			</div>
-			<div class='description'>
-			<p>".$row[3]."</p>
-			</div>
-		</div>
-		<div class='separation-line'></div>";
-	
-	}
-	
-	
-	
-	
-	?>
-	
-</div>
-
-
-
-
 
 <div class="myfooter">
   <small>

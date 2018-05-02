@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "password";
+$password = "";
 $dbname = "university_sharing";
 
 // Create connection
@@ -39,7 +39,7 @@ if($login){
     session_start();
     $_SESSION['username'] = $nick;
 
-    header("location: /index.php");
+    header("location: index.php");
 }
 else{
     echo "\n\nCredenziali non valide";

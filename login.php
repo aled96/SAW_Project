@@ -69,8 +69,8 @@
 			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
 			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
 			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>
-			<tr><td><label>Genre</label></td><td>
-				<select name="genre">
+			<tr><td><label>Gender</label></td><td>
+				<select name="gender">
 				<option value="male">Male</option>
 				<option value="female">Female</option>
 				</select>
