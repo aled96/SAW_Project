@@ -1,6 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+	session_start();
+?>
   <head>
     <title>Site Name</title>
 
@@ -45,18 +48,37 @@
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
 					<li class="divider-vertical"></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right pull-right">
-				    <li class="dropdown">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i> User Name <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-					    <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
-					    <li class="divider"></li>
-					    <li><a href="login.html"><i class="icon-user"></i>Log In</a></li>
-					    <li class="divider"></li>
-					    <li><a href="#"><i class="icon-share"></i>Logout</a></li>
-					</ul>
-				    </li>
-				</ul>
+
+
+
+				<?php
+					if(isset($_SESSION['username']))
+					{
+					    $user = $_SESSION['username'];
+						echo '<ul class="nav navbar-nav navbar-right pull-right">
+                                    <li class="dropdown">
+                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i>'.$user.'<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="logout.php"><i class="icon-share"></i>Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>';
+					}
+					else
+					{
+						echo "<ul class='nav navbar-nav navbar-right pull-right'>
+							<li><a href='login.php'><i class='icon-user'></i>Log In</a></li>
+							<li class='divider'></li>
+							</ul>";
+
+					}
+
+					?>
+
+
+
 			</div>
 			<!--/.nav-collapse -->
 		</div>

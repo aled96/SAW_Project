@@ -35,7 +35,7 @@
 			<a class="brand" href="index.html" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="index.html"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
 					<li class="divider-vertical"></li>
@@ -44,18 +44,10 @@
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
 					<li class="divider-vertical"></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right pull-right">
-				    <li class="dropdown">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i> User Name <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-					    <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
-					    <li class="divider"></li>
-					    <li><a href="#" onClick="show('logIn'); hide('signUpForm');"><i class="icon-user"></i>Log In</a></li>
-					    <li class="divider"></li>
-					    <li><a href="#"><i class="icon-share"></i>Logout</a></li>
-					</ul>
-				    </li>
-				</ul>
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li><a href="#" onClick="show('logIn'); hide('signUpForm');"><i class="icon-user"></i>Log In</a></li>
+                </ul>
+
 			</div>
 			<!--/.nav-collapse -->
 		</div>
@@ -64,15 +56,38 @@
 	<!--/.navbar-inner -->
 </div>
 
+
+
 <div id="signUpForm">
 	<h1>Sign Up</h1>
-	<form action="#" method="POST" name="signup">
+	<form action="signup.php" method="POST" name="signup">
 		<table>
 			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
 			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
 			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
+			<tr><td><label>Nickname</label></td><td><input type="text" id=nickSign" name="nickSign"></td></tr>
 			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkValue('emailSign');checkValue('pswSign');" name="sub"></td></tr>
+			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
+			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>
+			<tr><td><label>Genre</label></td><td>
+				<select name="genre">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				</select>
+			</td></tr>
+			<tr><td><label>Province</label></td><td>
+				<select name="province">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</td></tr>
+			<tr><td><label>City</label></td><td>
+				<select name="city">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</td></tr>
+			<tr><td></td><td><input type="button" value="Submit" onClick="checkBeforeSubmit();" name="sub"></td></tr>
 			<tr><td colspan="2"><p>Already registered? Log In <a href="#" onClick="hide('signUpForm');show('logIn');">here</a></p></td></tr>
 		</table>		
 	</form>
@@ -80,11 +95,11 @@
 
 <div id="logIn">
 	<h1>Log In </h1>
-	<form action="#" method="POST" name="login">
+	<form action="login_user.php" method="POST" name="login">
 		<table>
-			<tr><td><label>E-mail</label></td><td><input type="text" id="emailLog" name="emailLog"></td></tr>
+			<tr><td><label>Username</label></td><td><input type="text" id="usernameLog" name="usernameLog"></td></tr>
 			<tr><td><label>Password</label></td><td><input type="password" id="pswLog" name="pswLog"></td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkValue('emailLog');checkValue('pswLog');" name="sub"></td></tr>
+			<tr><td></td><td><input type="submit" value="Submit" name="submit"></td></tr>
 			<tr><td colspan="2"><p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p></td></tr>
 		</table>		
 	</form>

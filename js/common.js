@@ -27,6 +27,12 @@ function autoHeight() {
 	document.getElementById("autoHeight").style.height = 'auto';
 };
 
+function checkBeforeSubmit(){
+	//fai cose
+	
+	document.signup.submit();
+	
+}
 
 //Log In
 function checkValue(field){
