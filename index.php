@@ -106,7 +106,7 @@
 	<?php	
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "password";
 	$dbname = "university_sharing";
 
 	// Create connection
