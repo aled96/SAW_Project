@@ -1,14 +1,14 @@
 .navbar{
 	margin-bottom:0px;
 }
-/*Home*/
+/*Content*/
 
-.content{
+#contentBookPage{
 	width:80%;
 	margin-left:10%;
 	margin-right:10%;
 	margin-bottom:5%;
-	min-height:51vw;
+	min-height:61vw;
 }
 
 /* Book View */
@@ -20,6 +20,9 @@
 	width:17vw;
 }
 
+#BookCover>img{
+	/* TODO -> Little shadow (as amazon)*/
+}
 
 #BookDescription{
 	float:left;
@@ -41,19 +44,16 @@
 }
 
 #Title{
-	color:black;
 	display:block;
 	font-size:160%;
 }
 
 #Author{
-	color:black;
 	display:block;
 	font-size:110%;
 }
 
 #Text{
-	color:black;
 	display:block;
 	margin-top:8%;
 }
@@ -66,12 +66,19 @@
 	width:60vw;
 }
 
-#Details>h2{
-	color:black;
+#categoryBook{
+	display:block;
+	float:left;
+	margin-right:5%;
+	margin-top:4%;
+	width:60vw;
+}
+#categoryBook>a{
+	text-decoration:none;
 }
 
+
 .Info>h5{
-	color:black;
 	display:inline;
 }
 .Info>p{

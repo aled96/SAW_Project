@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mag 02, 2018 alle 18:51
+-- Generation Time: Mag 03, 2018 alle 19:09
 -- Versione del server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -56,7 +56,15 @@ CREATE TABLE IF NOT EXISTS `category` (
 `ID` int(11) NOT NULL,
   `Faculty` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `category`
+--
+
+INSERT INTO `category` (`ID`, `Faculty`, `Name`) VALUES
+(1, 5, 'Computer Networks'),
+(2, 8, 'Mechanics');
 
 -- --------------------------------------------------------
 
@@ -79,7 +87,21 @@ CREATE TABLE IF NOT EXISTS `city` (
 CREATE TABLE IF NOT EXISTS `faculty` (
 `ID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `faculty`
+--
+
+INSERT INTO `faculty` (`ID`, `Name`) VALUES
+(1, 'Art'),
+(2, 'Classics'),
+(3, 'Economics'),
+(4, 'Education'),
+(5, 'Engineering'),
+(6, 'Law'),
+(7, 'Music'),
+(8, 'Physics');
 
 -- --------------------------------------------------------
 
@@ -93,9 +115,17 @@ CREATE TABLE IF NOT EXISTS `insertion` (
   `material_offered` int(11) NOT NULL,
   `date_of_pubblication` date NOT NULL,
   `place` varchar(255) NOT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(6,2) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `insertion`
+--
+
+INSERT INTO `insertion` (`ID`, `user_offerer`, `material_offered`, `date_of_pubblication`, `place`, `price`, `description`) VALUES
+(1, 'aled96', 1, '2018-05-02', 'Genova', '30.00', 'Book'),
+(2, 'lapo', 2, '2018-05-03', 'Rome', '38.00', 'Book Mechanics');
 
 -- --------------------------------------------------------
 
@@ -109,7 +139,15 @@ CREATE TABLE IF NOT EXISTS `material` (
   `Category` int(11) NOT NULL,
   `Book` int(11) DEFAULT NULL,
   `Note` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `material`
+--
+
+INSERT INTO `material` (`ID`, `Type`, `Category`, `Book`, `Note`) VALUES
+(1, 'Book', 1, 1, NULL),
+(2, 'Book', 2, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -234,7 +272,7 @@ MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `city`
 --
@@ -244,17 +282,17 @@ MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `insertion`
 --
 ALTER TABLE `insertion`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `note`
 --

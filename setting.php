@@ -35,7 +35,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="index.html" id="top">Site Name</a>
+			<a class="brand" href="index.php" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
 					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>

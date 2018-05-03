@@ -7,3 +7,24 @@ body {
 #auto-height{
 	height:auto;
 }
+
+input.searchNav{
+	padding: 3px;
+    margin-top: 2px;
+    margin-bottom: -10px;
+}
+
+input.searchNav{
+	padding: 3px;
+    margin-top: 2px;
+    margin-bottom: -10px;
+}
+
+.searchButton>button{
+	margin-top:6px;
+	margin-bottom:-8px;
+}
+
+h1,h2,h3,h4,h5,h6,p,a{
+	color:#151515;
+}

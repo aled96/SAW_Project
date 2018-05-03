@@ -80,7 +80,7 @@
 	</div>
 	<!--/.navbar-inner -->
 </div>
-<div class="content">
+<div id="contentBookPage">
 	<?php
 		$servername = "localhost";
 		$username = "root";
@@ -92,39 +92,56 @@
 	
 		$id = $_GET['Id'];
 	
-		$sql = "SELECT * FROM book WHERE Id='".$id."'";
+		$sql = "SELECT book.*, user_offerer, price,place FROM book,insertion WHERE material_offered = book.id and book.Id='".$id."'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 		
 		while($row = mySQLi_fetch_array($result)){
 			echo"
 			<div id='BookCover'>
-				<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 			</div>
 			
 			<div id='BookDescription'>
-				<div id='Title'><h1>".$row[2]."</h1></div>
-				<div id='Author'><p>by ".$row[1]."</p></div>
+				<div id='Title'><h1>".$row['Title']."</h1></div>
+				<div id='Author'><p>by ".$row['Author']."</p></div>
 				<div id='Text'>
-				<p>".$row[3]."</p>
+				<p>".$row['Description']."</p>
 				</div>
 			</div>	
+			
 			<div id='SellerInfo'>
-				<div id='Seller'><h5>Sold By: </h5><p>Alessio</p></div>
-				<br><br>
-				<div id='Seller'><h5>Price: </h5><p>15,00 €</p></div>
+				<div id='Seller'><h5>Sold By: </h5><p>".$row['user_offerer']."</p></div>
+				<br>
+				<div id='Seller'><h5>Price: </h5><p>".$row['price']." €</p></div>
+				<br>
+				<div id='Seller'><h5>Place: </h5><p>".$row['place']."</p></div>
 				<br><br>
 				<div class='AddFavourite'>
-					<a href=''> <3 </a><p> Add Favourite</p>
-				</div>
-				
-			</div>
+					<a href=''><i class='icon-heart icon-black'></i></a><p> Add Favourite</p>
+				</div>				
+			</div>		
+			
 			<div id='Details'>
 				<h2>Details</h2>
-				<div class='Info'><h5>Paperback: </h5><p>".$row[4]." pages</p></div>
-				<div class='Info'><h5>Publisher: </h5><p>".$row[5]."</p></div>
-				<div class='Info'><h5>ISBN: </h5><p>".$row[6]."</p></div>
+				<div class='Info'><h5>Paperback: </h5><p>".$row['PageNum']." pages</p></div>
+				<div class='Info'><h5>Publisher: </h5><p>".$row['Edition']."</p></div>
+				<div class='Info'><h5>ISBN: </h5><p>".$row['ISBN']."</p></div>
 			</div>";
+			
+			
+		$sql2 = "SELECT faculty.name as Fac, category.Name as Cat FROM category,material,faculty WHERE material.category = category.id and material.book='".$id."' and faculty.id = category.faculty";
+		$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+		
+			while($row2 = mySQLi_fetch_array($result2)){
+			
+				echo"
+							
+				<div id='categoryBook'>
+					<h3>Category</h3>
+					<a href='#'>".$row2['Fac']."</a><a> > </a><a href='#'> ".$row2['Cat']."</a>
+				</div>";
 			}
+		}
 	?>
 </div>
 

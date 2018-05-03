@@ -41,11 +41,16 @@
 				<ul class="nav">
 					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
+					<li><a href="category.php"><i class="icon-th-list icon-white"></i> Categories</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
+					<li class="divider-vertical"></li>
+					<li><form action="search.php" method="get">
+						<input type="text" class="searchNav" placeholder="Search..." name="find" required><span class="searchButton"><button type="submit"><i class="icon-search icon-black"></i> </button></span>
+						</form>
+					</li>
 					<li class="divider-vertical"></li>
 				</ul>
 

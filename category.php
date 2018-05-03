@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+	session_start();
+?>
   <head>
     <title>Site Name</title>
 
@@ -37,16 +41,48 @@
 				<ul class="nav">
 					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
+					<li><a href="#"><i class="icon-th-list icon-white"></i> Categories</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
 					<li class="divider-vertical"></li>
+					<li><form action="search.php" method="GET">
+						<input type="text" class="searchNav" placeholder="Search..." name="find" required><span class="searchButton"><button type="submit"><i class="icon-search icon-black"></i> </button></span>
+						</form>
+					</li>
+					<li class="divider-vertical"></li>
 				</ul>
-                <ul class="nav navbar-nav navbar-right pull-right">
-                    <li><a href="#" onClick="show('logIn'); hide('signUpForm');"><i class="icon-user"></i>Log In</a></li>
-                </ul>
+
+
+
+				<?php
+					if(isset($_SESSION['username']))
+					{
+					    $user = $_SESSION['username'];
+						echo '<ul class="nav navbar-nav navbar-right pull-right">
+                                    <li class="dropdown">
+                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i>'.$user.'<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="logout.php"><i class="icon-share"></i>Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>';
+					}
+					else
+					{
+						echo "<ul class='nav navbar-nav navbar-right pull-right'>
+							<li><a href='login.php'><i class='icon-user'></i>Log In</a></li>
+							<li class='divider'></li>
+							</ul>";
+
+					}
+
+					?>
+
+
 
 			</div>
 			<!--/.nav-collapse -->
@@ -56,54 +92,63 @@
 	<!--/.navbar-inner -->
 </div>
 
+<div class="content">
+		
+	<?php	
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "university_sharing";
 
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
 
-<div id="signUpForm">
-	<h1>Sign Up</h1>
-	<form action="signup.php" method="POST" name="signup">
-		<table>
-			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
-			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
-			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
-			<tr><td><label>Nickname</label></td><td><input type="text" id=nickSign" name="nickSign"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
-			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
-			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>
-			<tr><td><label>Gender</label></td><td>
-				<select name="gender">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td><label>Province</label></td><td>
-				<select name="province">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td><label>City</label></td><td>
-				<select name="city">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkBeforeSubmit();" name="sub"></td></tr>
-			<tr><td colspan="2"><p>Already registered? Log In <a href="#" onClick="hide('signUpForm');show('logIn');">here</a></p></td></tr>
-		</table>		
-	</form>
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$find = $_GET['find'];
+	
+	echo"
+		<div class='typeHome'>
+			<h1>Results for: ".$find."</h1>
+		</div>";
+	
+	
+	$sql = "SELECT * FROM book WHERE author LIKE '%".$find."%' OR title LIKE '%".$find."%' OR description LIKE '%".$find."%'";
+	$result = mySQLi_query($conn, $sql) or die("Error query");
+
+	$anyResults = false;
+	while($row = mySQLi_fetch_array($result)){
+	
+		$anyResults = true;
+		echo
+		"<div class='book-content'>
+			<div class='cover' onclick='goToPageBook(".$row[0].");'>
+			<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+			</div>
+			<div class='description'>
+			<h3>".$row[2]."</h3>
+			</div>
+			<div class='description'>
+			<p>".$row[3]."</p>
+			</div>
+		</div>
+		<div class='separation-line'></div>";
+	}
+	
+	if($anyResults == false)
+		echo"<h3>No results found</h3>";
+	
+	
+	
+	?>
+	
 </div>
 
-<div id="logIn">
-	<h1>Log In </h1>
-	<form action="login_user.php" method="POST" name="login">
-		<table>
-			<tr><td><label>Username</label></td><td><input type="text" id="usernameLog" name="usernameLog"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswLog" name="pswLog"></td></tr>
-			<tr><td></td><td><input type="submit" value="Submit" name="submit"></td></tr>
-			<tr><td colspan="2"><p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p></td></tr>
-		</table>		
-	</form>
-</div>
+
+
 
 
 <div class="myfooter">

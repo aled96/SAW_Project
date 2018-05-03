@@ -67,18 +67,14 @@
 	overflow:hidden;
 }
 
-
 /*Sign Up*/
 
 #signUpForm{
 	background-color:white;
-	position:absolute;
 	margin-left:35%;
 	height:55%;
 	top:18%;
 	width:27%;
-	overflow:auto;
-	visibility:hidden;
 }
 
 #signUpForm>h1{
@@ -147,30 +143,3 @@
 .category>img{
 	width:24%;
 }
-
-/* Book View */
-
-#BookCover{
-	float:left;
-	margin-right:5%;
-	margin-top:4%;
-	width:17vw;
-}
-
-#BookDescription{
-	float:left;
-	margin-right:5%;
-	margin-top:4%;
-	width:43vw;
-}
-
-#Title{
-	display:block;
-	font-size:160%;
-}
-
-#Text{
-	display:block;
-	margin-top:10%;
-}
-
