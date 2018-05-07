@@ -1,6 +1,7 @@
 html,
 body {
     margin: 0;
+    margin-bottom:50px;
 }
 .label,.glyphicon { margin-right:5px; }
 
