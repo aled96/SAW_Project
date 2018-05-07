@@ -93,7 +93,7 @@
 </div>
 
 <div class="content">
-		
+	<div class="categories">
 	<?php	
 	$servername = "localhost";
 	$username = "root";
@@ -107,43 +107,21 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	
-	$find = $_GET['find'];
-	
-	echo"
-		<div class='typeHome'>
-			<h1>Results for: ".$find."</h1>
-		</div>";
-	
-	
-	$sql = "SELECT * FROM book WHERE author LIKE '%".$find."%' OR title LIKE '%".$find."%' OR description LIKE '%".$find."%'";
+	$sql = "SELECT * FROM faculty";
 	$result = mySQLi_query($conn, $sql) or die("Error query");
 
-	$anyResults = false;
 	while($row = mySQLi_fetch_array($result)){
 	
-		$anyResults = true;
 		echo
-		"<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row[0].");'>
-			<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
-			</div>
-			<div class='description'>
-			<h3>".$row[2]."</h3>
-			</div>
-			<div class='description'>
-			<p>".$row[3]."</p>
-			</div>
-		</div>
-		<div class='separation-line'></div>";
+		"	<span class='category'>
+				<a href='search.php?cat=".$row['Name']."'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
+				
+			</span>
+		";
 	}
 	
-	if($anyResults == false)
-		echo"<h3>No results found</h3>";
-	
-	
-	
 	?>
+	</div>
 	
 </div>
 

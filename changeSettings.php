@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "password";
+$password = "";
 $dbname = "university_sharing";
 
 // Create connection
@@ -13,7 +13,9 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-$nick = $_POST['nickSign'];
+session_start();
+#TODO -> Check empty --> save blank
+$user = $_SESSION['username'];
 $email = $_POST['emailSign'];
 $pwd = $_POST['pswSign'];
 $name = $_POST['nameSign'];
@@ -21,19 +23,9 @@ $surname = $_POST['surnameSign'];
 $gender = $_POST['gender'];
 $date_birth = $_POST['dateSign'];
 
-$sql = "INSERT INTO user (username, email, password, name, surname, gender, date_of_birth, city)
-VALUES ('$nick', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', null)";
+$sql = "UPDATE `university_sharing`.`user` SET `email` = '$email', `name` = '$name', `surname` = '$surname',`gender` = '$gender',`date_of_birth` = '$date_of_birth' WHERE `username` = '$user'";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    die("Error: " . $sql . "<br>" . $conn->error);
-}
-
-$conn->close();
-
-session_start();
-$_SESSION['username'] = $nick;
+$result = mySQLi_query($conn, $sql) or die("Error query");
 
 header("location: index.php");
 

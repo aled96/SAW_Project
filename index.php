@@ -64,7 +64,7 @@
                                     <li class="dropdown">
                                         <a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i>'.$user.'<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                                            <li><a href="setting.php"><i class="icon-wrench"></i> Settings</a></li>
                                             <li class="divider"></li>
                                             <li><a href="logout.php"><i class="icon-share"></i>Logout</a></li>
                                         </ul>
@@ -106,7 +106,7 @@
 	<?php	
 	$servername = "localhost";
 	$username = "root";
-	$password = "password";
+	$password = "";
 	$dbname = "university_sharing";
 
 	// Create connection
@@ -124,14 +124,14 @@
 		echo
 		"
 		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row[0].");'>
-			<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+			<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
+			<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 			</div>
 			<div class='description'>
-			<h3>".$row[2]."</h3>
+			<h3>".$row['Title']."</h3>
 			</div>
 			<div class='description'>
-			<p>".$row[3]."</p>
+			<p>".$row['Description']."</p>
 			</div>
 		</div>
 		<div class='separation-line'></div>";

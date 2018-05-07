@@ -85,37 +85,57 @@
 
 
 
-<div id="signUpForm">
+<div id="settings">
 	<h1>Change Info</h1>
 	<form action="changeSettings.php" method="POST" name="settings">
-		<table>
-			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
-			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
-			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
-			<tr><td><label>Nickname</label></td><td><input type="text" id=nickSign" name="nickSign"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
-			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
-			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>
-			<tr><td><label>Gender</label></td><td>
-				<select name="gender">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td><label>Province</label></td><td>
-				<select name="province">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td><label>City</label></td><td>
-				<select name="city">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkBeforeSubmit();" name="sub"></td></tr>
-		</table>		
+		<?php
+		
+			if(isset($_SESSION['username'])){
+				$servername = "localhost";
+				$username = "root";
+				$password = "";
+				$dbname = "university_sharing";
+
+				// Create connection
+				$conn = new mysqli($servername, $username, $password, $dbname);
+
+				$user = $_SESSION['username'];
+				
+				$sql = "SELECT * FROM user WHERE username='".$user."'";
+				$result = mySQLi_query($conn, $sql) or die("Error query");
+
+				while($row = mySQLi_fetch_array($result)){
+					echo"<table>
+						<tr><td><label>Name</label></td><td><input type='text' id='nameSign name='nameSign' value='".$row['name']."'></td></tr>
+						<tr><td><label>Surname</label></td><td><input type='text' id='surnameSign' name='surnameSign' value='".$row['surname']."'></td></tr>
+						<tr><td><label>E-mail</label></td><td><input type='email' id='emailSign' name='emailSign' value='".$row['email']."'></td></tr>
+						<tr><td><label>Username</label></td><td><input type='text' id='nameSign name='nameSign' value='".$row['name']."'></td></tr>
+						<tr><td><label>Date of Birth</label></td><td><input type='date' id='dateSign' name='dateSign' value='".$row['date_of_birth']."'></td></tr>
+						<tr><td><label>Gender</label></td><td>
+							<select name='gender'>
+							<option value='male'>Male</option>
+							<option value='female'>Female</option>
+							</select>
+						</td></tr>
+						<tr><td><label>Province</label></td><td>
+							<select name='province'>
+								<option value='male'>Male</option>
+								<option value='female'>Female</option>
+							</select>
+						</td></tr>
+						<tr><td><label>City</label></td><td>
+							<select name='city'>
+								<option value='male'>Male</option>
+								<option value='female'>Female</option>
+							</select>
+						</td></tr>
+						<tr><td></td><td><input type='submit' value='Submit' onClick='checkBeforeSubmit();' name='sub'></td></tr>
+					</table>";
+				}
+			}
+			else
+				echo"<p>Log in first <a href='login.php'>here</a></p>";
+		?>
 	</form>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "password";
+$password = "";
 $dbname = "university_sharing";
 
 // Create connection
@@ -12,12 +12,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$nick = $_POST['usernameLog'];
+$user = $_POST['usernameLog'];
 $pwd = $_POST['pswLog'];
 
 $login = false;
 
-$sql = "SELECT username, password FROM user where username ='".$nick."'";
+$sql = "SELECT username, password FROM User where username ='".$user."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -37,14 +37,12 @@ $conn->close();
 
 if($login){
     session_start();
-    $_SESSION['username'] = $nick;
+    $_SESSION['username'] = $user;
 
     header("location: index.php");
 }
 else{
     echo "\n\nCredenziali non valide";
 }
-
-
 
 ?>

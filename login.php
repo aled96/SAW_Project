@@ -65,7 +65,7 @@
 			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
 			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
 			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
-			<tr><td><label>Nickname</label></td><td><input type="text" id=nickSign" name="nickSign"></td></tr>
+			<tr><td><label>Username</label></td><td><input type="text" id=userSign" name="userSign"></td></tr>
 			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
 			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
 			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>

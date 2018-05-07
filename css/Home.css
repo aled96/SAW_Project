@@ -73,6 +73,7 @@
 	background-color:white;
 	margin-left:35%;
 	height:55%;
+	visibility:hidden;
 	top:18%;
 	width:27%;
 }
@@ -134,12 +135,39 @@
 	width:auto;
 }
 
+.categories{
+	margin-top:5%;
+}
+
 .category{
 	display:inline;
-	width:25%;
+	width:20%;
 }
 
 
 .category>img{
-	width:24%;
+	width:19%;
+}
+
+/*Settings*/
+
+#settings{
+	background-color:white;
+	margin-left:35%;
+	height:55%;
+	top:18%;
+	width:27%;
+}
+
+#settings>h1{
+	text-align:center;
+	font-size:210%;
+}
+
+#settings>form{
+    margin-left: 10%;
+}
+
+#settings>form>table{
+	min-height:200px;
 }

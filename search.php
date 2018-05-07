@@ -108,41 +108,74 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$find = $_GET['find'];
-	
-	echo"
-		<div class='typeHome'>
-			<h1>Results for: ".$find."</h1>
-		</div>";
-	
-	
-	$sql = "SELECT * FROM book WHERE author LIKE '%".$find."%' OR title LIKE '%".$find."%' OR description LIKE '%".$find."%'";
-	$result = mySQLi_query($conn, $sql) or die("Error query");
+	if(isset($_GET['find'])){	
+		$find = $_GET['find'];
+		echo"
+			<div class='typeHome'>
+				<h1>Results for: ".$find."</h1>
+			</div>";
+		
+		
+		$sql = "SELECT * FROM book WHERE author LIKE '%".$find."%' OR title LIKE '%".$find."%' OR description LIKE '%".$find."%'";
+		$result = mySQLi_query($conn, $sql) or die("Error query");
 
-	$anyResults = false;
-	while($row = mySQLi_fetch_array($result)){
-	
-		$anyResults = true;
-		echo
-		"<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row[0].");'>
-			<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+		$anyResults = false;
+		while($row = mySQLi_fetch_array($result)){
+		
+			$anyResults = true;
+			echo
+			"<div class='book-content'>
+				<div class='cover' onclick='goToPageBook(".$row[0].");'>
+				<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+				</div>
+				<div class='description'>
+				<h3>".$row[2]."</h3>
+				</div>
+				<div class='description'>
+				<p>".$row[3]."</p>
+				</div>
 			</div>
-			<div class='description'>
-			<h3>".$row[2]."</h3>
-			</div>
-			<div class='description'>
-			<p>".$row[3]."</p>
-			</div>
-		</div>
-		<div class='separation-line'></div>";
+			<div class='separation-line'></div>";
+		}
+		
+		if($anyResults == false)
+			echo"<h3>No results found</h3>";
 	}
+	else if(isset($_GET['cat'])){	
+		$cat = $_GET['cat'];
+		echo"
+			<div class='typeHome'>
+				<h1>".$cat."</h1>
+			</div>";
+		
+		
+		$sql = "SELECT * FROM book,material,category,faculty WHERE book.id = material.book and material.category = category.id and category.faculty = faculty.id and faculty.name = '".$cat."'";
+		$result = mySQLi_query($conn, $sql) or die("Error query");
+
+		$anyResults = false;
+		while($row = mySQLi_fetch_array($result)){
+		
+			$anyResults = true;
+			echo
+			"<div class='book-content'>
+				<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
+				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
+				</div>
+				<div class='description'>
+				<h3>".$row['Title']."</h3>
+				</div>
+				<div class='description'>
+				<p>".$row['Description']."</p>
+				</div>
+			</div>
+			<div class='separation-line'></div>";
+		}
+		
+		if($anyResults == false)
+			echo"<h3>No books in this category</h3>";
 	
-	if($anyResults == false)
-		echo"<h3>No results found</h3>";
-	
-	
-	
+	}
+		
 	?>
 	
 </div>
