@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "password";
 $dbname = "university_sharing";
 
 // Create connection
@@ -21,7 +21,7 @@ $surname = $_POST['surnameSign'];
 $gender = $_POST['gender'];
 $date_birth = $_POST['dateSign'];
 
-$sql = "INSERT INTO User (username, email, password, name, surname, gender, date_of_birth, city)
+$sql = "INSERT INTO user (username, email, password, name, surname, gender, date_of_birth, city)
 VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', null)";
 
 if ($conn->query($sql) === TRUE) {

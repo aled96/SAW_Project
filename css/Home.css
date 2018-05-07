@@ -70,12 +70,7 @@
 /*Sign Up*/
 
 #signUpForm{
-	background-color:white;
-	margin-left:35%;
-	height:55%;
 	visibility:hidden;
-	top:18%;
-	width:27%;
 }
 
 #signUpForm>h1{

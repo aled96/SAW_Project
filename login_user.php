@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "password";
 $dbname = "university_sharing";
 
 // Create connection
@@ -17,7 +17,7 @@ $pwd = $_POST['pswLog'];
 
 $login = false;
 
-$sql = "SELECT username, password FROM User where username ='".$user."'";
+$sql = "SELECT username, password FROM user where username ='".$user."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

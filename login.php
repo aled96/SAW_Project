@@ -16,13 +16,15 @@
 
 
 	<link rel="stylesheet" media="all" href="css/footer.css" />
-	<link rel="stylesheet" media="all" href="css/common.css" />
-	<link rel="stylesheet" media="all" href="css/Home.css" />
+    <link rel="stylesheet" media="all" href="css/common.css" />
+    <link rel="stylesheet" media="all" href="css/Home.css" />
+    <link rel="stylesheet" media="all" href="css/sky-forms.css" />
+    <link rel="stylesheet" media="all" href="css/demo.css" />
 	<script src="js/common.js"></script>
 
 </head>
 
-  <body>
+  <body  class="bg-cyan">
 
     <div class="navbar navbar-inverse">
     <div class="navbar-inner">
@@ -57,52 +59,154 @@
 </div>
 
 
+<div class="body body-s" id="logIn">
+    <form action="login_user.php" method="POST" name="signup" class="sky-form">
+        <header>Registration form</header>
 
-<div id="signUpForm">
-	<h1>Sign Up</h1>
-	<form action="signup.php" method="POST" name="signup">
-		<table>
-			<tr><td><label>Name</label></td><td><input type="text" id="nameSign" name="nameSign"></td></tr>
-			<tr><td><label>Surname</label></td><td><input type="text" id="surnameSign" name="surnameSign"></td></tr>
-			<tr><td><label>E-mail</label></td><td><input type="email" id="emailSign" name="emailSign"></td></tr>
-			<tr><td><label>Username</label></td><td><input type="text" id=userSign" name="userSign"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswSign" name="pswSign"></td></tr>
-			<tr><td><label>Password Confirm</label></td><td><input type="password" id="pswConfirmSign" name="pswConfirmSign"></td></tr>
-			<tr><td><label>Date of Birth</label></td><td><input type="date" id="dateSign" name="dateSign" value="2000-01-01"></td></tr>
-			<tr><td><label>Gender</label></td><td>
-				<select name="gender">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td><label>Province</label></td><td>
-				<select name="province">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td><label>City</label></td><td>
-				<select name="city">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</td></tr>
-			<tr><td></td><td><input type="button" value="Submit" onClick="checkBeforeSubmit();" name="sub"></td></tr>
-			<tr><td colspan="2"><p>Already registered? Log In <a href="#" onClick="hide('signUpForm');show('logIn');">here</a></p></td></tr>
-		</table>		
-	</form>
+        <fieldset>
+            <section>
+                <label class="input">
+                    <i class="icon-append icon-user"></i>
+                    <input type="text" placeholder="Username" id=usernameLog" name="usernameLog">
+                </label>
+            </section>
+
+            <section>
+                <label class="input">
+                    <i class="icon-append icon-lock"></i>
+                    <input type="password" placeholder="Password" id="pswLog" name="pswLog">
+                </label>
+            </section>
+
+            <footer>
+                <button type="submit" class="button">Submit</button>
+            </footer>
+
+        </fieldset>
+
+        <fieldset>
+            <section>
+                <p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p>
+            </section>
+        </fieldset>
+
+    </form>
+
 </div>
 
-<div id="logIn">
-	<h1>Log In </h1>
-	<form action="login_user.php" method="POST" name="login">
-		<table>
-			<tr><td><label>Username</label></td><td><input type="text" id="usernameLog" name="usernameLog"></td></tr>
-			<tr><td><label>Password</label></td><td><input type="password" id="pswLog" name="pswLog"></td></tr>
-			<tr><td></td><td><input type="submit" value="Submit" name="submit"></td></tr>
-			<tr><td colspan="2"><p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p></td></tr>
-		</table>		
-	</form>
+<div class="body body-s" id="signUpForm">
+    <form action="signup.php" method="POST" name="signup" class="sky-form">
+        <header>Registration form</header>
+
+        <fieldset>
+            <section>
+                <label class="input">
+                    <i class="icon-append icon-user"></i>
+                    <input type="text" placeholder="Username" id=userSign" name="userSign">
+                    <b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
+                </label>
+            </section>
+
+            <section>
+                <label class="input">
+                    <i class="icon-append icon-envelope-alt"></i>
+                    <input type="text" placeholder="Email address" id="emailSign" name="emailSign">
+                    <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                </label>
+            </section>
+
+            <section>
+                <label class="input">
+                    <i class="icon-append icon-lock"></i>
+                    <input type="password" placeholder="Password" id="pswSign" name="pswSign">
+                    <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                </label>
+            </section>
+
+            <section>
+                <label class="input">
+                    <i class="icon-append icon-lock"></i>
+                    <input type="password" placeholder="Confirm password" id="pswConfirmSign" name="pswConfirmSign">
+                    <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                </label>
+            </section>
+        </fieldset>
+
+        <fieldset>
+            <section>
+                <label class="input">
+                    Date of Birth
+                </label>
+                <label class="input">
+                    <i class="icon-append icon-calendar"></i>
+                    <input type="date" id="dateSign" name="dateSign">
+                </label>
+            </section>
+        </fieldset>
+
+        <fieldset>
+            <div class="row">
+                <section class="col col-6">
+                    <label class="input">
+                        <input type="text" placeholder="First name" id="nameSign" name="nameSign">
+                    </label>
+                </section>
+                <section class="col col-6">
+                    <label class="input">
+                        <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign">
+                    </label>
+                </section>
+            </div>
+
+            <section>
+                <label class="select">
+                    <select name="gender">
+                        <option value="not-selected" selected disabled>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <i></i>
+                </label>
+            </section>
+        </fieldset>
+
+        <fieldset>
+            <section>
+                <label class="select">
+                    <select name="province">
+                        <option value="not-selected" selected disabled>Province</option>
+                        <option value="male">Genova</option>
+                    </select>
+                    <i></i>
+                </label>
+            </section>
+
+            <section>
+                <label class="select">
+                    <select name="city">
+                        <option value="not-selected" selected disabled>City</option>
+                        <option value="male">Genova</option>
+                    </select>
+                    <i></i>
+                </label>
+            </section>
+
+            <section>
+                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>I agree to the Terms of Service</label>
+            </section>
+        </fieldset>
+
+        <footer>
+            <button type="submit" class="button">Submit</button>
+        </footer>
+
+        <fieldset>
+            <section>
+                <p>Already registered? Log in <a href="#" onClick="show('logIn');hide('signUpForm');">here</a></p>
+            </section>
+        </fieldset>
+    </form>
 </div>
 
 
