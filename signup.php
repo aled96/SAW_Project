@@ -20,9 +20,10 @@ $name = $_POST['nameSign'];
 $surname = $_POST['surnameSign'];
 $gender = $_POST['gender'];
 $date_birth = $_POST['dateSign'];
+$city = $_POST['citySign'];
 
 $sql = "INSERT INTO user (username, email, password, name, surname, gender, date_of_birth, city)
-VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', null)";
+VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', '$city')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
