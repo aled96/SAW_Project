@@ -39,9 +39,9 @@
 			<a class="brand" href="index.php" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
+					<li><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="#"><i class="icon-th-list icon-white"></i> Categories</a></li>
+					<li class="active"><a href="#"><i class="icon-th-list icon-white"></i> Categories</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
 					<li class="divider-vertical"></li>
