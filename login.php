@@ -21,6 +21,7 @@
     <link rel="stylesheet" media="all" href="css/sky-forms.css" />
     <link rel="stylesheet" media="all" href="css/demo.css" />
 	<script src="js/common.js"></script>
+    <script src="js/login.js"></script>
 
 </head>
 
@@ -62,26 +63,31 @@
 
 
 <div class="body body-s" id="logIn">
-    <form action="login_user.php" method="POST" name="signup" class="sky-form">
+    <form action="login_user.php" method="POST" name="login" class="sky-form">
         <header>Registration form</header>
 
         <fieldset>
             <section>
+                <label class="input" >
+                    <p class='errorLogin' id = "errorLoginBox"><br></p>
+                </label>
+            </section>
+            <section>
                 <label class="input">
                     <i class="icon-append icon-user"></i>
-                    <input type="text" placeholder="Username" id=usernameLog" name="usernameLog">
+                    <input type="text" onclick="removeError()" onkeyup="removeError()" placeholder="Username" id="usernameLog" name="usernameLog">
                 </label>
             </section>
 
             <section>
                 <label class="input">
                     <i class="icon-append icon-lock"></i>
-                    <input type="password" placeholder="Password" id="pswLog" name="pswLog">
+                    <input type="password" onclick="removeError()" onkeyup="removeError()" placeholder="Password" id="pswLog" name="pswLog">
                 </label>
             </section>
 
             <footer>
-                <button type="submit" class="button">Submit</button>
+                <button type="button" onClick="ajaxcheckPassword()" class="button">Submit</button>
             </footer>
 
         </fieldset>
@@ -102,9 +108,14 @@
 
         <fieldset>
             <section>
+                <label class="input" >
+                    <p class='errorLogin' id="errorSignupBox"><br></p>
+                </label>
+            </section>
+            <section>
                 <label class="input">
                     <i class="icon-append icon-user"></i>
-                    <input type="text" placeholder="Username" id=userSign" name="userSign">
+                    <input type="text" placeholder="Username" id="userSign" name="userSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     <b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
                 </label>
             </section>
@@ -112,7 +123,7 @@
             <section>
                 <label class="input">
                     <i class="icon-append icon-envelope-alt"></i>
-                    <input type="text" placeholder="Email address" id="emailSign" name="emailSign">
+                    <input type="text" placeholder="Email address" id="emailSign" name="emailSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                 </label>
             </section>
@@ -120,7 +131,7 @@
             <section>
                 <label class="input">
                     <i class="icon-append icon-lock"></i>
-                    <input type="password" placeholder="Password" id="pswSign" name="pswSign">
+                    <input type="password" placeholder="Password" id="pswSign" name="pswSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
                 </label>
             </section>
@@ -128,7 +139,7 @@
             <section>
                 <label class="input">
                     <i class="icon-append icon-lock"></i>
-                    <input type="password" placeholder="Confirm password" id="pswConfirmSign" name="pswConfirmSign">
+                    <input type="password" placeholder="Confirm password" id="pswConfirmSign" name="pswConfirmSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
                 </label>
             </section>
@@ -150,19 +161,19 @@
             <div class="row">
                 <section class="col col-6">
                     <label class="input">
-                        <input type="text" placeholder="First name" id="nameSign" name="nameSign">
+                        <input type="text" placeholder="First name" id="nameSign" name="nameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     </label>
                 </section>
                 <section class="col col-6">
                     <label class="input">
-                        <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign">
+                        <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     </label>
                 </section>
             </div>
 
             <section>
                 <label class="select">
-                    <select name="gender">
+                    <select name="gender" id="gender">
                         <option value="not-selected" selected disabled>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -176,7 +187,7 @@
         <fieldset>
             <section>
                 <label class="select">
-                    <select name="province">
+                    <select name="province" id="province">
                         <option value="not-selected" selected disabled>Province</option>
                         <?php
                         $servername = "localhost";
@@ -212,7 +223,7 @@
 
             <section>
                 <label class="select">
-                    <select name="citySign">
+                    <select name="citySign" id="citySign">
                         <option value="not-selected" selected disabled>City</option>
                         <?php
                         $servername = "localhost";
@@ -247,12 +258,12 @@
             </section>
 
             <section>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>I agree to the Terms of Service</label>
+                <label class="checkbox"><input type="checkbox" name="checkbox" id="checkboxSign"><i></i>I agree to the Terms of Service</label>
             </section>
         </fieldset>
 
         <footer>
-            <button type="submit" class="button">Submit</button>
+            <button type="button" onclick="checkSignUp()" class="button">Submit</button>
         </footer>
 
         <fieldset>
