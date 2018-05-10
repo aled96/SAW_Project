@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Mag 10, 2018 alle 14:29
+-- Creato il: Mag 10, 2018 alle 16:59
 -- Versione del server: 5.7.22-0ubuntu0.16.04.1
 -- Versione PHP: 7.0.28-0ubuntu0.16.04.1
 
@@ -87,6 +87,26 @@ INSERT INTO `city` (`ID`, `Name`, `Province`) VALUES
 (2, 'Arenzano', 1),
 (3, 'Sarzana', 2),
 (4, 'Cogoleto', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `concern`
+--
+
+CREATE TABLE `concern` (
+  `Book` int(11) NOT NULL,
+  `Category` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `concern`
+--
+
+INSERT INTO `concern` (`Book`, `Category`) VALUES
+(1, 1),
+(1, 2),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -188,10 +208,22 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`Username`, `Email`, `Password`, `Name`, `Surname`, `Gender`, `Date_of_birth`, `City`) VALUES
 ('aled96', 'prova@lapo.grassoabw', 'prova1', '', 'awbab', 'female', '0000-00-00', NULL),
-('lapo', 'marco.lapolla5@gmail.com', 'password', 'Marco', 'Lapolla', 'male', '1996-10-30', NULL),
+('lapo', 'marco.lapolla5@gmail.com', 'password', 'Marco', 'Lapolla', 'female', '1996-10-30', NULL),
 ('lapo5', 'marco.lapolla5555@gmail.com', 'password', 'Marco', 'Lapolla', 'male', '2000-01-01', NULL),
 ('lapolla', 'marco.lapolla5resgvsg@gmail.com', 'password', 'Marco', 'Lapolla', 'male', '2018-05-17', NULL),
+('lapollaffe', 'marco.lapoddlla5@gmail.com', 'pass', 'Marco Lapolla', 'Lapolla', 'female', '1966-10-30', 1),
 ('sf', 'cfacs@asf.ac', 'aleeee', 'qe', 'csd', 'female', '2000-01-01', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `Username` varchar(255) NOT NULL,
+  `Book` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indici per le tabelle scaricate

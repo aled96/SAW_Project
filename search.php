@@ -150,7 +150,7 @@
 			</div>";
 		
 		
-		$sql = "SELECT book.* FROM book,category,faculty WHERE book.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."'";
+		$sql = "SELECT book.* FROM book,concern,category,faculty WHERE book.ID = concern.Book and concern.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 
 		$anyResults = false;
