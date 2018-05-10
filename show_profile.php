@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 	session_start();
 ?>
@@ -22,7 +21,10 @@
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/Home.css" />
+    <link rel="stylesheet" media="all" href="css/sky-forms.css" />
+    <link rel="stylesheet" media="all" href="css/demo.css" />
 	<script src="js/common.js"></script>
+    <script src="js/login.js"></script>
 
 </head>
 
@@ -36,24 +38,18 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="#" id="top">Site Name</a>
+			<a class="brand" href="index.php" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="category.php"><i class="icon-th-list icon-white"></i> Categories</a></li>
+					<li><a href="#"><i class="icon-file icon-white"></i> Data</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
 					<li class="divider-vertical"></li>
-					<li><form action="search.php" method="get">
-						<input type="text" class="searchNav" placeholder="Search..." name="find" required><span class="searchButton"><button type="submit"><i class="icon-search icon-black"></i> </button></span>
-						</form>
-					</li>
-					<li class="divider-vertical"></li>
 				</ul>
-
 
 
 				<?php
@@ -64,9 +60,7 @@
                                     <li class="dropdown">
                                         <a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i>'.$user.'<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="setting.php"><i class="icon-wrench"></i> Settings</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="show_profile.php"><i class="icon-user"></i>Dashboard</a></li>
+                                            <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
                                             <li class="divider"></li>
                                             <li><a href="logout.php"><i class="icon-share"></i>Logout</a></li>
                                         </ul>
@@ -84,8 +78,6 @@
 
 					?>
 
-
-
 			</div>
 			<!--/.nav-collapse -->
 		</div>
@@ -93,61 +85,6 @@
 	</div>
 	<!--/.navbar-inner -->
 </div>
-
-
-<div class="slideshow">
-	<img src="http://minimaliv.com/wp-content/uploads/2014/10/Book.jpg" alt="pictures">
-</div>
-
-<div class="content">
-	
-	<div class='typeHome'>
-		<h1>Last Books Added</h1>
-	</div>
-		
-	<?php	
-	$servername = "localhost";
-	$username = "root";
-	$password = "password";
-	$dbname = "university_sharing";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
-	$sql = "SELECT * FROM book";
-	$result = mySQLi_query($conn, $sql) or die("Error query");
-
-	while($row = mySQLi_fetch_array($result)){
-		echo
-		"
-		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
-			<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
-			</div>
-			<div class='description'>
-			<h3>".$row['Title']."</h3>
-			</div>
-			<div class='description'>
-			<p>".$row['Description']."</p>
-			</div>
-		</div>
-		<div class='separation-line'></div>";
-	
-	}
-	
-	
-	
-	
-	?>
-	
-</div>
-
-
 
 
 
@@ -166,6 +103,6 @@
     </ul>
   </div>
 </div>
- 
+
 </body>
 </html>
