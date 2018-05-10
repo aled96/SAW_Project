@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	session_start();
+    session_start();
 ?>
   <head>
     <title>Site Name</title>
@@ -56,7 +56,6 @@
 
 
                  <?php
-                 session_start();
                  if(isset($_SESSION['username']))
                  {
                      $user = $_SESSION['username'];
@@ -115,7 +114,7 @@
 			</div>
 			
 			<div id='BookDescription'>
-				<div id='Title'><h1>".$row['Title']."</h1></div>
+				<div id='Title'><p>".$row['Title']."</p></div>
 				<div id='Author'><p>by ".$row['Author']."</p></div>
 				<div id='Text'>
 				<p>".$row['Description']."</p>
@@ -144,16 +143,14 @@
 			
 		$sql2 = "SELECT faculty.name as Fac, category.Name as Cat FROM book,concern,category,faculty WHERE book.ID = concern.Book and concern.Category = category.ID and book.ID='".$id."' and faculty.ID = category.Faculty";
 		$result2 = mySQLi_query($conn, $sql2) or die("Error query2");
-		
-				echo"
-							
-				<div id='categoryBook'>
-					<h3>Category</h3>";
+			
+			
+			echo"<div id='categoryBook'><h3>Category</h3>";
 			while($row2 = mySQLi_fetch_array($result2)){
 				echo"
-					<a href='#'>".$row2['Fac']."</a><a> > </a><a href='#'> ".$row2['Cat']."</a>
-				</div>";
+					<a href='#'>".$row2['Fac']."</a><a> > </a><a href='#'> ".$row2['Cat']."</a>";
 			}
+			echo"</div>";
 		}
 	?>
 

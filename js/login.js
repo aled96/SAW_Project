@@ -44,16 +44,6 @@ function ajaxCheck() {
 	}
 }
 
-function checkSettings(){
-
-
-
-
-
-
-    document.settings.submit();
-}
-
 function removeError(){
     document.getElementById("errorLoginBox").innerHTML = "<br>";
 }
@@ -159,7 +149,7 @@ function ajaxCheckEmail() {
             if (xmlreq.responseText != null)
             {
                 if (xmlreq.responseText == "ok")
-                    document.signup.submit();
+                    alert("document.signup.submit();");
                 else if(xmlreq.responseText == "email")
                     document.getElementById("errorSignupBox").innerHTML = "Email Already Taken!";
                 else if(xmlreq.responseText == "username")

@@ -106,7 +106,7 @@ session_start();
 <div class="container">
     <div id="form-main">
         <div id="form-div">
-            <form class="montform" id="reused_form" enctype=&quot;multipart/form-data&quot; >
+            <form class="montform" action="Insert_newBook.php" method="POST" id="reused_form" enctype=&quot;multipart/form-data&quot; >
                 <p class="author">
                     <input name="author" type="text" class="feedback-input" required placeholder="Author" id="author" />
                 </p>
@@ -114,7 +114,7 @@ session_start();
                     <input name="title" type="text" required class="feedback-input" id="title" placeholder="Title" />
                 </p>
                 <p class="text">
-                    <textarea name="description" class="feedback-input" id="comment" placeholder="Description"></textarea>
+                    <textarea name="description" class="feedback-input" id="description" placeholder="Description"></textarea>
                 </p>
                 <p class="pages">
                     <input name="pages" type="number" required class="feedback-input" id="pages" placeholder="Number of Pages"></input>
@@ -128,8 +128,10 @@ session_start();
 
                 <p>Cover</p>
                 <p class="file">
-                    <input name="image" type="file" id="file" class="feedback-input">
+                    <input name="image" type="file" required id="image" class="feedback-input">
                 </p>
+				
+				<!--TODO!! Inserimento categorie e info -> prezzo, zona etc -->
                 <div class="submit">
                     <button type="submit" class="button-blue">SUBMIT</button>
                     <div class="ease"></div>

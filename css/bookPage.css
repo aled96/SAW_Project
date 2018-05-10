@@ -4,90 +4,116 @@
 /*Content*/
 
 #contentBookPage{
-	width:80%;
-	margin-left:10%;
-	margin-right:10%;
-	margin-bottom:5%;
-	min-height:61vw;
+	width:76vw;
+	margin-left:12vw;
+	margin-right:12vw;
+	margin-bottom:5vw;
+	/*line-height:1.1vw;*/
 }
 
 /* Book View */
 
 #BookCover{
 	float:left;
-	margin-right:5%;
-	margin-top:4%;
+	margin-right:2vw;
+	margin-top:3vw;
 	width:17vw;
 }
 
 #BookCover>img{
+	box-shadow: 0.4vw 0.4vw 0.2vw grey; 	
 	/* TODO -> Little shadow (as amazon)*/
 }
 
 #BookDescription{
 	float:left;
-	margin-right:5%;
-	margin-top:4%;
+	margin-right:2vw;
+	margin-top:3vw;
 	width:38vw;
 }
 
 #SellerInfo{
-	padding:13px;
-    border: 3px solid #DDDDDD;
-	border-radius:5px;
+	padding:1vw;
+    border: 0.3vw solid #DDDDDD;
+	border-radius:0.2vw;
 
 	float:left;
 	line-height:0.5;
-	margin-right:2%;
-	margin-top:4%;
+	margin-right:1vw;
+	margin-top:3vw;
 	width:12vw;
+}
+
+#Seller>h5{
+	font-size:1.2vw;
+}
+
+#Seller>p{
+	font-size:1vw;
 }
 
 #Title{
 	display:block;
-	font-size:160%;
+	font-size:3vw;
+	font-weight:bold;
+	margin-bottom:1vw;
 }
 
 #Author{
 	display:block;
-	font-size:110%;
+	font-size:1.2vw;
 }
 
 #Text{
 	display:block;
-	margin-top:8%;
+	margin-top:2vw;
+	font-size:1vw;
 }
 
 #Details{
 	display:block;
 	float:left;
-	margin-right:5%;
-	margin-top:4%;
+	margin-right:3vw;
+	margin-top:2vw;
 	width:60vw;
+}
+
+#Details>h2{
+	font-size:2.4vw;
 }
 
 #categoryBook{
 	display:block;
 	float:left;
-	margin-right:5%;
-	margin-top:4%;
+	margin-right:3vw;
+	margin-top:2vw;
 	width:60vw;
 }
+
+#categoryBook>h3{
+	font-size:2vw;
+}
+
 #categoryBook>a{
 	text-decoration:none;
+	font-size:1vw;
 }
 
 
 .Info>h5{
 	display:inline;
+	font-size:1.2vw;
 }
 .Info>p{
 	display:inline;
+	font-size:1vw;
 }
 
 .AddFavourite>a{
 	display:inline;
+	font-size:1vw;
 }
 .AddFavourite>p{
 	display:inline;
+	font-size:1vw;
 }

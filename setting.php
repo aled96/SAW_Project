@@ -88,7 +88,7 @@
 
     <div class="body body-s" id="settings">
         <form action="changeSettings.php" method="POST" name="settings" class="sky-form">
-            <header>Update Informtion</header>
+            <header>Update Information</header>
             <?php
 
 			if(isset($_SESSION['username'])){
