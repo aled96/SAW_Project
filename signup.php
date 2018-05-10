@@ -22,7 +22,15 @@ $gender = $_POST['gender'];
 $date_birth = $_POST['dateSign'];
 $city = $_POST['citySign'];
 
-$sql = "INSERT INTO user (username, email, password, name, surname, gender, date_of_birth, city)
+$sql2 = "SELECT ID from city where NAME = '".$city."'";
+
+$result2 = mySQLi_query($conn, $sql2) or die("Error query2");
+
+while($row2 = mySQLi_fetch_array($result2)){
+    $city = $row2['ID'];
+}
+
+$sql = "INSERT INTO user (Username, Email, Password, Name, Surname, Gender, Date_of_birth, City)
 VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', '$city')";
 
 if ($conn->query($sql) === TRUE) {

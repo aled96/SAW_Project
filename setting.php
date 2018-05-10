@@ -21,7 +21,10 @@
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/Home.css" />
+    <link rel="stylesheet" media="all" href="css/sky-forms.css" />
+    <link rel="stylesheet" media="all" href="css/demo.css" />
 	<script src="js/common.js"></script>
+    <script src="js/login.js"></script>
 
 </head>
 
@@ -83,61 +86,153 @@
 	<!--/.navbar-inner -->
 </div>
 
+    <div class="body body-s" id="settings">
+        <form action="changeSettings.php" method="POST" name="settings" class="sky-form">
+            <header>Update Informtion</header>
+            <?php
 
-
-<div id="settings">
-	<h1>Change Info</h1>
-	<form action="changeSettings.php" method="POST" name="settings">
-		<?php
-		
 			if(isset($_SESSION['username'])){
-				$servername = "localhost";
-				$username = "root";
-				$password = "password";
-				$dbname = "university_sharing";
+                $servername = "localhost";
+                $username = "root";
+                $password = "password";
+                $dbname = "university_sharing";
 
-				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
-				$user = $_SESSION['username'];
-				
-				$sql = "SELECT * FROM user WHERE username='".$user."'";
-				$result = mySQLi_query($conn, $sql) or die("Error query");
+                $user = $_SESSION['username'];
 
-				while($row = mySQLi_fetch_array($result)){
-					echo"<table>
-						<tr><td><label>Name</label></td><td><input type='text' id='nameSign name='nameSign' value='".$row['name']."'></td></tr>
-						<tr><td><label>Surname</label></td><td><input type='text' id='surnameSign' name='surnameSign' value='".$row['surname']."'></td></tr>
-						<tr><td><label>E-mail</label></td><td><input type='email' id='emailSign' name='emailSign' value='".$row['email']."'></td></tr>
-						<tr><td><label>Username</label></td><td><input type='text' id='nameSign name='nameSign' value='".$row['name']."'></td></tr>
-						<tr><td><label>Date of Birth</label></td><td><input type='date' id='dateSign' name='dateSign' value='".$row['date_of_birth']."'></td></tr>
-						<tr><td><label>Gender</label></td><td>
+                $sql = "SELECT * FROM user WHERE Username='" . $user . "'";
+                $result = mySQLi_query($conn, $sql) or die("Error query");
+
+                while ($row = mySQLi_fetch_array($result)) {
+                    echo '
+            <fieldset>
+                <section>
+                    <label class="input" >
+                        <p class="errorLogin" id="errorSettingsBox"><br></p>
+                    </label>
+                </section>
+                <section>
+                    <label class="input">
+                        <i class="icon-append icon-user"></i>
+                        <input type="text" placeholder="Username" id="userSign" name="userSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" value="' . $row['Username'] . '">
+                        <b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
+                    </label>
+                </section>
+
+                <section>
+                    <label class="input">
+                        <i class="icon-append icon-envelope-alt"></i>
+                        <input type="text" placeholder="Email address" id="emailSign" name="emailSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Email'] . '">
+                        <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                    </label>
+                </section>
+
+            </fieldset>
+
+            <fieldset>
+                <section>
+                    <label class="input">
+                        Date of Birth
+                    </label>
+                    <label class="input">
+                        <i class="icon-append icon-calendar"></i>
+                        <input type="date" id="dateSign" name="dateSign"  value="' . $row['Date_of_birth'] . '">
+                    </label>
+                </section>
+            </fieldset>
+
+            <fieldset>
+                <div class="row">
+                    <section class="col col-6">
+                        <label class="input">
+                            <input type="text" placeholder="First name" id="nameSign" name="nameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Name'] . '">
+                        </label>
+                    </section>
+                    <section class="col col-6">
+                        <label class="input">
+                            <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Surname'] . '">
+                        </label>
+                    </section>
+                </div>
+
+                <section>
+                    <label class="select">';
+                    if ($row['Gender'] == "male") {
+                        echo "
 							<select name='gender'>
-							<option value='male'>Male</option>
+							<option value='male' selected>Male</option>
 							<option value='female'>Female</option>
 							</select>
-						</td></tr>
-						<tr><td><label>Province</label></td><td>
-							<select name='province'>
-								<option value='male'>Male</option>
-								<option value='female'>Female</option>
+							";
+                    } else {
+                        echo "
+							<select name='gender'>
+							<option value='male'>Male</option>
+							<option value='female' selected>Female</option>
 							</select>
-						</td></tr>
-						<tr><td><label>City</label></td><td>
-							<select name='city'>
-								<option value='male'>Male</option>
-								<option value='female'>Female</option>
-							</select>
-						</td></tr>
-						<tr><td></td><td><input type='submit' value='Submit' onClick='checkBeforeSubmit();' name='sub'></td></tr>
-					</table>";
-				}
-			}
-			else
-				echo"<p>Log in first <a href='login.php'>here</a></p>";
-		?>
-	</form>
-</div>
+							";
+                    }
+                    echo '
+                        <i></i>
+                    </label>
+                </section>
+            </fieldset>
+
+            <fieldset>
+                <section>
+                    <label class="select">
+                        <select name="province" id="province">
+                            <option value="not-selected" selected disabled>Province</option>';
+                    $sql = "SELECT distinct Name FROM province";
+                    $result = $conn->query($sql);
+
+                    while ($row = $result->fetch_assoc()) {
+                        $city = $row['Name'];
+                        if (strlen($city) != 0) {
+                            echo "<option value='" . $city . "'>" . $city . "</option>";
+                        }
+                    }
+                    echo '
+                        </select>
+                        <i></i>
+                    </label>
+                </section>
+
+                <section>
+                    <label class="select">
+                        <select name="citySign" id="citySign">
+                            <option value="not-selected" selected disabled>City</option>';
+
+                    $sql = "SELECT distinct Name FROM city";
+                    $result = $conn->query($sql);
+
+                    while ($row = $result->fetch_assoc()) {
+                        $city = $row['name'];
+                        if (strlen($city) != 0) {
+                            echo "<option value='" . $city . "'>" . $city . "</option>";
+                        }
+                    }
+
+                    $conn->close();
+                    echo '
+                        </select>
+                        <i></i>
+                    </label>
+                </section>
+            </fieldset>
+
+            <footer>
+                <button type="button" onclick="checkSettings()" class="button">Submit</button>
+            </footer>
+        </form>
+    </div>';
+                }
+            }
+            else
+                echo "Log in First";
+			?>
 
 <div class="myfooter">
   <small>

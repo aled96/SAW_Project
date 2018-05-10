@@ -104,7 +104,7 @@
 	
 		$id = $_GET['Id'];
 	
-		$sql = "SELECT * FROM book, insertion WHERE insertion.material_offered = book.ID and book.ID='".$id."'";
+		$sql = "SELECT * FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='".$id."'";
 
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 		
@@ -123,11 +123,11 @@
 			</div>	
 			
 			<div id='SellerInfo'>
-				<div id='Seller'><h5>Sold By: </h5><p>".$row['user_offerer']."</p></div>
+				<div id='Seller'><h5>Sold By: </h5><p>".$row['User_offerer']."</p></div>
 				<br>
-				<div id='Seller'><h5>Price: </h5><p>".$row['price']." €</p></div>
+				<div id='Seller'><h5>Price: </h5><p>".$row['Price']." €</p></div>
 				<br>
-				<div id='Seller'><h5>Place: </h5><p>".$row['place']."</p></div>
+				<div id='Seller'><h5>Place: </h5><p>".$row['Place']."</p></div>
 				<br><br>
 				<div class='AddFavourite'>
 					<a href=''><i class='icon-heart icon-black'></i></a><p> Add Favourite</p>
@@ -142,7 +142,7 @@
 			</div>";
 			
 			
-		$sql2 = "SELECT faculty.name as Fac, category.Name as Cat FROM category,material,faculty WHERE material.category = category.id and material.book='".$id."' and faculty.id = category.faculty";
+		$sql2 = "SELECT faculty.name as Fac, category.Name as Cat FROM category,book,faculty WHERE book.Category = category.ID and book.ID='".$id."' and faculty.ID = category.Faculty";
 		$result2 = mySQLi_query($conn, $sql2) or die("Error query2");
 		
 			while($row2 = mySQLi_fetch_array($result2)){

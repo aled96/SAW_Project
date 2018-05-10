@@ -203,11 +203,11 @@
                             die("Connection failed: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT distinct name FROM province";
+                        $sql = "SELECT distinct Name FROM province";
                         $result = $conn->query($sql);
 
                         while($row = $result->fetch_assoc()) {
-                            $city = $row['name'];
+                            $city = $row['Name'];
                             if(strlen($city) != 0) {
                                 echo "<option value='" . $city . "'>" . $city . "</option>";
                             }

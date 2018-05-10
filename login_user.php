@@ -17,14 +17,14 @@ $pwd = $_POST['pswLog'];
 
 $login = false;
 
-$sql = "SELECT username, password FROM user where username ='".$user."'";
+$sql = "SELECT Username, Password FROM user where Username ='".$user."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo $row["password"];
-        if($row["password"] == $pwd)
+        echo $row["Password"];
+        if($row["Password"] == $pwd)
         {
             $login = true;
         }

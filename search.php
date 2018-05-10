@@ -117,7 +117,7 @@
 			</div>";
 		
 		
-		$sql = "SELECT * FROM book WHERE author LIKE '%".$find."%' OR title LIKE '%".$find."%' OR description LIKE '%".$find."%'";
+		$sql = "SELECT * FROM book WHERE Author LIKE '%".$find."%' OR Title LIKE '%".$find."%' OR Description LIKE '%".$find."%'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 
 		$anyResults = false;
@@ -150,7 +150,7 @@
 			</div>";
 		
 		
-		$sql = "SELECT book.* FROM book,material,category,faculty WHERE book.id = material.book and material.category = category.id and category.faculty = faculty.id and faculty.name = '".$cat."'";
+		$sql = "SELECT book.* FROM book,category,faculty WHERE book.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 
 		$anyResults = false;
