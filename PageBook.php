@@ -103,7 +103,7 @@
 	
 		$id = $_GET['Id'];
 	
-		$sql = "SELECT * FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='".$id."'";
+		$sql = "SELECT *, book.description as BookDesc FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='$id'";
 
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 		
@@ -117,7 +117,7 @@
 				<div id='Title'><p>".$row['Title']."</p></div>
 				<div id='Author'><p>by ".$row['Author']."</p></div>
 				<div id='Text'>
-				<p>".$row['Description']."</p>
+				<p>".$row['BookDesc']."</p>
 				</div>
 			</div>	
 			
@@ -127,9 +127,28 @@
 				<div id='Seller'><h5>Price: </h5><p>".$row['Price']." €</p></div>
 				<br>
 				<div id='Seller'><h5>Place: </h5><p>".$row['Place']."</p></div>
-				<br><br>
-				<div class='AddFavourite'>
-					<a href=''><i class='icon-heart icon-black'></i></a><p> Add Favourite</p>
+				<br><br>";
+				
+				
+				#Check if logged
+				$star_status="icon-star-empty";
+				$link = "login.php";
+				if(isset($_SESSION['username'])){
+					$user = $_SESSION['username'];
+					#Check if in wishlist
+					$sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='$id' and Username='$user';";
+
+					$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+					#If is in list -> change calss for star icon
+					while($row2 = mySQLi_fetch_array($result2)){
+						if($row2['IsThere'] == 1)
+							$star_status="icon-star";
+					}
+					$link="add_favourite.php?Book=".$id;
+				}
+				
+				echo"<div class='AddFavourite'>
+					<a href='".$link."'><i class='$star_status'></i></a><p> Add Favourite</p>
 				</div>				
 			</div>		
 			

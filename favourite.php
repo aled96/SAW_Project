@@ -36,10 +36,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="brand" href="#" id="top">Site Name</a>
+			<a class="brand" href="index.php" id="top">Site Name</a>
 			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
 				<ul class="nav">
-					<li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li class="active"><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="category.php"><i class="icon-th-list icon-white"></i> Categories</a></li>
 					<li class="divider-vertical"></li>
@@ -67,8 +67,6 @@
                                             <li><a href="show_profile.php"><i class="icon-user"></i>Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="insert_new.php"><i class="icon-plus"></i>Add Book</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="favourite.php"><i class="icon-heart"></i> Wish List</a></li>
                                             <li class="divider"></li>
                                             <li><a href="setting.php"><i class="icon-wrench"></i> Settings</a></li>
                                             <li class="divider"></li>
@@ -98,15 +96,10 @@
 	<!--/.navbar-inner -->
 </div>
 
-
-<div class="slideshow">
-	<img src="http://minimaliv.com/wp-content/uploads/2014/10/Book.jpg" alt="pictures">
-</div>
-
 <div class="content">
 	
 	<div class='typeHome'>
-		<h1>Last Books Added</h1>
+		<h1>My Wish List</h1>
 	</div>
 		
 	<?php	
@@ -123,30 +116,37 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql = "SELECT * FROM book";
-	$result = mySQLi_query($conn, $sql) or die("Error query");
-
-	while($row = mySQLi_fetch_array($result)){
-		echo
-		"
-		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
-			<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
-			</div>
-			<div class='description'>
-			<h3>".$row['Title']."</h3>
-			</div>
-			<div class='description'>
-			<p>".$row['Description']."</p>
-			</div>
-		</div>
-		<div class='separation-line'></div>";
 	
+	if(isset($_SESSION['username'])){
+		$user = $_SESSION['username'];
+		$sql = "SELECT book.* FROM book, wishlist WHERE Book=Id and Username ='$user';";
+		$result = mySQLi_query($conn, $sql) or die("Error query");
+		$cont = 0;
+		while($row = mySQLi_fetch_array($result)){
+			$cont++;
+			echo
+			"
+			<div class='book-content'>
+				<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
+				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
+				</div>
+				<div class='description'>
+				<h3>".$row['Title']."</h3>
+				</div>
+				<div class='description'>
+				<p>".$row['Description']."</p>
+				</div>
+			</div>
+			<div class='separation-line'></div>";
+		
+		}
+		if($cont == 0)
+			echo"<div class='description'>
+				<h3>Your list is empty !!</h3>
+				</div>";
 	}
-	
-	
-	
-	
+	else
+		header("location: index.php");
 	?>
 	
 </div>
