@@ -15,7 +15,7 @@ echo "Connected successfully";
 
 $user = $_POST['userSign'];
 $email = $_POST['emailSign'];
-$pwd = $_POST['pswSign'];
+$pwd = $_POST['pswEncryptSign'];
 $name = $_POST['nameSign'];
 $surname = $_POST['surnameSign'];
 $gender = $_POST['gender'];

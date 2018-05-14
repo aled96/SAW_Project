@@ -25,7 +25,7 @@ session_start();
 $user = $_SESSION['username'];
 
 #Insert Book Information
-$sql = "INSERT INTO `university_sharing`.`book` (`ID`, `Author`, `Title`, `Description`, `PageNum`, `Edition`, `ISBN`) VALUES (NULL, '$author', '$title', '$description', '$pages', '$ed', '$isbn');";
+$sql = "INSERT INTO book (ID, Author, Title, Description, PageNum, Edition, ISBN) VALUES (NULL, '$author', '$title', '$description', '$pages', '$ed', '$isbn');";
 
 
 if (mysqli_query($conn, $sql)) {
@@ -46,7 +46,7 @@ if ($conn->query($sql2) === TRUE) {
 }
 
 #Insert in Insertion TODO!!!!
-$sql3 = "INSERT INTO `university_sharing`.`insertion` (`ID`, `User_offerer`, `Material_offered`, `Date_of_pubblication`, `Place`, `Price`, `Description`) VALUES (NULL, '$user', '$id', '', '12', '1', '1');";
+$sql3 = "INSERT INTO insertion (ID, User_offerer, Material_offered, Date_of_pubblication, Place, Price, Description) VALUES (NULL, '$user', '$id', '', '12', '1', '1');";
 
 if ($conn->query($sql3) === TRUE) {
     echo "New record created successfully";

@@ -27,40 +27,10 @@
 
   <body  class="bg-cyan">
 
-    <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-		<div class="container-fluid">
-			<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" data-disabled="true">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="brand" href="index.php" id="top">Site Name</a>
-			<div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
-                <ul class="nav">
-                    <li><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><a href="category.php"><i class="icon-th-list icon-white"></i> Categories</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><form action="search.php" method="get">
-                            <input type="text" class="searchNav" placeholder="Search..." name="find" required><span class="searchButton"><button type="submit"><i class="icon-search icon-black"></i> </button></span>
-                        </form>
-                    </li>
-                    <li class="divider-vertical"></li>
-                </ul>
+  <?php
+    require "navbar.php";
 
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-		<!--/.container-fluid -->
-	</div>
-	<!--/.navbar-inner -->
-</div>
-
+  ?>
 
 <div class="body body-s" id="logIn">
     <form action="login_user.php" method="POST" name="login" class="sky-form">
@@ -83,6 +53,7 @@
                 <label class="input">
                     <i class="icon-append icon-lock"></i>
                     <input type="password" onclick="removeError()" onkeyup="removeError()" placeholder="Password" id="pswLog" name="pswLog">
+                    <input type="hidden" id="pswEncryptLog" name="pswEncryptLog">
                 </label>
             </section>
 
@@ -103,7 +74,7 @@
 </div>
 
 <div class="body body-s" id="signUpForm">
-    <form action="signup.php" method="POST" name="signup" class="sky-form">
+    <form action="signup.php" method="POST" name="signupform" class="sky-form">
         <header>Registration form</header>
 
         <fieldset>
@@ -132,6 +103,7 @@
                 <label class="input">
                     <i class="icon-append icon-lock"></i>
                     <input type="password" placeholder="Password" id="pswSign" name="pswSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
+                    <input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
                     <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
                 </label>
             </section>

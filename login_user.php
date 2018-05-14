@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 $user = $_POST['usernameLog'];
-$pwd = $_POST['pswLog'];
+$pwd = $_POST['pswEncryptLog'];
 
 $login = false;
 
@@ -40,9 +40,6 @@ if($login){
     $_SESSION['username'] = $user;
 
     header("location: index.php");
-}
-else{
-    echo "\n\nCredenziali non valide";
 }
 
 ?>
