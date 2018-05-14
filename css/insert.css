@@ -136,6 +136,36 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     background-repeat: no-repeat;
 }
 
+.montform  #price{
+	background-image: url(https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-price-tag.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+.montform  #price:focus{
+	background-image: url(https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-price-tag.svg);
+	background-size: 30px 30px;
+	background-position: 8px 5px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+.montform  #place{
+	background-image: url(https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-map.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+.montform  #place:focus{
+	background-image: url(https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-map.svg);
+	background-size: 30px 30px;
+	background-position: 8px 5px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
 
 
 .montform  #comment{

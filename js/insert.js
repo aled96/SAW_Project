@@ -1,67 +1,76 @@
 
-$(function()
-{
-    function after_form_submitted(data)
-    {
-        if(data.result == 'success')
-        {
-            $('form#reused_form').hide();
-            $('#success_message').show();
-            $('#error_message').hide();
+
+
+var xmlreq;
+
+function getXMLHttpRequestObject() {
+    var request = null;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // Older IE.
+        request = new ActiveXObject("MSXML2.XMLHTTP.3.0");
+    }
+    return request;
+}
+
+
+var currentCatNumber = 1;
+
+function selectCategory(id){
+    var facName = "fac"+id;
+    currentCatNumber = id;
+    var faculty = document.getElementById(facName).value;
+
+    if(faculty == "not-selected")
+        return;
+
+    xmlreq = getXMLHttpRequestObject();
+
+    url = encodeURI("async_select_category.php" + "?faculty=" + faculty);
+
+    xmlreq.onreadystatechange = asyncSelCategory;
+    xmlreq.open("GET", url, true);
+    xmlreq.send();
+}
+
+function asyncSelCategory() {
+    if (xmlreq.readyState == 4) {
+        if (xmlreq.status == 200) {
+            if (xmlreq.responseText != null)
+            {
+                var catName = "cat"+currentCatNumber;
+                document.getElementById(catName).innerHTML = xmlreq.responseText;
+            }
+            else alert("Ajax error: no data received");
         }
         else
-        {
-            $('#error_message').append('<ul></ul>');
-
-            jQuery.each(data.errors,function(key,val)
-            {
-                $('#error_message ul').append('<li>'+key+':'+val+'</li>');
-            });
-            $('#success_message').hide();
-            $('#error_message').show();
-
-            //reverse the response on the button
-            $('button[type="button"]', $form).each(function()
-            {
-                $btn = $(this);
-                label = $btn.prop('orig_label');
-                if(label)
-                {
-                    $btn.prop('type','submit' );
-                    $btn.text(label);
-                    $btn.prop('orig_label','');
-                }
-            });
-
-        }//else
+            alert("Ajax error: " + xmlreq.statusText);
     }
+}
 
-    $('#reused_form').submit(function(e)
-    {
-        e.preventDefault();
+function addNewCategory(){
+    currentCatNumber = currentCatNumber + 1;
+    document.getElementById("number_of_categories").value = currentCatNumber;
 
-        $form = $(this);
-        //show some response on the button
-        $('button[type="submit"]', $form).each(function()
-        {
-            $btn = $(this);
-            $btn.prop('type','button' );
-            $btn.prop('orig_label',$btn.text());
-            $btn.text('Sending ...');
-        });
+    xmlreq = getXMLHttpRequestObject();
 
+    url = encodeURI("async_add_category.php" + "?count=" + currentCatNumber);
 
-        var formdata = new FormData(this);
-        $.ajax({
-            type: "POST",
-            url: 'handler.php',
-            data: formdata,
-            success: after_form_submitted,
-            dataType: 'json' ,
-            processData: false,
-            contentType: false,
-            cache: false
-        });
+    xmlreq.onreadystatechange = asyncAddCategory;
+    xmlreq.open("GET", url, true);
+    xmlreq.send();
+}
 
-    });
-});
+function asyncAddCategory() {
+    if (xmlreq.readyState == 4) {
+        if (xmlreq.status == 200) {
+            if (xmlreq.responseText != null)
+            {
+                document.getElementById("categories").insertAdjacentHTML('beforeend', xmlreq.responseText);
+            }
+            else alert("Ajax error: no data received");
+        }
+        else
+            alert("Ajax error: " + xmlreq.statusText);
+    }
+}
