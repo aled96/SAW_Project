@@ -157,7 +157,7 @@
         <fieldset>
             <section>
                 <label class="select">
-                    <select name="province" id="province">
+                    <select name="province" id="province" onchange="selectCity()">
                         <option value="not-selected" selected disabled>Province</option>
                         <?php
                         $servername = "localhost";
@@ -177,9 +177,9 @@
                         $result = $conn->query($sql);
 
                         while($row = $result->fetch_assoc()) {
-                            $city = $row['Name'];
-                            if(strlen($city) != 0) {
-                                echo "<option value='" . $city . "'>" . $city . "</option>";
+                            $prov = $row['Name'];
+                            if(strlen($prov) != 0) {
+                                echo "<option value='" . $prov . "'>" . $prov . "</option>";
                             }
                         }
 
@@ -195,33 +195,7 @@
                 <label class="select">
                     <select name="citySign" id="citySign">
                         <option value="not-selected" selected disabled>City</option>
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "password";
-                        $dbname = "university_sharing";
 
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        // Check connection
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        }
-
-                        $sql = "SELECT distinct name FROM city";
-                        $result = $conn->query($sql);
-
-                        while($row = $result->fetch_assoc()) {
-                            $city = $row['name'];
-                            if(strlen($city) != 0) {
-                                echo "<option value='" . $city . "'>" . $city . "</option>";
-                            }
-                        }
-
-                        $conn->close();
-
-                        ?>
                     </select>
                     <i></i>
                 </label>

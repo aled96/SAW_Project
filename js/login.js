@@ -175,6 +175,35 @@ function ajaxCheckEmail() {
     }
 }
 
+function selectCity(){
+    var province = document.getElementById("province").value;
+
+    if(province == "not-selected")
+        return;
+
+    xmlreq = getXMLHttpRequestObject();
+
+    url = encodeURI("async_select_city.php" + "?province=" + province);
+
+    xmlreq.onreadystatechange = asyncSelCity;
+    xmlreq.open("GET", url, true);
+    xmlreq.send();
+}
+
+function asyncSelCity() {
+    if (xmlreq.readyState == 4) {
+        if (xmlreq.status == 200) {
+            if (xmlreq.responseText != null)
+            {
+                document.getElementById("citySign").innerHTML = xmlreq.responseText;
+            }
+            else alert("Ajax error: no data received");
+        }
+        else
+            alert("Ajax error: " + xmlreq.statusText);
+    }
+}
+
 function removeErrorSignup(){
     document.getElementById("errorSignupBox").innerHTML = "<br>";
     document.getElementById("userSign").style.borderColor = "white";
@@ -188,8 +217,6 @@ function removeErrorSignup(){
     document.getElementById("province").style.borderColor = "white";
     document.getElementById("citySign").style.borderColor = "white";
 }
-
-'use strict';
 
 function SHA1(msg) {
   function rotate_left(n,s) {
