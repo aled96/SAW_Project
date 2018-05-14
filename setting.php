@@ -24,6 +24,16 @@
 	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
 
+      <script>
+
+          document.addEventListener("keyup", function(event) {
+              event.preventDefault();
+              if (event.keyCode === 13) {
+                      checkSettings();
+
+              }
+          });
+      </script>
 </head>
 
   <body>
@@ -49,10 +59,13 @@
 
                 $user = $_SESSION['username'];
 
-                $sql = "SELECT * FROM user WHERE Username='" . $user . "'";
-                $result = mySQLi_query($conn, $sql) or die("Error query");
+                $sql = "SELECT user.*, city.Name as Cityname, province.Name as Provincename FROM user, city, province WHERE Username='" . $user . "' and user.City = city.ID and city.Province = province.ID ";
+                $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
+
 
                 while ($row = mySQLi_fetch_array($result)) {
+                    $provinceName = $row['Provincename'];
+                    $cityName = $row['Cityname'];
                     echo '
             <fieldset>
                 <section>
@@ -130,15 +143,18 @@
             <fieldset>
                 <section>
                     <label class="select">
-                        <select name="province" id="province">
+                        <select name="province" id="province" onchange="selectCity()">
                             <option value="not-selected" selected disabled>Province</option>';
                     $sql = "SELECT distinct Name FROM province";
                     $result = $conn->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
-                        $city = $row['Name'];
-                        if (strlen($city) != 0) {
-                            echo "<option value='" . $city . "'>" . $city . "</option>";
+                        $prov = $row['Name'];
+                        if (strlen($prov) != 0) {
+                            if(strcmp($provinceName, $prov) == 0)
+                                echo "<option selected value='" . $prov . "'>" . $prov . "</option>";
+                            else
+                                echo "<option value='" . $prov . "'>" . $prov . "</option>";
                         }
                     }
                     echo '
@@ -152,13 +168,16 @@
                         <select name="citySign" id="citySign">
                             <option value="not-selected" selected disabled>City</option>';
 
-                    $sql = "SELECT distinct Name FROM city";
+                    $sql = "SELECT distinct city.Name FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
                     $result = $conn->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
-                        $city = $row['name'];
+                        $city = $row['Name'];
                         if (strlen($city) != 0) {
-                            echo "<option value='" . $city . "'>" . $city . "</option>";
+                            if(strcmp($cityName, $city) == 0)
+                                echo "<option selected value='" . $city . "'>" . $city . "</option>";
+                            else
+                                echo "<option value='" . $city . "'>" . $city . "</option>";
                         }
                     }
 

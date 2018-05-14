@@ -100,6 +100,7 @@ h1,h2,h3,h4,h5,h6,p,a{
 
 #settings{
     background-color:white;
+    visibility:visible;
     margin-left:35%;
     height:55%;
     top:18%;

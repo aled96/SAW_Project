@@ -25,12 +25,12 @@ function ajaxcheckPassword(){
 	xmlreq = getXMLHttpRequestObject();
 
 	url = encodeURI("async_login.php" + "?username=" + user + "&password=" + encrypt_psw);
-	xmlreq.onreadystatechange = ajaxCheck;
+	xmlreq.onreadystatechange = checklogin;
 	xmlreq.open("GET", url, true);
 	xmlreq.send();
 }
 
-function ajaxCheck() {
+function checklogin() {
 	if (xmlreq.readyState == 4) {
 		if (xmlreq.status == 200) {
 			if (xmlreq.responseText != null)
@@ -54,17 +54,6 @@ function removeError(){
     document.getElementById("errorLoginBox").innerHTML = "<br>";
 }
 
-
-document.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        if(document.getElementById("logIn").style.visibility == "" || document.getElementById("logIn").style.visibility == "visible")
-            ajaxcheckPassword();
-        else if(document.getElementById("signUpForm").style.visibility == "visible")
-            checkSignUp();
-
-    }
-});
 
 function checkSignUp(){
     var user = document.getElementById("userSign").value;
@@ -148,12 +137,12 @@ function checkSignUp(){
     xmlreq = getXMLHttpRequestObject();
 
     url = encodeURI("async_checkemail.php" + "?email=" + email+"&username=" + user);
-    xmlreq.onreadystatechange = ajaxCheckEmail;
+    xmlreq.onreadystatechange = checkEmail;
     xmlreq.open("GET", url, true);
     xmlreq.send();
 }
 
-function ajaxCheckEmail() {
+function checkEmail() {
     if (xmlreq.readyState == 4) {
         if (xmlreq.status == 200) {
             if (xmlreq.responseText != null)
@@ -217,6 +206,25 @@ function removeErrorSignup(){
     document.getElementById("province").style.borderColor = "white";
     document.getElementById("citySign").style.borderColor = "white";
 }
+
+function checkSettings(){
+
+    document.settings.submit();
+
+
+}
+
+document.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        if(document.getElementById("logIn").style.visibility == "" || document.getElementById("logIn").style.visibility == "visible")
+            ajaxcheckPassword();
+        else if(document.getElementById("signUpForm").style.visibility == "visible")
+            checkSignUp();
+
+    }
+});
+
 
 function SHA1(msg) {
   function rotate_left(n,s) {
