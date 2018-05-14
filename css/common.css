@@ -33,3 +33,88 @@ h1,h2,h3,h4,h5,h6,p,a{
 .errorLogin{
 	color:red;
 }
+
+.navbar{
+	margin-bottom:0px;
+}
+
+
+/*Sign Up*/
+
+#signUpForm{
+    visibility:hidden;
+}
+
+#signUpForm>h1{
+    text-align:center;
+    font-size:210%;
+}
+
+#signUpForm>form{
+    margin-left: 10%;
+}
+
+#signUpForm>form>table{
+    min-height:200px;
+}
+
+/* Log In */
+
+#logIn{
+    background-color:white;
+    position:absolute;
+    margin-left:35%;
+    height:55%;
+    top:18%;
+    width:27%;
+    overflow:auto;
+    visibility:visible;
+}
+
+.exit{
+    margin-left:95%;
+    margin-top:1%;
+    position:absolute;
+}
+
+#logIn>h1{
+    text-align:center;
+    font-size:210%;
+}
+
+#logIn>form{
+    margin-left: 10%;
+}
+
+#logIn>form>table{
+    min-height:200px;
+}
+
+/* Title Home Category */
+.typeHome{
+    margin-top:2%;
+}
+
+
+/*Settings*/
+
+#settings{
+    background-color:white;
+    margin-left:35%;
+    height:55%;
+    top:18%;
+    width:27%;
+}
+
+#settings>h1{
+    text-align:center;
+    font-size:210%;
+}
+
+#settings>form{
+    margin-left: 10%;
+}
+
+#settings>form>table{
+    min-height:200px;
+}

@@ -20,9 +20,7 @@
 
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
-	<link rel="stylesheet" media="all" href="css/Home.css" />
-    <link rel="stylesheet" media="all" href="css/sky-forms.css" />
-    <link rel="stylesheet" media="all" href="css/demo.css" />
+    <link rel="stylesheet" media="all" href="css/login.css" />
 	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
 
@@ -183,21 +181,11 @@
                 echo "Log in First";
 			?>
 
-<div class="myfooter">
-  <small>
-	Something to write in the footer
-  </small>
-  <div class="mynav">
-    <ul>
-      <li><a href="#"><i id="social-inf" class="fa fa-info fa-2x social"></i></a></li>
-      <li><a href="#"><i id="social-con" class="fa fa-address-book-o fa-2x social"></i></a></li>
-      <li><a href="#"><i id="social-fb" class="fa fa-facebook fa-2x social"></i></a></li>
-      <li><a href="#"><i id="social-tw" class="fa fa-instagram fa-2x social"></i></a></li>
-      <li><a href="#"><i id="social-li" class="fa fa-linkedin fa-2x social"></i></a></li>
-      <li><a href="mailto:boh@boh.it"><i id="social-em" class="fa fa-envelope fa-2x social"></i></a></li>
-    </ul>
-  </div>
-</div>
+
+    <?php
+    require "footer.php";
+
+    ?>
  
 </body>
 </html>

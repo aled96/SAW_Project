@@ -26,7 +26,7 @@ $result = mySQLi_query($conn, $sql) or die("Error query");
 while($row = mySQLi_fetch_array($result)){
 	#If there is not ---> Add !
 	if($row['IsThere'] == 0){
-		$sql = "INSERT INTO `university_sharing`.`wishlist` (`Username`, `Book`) VALUES ('$user', '$book');";
+		$sql = "INSERT INTO wishlist (Username, Book) VALUES ('$user', '$book');";
 
 
 		if (mysqli_query($conn, $sql)) {
@@ -36,7 +36,7 @@ while($row = mySQLi_fetch_array($result)){
 		}
 	}
 	else{ #Otherwise -> delete it from the list
-		$sql = "DELETE FROM `university_sharing`.`wishlist` WHERE Book='$book' and Username='$user';";
+		$sql = "DELETE FROM wishlist WHERE Book='$book' and Username='$user';";
 
 		if (mysqli_query($conn, $sql)) {
 			echo "Record deleted successfully.";
