@@ -32,7 +32,7 @@
 
 <div class="body body-s" id="logIn">
     <form action="login_user.php" method="POST" name="login" class="sky-form">
-        <header>Registration form</header>
+        <header>Log In form</header>
 
         <fieldset>
             <section>

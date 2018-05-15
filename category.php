@@ -3,6 +3,7 @@
 
 <?php
 	session_start();
+	$_SESSION['PrevPage'] = "category.php";
 ?>
   <head>
     <title>Site Name</title>
@@ -54,10 +55,10 @@
 	while($row = mySQLi_fetch_array($result)){
 	
 		echo
-		"	<span class='category'>
+		"	<div class='category'>
 				<a href='search.php?cat=".$row['Name']."'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
 				
-			</span>
+			</div>
 		";
 	}
 	

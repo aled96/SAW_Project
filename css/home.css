@@ -1,23 +1,24 @@
 
 .slideshow{
-	width:100%;
-	max-height:570px;
+	width:100vw;
+	max-height:37vw;
 	display:block;
 	overflow:hidden;
 }
 
 .slideshow>img{
-	width:100%;
+	width:100vw;
+	height:50vw;
 }
 
 
 /*Home*/
 
 .content{
-	width:74%;
-	margin-left:13%;
-	margin-right:13%;
-	margin-bottom:5%;
+	width:74vw;
+	margin-left:13vw;
+	margin-right:13vw;
+	margin-bottom:2vw;
 }
 
 /* Books */
@@ -26,62 +27,63 @@
 	cursor:pointer;
 	display:block;
 	max-height:20vw;
-	margin-bottom:2%;
-	margin-top:2%;
+	margin-bottom:1vw;
+	margin-top:1vw;
 	overflow:hidden;
-	width:100%;
+	width:74vw;
 }
 
 .separation-line{
-	border-bottom: 1px solid #ccc;
-	margin-bottom:5px;
-	margin-top:5px;
+	border-bottom: 0.1vw solid #ccc;
+	margin-bottom:2vw;
+	margin-top:2vw;
 }
 
 .cover{
 	float:left;
-	max-height:20vw;
+	height:25vw;
 	width:20vw;
 }
 
+/* Prova con max-height/max-width*/
 .cover>img{	
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
-	max-height:20vw;
-	max-width:20vw;
+	height:20vw;
+	width:15vw;
 }
 
-.title{
-	font-size:160%;
-	max-height:3vw;
-	overflow:hidden;
+.description>h3{
+	font-size:2.3vw;
 }
 
-.description{
-	font-size:160%;
+.description>p{
+	font-size:1.6vw;
 	max-height:20vw;
 	overflow:hidden;
 }
 
 
 /* Categories */
-#categories{
-	margin-bottom:5%;
-	margin-top:2%;
-	width:auto;
-}
-
 .categories{
-	margin-top:5%;
+	margin-bottom:2vw;
+	margin-top:2vw;
+	width:74vw;
 }
 
 .category{
-	display:inline;
-	width:20%;
+	float:left;
+	height:18vw;
+	margin-bottom:2vw;
+	width:14vw;
 }
 
 
-.category>img{
-	width:19%;
+.category>a>img{
+	margin-left:auto;
+	margin-right:auto;
+	height:18vw;
+	width:14vw;
+	
 }

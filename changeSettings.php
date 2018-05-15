@@ -27,7 +27,7 @@ $sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$
 echo $sql;
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
-
+//TODO -> aggiungere reindirizzamento a pagina precedente (??)
 header("location: index.php");
 
 ?>

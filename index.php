@@ -3,6 +3,7 @@
 
 <?php
 	session_start();
+	$_SESSION['PrevPage'] = "index.php";
 ?>
   <head>
     <title>Site Name</title>
@@ -33,7 +34,7 @@
   ?>
 
 <div class="slideshow">
-	<img src="http://minimaliv.com/wp-content/uploads/2014/10/Book.jpg" alt="pictures">
+	<img src="img/BgImage.jpg" alt="pictures">
 </div>
 
 <div class="content">
@@ -56,7 +57,7 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$sql = "SELECT * FROM book";
+	$sql = "SELECT * FROM book ORDER BY Id desc LIMIT 5 ";
 	$result = mySQLi_query($conn, $sql) or die("Error query");
 
 	while($row = mySQLi_fetch_array($result)){

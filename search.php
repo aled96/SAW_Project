@@ -21,6 +21,7 @@
 
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
+	<link rel="stylesheet" media="all" href="css/home.css" />
 	<script src="js/common.js"></script>
 
 </head>
@@ -50,6 +51,8 @@
 	
 	if(isset($_GET['find'])){	
 		$find = $_GET['find'];
+		$_SESSION['PrevPage']="search.php?find=".$find;
+	
 		echo"
 			<div class='typeHome'>
 				<h1>Results for: ".$find."</h1>
@@ -65,14 +68,14 @@
 			$anyResults = true;
 			echo
 			"<div class='book-content'>
-				<div class='cover' onclick='goToPageBook(".$row[0].");'>
-				<img src='data:image/jpeg;base64,".base64_encode($row[7])."' alt='cover'/>
+				<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
+				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 				</div>
 				<div class='description'>
-				<h3>".$row[2]."</h3>
+				<h3>".$row['Title']."</h3>
 				</div>
 				<div class='description'>
-				<p>".$row[3]."</p>
+				<p>".$row['Description']."</p>
 				</div>
 			</div>
 			<div class='separation-line'></div>";
@@ -83,6 +86,7 @@
 	}
 	else if(isset($_GET['cat'])){	
 		$cat = $_GET['cat'];
+		$_SESSION['PrevPage']="search.php?cat=".$cat;
 		echo"
 			<div class='typeHome'>
 				<h1>".$cat."</h1>
@@ -115,7 +119,6 @@
 			echo"<h3>No books in this category</h3>";
 	
 	}
-		
 	?>
 	
 </div>

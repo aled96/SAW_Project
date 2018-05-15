@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 	session_start();
+	$_SESSION['PrevPage'] = "show_profile.php";
 ?>
   <head>
     <title>Site Name</title>

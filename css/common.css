@@ -67,7 +67,6 @@ h1,h2,h3,h4,h5,h6,p,a{
     height:55%;
     top:18%;
     width:27%;
-    overflow:auto;
     visibility:visible;
 }
 
@@ -91,8 +90,9 @@ h1,h2,h3,h4,h5,h6,p,a{
 }
 
 /* Title Home Category */
-.typeHome{
-    margin-top:2%;
+.typeHome>h1{
+	font-size:3vw;
+    margin-top:1vw;
 }
 
 

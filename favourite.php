@@ -3,6 +3,7 @@
 
 <?php
 	session_start();
+	$_SESSION['PrevPage'] = "favourite.php";
 ?>
   <head>
     <title>Site Name</title>

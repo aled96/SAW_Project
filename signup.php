@@ -44,6 +44,9 @@ $conn->close();
 session_start();
 $_SESSION['username'] = $user;
 
-header("location: index.php");
+if(isset($_SESSION['PrevPage']))
+	header("location: ".$_SESSION['PrevPage']);
+else
+	header("location: index.php");
 
 ?>

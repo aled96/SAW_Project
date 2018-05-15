@@ -44,6 +44,8 @@
 	
 		$id = $_GET['Id'];
 	
+		$_SESSION['PrevPage']="PageBook.php?Id=".$id;
+		
 		$sql = "SELECT *, book.description as BookDesc FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='$id'";
 
 		$result = mySQLi_query($conn, $sql) or die("Error query");
@@ -113,7 +115,6 @@
 			echo"</div>";
 		}
 	?>
-
 </div>
 
  <?php
