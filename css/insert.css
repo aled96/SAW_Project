@@ -1,7 +1,11 @@
-html{
-	background-size: cover;
-	height:100%;
+html,
+body {
+    margin: 0;
+    height: auto;
+    margin-bottom:50px;
+    height: 100%;
 }
+
 body
 {
 	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -37,7 +41,7 @@ body
 	padding-right:35px;
 	padding-top:35px;
 	padding-bottom:50px;
-    margin-left:20%;
+    margin-left:18%;
     height:auto;
     width:60%;
 	border-radius: 7px;
@@ -103,6 +107,26 @@ body
 	width:100%;
 	box-sizing: border-box;
 	border: 3px solid rgba(0,0,0,0);
+}
+
+.montform .col {
+	float: left;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.montform .col-6 {
+	width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+	.montform .col {
+		float: none;
+		width: 100%;
+	}
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="file"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input
@@ -219,8 +243,6 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	background-repeat: no-repeat;
 }
 
-
-
 .montform  #comment{
 	background-image: url(https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-pencil.svg);
 	background-size: 30px 30px;
@@ -279,13 +301,13 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 
 /*Styles for small screens*/
 
-@media  only screen and (max-width: 580px) {
+@media  only screen and (max-width: 600px) {
 	#form-div{
-		left: 3%;
-		margin-right: 3%;
-		width: 88%;
-		margin-left: 0;
-		padding-left: 3%;
-		padding-right: 3%;
+		padding-left:15px;
+		padding-right:15px;
+		padding-top:35px;
+		padding-bottom:50px;
+		margin-left:10%;
+		width:70%;
 	}
 }

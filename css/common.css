@@ -1,9 +1,11 @@
 html,
 body {
-    margin: 0;
-    height: auto;
-    margin-bottom:50px;
-    height: 100%;
+	margin: 0;
+	padding: 0;
+	background-attachment: fixed;
+	background-position: 50% 50%;
+	background-size: cover;
+	height: 100%;
 }
 .label,.glyphicon { margin-right:5px; }
 
