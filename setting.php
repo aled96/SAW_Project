@@ -43,13 +43,15 @@
   <?php
   require "navbar.php";
   ?>
+     <?php
 
-    <div class="body body-s" id="settings">
-        <form action="changeSettings.php" method="POST" name="settings" class="sky-form">
-            <header>Update Information</header>
-            <?php
+        if(isset($_SESSION['username'])){
+            echo'
+              <div class="backimg">
+                <div class="body" id="settings">
+                    <form action="changeSettings.php" method="POST" name="settings" class="sky-form">
+                        <header>Update Information</header>';
 
-			if(isset($_SESSION['username'])){
                 $servername = "localhost";
                 $username = "root";
                 $password = "password";
@@ -76,13 +78,18 @@
                 </section>
                 <section>
                     <label class="input">
+                        Username
+                    </label>
+                    <label class="input">
                         <i class="icon-append icon-user"></i>
-                        <input type="text" placeholder="Username" id="userSign" name="userSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" value="' . $row['Username'] . '">
-                        <b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
+                        <input type="text" placeholder="Username" id="userSign" name="userSign" readonly value="' . $row['Username'] . '">
                     </label>
                 </section>
 
                 <section>
+                    <label class="input">
+                        Email
+                    </label>
                     <label class="input">
                         <i class="icon-append icon-envelope-alt"></i>
                         <input type="text" placeholder="Email address" id="emailSign" name="emailSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Email'] . '">
@@ -108,17 +115,26 @@
                 <div class="row">
                     <section class="col col-6">
                         <label class="input">
+                            Name
+                        </label>
+                    <label class="input">
                             <input type="text" placeholder="First name" id="nameSign" name="nameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Name'] . '">
                         </label>
                     </section>
                     <section class="col col-6">
                         <label class="input">
+                        Surname
+                    </label>
+                    <label class="input">
                             <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Surname'] . '">
                         </label>
                     </section>
                 </div>
 
                 <section>
+                    <label class="input">
+                        Gender
+                    </label>
                     <label class="select">';
                     if ($row['Gender'] == "male") {
                         echo "
@@ -143,6 +159,9 @@
 
             <fieldset>
                 <section>
+                    <label class="input">
+                        Province of Birth
+                    </label>
                     <label class="select">
                         <select name="province" id="province" onchange="selectCity()">
                             <option value="not-selected" selected disabled>Province</option>';
@@ -165,6 +184,9 @@
                 </section>
 
                 <section>
+                    <label class="input">
+                        City of Birth
+                    </label>
                     <label class="select">
                         <select name="citySign" id="citySign">
                             <option value="not-selected" selected disabled>City</option>';
@@ -194,6 +216,8 @@
                 <button type="button" onclick="checkSettings()" class="button">Submit</button>
             </footer>
         </form>
+        <br><br>
+    </div>
     </div>';
                 }
             }

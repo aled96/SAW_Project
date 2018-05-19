@@ -3,15 +3,17 @@ body {
     margin: 0;
     height: auto;
     margin-bottom:50px;
+    height: 100%;
 }
 .label,.glyphicon { margin-right:5px; }
 
 .backimg{
-	background: url(../img/book1.jpg) no-repeat center center fixed; 
+	background: url(../img/book3.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	min-height:calc(100% - 55px);
 }
 
 #auto-height{
@@ -135,12 +137,11 @@ h1,h2,h3,h4,h5,h6,p,a{
 /*Settings*/
 
 #settings{
-    background-color:white;
+    background-color:transparent;
     visibility:visible;
-    margin-left:35%;
-    height:55%;
-    top:18%;
-    width:27%;
+    margin-left:20%;
+    height:auto;
+    width:60%;
 }
 
 #settings>h1{
@@ -155,3 +156,9 @@ h1,h2,h3,h4,h5,h6,p,a{
 #settings>form>table{
     min-height:200px;
 }
+@media (max-width: 600px){
+    #settings{
+		margin-left:0%;
+		width:80%;
+    }
+  }

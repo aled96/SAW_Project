@@ -42,6 +42,9 @@
                 </section>
                 <section>
                     <label class="input">
+                        Username
+                    </label>
+                    <label class="input">
                         <i class="icon-append icon-user"></i>
                         <input type="text" onclick="removeError()" onkeyup="removeError()" placeholder="Username" id="usernameLog" name="usernameLog">
                     </label>
@@ -49,17 +52,20 @@
 
                 <section>
                     <label class="input">
+                        Password
+                    </label>
+                    <label class="input">
                         <i class="icon-append icon-lock"></i>
                         <input type="password" onclick="removeError()" onkeyup="removeError()" placeholder="Password" id="pswLog" name="pswLog">
                         <input type="hidden" id="pswEncryptLog" name="pswEncryptLog">
                     </label>
                 </section>
 
+            </fieldset>
+
                 <footer>
                     <button type="button" onClick="ajaxcheckPassword()" class="button">Submit</button>
                 </footer>
-
-            </fieldset>
 
             <fieldset>
                 <section>
@@ -83,6 +89,9 @@
             </section>
             <section>
                 <label class="input">
+                    Username
+                </label>
+                <label class="input">
                     <i class="icon-append icon-user"></i>
                     <input type="text" placeholder="Username" id="userSign" name="userSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     <b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
@@ -90,6 +99,9 @@
             </section>
 
             <section>
+                <label class="input">
+                    Email
+                </label>
                 <label class="input">
                     <i class="icon-append icon-envelope-alt"></i>
                     <input type="text" placeholder="Email address" id="emailSign" name="emailSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
@@ -99,14 +111,20 @@
 
             <section>
                 <label class="input">
+                    Password
+                </label>
+                <label class="input">
                     <i class="icon-append icon-lock"></i>
                     <input type="password" placeholder="Password" id="pswSign" name="pswSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
-                    <input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
                     <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
                 </label>
             </section>
+            <input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
 
             <section>
+                <label class="input">
+                    Password Confirm
+                </label>
                 <label class="input">
                     <i class="icon-append icon-lock"></i>
                     <input type="password" placeholder="Confirm password" id="pswConfirmSign" name="pswConfirmSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
@@ -131,10 +149,16 @@
             <div class="row">
                 <section class="col col-6">
                     <label class="input">
+                        Name
+                    </label>
+                    <label class="input">
                         <input type="text" placeholder="First name" id="nameSign" name="nameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     </label>
                 </section>
                 <section class="col col-6">
+                    <label class="input">
+                        Surname
+                    </label>
                     <label class="input">
                         <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()">
                     </label>
@@ -142,12 +166,14 @@
             </div>
 
             <section>
+                <label class="input">
+                    Gender
+                </label>
                 <label class="select">
                     <select name="gender" id="gender">
                         <option value="not-selected" selected disabled>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
-                        <option value="other">Other</option>
                     </select>
                     <i></i>
                 </label>
@@ -156,6 +182,9 @@
 
         <fieldset>
             <section>
+                <label class="input">
+                    Province of Birth
+                </label>
                 <label class="select">
                     <select name="province" id="province" onchange="selectCity()">
                         <option value="not-selected" selected disabled>Province</option>
@@ -192,6 +221,9 @@
             </section>
 
             <section>
+                <label class="input">
+                    City of Birth
+                </label>
                 <label class="select">
                     <select name="citySign" id="citySign">
                         <option value="not-selected" selected disabled>City</option>
