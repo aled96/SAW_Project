@@ -23,55 +23,55 @@
 
 </head>
 
-  <body  class="bg-cyan">
+  <body>
 
   <?php
     require "navbar.php";
 
   ?>
+<div class="backimg">
+    <div class="body" id="logIn">
+        <form action="login_user.php" method="POST" name="login" class="sky-form">
+            <header>Log In form</header>
 
-<div class="body body-s" id="logIn">
-    <form action="login_user.php" method="POST" name="login" class="sky-form">
-        <header>Log In form</header>
+            <fieldset>
+                <section>
+                    <label class="input" >
+                        <p class='errorLogin' id = "errorLoginBox"><br></p>
+                    </label>
+                </section>
+                <section>
+                    <label class="input">
+                        <i class="icon-append icon-user"></i>
+                        <input type="text" onclick="removeError()" onkeyup="removeError()" placeholder="Username" id="usernameLog" name="usernameLog">
+                    </label>
+                </section>
 
-        <fieldset>
-            <section>
-                <label class="input" >
-                    <p class='errorLogin' id = "errorLoginBox"><br></p>
-                </label>
-            </section>
-            <section>
-                <label class="input">
-                    <i class="icon-append icon-user"></i>
-                    <input type="text" onclick="removeError()" onkeyup="removeError()" placeholder="Username" id="usernameLog" name="usernameLog">
-                </label>
-            </section>
+                <section>
+                    <label class="input">
+                        <i class="icon-append icon-lock"></i>
+                        <input type="password" onclick="removeError()" onkeyup="removeError()" placeholder="Password" id="pswLog" name="pswLog">
+                        <input type="hidden" id="pswEncryptLog" name="pswEncryptLog">
+                    </label>
+                </section>
 
-            <section>
-                <label class="input">
-                    <i class="icon-append icon-lock"></i>
-                    <input type="password" onclick="removeError()" onkeyup="removeError()" placeholder="Password" id="pswLog" name="pswLog">
-                    <input type="hidden" id="pswEncryptLog" name="pswEncryptLog">
-                </label>
-            </section>
+                <footer>
+                    <button type="button" onClick="ajaxcheckPassword()" class="button">Submit</button>
+                </footer>
 
-            <footer>
-                <button type="button" onClick="ajaxcheckPassword()" class="button">Submit</button>
-            </footer>
+            </fieldset>
 
-        </fieldset>
+            <fieldset>
+                <section>
+                    <p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p>
+                </section>
+            </fieldset>
 
-        <fieldset>
-            <section>
-                <p>Not registered? Sign up <a href="#" onClick="show('signUpForm');hide('logIn');">here</a></p>
-            </section>
-        </fieldset>
+        </form>
 
-    </form>
+    </div>
 
-</div>
-
-<div class="body body-s" id="signUpForm">
+    <div class="body" id="signUpForm">
     <form action="signup.php" method="POST" name="signupform" class="sky-form">
         <header>Registration form</header>
 
@@ -120,7 +120,7 @@
                 <label class="input">
                     Date of Birth
                 </label>
-                <label class="input">
+                <label class="input input-date">
                     <i class="icon-append icon-calendar"></i>
                     <input type="date" id="dateSign" name="dateSign">
                 </label>
@@ -216,8 +216,9 @@
             </section>
         </fieldset>
     </form>
+    <br><br>
 </div>
-
+</div>
 
   <?php
   require "footer.php";

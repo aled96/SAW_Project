@@ -22,11 +22,6 @@ a:hover {
 .body-s {
 	max-width: 700px;
 }
-@media screen and (max-width: 600px) {
-	.body {
-		padding: 20px;
-	}
-}
 
 .sky-form {
 	margin: 0;
@@ -489,6 +484,9 @@ a:hover {
 	padding-left: 46px;
 }
 
+.sky-form .input .icon-append + input, .sky-form .textarea .icon-append + textarea{
+	padding-right: 0px;
+}
 
 /**/
 /* grid */
