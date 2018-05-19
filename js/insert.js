@@ -61,6 +61,18 @@ function addNewCategory(){
     xmlreq.send();
 }
 
+function removeCategory(num){
+    var facName = "fac"+num;
+    var catName = "cat"+num;
+    var butName = "removeButton"+num;
+
+    document.getElementById(facName).selectedIndex = 0;
+    document.getElementById(facName).remove();
+    document.getElementById(catName).selectedIndex = 0;
+    document.getElementById(catName).remove();
+    document.getElementById(butName).remove();
+}
+
 function asyncAddCategory() {
     if (xmlreq.readyState == 4) {
         if (xmlreq.status == 200) {

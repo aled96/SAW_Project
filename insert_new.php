@@ -34,87 +34,91 @@ session_start();
 require "navbar.php";
 ?>
 
-<div class="container">
-    <div id="form-main">
-        <div id="form-div">
-            <form class="montform" action="insert_newBook.php" method="POST" id="reused_form" enctype="multipart/form-data">
-                <p>Book Information</p>
-                <p class="author">
-                    <input name="author" type="text" class="feedback-input" required placeholder="Author" id="author" />
-                </p>
-                <p class="title">
-                    <input name="title" type="text" required class="feedback-input" id="title" placeholder="Title" />
-                </p>
-                <p class="text">
-                    <textarea name="description" class="feedback-input" id="description" placeholder="Description"></textarea>
-                </p>
-                <p class="pages">
-                    <input name="pages" type="number" required class="feedback-input" id="pages" placeholder="Number of Pages"/>
-                </p>
-                <p class="edition">
-                    <input name="edition" type="text" required class="feedback-input" id="edition" placeholder="Edition"/>
-                </p>
-                <p class="isbn">
-                    <input name="isbn" type="text" required class="feedback-input" id="isbn" placeholder="ISBN"/>
-                </p>
-                <p>Cover</p>
-                <p class="file">
-                    <input name="image" type="file" required id="image" class="feedback-input"/>
-                </p>
-                <p>Book Categories</p>
-                <p class="categories" id="categories">
-                    <input name="number_of_categories" type="hidden" value="1" id="number_of_categories"/>
 
-                    <select name="fac1" id="fac1" class="feedback-input" required onchange="selectCategory(1)">
-                        <option value="not-selected" selected disabled>Faculty</option>
-                        <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "password";
-                        $dbname = "university_sharing";
+<div class="backimginsert">
+    <br><br>
+    <div id="form-div">
+        <form class="montform" action="insert_newBook.php" method="POST" id="reused_form" enctype="multipart/form-data">
+            <p class="title">Book Information</p>
+            <p class="author">
+                <input name="author" type="text" class="feedback-input" required placeholder="Author" id="author" />
+            </p>
+            <p class="title">
+                <input name="title" type="text" required class="feedback-input" id="title" placeholder="Title" />
+            </p>
+            <p class="text">
+                <textarea name="description" class="feedback-input" id="description" placeholder="Description"></textarea>
+            </p>
+            <p class="pages">
+                <input name="pages" type="number" required class="feedback-input" id="pages" placeholder="Number of Pages"/>
+            </p>
+            <p class="edition">
+                <input name="edition" type="text" required class="feedback-input" id="edition" placeholder="Edition"/>
+            </p>
+            <p class="isbn">
+                <input name="isbn" type="text" required class="feedback-input" id="isbn" placeholder="ISBN"/>
+            </p>
+            <p>Cover</p>
+            <p class="file">
+                <input name="image" type="file" required id="image" class="feedback-input"/>
+            </p>
+            <p class="title">Book Categories</p>
+            <p class="categories" id="categories">
+                <input name="number_of_categories" type="hidden" value="1" id="number_of_categories"/>
 
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $dbname);
+                <select name="fac1" id="fac1" class="feedback-input" required onchange="selectCategory(1)">
+                    <option value="not-selected" selected disabled>Faculty</option>
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "password";
+                    $dbname = "university_sharing";
 
-                        // Check connection
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT distinct Name FROM faculty";
+                    $result = $conn->query($sql);
+
+                    while($row = $result->fetch_assoc()) {
+                        $fac = $row['Name'];
+                        if(strlen($fac) != 0) {
+                            echo "<option value='" . $fac . "'>" . $fac . "</option>";
                         }
+                    }
 
-                        $sql = "SELECT distinct Name FROM faculty";
-                        $result = $conn->query($sql);
+                    $conn->close();
 
-                        while($row = $result->fetch_assoc()) {
-                            $fac = $row['Name'];
-                            if(strlen($fac) != 0) {
-                                echo "<option value='" . $fac . "'>" . $fac . "</option>";
-                            }
-                        }
+                    ?>
+                </select>
+                <select name="cat1" class="feedback-input" required  id="cat1" >
+                    <option value="not-selected" selected disabled>Category</option>
+                </select>
 
-                        $conn->close();
-
-                        ?>
-                    </select>
-                    <select name="cat1" class="feedback-input" required  id="cat1" >
-                        <option value="not-selected" selected disabled>Category</option>
-                    </select>
-
-                </p>
-                <button type="button" onclick="addNewCategory()">+ New Category</button>
-
-                <p>Selling Information</p>
-                <p class="price">
-                    <input name="price" type="number" required class="feedback-input" id="price" placeholder="Price"/>
-                </p>
-                <p class="place">
-                    <input name="place" type="text" required class="feedback-input" id="place" placeholder="Place"/>
-                </p>
-                <div class="submit">
-                    <button type="submit" class="button-blue">SUBMIT</button>
-                    <div class="ease"></div>
-                </div>
-            </form>
-        </div>
+            </p>
+            <br>
+            <p class="categories">
+                <button type="button" class="button-plus" onclick="addNewCategory()">Add New Category</button>
+                <br><br>
+            </p>
+            <p class="title">Selling Information</p>
+            <p class="price">
+                <input name="price" type="number" required class="feedback-input" id="price" placeholder="Price"/>
+            </p>
+            <p class="place">
+                <input name="place" type="text" required class="feedback-input" id="place" placeholder="Place"/>
+            </p>
+            <div class="submit">
+                <button type="submit" class="button-blue">Submit</button>
+                <div class="ease"></div>
+            </div>
+        </form>
+        <br><br>
     </div>
 </div>
 

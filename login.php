@@ -30,6 +30,7 @@
 
   ?>
 <div class="backimg">
+
     <div class="body" id="logIn">
         <form action="login_user.php" method="POST" name="login" class="sky-form">
             <header>Log In form</header>

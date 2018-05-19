@@ -39,6 +39,8 @@ $returned_obj = $returned_obj."</select>
                         <option value='not-selected' selected disabled>Category</option>
                     </select>";
 
+$returned_obj = $returned_obj."<button type='button' class='button-remove' id='removeButton".$count."' onclick='removeCategory(".$count.")'>Remove Category</button>";
+
 echo $returned_obj;
 
 ?>

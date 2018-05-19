@@ -49,22 +49,24 @@ if (mysqli_query($conn, $sql)) {
 for($i = 1; $i <= $n_categories; $i++)
 {
     $CatPostName = "cat".$i;
-    $category = $_POST[$CatPostName];
-    $sql = "SELECT distinct ID FROM category where name = '".$category."'";
-    $result_cat = $conn->query($sql);
+    if(isset($_POST[$CatPostName])) {
+        $category = $_POST[$CatPostName];
+        $sql = "SELECT distinct ID FROM category where name = '" . $category . "'";
+        $result_cat = $conn->query($sql);
 
-    $id_cat = 0;
+        $id_cat = 0;
 
-    while($row_cat = $result_cat->fetch_assoc()) {
-        $id_cat = $row_cat['ID'];
-    }
-    $sql2 = "INSERT INTO concern (Book, Category)
-      VALUES ('".$id."', '".$id_cat."')";
+        while ($row_cat = $result_cat->fetch_assoc()) {
+            $id_cat = $row_cat['ID'];
+        }
+        $sql2 = "INSERT INTO concern (Book, Category)
+      VALUES ('" . $id . "', '" . $id_cat . "')";
 
-    if ($conn->query($sql2) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        die("Error: " . $sql2 . "<br>" . $conn->error);
+        if ($conn->query($sql2) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            die("Error: " . $sql2 . "<br>" . $conn->error);
+        }
     }
 }
 
