@@ -10,12 +10,12 @@ body {
 .label,.glyphicon { margin-right:5px; }
 
 .backimg{
-	background: url(../img/book3.jpg) no-repeat center center fixed; 
+	background: url(../img/book1.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	min-height:calc(100% - 55px);
+	min-height:calc(100% - 15px);
 }
 
 #auto-height{

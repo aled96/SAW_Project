@@ -13,6 +13,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="css/bootstrap.css">
 	<link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -34,8 +35,50 @@
   ?>
 
 <div class="slideshow">
-	<img src="img/BgImage.jpg" alt="pictures">
 </div>
+
+  <br><br>
+  <br><br>
+
+  <div class="information">
+      <div class="row">
+          <div class="col col-12">
+              <div class="jumbotron alert-success" style="background: radial-gradient(white,#EAFAF1)">
+                  <h1 class=lead">Spend less. Read more books</h1>
+                  <br>
+                  <p class="minor">How is that possible? By sharing books with other people you save money and read more books.</p>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col col-4">
+              <a href="login.php" title="Click here to register" style="text-decoration:none">
+              <div class="jumbotron alert-info">
+                  <h2 class="lead">1. Register</h2>
+                  <br>
+                  <p class="minor">Register Now!</p>
+              </div>
+              </a>
+          </div>
+          <div class="col col-4">
+              <div class="jumbotron alert-warning">
+                  <h2 class="lead">2. Add Books</h2>
+                  <br>
+                  <p class="minor">Update your Profile</p>
+              </div>
+          </div>
+          <div class="col col-4">
+              <div class="jumbotron alert-success">
+                  <h2 class="lead">3. Bargain</h2>
+                  <br>
+                  <p class="minor">Save Money</p>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+  <br><br>
 
 <div class="content">
 	

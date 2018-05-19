@@ -29,42 +29,40 @@
 
   <body>
 
-
   <?php
   require "navbar.php";
   ?>
 
-<div class="content">
-	<div class="categories">
-	<?php	
-	$servername = "localhost";
-	$username = "root";
-	$password = "password";
-	$dbname = "university_sharing";
+  <div class="backimg-content">
+        <div class="content">
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "password";
+            $dbname = "university_sharing";
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	$sql = "SELECT * FROM faculty";
-	$result = mySQLi_query($conn, $sql) or die("Error query");
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            $sql = "SELECT * FROM faculty";
+            $result = mySQLi_query($conn, $sql) or die("Error query");
 
-	while($row = mySQLi_fetch_array($result)){
-	
-		echo
-		"	<div class='category'>
-				<a href='search.php?cat=".$row['Name']."'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
-				
-			</div>
-		";
-	}
-	
-	?>
-	</div>
-	
+            while($row = mySQLi_fetch_array($result)){
+
+                echo
+                "	<div class='category'>
+                        <a href='search.php?cat=".$row['Name']."'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
+                        
+                    </div>
+                ";
+            }
+
+            ?>
+        </div>
 </div>
 
   <?php
