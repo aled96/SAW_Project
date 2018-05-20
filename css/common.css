@@ -6,6 +6,7 @@ body {
 	background-position: 50% 50%;
 	background-size: cover;
 	height: 100%;
+	overflow-x: hidden;
 }
 .label,.glyphicon { margin-right:5px; }
 
@@ -15,7 +16,14 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	min-height:calc(100% - 15px);
+	min-height:calc(100% - 99px);
+}
+
+
+@media (max-width: 980px){
+    .backimg{
+        min-height:calc(100% - 98px);
+    }
 }
 
 #auto-height{
@@ -86,6 +94,15 @@ h1,h2,h3,h4,h5,h6,p,a{
     }
   }
 
+@media (max-width: 400px){
+    #signUpForm{
+        padding-left:5%;
+        width:80%;
+    }
+}
+
+
+
 /* Log In */
 
 #logIn{
@@ -112,6 +129,12 @@ h1,h2,h3,h4,h5,h6,p,a{
     }
   }
 
+@media (max-width: 400px){
+    #logIn{
+        padding-left:5%;
+        width:80%;
+    }
+}
 .exit{
     margin-left:95%;
     margin-top:1%;
@@ -166,3 +189,11 @@ h1,h2,h3,h4,h5,h6,p,a{
 		width:80%;
     }
   }
+
+
+@media (max-width: 400px){
+    #settings{
+        padding-left:5%;
+        width:80%;
+    }
+}

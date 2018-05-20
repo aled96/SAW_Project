@@ -118,7 +118,7 @@ require "navbar.php";
                 <div class="ease"></div>
             </div>
         </form>
-        <br><br>
+        <br>
     </div>
 </div>
 
