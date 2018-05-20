@@ -16,8 +16,6 @@
                     <?php
                     if(isset($_SESSION['username'])) {
                         echo '<li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a href="#"><i class="icon-lock icon-white"></i> Permits</a></li>
                             <li class="divider-vertical"></li>';
                     }
                     ?>

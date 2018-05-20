@@ -22,7 +22,7 @@
 
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
-	<link rel="stylesheet" media="all" href="css/Home.css" />
+	<link rel="stylesheet" media="all" href="css/home.css" />
 	<script src="js/common.js"></script>
 
 </head>

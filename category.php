@@ -19,10 +19,10 @@
 	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
-
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/home.css" />
+      <link rel="stylesheet" media="all" href="css/bootstrap-category.css" />
 	<script src="js/common.js"></script>
 
 </head>
@@ -34,7 +34,8 @@
   ?>
 
   <div class="backimg-content">
-        <div class="content">
+      <div class="row">
+
             <?php
             $servername = "localhost";
             $username = "root";
@@ -54,7 +55,7 @@
             while($row = mySQLi_fetch_array($result)){
 
                 echo
-                "	<div class='category'>
+                "<div class='category col-lg-2 col-md-3 col-sm-4 col-ssm-8 col-xs-10'>
                         <a href='search.php?cat=".$row['Name']."'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
                         
                     </div>
@@ -62,8 +63,11 @@
             }
 
             ?>
-        </div>
 </div>
+
+
+      </div>
+  </div>
 
   <?php
   require "footer.php";
