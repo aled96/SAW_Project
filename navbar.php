@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="brand" href="index.php" id="top">Site Name</a>
-            <div id= "auto-height" class="nav-collapse collapse" style="height:auto;" data-disabled="true">
+            <div id= "auto-height" class="nav-collapse collapse" style="height:0px;" data-disabled="true" aria-expanded="false">
                 <ul class="nav">
                     <li><a href="index.php"><i class="icon-home icon-white"></i> Home</a></li>
                     <li class="divider-vertical"></li>
@@ -15,7 +15,7 @@
                     <li class="divider-vertical"></li>
                     <?php
                     if(isset($_SESSION['username'])) {
-                        echo '<li><a href="#"><i class="icon-envelope icon-white"></i> Messagges</a></li>
+                        echo '<li><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges</a></li>
                             <li class="divider-vertical"></li>';
                     }
                     ?>
@@ -25,8 +25,6 @@
                     </li>
                     <li class="divider-vertical"></li>
                 </ul>
-
-
 
                 <?php
                 if(isset($_SESSION['username']))

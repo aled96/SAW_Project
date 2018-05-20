@@ -17,7 +17,6 @@ session_start();
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
-
     <link rel="stylesheet" media="all" href="css/footer.css" />
     <link rel="stylesheet" media="all" href="css/common.css" />
     <link rel="stylesheet" media="all" href="css/insert.css" >
@@ -62,9 +61,8 @@ require "navbar.php";
                 <input name="image" type="file" required id="image" class="feedback-input"/>
             </p>
             <p class="title">Book Categories</p>
-            <p class="categories" id="categories">
-                    <input name="number_of_categories" type="hidden" value="1" id="number_of_categories"/>
-
+            <div class="categories" id="categories">
+                <input name="number_of_categories" type="hidden" value="1" id="number_of_categories">
                 <section class="col col-6">
                     <select name="fac1" id="fac1" class="feedback-input" required onchange="selectCategory(1)">
                         <option value="not-selected" selected disabled>Faculty</option>
@@ -102,8 +100,7 @@ require "navbar.php";
                         <option value="not-selected" selected disabled>Category</option>
                     </select>
                 </section>
-
-            </p>
+            </div>
             <br>
             <p class="categories">
                 <button type="button" class="button-plus" onclick="addNewCategory()">Add New Category</button>

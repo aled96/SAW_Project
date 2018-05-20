@@ -86,3 +86,4 @@ function asyncAddCategory() {
             alert("Ajax error: " + xmlreq.statusText);
     }
 }
+

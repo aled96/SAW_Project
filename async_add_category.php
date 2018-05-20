@@ -16,7 +16,7 @@ $count = $_GET['count'];
 
 $facName = "fac".$count;
 
-$returned_obj = "<select name='".$facName."' id='".$facName."' class='feedback-input' required onchange='selectCategory(".$count.")'>
+$returned_obj = "<section class='col col-6'><select name='".$facName."' id='".$facName."' class='feedback-input' required onchange='selectCategory(".$count.")'>
                         <option value='not-selected' selected disabled>Faculty</option>";
 
 
@@ -34,7 +34,8 @@ $conn->close();
 
 $catName = "cat".$count;
 
-$returned_obj = $returned_obj."</select>
+$returned_obj = $returned_obj."</select></section>
+                <section class='col col-6'>
                     <select name='".$catName."' class='feedback-input' required  id='".$catName."' >
                         <option value='not-selected' selected disabled>Category</option>
                     </select>";
