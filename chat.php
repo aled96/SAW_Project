@@ -45,7 +45,7 @@ require "navbar.php";
                             <thead>
                             <tr>
                                 <th><span>User</span></th>
-                                <th><span>Created</span></th>
+                                <th><span>Last Message</span></th>
                                 <th class="text-center"><span>Status</span></th>
                             </tr>
                             </thead>
@@ -67,7 +67,7 @@ require "navbar.php";
                                 die("Connection failed: " . $conn->connect_error);
                             }
                             $sql = "SELECT distinct User_from, User_to FROM chat WHERE User_from = '".$user."' or User_to = '".$user."'";
-                            $result = mySQLi_query($conn, $sql) or die("Error query");
+                            $result = mySQLi_query($conn, $sql) or die("Error query1");
                             $list_users = array();
 
                             while($row = mySQLi_fetch_array($result)){
@@ -88,18 +88,22 @@ require "navbar.php";
                                 $row2 = mySQLi_fetch_array($result2);
                                 $unread_count = $row2['count'];
 
+                                $sql3 = "SELECT MAX(Datetime) as max_date FROM chat WHERE (User_to = '".$other."' and User_from = '".$user."') or (User_from = '".$other."' and User_to = '".$user."')";
+                                $result3 = mySQLi_query($conn, $sql3) or die("Error query");
+                                $row3 = mySQLi_fetch_array($result3);
+
                                 echo'
                                     <tr>
                                         <td>
                                             <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                                             <a href="view_chat.php?user_to='.$other.'">'.$other.'</a>
                                         </td>
-                                        <td>01/01/2018</td>
+                                        <td>'.$row3['max_date'].'</td>
                                         <td class="text-center">';
                                             if($unread_count == 0)
-                                                echo '<span class="label label-success">Ok</span>';
+                                                echo '<span class="label label-success">No Unread</span>';
                                             else
-                                                echo '<span class="label label-danger">Unread Messagges</span>';
+                                                echo '<span class="label label-warning">Unread</span>';
                                         echo '</td>
                                     </tr>
                                     ';
