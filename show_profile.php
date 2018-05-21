@@ -2,15 +2,20 @@
 <html lang="en">
 <?php
 	session_start();
-
 	$userProfile = $_GET['user'];
-    if(!isset($_GET['user'])) {
+	
+	if(!isset($_GET['user'])) {
         if(!isset($_SESSION['username'])) {
             header("location: index.php");
         }
         $userProfile = $_SESSION['username'];
     }
-	$_SESSION['PrevPage'] = "show_profile.php?user=".$userProfile;
+	
+	if(isset($_GET['page']))
+		$actualPage = $_GET['page'];
+	else
+		$actualPage = 1;
+	$_SESSION['PrevPage'] = "show_profile.php?user=".$userProfile."&page=".$actualPage;
 ?>
   <head>
     <title>Site Name</title>
@@ -32,7 +37,8 @@
 	<link rel="stylesheet" media="all" href="css/profileStyle.css" />
 	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
-
+	
+	
 </head>
 
 <body>
@@ -77,11 +83,29 @@
 			</div>
 			";
 		}
-
-		$sql2 = "SELECT insertion.*, book.Id as BookID, Cover, Title, Description FROM book, insertion WHERE User_offerer = '".$userProfile."' AND Material_offered = book.Id ";
-		$result2 = mySQLi_query($conn, $sql2) or die("Error query444");
+		
+		$sql1 = "SELECT count(*) as len FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = Book.ID";
+		
+		$result1 = mySQLi_query($conn, $sql1) or die("Error query");
+		while($row1 = mySQLi_fetch_array($result1)){
+			$maxPage = ceil(($row1['len'])/1);
+		}
+		
+		//check, if page number >> max --> show last page
+		if($actualPage > $maxPage)
+			$actualPage = $maxPage;
+		
+		
+		$firstToView = ($actualPage-1)*1;
+		
+		
+		$sql2 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = Book.ID LIMIT ".$firstToView.", 1";
+		
+		$result2 = mySQLi_query($conn, $sql2) or die("Error query");
 
 		echo"<div id='BooksPublished'>";
+		
+		$cont = mysqli_num_rows($result2)-1;
 		
 		while($row2 = mySQLi_fetch_array($result2)){
 			echo"
@@ -92,15 +116,74 @@
 					</div>
 					<div class='description'>
 					<h3>".$row2['Title']."</h3>
-					</div>
-					<div class='description'>
+					<br>
 					<p>".$row2['Description']."</p>
 					</div>
-				</div>
-				<div class='separation-line'></div>
-			";
+				</div>";
+				
+				if($cont > 0){
+					echo"<div class='separation-line'></div>";
+					$cont--;
+				}
 		}
-		echo"</div>";
+		
+		if($actualPage-1 < 1)
+			$prev="#";
+		else
+			$prev="show_profile.php?user=".$userProfile."&page=".($actualPage-1);
+		
+		if($actualPage+1 > $maxPage)
+			$next="#";
+		else
+			$next="show_profile.php?user=".$userProfile."&page=".($actualPage+1);
+		
+		echo"
+		<div class='pagination-position'>
+			  <ul class='pagination'>
+				<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=1'>1</a></li>";
+		//if there are less than 6 pages -> show them
+		if($maxPage < 6)
+			for ($i = 1; $i <= $maxPage; $i++)
+			echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$i."'>".$i."</a></li>";
+		//otherwise if there are more than 5 pages --> ...
+		else if($maxPage > 5)
+		{
+			if($actualPage == 1)
+				echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+			else if($actualPage == $maxPage)
+				echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link'href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+			else if($actualPage == 2)
+				echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=3'>3</a></li>
+				<li class='page-item'><p class='page-link'>...</p></li>";
+			else if($actualPage == 3)
+				echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=3'>3</a></li><li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=4'>4</a></li>
+				<li class='page-item'><p class='page-link'>...</p></li>";
+			else if($actualPage == $maxPage-2)
+				echo"<li class='page-item'><p class='page-link'>...</p></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+			else if($actualPage == $maxPage-1)
+				echo"<li class='page-item'><p class='page-link'>...</p></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+				<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+			else 
+				echo"<li class='page-item'><p class='page-link'>...</p></li>
+					  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$actualPage."'>".$actualPage."</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+			//page max
+			echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$maxPage."''>".$maxPage."</a></li>";
+		}
+		echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
+			  </ul>
+		</div>
+		
+		</div>";
 	
 	?>
 		

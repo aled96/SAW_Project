@@ -65,7 +65,7 @@
 			</div>	
 			
 			<div id='SellerInfo'>
-				<div id='Seller'><h5>Sold By: </h5><a href='show_profile.php?user=".$row['User_offerer']."'>".$row['User_offerer']."</a></div>
+				<div id='Seller'><h5>Sold By: </h5><a href='show_profile.php?user=".$row['User_offerer']."&page=1'>".$row['User_offerer']."</a></div>
 				<br>
 				<div id='Seller'><h5>Price: </h5><p>".$row['Price']." €</p></div>
 				<br>
