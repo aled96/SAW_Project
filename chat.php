@@ -71,27 +71,35 @@ require "navbar.php";
 
                             while($row = mySQLi_fetch_array($result)){
                                 if(strcmp($_SESSION['username'], $row['User_from']) == 0)
-                                    $user = $row['User_to'];
+                                    $other = $row['User_to'];
                                 else
-                                    $user = $row['User_from'];
+                                    $other = $row['User_from'];
 
-                                $key = array_search($user, $list_users);
+                                $key = array_search($other, $list_users);
                                 if($key !== false)
                                 {
                                     continue;
                                 }
-                                array_push($list_users, $user);
+                                array_push($list_users, $other);
+
+                                $sql2 = "SELECT COUNT(*) as count FROM chat WHERE Is_read = false and User_from = '".$other."' and User_to = '".$user."'";
+                                $result2 = mySQLi_query($conn, $sql2) or die("Error query");
+                                $row2 = mySQLi_fetch_array($result2);
+                                $unread_count = $row2['count'];
 
                                 echo'
                                     <tr>
                                         <td>
                                             <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                                            <a href="view_chat.php?user_to='.$user.'">'.$user.'</a>
+                                            <a href="view_chat.php?user_to='.$other.'">'.$other.'</a>
                                         </td>
                                         <td>01/01/2018</td>
-                                        <td class="text-center">
-                                            <span class="label label-success">Active</span>
-                                        </td>
+                                        <td class="text-center">';
+                                            if($unread_count == 0)
+                                                echo '<span class="label label-success">Ok</span>';
+                                            else
+                                                echo '<span class="label label-danger">Unread Messagges</span>';
+                                        echo '</td>
                                     </tr>
                                     ';
                                 }

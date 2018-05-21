@@ -15,8 +15,29 @@
                     <li class="divider-vertical"></li>
                     <?php
                     if(isset($_SESSION['username'])) {
-                        echo '<li><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges</a></li>
-                            <li class="divider-vertical"></li>';
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "password";
+                        $dbname = "university_sharing";
+
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $user = $_SESSION['username'];
+                        $sql2 = "SELECT COUNT(*) as count FROM chat WHERE Is_read = false and User_to = '".$user."'";
+                        $result2 = mySQLi_query($conn, $sql2) or die("Error query");
+                        $row2 = mySQLi_fetch_array($result2);
+                        $unread_count = $row2['count'];
+                        if($unread_count == 0)
+                            echo '<li><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges</a></li>
+                                <li class="divider-vertical"></li>';
+                        else
+                            echo '<li><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges <i class="fa fa-exclamation" style="color: red;"></i></a></li>
+                                <li class="divider-vertical"></li>';
                     }
                     ?>
                     <li><form action="search.php" method="get">
@@ -29,7 +50,7 @@
                 <?php
                 if(isset($_SESSION['username']))
                 {
-                    $user = $_SESSION['username'];
+
                     echo '<ul class="nav navbar-nav navbar-right pull-right">
                                     <li class="dropdown">
                                         <a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i>'.$user.'<b class="caret"></b></a>

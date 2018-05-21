@@ -64,17 +64,15 @@
 					<div id='Username'><p>".$row['Username']."</p></div>
 					<div class='OtherInfo'><p>".$row['Name']."</p><p>".$row['Surname']."</p></div>
 					<div class='OtherInfo'><p>".$row['ProvName']." in ".$row['Region']."</p></div>
-					<div class='OtherInfo'><a href='#'>Contact here</a></div>
+					<div class='OtherInfo'><a href='view_chat.php?user_to=".$userProfile."'>Contact here</a></div>
 					
 				</div>
 			</div>
 			";
 		}
-		
-		
-		
-		$sql2 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = Book.ID";
-		$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+
+		$sql2 = "SELECT insertion.*, book.Id as BookID, Cover, Title, Description FROM book, insertion WHERE User_offerer = '".$userProfile."' AND Material_offered = book.Id ";
+		$result2 = mySQLi_query($conn, $sql2) or die("Error query444");
 
 		echo"<div id='BooksPublished'>";
 		

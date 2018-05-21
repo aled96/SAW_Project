@@ -4,6 +4,33 @@
 <?php
 session_start();
 $_SESSION['PrevPage'] = "index.php";
+
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
+
+$user = $_SESSION['username'];
+$other = $_GET['user_to'];
+
+$servername = "localhost";
+$username = "root";
+$password = "password";
+$dbname = "university_sharing";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to = '".$user."'";
+
+if (!($conn->query($sql) === TRUE)) {
+    die("Error: " . $sql . "<br>" . $conn->error);
+}
+
 ?>
 <head>
     <title>Site Name</title>
@@ -39,25 +66,6 @@ require "navbar.php";
 <div class="chat-window col-xs-10 col-md-10 col-lg-10" id="chat_window_1">
     <div class="col-xs-12 col-md-12">
         <?php
-            if(!isset($_SESSION['username'])) {
-                header("location: index.php");
-            }
-
-            $user = $_SESSION['username'];
-            $other = $_GET['user_to'];
-
-            $servername = "localhost";
-            $username = "root";
-            $password = "password";
-            $dbname = "university_sharing";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
             echo'
                 <div class="panel panel-default">
                     <div class="panel-heading top-bar">
