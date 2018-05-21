@@ -1,4 +1,9 @@
 <?php
+
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "password";
@@ -18,6 +23,8 @@ $username = $_SESSION['username'];
 $other = $_GET['user_to'];
 $message = $_GET['message'];
 $datetime = date('m/d/Y h:i:s a', time());
+
+
 
 $returned_obj = '<div class="msg_container base_sent">
                             <div class="col-md-10 col-xs-10">

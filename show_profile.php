@@ -2,7 +2,14 @@
 <html lang="en">
 <?php
 	session_start();
+
 	$userProfile = $_GET['user'];
+    if(!isset($_GET['user'])) {
+        if(!isset($_SESSION['username'])) {
+            header("location: index.php");
+        }
+        $userProfile = $_SESSION['username'];
+    }
 	$_SESSION['PrevPage'] = "show_profile.php?user=".$userProfile;
 ?>
   <head>
