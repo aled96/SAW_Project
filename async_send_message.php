@@ -26,9 +26,9 @@ $datetime = date('m/d/Y h:i:s a', time());
 
 
 $returned_obj = '<div class="msg_container base_sent">
-                            <div class="col-md-10 col-xs-10">
+                            <div class="col-md-10 col-sm-11 col-xs-11">
                                 <div class="messages msg_sent">
-                                    <p>'.$message.'</p>
+                                    <p class="message-body">'.$message.'</p>
                                     <time>'.$datetime.'</time>
                                 </div>
                             </div>

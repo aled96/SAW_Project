@@ -16,6 +16,7 @@
 		margin-left:0px;
 	}
 }
+
 .chat-window > div > .panel{
     border-radius: 5px 5px 0 0;
 }
@@ -39,17 +40,19 @@
 .msg_receive{
     padding-left:0;
     margin-left:0;
+    word-wrap: break-word;
 }
 .msg_sent{
     padding-bottom:20px !important;
     margin-right:0;
+    word-wrap: break-word;
 }
 .messages {
   background: white;
   padding: 10px;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  max-width:100%;
+  width:100%;
 }
 .messages > p {
     font-size: 13px;
@@ -58,11 +61,23 @@
 .messages > time {
     font-size: 11px;
     color: #ccc;
+    margin-right:8px;
+    margin-left:8px;
 }
 .msg_container {
     padding: 10px;
     overflow: hidden;
     display: flex;
+}
+
+@media (max-width: 500px){
+	.msg_container {
+		margin-left:5px;
+		margin-right:5px;
+		display:block;
+		padding-left:3px;
+		padding-right:3px;
+	}
 }
 .img-profile {
     display: block;
@@ -73,10 +88,12 @@
     min-height: 80px;
 }
 
-@media (max-width: 470px){
+@media (max-width: 500px){
 	.img-profile{
 		display: none;
 		visibility: hidden;
+		width:0px;
+		height:0px;
 	}
 }
 .avatar {
@@ -85,6 +102,11 @@
 .base_sent {
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.message-body{
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 .msg_sent > time{
@@ -117,12 +139,22 @@
 
 .panel-footer{
   margin: 0;
-  padding: 20px;
+  padding-top: 20px;
+  padding-right: 5px;
+  padding-left:5px;
 }
 
 .input-group-btn{
+	display:flex;
 	float:right;
-    width: 150px;
+    max-width: 100px;
+}
+
+@media (max-width: 500px){
+	.input-group-btn{
+		display:block;
+		float:left;
+	}
 }
 
 .btn-sm{
@@ -140,7 +172,6 @@
     box-shadow: inset 0 1px 0 0 #b1b9cb;
     color: #fff;
     font: bold 16px/1 "helvetica neue", helvetica, arial, sans-serif;
-    padding: 7px 0 8px 0;
     text-decoration: none;
     text-align: center;
     text-shadow: 0 -1px 1px #000f4d;
@@ -148,5 +179,16 @@
 
 .chat_input{
 	width: calc(100% - 120px);
+}
+
+@media (max-width: 500px){
+	.chat_input{
+		width: calc(100% - 10px);
+	}
+}
+
+
+.message-body{
+	overflow-x: auto;
 
 }

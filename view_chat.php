@@ -87,9 +87,9 @@ require "navbar.php";
                 if (strcmp($user, $row['User_from']) == 0) {
                     echo '
                         <div class="msg_container base_sent">
-                            <div class="col-md-10 col-xs-10">
+                            <div class="col-md-10 col-sm-11 col-xs-11">
                                 <div class="messages msg_sent">
-                                    <p>'.$row['Message'].'</p>
+                                    <p class="message-body">'.$row['Message'].'</p>
                                     <time>'.$row['Datetime'].'</time>
                                 </div>
                             </div>
@@ -103,9 +103,9 @@ require "navbar.php";
                             <div class="col-md-2 col-xs-2 avatar">
                                 <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="img-profile img-responsive ">
                             </div>
-                            <div class="col-md-10 col-xs-10">
+                            <div class="col-md-10 col-sm-11 col-xs-11">
                                 <div class="messages msg_receive">
-                                    <p>'.$row['Message'].'</p>
+                                    <p class="message-body">'.$row['Message'].'</p>
                                     <time>'.$row['Datetime'].'</time>
                                 </div>
                             </div>
