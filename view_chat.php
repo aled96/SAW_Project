@@ -67,14 +67,15 @@ if (!($conn->query($sql) === TRUE)) {
 require "navbar.php";
 ?>
 
+<div class="backimgchat">
 <div class="chat-window col-xs-10 col-md-10 col-lg-10" id="chat_window_1">
     <div class="col-xs-12 col-md-12">
         <?php
             echo'
                 <div class="panel panel-default">
                     <div class="panel-heading top-bar">
-                        <div class="col-md-8 col-xs-8">
-                            <h3 class="panel-title"><i class="fa fa-comment" style="font-size:40px"></i> Chat with '.$other.'</h3>
+                        <div class="col-md-9 col-xs-11">
+                            <h3 class="panel-title"><i class="fa fa-comment my-comment"></i><chat_with> Chat with</chat_with> '.$other.'</h3>
                         </div>
                     </div>
                     <div id="message-panel-body" class="panel-body msg_container_base">';
@@ -128,6 +129,7 @@ require "navbar.php";
 
         ?>
     </div>
+</div>
 </div>
 
 <?php
