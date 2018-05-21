@@ -18,15 +18,18 @@
 	margin-right:2vw;
 	margin-top:3vw;
 	width:17vw;
+	height:auto;
 }
 
 #BookCover>img{
 	box-shadow: 0.4vw 0.4vw 0.2vw grey; 	
-	/* TODO -> Little shadow (as amazon)*/
+	height:20vw;
+	width:15vw;
 }
 
 #BookDescription{
 	float:left;
+	line-height:1.5vw;
 	margin-right:2vw;
 	margin-top:3vw;
 	width:38vw;
@@ -38,18 +41,25 @@
 	border-radius:0.2vw;
 
 	float:left;
-	line-height:0.5;
+	line-height:1.5vw;
 	margin-right:1vw;
 	margin-top:3vw;
 	width:12vw;
+	height:auto;
+}
+
+#Seller{
+	height:3vw;
 }
 
 #Seller>h5{
 	font-size:1.2vw;
+	line-height:1.5vw;
 }
 
 #Seller>p{
 	font-size:1vw;
+	line-height:1.5vw;
 }
 
 #Title{
@@ -57,6 +67,7 @@
 	font-size:3vw;
 	font-weight:bold;
 	margin-bottom:1vw;
+	line-height:2.5vw;
 }
 
 #Author{
@@ -73,6 +84,7 @@
 #Details{
 	display:block;
 	float:left;
+	line-height:1.5vw;
 	margin-right:3vw;
 	margin-top:2vw;
 	width:60vw;
@@ -80,11 +92,13 @@
 
 #Details>h2{
 	font-size:2.4vw;
+	line-height:1.5vw;
 }
 
 #categoryBook{
 	display:block;
 	float:left;
+	line-height:1.5vw;
 	margin-right:3vw;
 	margin-top:2vw;
 	width:60vw;
@@ -92,6 +106,7 @@
 
 #categoryBook>h3{
 	font-size:2vw;
+	line-height:1.5vw;
 }
 
 #categoryBook>a{
@@ -103,17 +118,22 @@
 .Info>h5{
 	display:inline;
 	font-size:1.2vw;
+	line-height:1.5vw;
 }
 .Info>p{
 	display:inline;
 	font-size:1vw;
+	line-height:1.5vw;
 }
 
 .AddFavourite>a{
 	display:inline;
+	line-height:1.5vw;
 	font-size:1vw;
 }
+
 .AddFavourite>p{
 	display:inline;
+	line-height:1.5vw;
 	font-size:1vw;
 }
