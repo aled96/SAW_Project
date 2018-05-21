@@ -24,7 +24,12 @@
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/home.css" />
 	<script src="js/common.js"></script>
+      <?php
+      if(isset($_SESSION['username'])) {
+          echo '<script src="js/message_updates.js"></script>';
+      }
 
+      ?>
 </head>
 
   <body>

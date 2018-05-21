@@ -21,8 +21,15 @@
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/home.css" />
-      <link rel="stylesheet" media="all" href="css/bootstrap-category.css" />
+    <link rel="stylesheet" media="all" href="css/bootstrap-category.css" />
 	<script src="js/common.js"></script>
+
+      <?php
+        if(isset($_SESSION['username'])) {
+            echo '<script src="js/message_updates.js"></script>';
+        }
+
+        ?>
 
 </head>
 

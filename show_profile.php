@@ -37,7 +37,12 @@
 	<link rel="stylesheet" media="all" href="css/profileStyle.css" />
 	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
-	
+      <?php
+      if(isset($_SESSION['username'])) {
+          echo '<script src="js/message_updates.js"></script>';
+      }
+
+      ?>
 	
 </head>
 
@@ -84,9 +89,9 @@
 			";
 		}
 		
-		$sql1 = "SELECT count(*) as len FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = Book.ID";
+		$sql1 = "SELECT COUNT(*) as len FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id";
 		
-		$result1 = mySQLi_query($conn, $sql1) or die("Error query");
+		$result1 = mySQLi_query($conn, $sql1) or die("Error query2");
 		while($row1 = mySQLi_fetch_array($result1)){
 			$maxPage = ceil(($row1['len'])/1);
 		}
@@ -99,7 +104,7 @@
 		$firstToView = ($actualPage-1)*1;
 		
 		
-		$sql2 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = Book.ID LIMIT ".$firstToView.", 1";
+		$sql2 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id LIMIT ".$firstToView.", 1";
 		
 		$result2 = mySQLi_query($conn, $sql2) or die("Error query");
 

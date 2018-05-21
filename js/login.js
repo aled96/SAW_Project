@@ -1,5 +1,30 @@
 var xmlreq;
 
+
+function show(target) {
+    document.getElementById(target).style.visibility = 'visible';
+    document.getElementById(target).style.overflow = 'auto';
+    document.getElementById(target).style.height = 'auto';
+    if(target == "signUpForm")
+    {
+        document.getElementById(target).style.marginTop = '-80px';
+    }
+};
+
+function hide(target) {
+    document.getElementById(target).style.visibility = 'hidden';
+    document.getElementById(target).style.overflow = 'hidden';
+    document.getElementById(target).style.height = '0';
+};
+
+
+function checkBeforeSubmit(){
+    //fai cose
+
+    document.signup.submit();
+}
+
+
 function getXMLHttpRequestObject() {
 	var request = null;
 	if (window.XMLHttpRequest) {

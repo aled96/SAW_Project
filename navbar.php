@@ -33,10 +33,10 @@
                         $row2 = mySQLi_fetch_array($result2);
                         $unread_count = $row2['count'];
                         if($unread_count == 0)
-                            echo '<li><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges</a></li>
+                            echo '<li id="all_messages"><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges</a></li>
                                 <li class="divider-vertical"></li>';
                         else
-                            echo '<li><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges <i class="fa fa-exclamation" style="color: red;"></i></a></li>
+                            echo '<li id="all_messages"><a href="chat.php"><i class="icon-envelope icon-white"></i> Messagges <i class="fa fa-exclamation" style="color: red;"></i> ('.$unread_count.')</a></li>
                                 <li class="divider-vertical"></li>';
                     }
                     ?>

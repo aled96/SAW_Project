@@ -25,6 +25,7 @@ $_SESSION['PrevPage'] = "index.php";
     <link rel="stylesheet" media="all" href="css/common.css" />
     <link rel="stylesheet" media="all" href="css/chat.css" />
     <script src="js/common.js"></script>
+    <script src="js/all_chat.js"></script>
 
 </head>
 
@@ -33,14 +34,13 @@ $_SESSION['PrevPage'] = "index.php";
 <?php
 require "navbar.php";
 ?>
-
 <h1><i class="fa fa-comments" style="font-size:40px"></i> Recent Chat</h1>
 <div class="container bootstrap snippet">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
-                    <div class="table-responsive">
+                    <div id="all_chats" class="table-responsive">
                         <table class="table user-list">
                             <thead>
                             <tr>
@@ -66,7 +66,7 @@ require "navbar.php";
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
                             }
-                            $sql = "SELECT distinct User_from, User_to FROM chat WHERE User_from = '".$user."' or User_to = '".$user."'";
+                            $sql = "SELECT distinct User_from, User_to, MAX(Datetime) as max_date FROM chat WHERE User_from = '".$user."' or User_to = '".$user."' GROUP BY User_from, User_to ORDER BY max_date desc";
                             $result = mySQLi_query($conn, $sql) or die("Error query1");
                             $list_users = array();
 
@@ -87,22 +87,17 @@ require "navbar.php";
                                 $result2 = mySQLi_query($conn, $sql2) or die("Error query");
                                 $row2 = mySQLi_fetch_array($result2);
                                 $unread_count = $row2['count'];
-
-                                $sql3 = "SELECT MAX(Datetime) as max_date FROM chat WHERE (User_to = '".$other."' and User_from = '".$user."') or (User_from = '".$other."' and User_to = '".$user."')";
-                                $result3 = mySQLi_query($conn, $sql3) or die("Error query");
-                                $row3 = mySQLi_fetch_array($result3);
-
                                 echo'
                                         <td>
                                             <img class="mini-image" src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                                             <a class="name" href="view_chat.php?user_to='.$other.'">'.$other.'</a>
                                         </td>
-                                        <td>'.$row3['max_date'].'</td>
-                                        <td class="text-center">';
+                                        <td>'.$row['max_date'].'</td>
+                                        <td id="status'.$other.'" class="text-center">';
                                             if($unread_count == 0)
                                                 echo '<span class="label label-success">No Unread</span>';
                                             else
-                                                echo '<span class="label label-warning">Unread</span>';
+                                                echo '<span class="label label-warning">Unread ('.$unread_count.')</span>';
                                         echo '</td>
                                     </tr>
                                     ';

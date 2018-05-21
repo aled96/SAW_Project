@@ -23,7 +23,12 @@
     <link rel="stylesheet" media="all" href="css/login.css" />
 	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
+      <?php
+      if(isset($_SESSION['username'])) {
+          echo '<script src="js/message_updates.js"></script>';
+      }
 
+      ?>
       <script>
 
           document.addEventListener("keyup", function(event) {
