@@ -4,6 +4,9 @@
 <?php
 	session_start();
 	$_SESSION['PrevPage'] = "favourite.php";
+    if(!isset($_SESSION['username'])) {
+        header("location: index.php");
+    }
 ?>
   <head>
     <title>Site Name</title>

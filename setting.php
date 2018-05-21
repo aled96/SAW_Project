@@ -221,7 +221,7 @@
                 }
             }
             else
-                echo "Log in First";
+                header("location: index.php");
 			?>
 
 

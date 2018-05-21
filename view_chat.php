@@ -12,6 +12,10 @@ if(!isset($_SESSION['username'])) {
 $user = $_SESSION['username'];
 $other = $_GET['user_to'];
 
+if(strcmp($user, $other) == 0){
+    header("location: index.php");
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "password";

@@ -55,7 +55,7 @@
                                     <li class="dropdown">
                                         <a href="#" data-toggle="dropdown" class="dropdown-toggle" onClick="autoHeight()"><i class="icon-user"></i>'.$user.'<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="show_profile.php"><i class="icon-user"></i>Dashboard</a></li>
+                                            <li><a href="show_profile.php?user='.$user.'"><i class="icon-user"></i>Dashboard</a></li>
                                             <li class="divider"></li>
                                             <li><a href="insert_new.php"><i class="icon-plus"></i>Add Book</a></li>
                                             <li class="divider"></li>
