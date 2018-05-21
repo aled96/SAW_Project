@@ -14,6 +14,10 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 session_start();
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
+
 $user = $_SESSION['username'];
 $email = $_POST['emailSign'];
 $pwd = $_POST['pswSign'];

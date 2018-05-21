@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "password";
@@ -16,6 +17,9 @@ echo "Connected successfully";
 $book = $_GET['Book'];
 
 session_start();
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
 $user = $_SESSION['username'];
 
 #Check if already Exists

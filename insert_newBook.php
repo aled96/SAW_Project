@@ -30,6 +30,9 @@ $place = $_POST['place'];
 $price = $_POST['price'];
 
 session_start();
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
 $user = $_SESSION['username'];
 
 

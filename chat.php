@@ -3,6 +3,9 @@
 
 <?php
 session_start();
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
 $_SESSION['PrevPage'] = "index.php";
 ?>
 <head>
@@ -49,9 +52,7 @@ require "navbar.php";
                             <tbody>
 
                             <?php
-                            if(!isset($_SESSION['username'])) {
-                                header("location: index.php");
-                            }
+
                             $servername = "localhost";
                             $username = "root";
                             $password = "password";

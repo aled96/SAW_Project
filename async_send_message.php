@@ -1,9 +1,5 @@
 <?php
 
-if(!isset($_SESSION['username'])) {
-    header("location: index.php");
-}
-
 $servername = "localhost";
 $username = "root";
 $password = "password";
@@ -18,6 +14,9 @@ if ($conn->connect_error) {
 }
 
 session_start();
+if(!isset($_SESSION['username'])) {
+    header("location: index.php");
+}
 
 $username = $_SESSION['username'];
 $other = $_GET['user_to'];
