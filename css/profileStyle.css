@@ -1,0 +1,102 @@
+.navbar{
+	margin-bottom:0px;
+}
+/*Content*/
+
+#UserInfo{
+	width:76vw;
+	margin-left:12vw;
+	margin-right:12vw;
+	margin-bottom:8vw;
+	height:19vw;
+}
+
+/* Profile Page */
+
+#ProfilePic{
+	float:left;
+	margin-right:2vw;
+	margin-top:3vw;
+}
+
+#ProfilePic>img{
+	box-shadow: 0.2vw 0.2vw 0.1vw grey; 	
+	height:18vw;
+	width:18vw;
+}
+
+#UserDetail{
+	float:left;
+	line-height:1.5vw;
+	margin-right:2vw;
+	margin-top:3vw;
+	width:38vw;
+}
+
+#Username{
+	display:block;
+	font-size:3vw;
+	font-weight:bold;
+	margin-bottom:1vw;
+	line-height:2.5vw;
+}
+
+.OtherInfo{
+	display:block;
+	font-size:1.8vw;
+	font-weight:bold;
+	margin-bottom:1vw;
+	margin-top:2vw;
+	line-height:1.5vw;
+}
+
+#BooksPublished{
+	width:68vw;
+	margin-left:16vw;
+	margin-right:16vw;
+	margin-bottom:5vw;
+}
+
+
+/* Books */
+
+.book-content{
+	cursor:pointer;
+	display:block;
+	max-height:20vw;
+	margin-bottom:1vw;
+	margin-top:1vw;
+	overflow:hidden;
+	width:65vw;
+}
+
+.separation-line{
+	border-bottom: 0.1vw solid #ccc;
+	margin-bottom:2vw;
+	margin-top:2vw;
+}
+
+.cover{
+	float:left;
+	height:20vw;
+	width:15vw;
+}
+
+/* Prova con max-height/max-width*/
+.cover>img{	
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:17vw;
+	width:12.5vw;
+}
+
+.description>h3{
+	font-size:2vw;
+}
+
+.description>p{
+	font-size:1.2vw;
+	max-height:12vw;
+	overflow:hidden;
+}
