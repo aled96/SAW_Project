@@ -118,9 +118,9 @@ require "navbar.php";
                 <div class="panel-footer">
                     <div class="input-group">
                         <input type="hidden" id="user_to" value="'.$other.'">
-                        <input id="input-message" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                        <textarea id="input-message" class="form-control input-sm chat_input"></textarea>
                         <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" id="btn-chat" onclick="async_send_message()">Send</button>
+                        <button class="btn btn-primary btn-sm" id="btn-chat" onclick="async_send_message()">Send <i class="fa fa-angle-right" style="color: black;"></i></button>
                         </span>
                     </div>
                 </div>

@@ -93,10 +93,9 @@ require "navbar.php";
                                 $row3 = mySQLi_fetch_array($result3);
 
                                 echo'
-                                    <tr>
                                         <td>
-                                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                                            <a href="view_chat.php?user_to='.$other.'">'.$other.'</a>
+                                            <img class="mini-image" src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+                                            <a class="name" href="view_chat.php?user_to='.$other.'">'.$other.'</a>
                                         </td>
                                         <td>'.$row3['max_date'].'</td>
                                         <td class="text-center">';
