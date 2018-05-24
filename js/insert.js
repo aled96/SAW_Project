@@ -1,6 +1,3 @@
-
-
-
 var xmlreq;
 
 function getXMLHttpRequestObject() {

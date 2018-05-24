@@ -1,6 +1,5 @@
 var xmlreq;
 
-
 function show(target) {
     document.getElementById(target).style.visibility = 'visible';
     document.getElementById(target).style.overflow = 'auto';
@@ -23,7 +22,6 @@ function checkBeforeSubmit(){
 
     document.signup.submit();
 }
-
 
 function getXMLHttpRequestObject() {
 	var request = null;
@@ -78,7 +76,6 @@ function checklogin() {
 function removeError(){
     document.getElementById("errorLoginBox").innerHTML = "<br>";
 }
-
 
 function checkSignUp(){
     var user = document.getElementById("userSign").value;
