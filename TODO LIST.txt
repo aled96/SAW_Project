@@ -1,0 +1,15 @@
+TODO
+
+- CARICARE FOTO SU DB !!! (signUp.php) !!!!!!!!!
+
+- Controllo mail in registrazione (accetta di tutto adesso)
+
+- Login non è centrato
+
+- Aggiustare grafica pageBook, Index e quant'altro
+
+- Chat -> problema se mando ' o altro (penso anche su sign up e compagnia)
+
+-Problema Footer --> Copre le altre cose !! Anche nella chat, non vedo il tasto per mandare msg
+
+-Sfondo in chat.php --> vedo praticamente tutto nero e non arriva a fine pagine (si ferma a metà chat circa)

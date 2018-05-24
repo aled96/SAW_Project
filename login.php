@@ -231,6 +231,15 @@
                 </label>
             </section>
 
+			<section>
+                    <label class="input">
+                        Profile Picture
+                    </label>
+                    <label class="input">
+						<input type="file" accept="image/*" id="picSign" name="picSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" required>
+                    </label>
+            </section>
+			
             <section>
                 <label class="checkbox"><input onclick="removeErrorSignup()"  type="checkbox" name="checkbox" id="checkboxSign"><i></i>I agree to the Terms of Service</label>
             </section>

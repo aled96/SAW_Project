@@ -19,6 +19,10 @@ $surname = $_POST['surnameSign'];
 $gender = $_POST['gender'];
 $date_birth = $_POST['dateSign'];
 $city = $_POST['citySign'];
+$pic = $_POST['picSign'];
+
+$image = file_get_contents($pic);
+
 
 $sql2 = "SELECT ID from city where NAME = '".$city."'";
 
@@ -28,8 +32,8 @@ while($row2 = mySQLi_fetch_array($result2)){
     $city = $row2['ID'];
 }
 
-$sql = "INSERT INTO user (Username, Email, Password, Name, Surname, Gender, Date_of_birth, City)
-VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', '$city')";
+$sql = "INSERT INTO user (Username, Email, Password, Name, Surname, Gender, Date_of_birth, City, ProfilePic)
+VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', '$city','mysql_real_escape_string($image)')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
