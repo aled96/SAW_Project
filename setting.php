@@ -56,24 +56,21 @@
                     <form action="changeSettings.php" method="POST" name="settings" class="sky-form">
                         <header>Update Information</header>';
 
-                $servername = "localhost";
-                $username = "root";
-                $password = "password";
-                $dbname = "university_sharing";
+            require "db/mysql_credentials.php";
 
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-                $user = $_SESSION['username'];
+            $user = $_SESSION['username'];
 
-                $sql = "SELECT user.*, city.Name as Cityname, province.Name as Provincename FROM user, city, province WHERE Username='" . $user . "' and user.City = city.ID and city.Province = province.ID ";
-                $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
+            $sql = "SELECT user.*, city.Name as Cityname, province.Name as Provincename FROM user, city, province WHERE Username='" . $user . "' and user.City = city.ID and city.Province = province.ID ";
+            $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
 
 
-                while ($row = mySQLi_fetch_array($result)) {
-                    $provinceName = $row['Provincename'];
-                    $cityName = $row['Cityname'];
-                    echo '
+            while ($row = mySQLi_fetch_array($result)) {
+                $provinceName = $row['Provincename'];
+                $cityName = $row['Cityname'];
+                echo '
             <fieldset>
                 <section>
                     <label class="input" >

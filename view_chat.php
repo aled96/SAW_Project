@@ -3,10 +3,11 @@
 
 <?php
 session_start();
-$_SESSION['PrevPage'] = "index.php";
+$other = $_GET['user_to'];
+$_SESSION['PrevPage'] = "view_chat.php?user_to=".$other;
 
 if(!isset($_SESSION['username'])) {
-    header("location: index.php");
+    header("location: login.php");
 }
 
 $user = $_SESSION['username'];
@@ -16,10 +17,7 @@ if(strcmp($user, $other) == 0){
     header("location: index.php");
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "university_sharing";
+require "db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -126,11 +124,11 @@ require "navbar.php";
                     </div>
                 </div>
             </div>';
-
         ?>
     </div>
 </div>
 </div>
+
 
 <?php
 require "footer.php";

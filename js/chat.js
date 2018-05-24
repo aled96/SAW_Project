@@ -62,3 +62,40 @@ window.addEventListener('load',function(){
     var div = document.querySelector('#message-panel-body');
     div.scrollTop = div.scrollHeight;
 });
+
+function webchat(){
+    xmlreq = getXMLHttpRequestObject();
+
+    var user_to = document.getElementById("user_to").value;
+    url = encodeURI("async_chat.php?user_to=" + user_to);
+    xmlreq.onreadystatechange = check_socket;
+    xmlreq.open("GET", url, true);
+    xmlreq.send();
+}
+
+function check_socket() {
+    if (xmlreq.readyState == 4) {
+        if (xmlreq.status == 200) {
+            if (xmlreq.responseText != null)
+            {
+                if (xmlreq.responseText != "0")
+                {
+                    document.getElementById("message-panel-body").insertAdjacentHTML('beforeend', xmlreq.responseText);
+                    var div = document.querySelector('#message-panel-body');
+                    div.scrollTop = div.scrollHeight;
+                    setTimeout(function() { webchat(); }, 5000);
+                }
+                else{
+                    setTimeout(function() { webchat(); }, 5000);
+                }
+            }
+            else alert("Ajax error: no data received");
+        }
+        else
+            alert("Ajax error: " + xmlreq.statusText);
+    }
+}
+
+window.onload = function() {
+    webchat();
+};

@@ -53,10 +53,7 @@ require "navbar.php";
 
                             <?php
 
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "password";
-                            $dbname = "university_sharing";
+                            require "db/mysql_credentials.php";
 
                             $user = $_SESSION['username'];
                             // Create connection

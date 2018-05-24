@@ -76,10 +76,8 @@ require "navbar.php";
                     <select name="fac1" id="fac1" class="feedback-input" required onchange="selectCategory(1)">
                         <option value="not-selected" selected disabled>Faculty</option>
                         <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "password";
-                        $dbname = "university_sharing";
+
+                        require "db/mysql_credentials.php";
 
                         // Create connection
                         $conn = new mysqli($servername, $username, $password, $dbname);

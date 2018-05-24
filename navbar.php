@@ -15,10 +15,8 @@
                     <li class="divider-vertical"></li>
                     <?php
                     if(isset($_SESSION['username'])) {
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "password";
-                        $dbname = "university_sharing";
+
+                        require "db/mysql_credentials.php";
 
                         // Create connection
                         $conn = new mysqli($servername, $username, $password, $dbname);
