@@ -12,15 +12,17 @@ if ($conn->connect_error) {
 
 session_start();
 if(isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
+    $user = $_SESSION['username'];
     $other = $_GET['user_to'];
 
-    $sql = "SELECT distinct * FROM chat WHERE Is_read = 0 and User_from = '".$other."' and User_to = '".$username."'";
+    $sql = "SELECT distinct * FROM chat WHERE Is_read = 0 and User_from = '".$other."' and User_to = '".$user."'";
     $result = mySQLi_query($conn, $sql) or die("Error query");
     $list_users = array();
 
+    $returned_obj = "";
+
     while($row = mySQLi_fetch_array($result)) {
-        $returned_obj = '<div class="msg_container base_receive">
+        $returned_obj = $returned_obj.'<div class="msg_container base_receive">
                             <div class="col-md-2 col-xs-2 avatar">
                                 <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="img-profile img-responsive ">
                             </div>

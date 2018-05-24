@@ -140,7 +140,7 @@
                 </label>
                 <label class="input input-date">
                     <i class="icon-append icon-calendar"></i>
-                    <input type="date" id="dateSign" name="dateSign">
+                    <input onclick="removeErrorSignup()" type="date" id="dateSign" name="dateSign">
                 </label>
             </section>
         </fieldset>
@@ -170,7 +170,7 @@
                     Gender
                 </label>
                 <label class="select">
-                    <select name="gender" id="gender">
+                    <select  onchange="removeErrorSignup()" name="gender" id="gender">
                         <option value="not-selected" selected disabled>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -186,7 +186,7 @@
                     Province of Birth
                 </label>
                 <label class="select">
-                    <select name="province" id="province" onchange="selectCity()">
+                    <select onclick="removeErrorSignup()" name="province" id="province" onchange="selectCity()">
                         <option value="not-selected" selected disabled>Province</option>
                         <?php
 
@@ -223,7 +223,7 @@
                     City of Birth
                 </label>
                 <label class="select">
-                    <select name="citySign" id="citySign">
+                    <select onclick="removeErrorSignup()" name="citySign" id="citySign">
                         <option value="not-selected" selected disabled>City</option>
 
                     </select>
@@ -232,7 +232,7 @@
             </section>
 
             <section>
-                <label class="checkbox"><input type="checkbox" name="checkbox" id="checkboxSign"><i></i>I agree to the Terms of Service</label>
+                <label class="checkbox"><input onclick="removeErrorSignup()"  type="checkbox" name="checkbox" id="checkboxSign"><i></i>I agree to the Terms of Service</label>
             </section>
         </fieldset>
 
