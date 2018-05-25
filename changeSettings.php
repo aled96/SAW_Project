@@ -17,16 +17,18 @@ if(!isset($_SESSION['username'])) {
 }
 
 $user = $_SESSION['username'];
-$email = $_POST['emailSign'];
-$pwd = $_POST['pswSign'];
-$name = $_POST['nameSign'];
-$surname = $_POST['surnameSign'];
+$email = $_POST['emailChange'];
+$name = $_POST['nameChange'];
+$surname = $_POST['surnameChange'];
 $gender = $_POST['gender'];
-$date_of_birth = $_POST['dateSign'];
+$date_of_birth = $_POST['dateChange'];
+$city = $_POST['cityChange'];
 
-$sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$surname."',Gender = '".$gender."',Date_of_birth = '".$date_of_birth."' WHERE Username = '".$user."'";
+//TODO -> Aggiungere parte di immagine -> se vuota, non aggiornare !
+//TODO -> NON VAAAA
+$imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 
-echo $sql;
+$sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$surname."',Gender = '".$gender."',Date_of_birth = '".$date_of_birth."', City = '".$city."' WHERE Username = '".$user."'";
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
 //TODO -> aggiungere reindirizzamento a pagina precedente (??)

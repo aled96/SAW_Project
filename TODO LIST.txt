@@ -2,7 +2,7 @@ TODO
 
 - CARICARE FOTO SU DB !!! (signUp.php) !!!!!!!!!
 
-- Controllo mail in registrazione (accetta di tutto adesso)
+- Controllo mail e password in registrazione (accetta di tutto adesso)
 
 - Login non è centrato
 
@@ -13,3 +13,8 @@ TODO
 -Problema Footer --> Copre le altre cose !! Anche nella chat, non vedo il tasto per mandare msg
 
 -Sfondo in chat.php --> vedo praticamente tutto nero e non arriva a fine pagine (si ferma a metà chat circa)
+
+- Cambio password in Settings
+
+
+-WARNING - BEWARE - ACTHUNG (cit.) ---> Se query falliscono -> non si vede nulla (showProfile, Settings etc)

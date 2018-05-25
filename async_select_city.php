@@ -22,15 +22,16 @@ while($row = $result->fetch_assoc()) {
 }
 
 
-$sql = "SELECT distinct name FROM city where Province = '".$id."'";
+$sql = "SELECT distinct name,ID FROM city where Province = '".$id."'";
 $result = $conn->query($sql);
 
 $cities_to_return = "<option value='not-selected' selected disabled>City</option>";
 
 while($row = $result->fetch_assoc()) {
     $city = $row['name'];
+    $cityId = $row['ID'];
     if(strlen($city) != 0) {
-    $cities_to_return = $cities_to_return."<option value='" . $city . "'>" . $city . "</option>";
+    $cities_to_return = $cities_to_return."<option value='" . $cityId. "'>" . $city . "</option>";
     }
 }
 

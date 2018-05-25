@@ -65,9 +65,10 @@
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		$sql = "SELECT user.*, province.Name as ProvName, Region FROM user, province WHERE ID = City AND Username = '$userProfile'";
+		$sql = "SELECT user.*, city.Name as CityName, province.Name as ProvName, Region FROM user, city,province WHERE city.ID = City AND province.ID = Province AND Username = '$userProfile'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
-
+		
+		
 		while($row = mySQLi_fetch_array($result)){
 			echo"
 			<div id='UserInfo'>

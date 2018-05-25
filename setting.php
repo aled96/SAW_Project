@@ -21,24 +21,13 @@ $_SESSION['PrevPage'] ="setting.php";
     <link rel="stylesheet" media="all" href="css/common.css" />
     <link rel="stylesheet" media="all" href="css/login.css" />
     <script src="js/common.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/changeSetting.js"></script>
 
     <?php
     if(isset($_SESSION['username'])) {
         echo '<script src="js/message_updates.js"></script>';
     }
-
     ?>
-    <script>
-
-        document.addEventListener("keyup", function(event) {
-            event.preventDefault();
-            if (event.keyCode === 13) {
-                checkSettings();
-
-            }
-        });
-    </script>
 </head>
 
 <body>
@@ -53,7 +42,7 @@ $_SESSION['PrevPage'] ="setting.php";
             echo'
               <div class="backimg">
                 <div class="body" id="settings">
-                    <form action="changeSettings.php" method="POST" name="settings" class="sky-form">
+                    <form action="changeSettings.php" method="POST" name="settingsForm" class="sky-form">
                         <header>Update Information</header>';
 
             require "db/mysql_credentials.php";
@@ -83,7 +72,7 @@ $_SESSION['PrevPage'] ="setting.php";
                     </label>
                     <label class="input">
                         <i class="icon-append icon-user"></i>
-                        <input type="text" placeholder="Username" id="userSign" name="userSign" readonly value="' . $row['Username'] . '">
+                        <input type="text" placeholder="Username" id="userChange" name="userChange" readonly value="'.$row['Username'].'">
                     </label>
                 </section>
 
@@ -93,7 +82,7 @@ $_SESSION['PrevPage'] ="setting.php";
                     </label>
                     <label class="input">
                         <i class="icon-append icon-envelope-alt"></i>
-                        <input type="text" placeholder="Email address" id="emailSign" name="emailSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Email'] . '">
+                        <input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="'.$row['Email'].'">
                         <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                     </label>
                 </section>
@@ -107,7 +96,7 @@ $_SESSION['PrevPage'] ="setting.php";
                     </label>
                     <label class="input">
                         <i class="icon-append icon-calendar"></i>
-                        <input type="date" id="dateSign" name="dateSign"  value="' . $row['Date_of_birth'] . '">
+                        <input type="date" id="dateChange" name="dateChange"  value="' . $row['Date_of_birth'] . '">
                     </label>
                 </section>
             </fieldset>
@@ -119,7 +108,7 @@ $_SESSION['PrevPage'] ="setting.php";
                             Name
                         </label>
                     <label class="input">
-                            <input type="text" placeholder="First name" id="nameSign" name="nameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Name'] . '">
+                            <input type="text" placeholder="First name" id="nameChange" name="nameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $row['Name'] . '">
                         </label>
                     </section>
                     <section class="col col-6">
@@ -127,7 +116,7 @@ $_SESSION['PrevPage'] ="setting.php";
                         Surname
                     </label>
                     <label class="input">
-                            <input type="text" placeholder="Last name" id="surnameSign" name="surnameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()"  value="' . $row['Surname'] . '">
+                            <input type="text" placeholder="Last name" id="surnameChange" name="surnameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $row['Surname'] . '">
                         </label>
                     </section>
                 </div>
@@ -139,14 +128,14 @@ $_SESSION['PrevPage'] ="setting.php";
                     <label class="select">';
                     if ($row['Gender'] == "male") {
                         echo "
-							<select name='gender'>
+							<select name='gender' id='gender'>
 							<option value='male' selected>Male</option>
 							<option value='female'>Female</option>
 							</select>
 							";
                     } else {
                         echo "
-							<select name='gender'>
+							<select name='gender' id='gender'>
 							<option value='male'>Male</option>
 							<option value='female' selected>Female</option>
 							</select>
@@ -189,19 +178,20 @@ $_SESSION['PrevPage'] ="setting.php";
                         City of Birth
                     </label>
                     <label class="select">
-                        <select name="citySign" id="citySign">
+                        <select name="cityChange" id="cityChange">
                             <option value="not-selected" selected disabled>City</option>';
 
-                    $sql = "SELECT distinct city.Name FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
+                    $sql = "SELECT distinct city.* FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
                     $result = $conn->query($sql);
 
                     while ($row = $result->fetch_assoc()) {
                         $city = $row['Name'];
+						$cityId = $row['ID'];
                         if (strlen($city) != 0) {
                             if(strcmp($cityName, $city) == 0)
-                                echo "<option selected value='" . $city . "'>" . $city . "</option>";
+                                echo "<option selected value='".$cityId."'>" . $city . "</option>";
                             else
-                                echo "<option value='" . $city . "'>" . $city . "</option>";
+                                echo "<option value='".$cityId."'>" . $city . "</option>";
                         }
                     }
 
@@ -211,6 +201,16 @@ $_SESSION['PrevPage'] ="setting.php";
                         <i></i>
                     </label>
                 </section>
+				
+				<section>
+						<label class="input">
+							Profile Picture
+						</label>
+						<label class="input">
+							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()" onkeyup="removeErrorChange()">
+						</label>
+				</section>
+				
             </fieldset>
 
             <footer>
