@@ -3,6 +3,11 @@
 
 <?php
 	session_start();
+	
+	if(isset($_GET['page']))
+		$actualPage = $_GET['page'];
+	else
+		$actualPage = 1;
 ?>
   <head>
     <title>Site Name</title>
@@ -21,6 +26,7 @@
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/home.css" />
+	<link rel="stylesheet" media="all" href="css/paging.css" />
 	<script src="js/common.js"></script>
       <?php
       if(isset($_SESSION['username'])) {
@@ -53,71 +59,236 @@
 	
 	if(isset($_GET['find'])){	
 		$find = $_GET['find'];
-		$_SESSION['PrevPage']="search.php?find=".$find;
+		$_SESSION['PrevPage']="search.php?find=".$find."&page=".$actualPage;
 	
 		echo"
 			<div class='typeHome'>
 				<h1>Results for: ".$find."</h1>
 			</div>";
 		
+		//START PAGING PART	
+		$sql1= "SELECT * FROM book WHERE Author LIKE '%".$find."%' OR Title LIKE '%".$find."%' OR Description LIKE '%".$find."%'";
 		
-		$sql = "SELECT * FROM book WHERE Author LIKE '%".$find."%' OR Title LIKE '%".$find."%' OR Description LIKE '%".$find."%'";
-		$result = mySQLi_query($conn, $sql) or die("Error query");
+		$result1 = mySQLi_query($conn, $sql1) or die("Error query2");
+		$bookPublished = $result1->num_rows;
+		
+		if($bookPublished > 0){
+		
+			$maxPage = ceil(($bookPublished)/2);
+			//check, if page number >> max --> show last page
+			if($actualPage > $maxPage)
+				$actualPage = $maxPage;
+			else if($actualPage < 1)
+				$actualPage = 1;
+			
+			
+			$firstToView = ($actualPage-1)*2;
 
-		$anyResults = false;
-		while($row = mySQLi_fetch_array($result)){
+			
+			
+			$sql2 = "SELECT * FROM book WHERE Author LIKE '%".$find."%' OR Title LIKE '%".$find."%' OR Description LIKE '%".$find."%' LIMIT ".$firstToView.", 2";
+			
+			$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+			
+			$cont = mysqli_num_rows($result1)-1;
+			
+			while($row2 = mySQLi_fetch_array($result2)){
+				echo"
+					
+					<div class='book-content'>
+						<div class='cover' onclick='goToPageBook(".$row2['ID'].");'>
+							<img src='data:image/jpeg;base64,".base64_encode($row2['Cover'])."' alt='cover'/>
+						</div>
+						<div class='description'>
+						<h3>".$row2['Title']."</h3>
+						<br>
+						<p>".$row2['Description']."</p>
+						</div>
+					</div>";
+					
+					if($cont > 0){
+						echo"<div class='separation-line'></div>";
+						$cont--;
+					}
+			}
+			
+			if($actualPage-1 < 1)
+				$prev="#";
+			else
+				$prev="search.php?find=".$find."&page=".($actualPage-1);
+			
+			if($actualPage+1 > $maxPage)
+				$next="#";
+			else
+				$next="search.php?find=".$find."&page=".($actualPage+1);
+			
+			echo"
+			<div class='pagination-position'>
+				  <ul class='pagination'>
+					<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=1'>1</a></li>";
+			//if there are less than 6 pages -> show them
+			if($maxPage < 6)
+				for ($i = 2; $i <= $maxPage; $i++)
+				echo"<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".$i."'>".$i."</a></li>";
+			//otherwise if there are more than 5 pages --> ...
+			else if($maxPage > 5)
+			{
+				if($actualPage == 1)
+					echo"<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=2'>2</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == $maxPage)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						<li class='page-item'><a class='page-link'href='search.php?find=".$find."&page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+				else if($actualPage == 2)
+					echo"<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=3'>3</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == 3)
+					echo"<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=3'>3</a></li><li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=4'>4</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == $maxPage-2)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+				else if($actualPage == $maxPage-1)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+				else 
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						  <li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
+						  <li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".$actualPage."'>".$actualPage."</a></li>
+						  <li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+				//page max
+				echo"<li class='page-item'><a class='page-link' href='search.php?find=".$find."&page=".$maxPage."''>".$maxPage."</a></li>";
+			}
+			echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
+				  </ul>
+			</div>";
 		
-			$anyResults = true;
-			echo
-			"<div class='book-content'>
-				<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
-				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
-				</div>
-				<div class='description'>
-				<h3>".$row['Title']."</h3>
-				</div>
-				<div class='description'>
-				<p>".$row['Description']."</p>
-				</div>
-			</div>
-			<div class='separation-line'></div>";
+		//////////////////////
 		}
-		
-		if($anyResults == false)
+		else
 			echo"<h3>No results found</h3>";
 	}
 	else if(isset($_GET['cat'])){	
 		$cat = $_GET['cat'];
-		$_SESSION['PrevPage']="search.php?cat=".$cat;
+		$_SESSION['PrevPage']="search.php?cat=".$cat."&page=1";
 		echo"
 			<div class='typeHome'>
 				<h1>".$cat."</h1>
 			</div>";
 		
+		//START PAGING PART	
+		$sql1= "SELECT book.* FROM book,concern,category,faculty WHERE book.ID = concern.Book and concern.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."'";
 		
-		$sql = "SELECT book.* FROM book,concern,category,faculty WHERE book.ID = concern.Book and concern.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."'";
-		$result = mySQLi_query($conn, $sql) or die("Error query");
-
-		$anyResults = false;
-		while($row = mySQLi_fetch_array($result)){
+		$result1 = mySQLi_query($conn, $sql1) or die("Error query2");
+		$bookPublished = $result1->num_rows;
 		
-			$anyResults = true;
-			echo
-			"<div class='book-content'>
-				<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
-				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
-				</div>
-				<div class='description'>
-				<h3>".$row['Title']."</h3>
-				</div>
-				<div class='description'>
-				<p>".$row['Description']."</p>
-				</div>
-			</div>
-			<div class='separation-line'></div>";
+		if($bookPublished > 0){
+		
+			$maxPage = ceil(($bookPublished)/2);
+			//check, if page number >> max --> show last page
+			if($actualPage > $maxPage)
+				$actualPage = $maxPage;
+			else if($actualPage < 1)
+				$actualPage = 1;
+			
+			
+			$firstToView = ($actualPage-1)*2;
+			
+			$sql2 = "SELECT book.* FROM book,concern,category,faculty WHERE book.ID = concern.Book and concern.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."' LIMIT ".$firstToView.", 2";
+			
+			$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+			
+			$cont = mysqli_num_rows($result1)-1;
+			
+			while($row2 = mySQLi_fetch_array($result2)){
+				echo"
+					
+					<div class='book-content'>
+						<div class='cover' onclick='goToPageBook(".$row2['ID'].");'>
+							<img src='data:image/jpeg;base64,".base64_encode($row2['Cover'])."' alt='cover'/>
+						</div>
+						<div class='description'>
+						<h3>".$row2['Title']."</h3>
+						<br>
+						<p>".$row2['Description']."</p>
+						</div>
+					</div>";
+					
+					if($cont > 0){
+						echo"<div class='separation-line'></div>";
+						$cont--;
+					}
+			}
+			
+			if($actualPage-1 < 1)
+				$prev="#";
+			else
+				$prev="search.php?cat=".$cat."&page=".($actualPage-1);
+			
+			if($actualPage+1 > $maxPage)
+				$next="#";
+			else
+				$next="search.php?cat=".$cat."&page=".($actualPage+1);
+			
+			echo"
+			<div class='pagination-position'>
+				  <ul class='pagination'>
+					<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=1'>1</a></li>";
+			//if there are less than 6 pages -> show them
+			if($maxPage < 6)
+				for ($i = 2; $i <= $maxPage; $i++)
+				echo"<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".$i."'>".$i."</a></li>";
+			//otherwise if there are more than 5 pages --> ...
+			else if($maxPage > 5)
+			{
+				if($actualPage == 1)
+					echo"<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=2'>2</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == $maxPage)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						<li class='page-item'><a class='page-link'href='search.php?cat=".$cat."&page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+				else if($actualPage == 2)
+					echo"<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=3'>3</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == 3)
+					echo"<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=3'>3</a></li><li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=4'>4</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == $maxPage-2)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+				else if($actualPage == $maxPage-1)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+				else 
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						  <li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
+						  <li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".$actualPage."'>".$actualPage."</a></li>
+						  <li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+				//page max
+				echo"<li class='page-item'><a class='page-link' href='search.php?cat=".$cat."&page=".$maxPage."''>".$maxPage."</a></li>";
+			}
+			echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
+				  </ul>
+			</div>";
+		
+		//////////////////////
+		
 		}
-		
-		if($anyResults == false)
+		else
 			echo"<h3>No books in this category</h3>";
 	
 	}
@@ -125,10 +296,10 @@
 	
 </div>
 
-  <?php
+ <!-- <?php
   require "footer.php";
 
-  ?>
+  ?>-->
  
 </body>
 </html>

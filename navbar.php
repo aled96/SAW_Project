@@ -38,8 +38,9 @@
                                 <li class="divider-vertical"></li>';
                     }
                     ?>
-                    <li><form action="search.php" method="get">
-                            <input type="text" class="searchNav" placeholder="Search..." name="find" required><span class="searchButton"><button type="submit"><i class="icon-search icon-black"></i> </button></span>
+                    <li><form action="search.php?" method="get">
+                            <input type="text" class="searchNav" placeholder="Search..." name="find" required><span class="searchButton">
+							<input type="hidden" name="page" value="1" id="page">
                         </form>
                     </li>
                     <li class="divider-vertical"></li>

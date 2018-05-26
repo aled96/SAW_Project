@@ -60,7 +60,7 @@
 
                 echo
                 "<div class='category col-lg-2 col-md-3 col-sm-4 col-ssm-8 col-xs-10'>
-                        <a href='search.php?cat=".$row['Name']."'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
+                        <a href='search.php?cat=".$row['Name']."&page=1'><img src='data:image/jpeg;base64,".base64_encode($row['Image'])."' alt='cover'/></a>
                         
                     </div>
                 ";

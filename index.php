@@ -48,7 +48,7 @@
       <div class="row">
           <div class="col col-12">
               <div class="jumbotron alert-success" style="background: radial-gradient(white,#EAFAF1)">
-                  <h1 class=lead">Spend less. Read more books</h1>
+                  <h1 class="lead">Spend less. Read more books</h1>
                   <br>
                   <p class="minor">How is that possible? By sharing books with other people you save money and read more books.</p>
               </div>

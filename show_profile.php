@@ -35,6 +35,7 @@
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/profileStyle.css" />
+	<link rel="stylesheet" media="all" href="css/paging.css" />
 	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
       <?php
@@ -102,16 +103,18 @@
 		
 		if($bookPublished > 0){
 		
-			$maxPage = ceil(($bookPublished)/1);
+			$maxPage = ceil(($bookPublished)/2);
 			//check, if page number >> max --> show last page
 			if($actualPage > $maxPage)
 				$actualPage = $maxPage;
+			else if($actualPage < 1)
+				$actualPage = 1;
 			
 			
-			$firstToView = ($actualPage-1)*1;
+			$firstToView = ($actualPage-1)*2;
 			
 			
-			$sql2 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id LIMIT ".$firstToView.", 1";
+			$sql2 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id LIMIT ".$firstToView.", 2";
 			
 			$result2 = mySQLi_query($conn, $sql2) or die("Error query");
 
@@ -185,7 +188,9 @@
 					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
 				else 
 					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
 						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$actualPage."'>".$actualPage."</a></li>
+						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
 						<li class='page-item'><p class='page-link'>...</p></li>";
 				//page max
 				echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$maxPage."''>".$maxPage."</a></li>";
