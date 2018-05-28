@@ -2,22 +2,22 @@ TODO
 
 - CARICARE FOTO SU DB !!! (signUp.php) !!!!!!!!!
 
-- Controllo mail e password in registrazione (accetta di tutto adesso)
+- Controllo mail e password in registrazione e in settings (accetta di tutto adesso)
 
-- Login non è centrato
+- Login non è centrato (chissene)
 
 - Aggiustare grafica CATEGORY, pageBook, Index e quant'altro
 
-- Chat -> problema se mando ' o altro (penso anche su sign up e compagnia)
+- Chat -> problema se mando ' o altro (penso anche su sign up e compagnia) ==> htmlspecialchars dovrebbe essere la soluzione
 
--Problema Footer --> Copre le altre cose !! Anche nella chat, non vedo il tasto per mandare msg
+- Problema Footer --> Copre le altre cose !! Anche nella chat, non vedo il tasto per mandare msg (non so perché! A me non copre nulla)
 
--Sfondo in chat.php --> vedo praticamente tutto nero e non arriva a fine pagine (si ferma a metà chat circa)
+- Sfondo in chat.php --> vedo praticamente tutto nero e non arriva a fine pagine (si ferma a metà chat circa) (io non vedo proprio lo sfondo, quindi)
 
 - Cambio password in Settings
 
-- Qualcosa per identificare numero pagina attuale
+- Qualcosa per identificare numero pagina attuale (intendi come search.php?pag=numero??)
 
--WARNING - BEWARE - ACTHUNG (cit.) ---> Se query falliscono -> non si vede nulla (showProfile, Settings etc)
+- WARNING - BEWARE - ACTHUNG (cit.) ---> Se query falliscono -> non si vede nulla (showProfile, Settings etc) ==> facciamo in modo che torni alla pagina precedente con un errore (oppure facciamo pagina di 	errore a mo di 404 not found)
 
-- Search si può fare meglio (???)
+- Search si può fare meglio (filtri multipli)

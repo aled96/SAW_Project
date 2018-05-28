@@ -55,7 +55,6 @@ $_SESSION['PrevPage'] ="setting.php";
             $sql = "SELECT user.*, city.Name as Cityname, province.Name as Provincename FROM user, city, province WHERE Username='" . $user . "' and user.City = city.ID and city.Province = province.ID ";
             $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
 
-
             while ($row = mySQLi_fetch_array($result)) {
                 $provinceName = $row['Provincename'];
                 $cityName = $row['Cityname'];
