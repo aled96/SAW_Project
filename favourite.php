@@ -3,10 +3,16 @@
 
 <?php
 	session_start();
-	$_SESSION['PrevPage'] = "favourite.php";
+	$_SESSION['PrevPage'] = "favourite.php?";
     if(!isset($_SESSION['username'])) {
         header("location: index.php");
-    }
+    }	
+	
+	if(isset($_GET['page']))
+		$actualPage = $_GET['page'];
+	else
+		$actualPage = 1;
+	$_SESSION['PrevPage'] = "favourite.php??user=page=".$actualPage;
 ?>
   <head>
     <title>Site Name</title>
@@ -25,12 +31,12 @@
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/home.css" />
+	<link rel="stylesheet" media="all" href="css/paging.css" />
 	<script src="js/common.js"></script>
       <?php
       if(isset($_SESSION['username'])) {
           echo '<script src="js/message_updates.js"></script>';
       }
-
       ?>
 </head>
 
@@ -45,7 +51,6 @@
 	<div class='typeHome'>
 		<h1>My Wish List</h1>
 	</div>
-		
 	<?php
 
     require "db/mysql_credentials.php";
@@ -63,26 +68,108 @@
 		$user = $_SESSION['username'];
 		$sql = "SELECT book.* FROM book, wishlist WHERE Book=Id and Username ='$user';";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
-		$cont = 0;
-		while($row = mySQLi_fetch_array($result)){
-			$cont++;
-			echo
-			"
-			<div class='book-content'>
-				<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
-				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
-				</div>
-				<div class='description'>
-				<h3>".$row['Title']."</h3>
-				</div>
-				<div class='description'>
-				<p>".$row['Description']."</p>
-				</div>
-			</div>
-			<div class='separation-line'></div>";
+		$books = $result->num_rows;
 		
+		if ($books > 0) {
+			$maxPage = ceil(($books)/2);
+			//check, if page number >> max --> show last page
+			if($actualPage > $maxPage)
+				$actualPage = $maxPage;
+			else if($actualPage < 1)
+				$actualPage = 1;
+			
+			$firstToView = ($actualPage-1)*2;
+
+			
+			
+			$sql2 = "SELECT book.* FROM book, wishlist WHERE Book=Id and Username ='$user' LIMIT ".$firstToView.", 2";
+			
+			$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+			
+			$cont = 1;
+			
+			while($row2 = mySQLi_fetch_array($result2)){
+				echo"
+					
+					<div class='book-content'>
+						<div class='cover' onclick='goToPageBook(".$row2['ID'].");'>
+							<img src='data:image/jpeg;base64,".base64_encode($row2['Cover'])."' alt='cover'/>
+						</div>
+						<div class='description'>
+						<h3>".$row2['Title']."</h3>
+						<br>
+						<p>".$row2['Description']."</p>
+						</div>
+					</div>";
+					
+					if($cont > 0){
+						echo"<div class='separation-line'></div>";
+						$cont--;
+					}
+			}
+			
+			if($actualPage-1 < 1)
+				$prev="#";
+			else
+				$prev="favourite.php?page=".($actualPage-1);
+			
+			if($actualPage+1 > $maxPage)
+				$next="#";
+			else
+				$next="favourite.php?page=".($actualPage+1);
+			
+			echo"
+			<div class='pagination-position'>
+				  <ul class='pagination'>
+					<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=1'>1</a></li>";
+			//if there are less than 6 pages -> show them
+			if($maxPage < 6)
+				for ($i = 2; $i <= $maxPage; $i++)
+				echo"<li class='page-item'><a class='page-link' href='favourite.php?page=".$i."'>".$i."</a></li>";
+			//otherwise if there are more than 5 pages --> ...
+			else if($maxPage > 5)
+			{
+				if($actualPage == 1)
+					echo"<li class='page-item'><a class='page-link' href='favourite.php?page=2'>2</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == $maxPage)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						<li class='page-item'><a class='page-link'href='favourite.php?page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+				else if($actualPage == 2)
+					echo"<li class='page-item'><a class='page-link' href='favourite.php?page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=3'>3</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == 3)
+					echo"<li class='page-item'><a class='page-link' href='favourite.php?page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=3'>3</a></li><li class='page-item'><a class='page-link' href='favourite.php?page=4'>4</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+				else if($actualPage == $maxPage-2)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+				else if($actualPage == $maxPage-1)
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='favourite.php?page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+				else 
+					echo"<li class='page-item'><p class='page-link'>...</p></li>
+						  <li class='page-item'><a class='page-link' href='favourite.php?page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
+						  <li class='page-item'><a class='page-link' href='favourite.php?page=".$actualPage."'>".$actualPage."</a></li>
+						  <li class='page-item'><a class='page-link' href='favourite.php?page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+				//page max
+				echo"<li class='page-item'><a class='page-link' href='favourite.php?page=".$maxPage."''>".$maxPage."</a></li>";
+			}
+			echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
+				  </ul>
+			</div>";
+		
+			
+			////////////////		
 		}
-		if($cont == 0)
+		else
 			echo"<div class='description'>
 				<h3>Your list is empty !!</h3>
 				</div>";
@@ -94,7 +181,7 @@
 </div>
 
   <?php
-  require "footer.php";
+  //require "footer.php";
 
   ?>
  

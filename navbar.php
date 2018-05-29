@@ -58,7 +58,7 @@
                                             <li class="divider"></li>
                                             <li><a href="insert_new.php"><i class="icon-plus"></i>Add Book</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="favourite.php"><i class="icon-heart"></i> Wish List</a></li>
+                                            <li><a href="favourite.php?page=1"><i class="icon-heart"></i> Wish List</a></li>
                                             <li class="divider"></li>
                                             <li><a href="setting.php"><i class="icon-wrench"></i> Settings</a></li>
                                             <li class="divider"></li>

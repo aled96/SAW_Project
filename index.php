@@ -108,15 +108,15 @@
 	while($row = mySQLi_fetch_array($result)){
 		echo
 		"
-		<div class='book-content'>
-			<div class='cover' onclick='goToPageBook(".$row['ID'].");'>
-			<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
+		<div class='book-content' onclick='goToPageBook(".$row['ID'].");'>
+			<div class='cover'>
+				<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 			</div>
 			<div class='description'>
-			<h3>".$row['Title']."</h3>
+				<h3>".$row['Title']."</h3>
 			</div>
 			<div class='description'>
-			<p>".$row['Description']."</p>
+				<p>".$row['Description']."</p>
 			</div>
 		</div>
 		<div class='separation-line'></div>";
