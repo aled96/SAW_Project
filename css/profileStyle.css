@@ -11,6 +11,14 @@
 	height:19vw;
 }
 
+.TitlePage{
+	margin-left:16vw;
+	margin-bottom:1.2vw;
+	margin-top:1.2vw;
+	display:block;
+	font-size:2.6vw;
+	font-weight:bold;
+}
 /* Profile Page */
 
 #ProfilePic{
@@ -101,8 +109,18 @@
 }
 
 .description>h3{
+	display:inline;
+	margin-right:4vw;
 	font-size:2vw;
 }
+
+/*modify button*/
+.description>a>i{
+	margin-top:0.5vw;
+	margin-right:0.5vw;
+	float:right;
+	font-size:2vw;
+}}
 
 .description>p{
 	font-size:1.2vw;

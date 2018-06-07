@@ -21,3 +21,10 @@ TODO
 - WARNING - BEWARE - ACTHUNG (cit.) ---> Se query falliscono -> non si vede nulla (showProfile, Settings etc) ==> facciamo in modo che torni alla pagina precedente con un errore (oppure facciamo pagina di 	errore a mo di 404 not found)
 
 - Search si può fare meglio (filtri multipli)
+
+- Scritte HOME aggiornare e cambiare a seguito del login, tipo REGISTER NOW ti manda a login.php anche se hai già fatto l'accesso
+
+
+- "My publications" -> dove vedi cosa hai pubblicato e puoi modificarlo !
+
+- Controlli con campi passati con GET (esempio se id libro = 0 non si vede nulla)

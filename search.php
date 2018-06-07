@@ -57,7 +57,7 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	if(isset($_GET['find'])){	
+	if(isset($_GET['find'])){
 		$find = $_GET['find'];
 		$_SESSION['PrevPage']="search.php?find=".$find."&page=".$actualPage;
 	
@@ -73,8 +73,9 @@
 		$bookPublished = $result1->num_rows;
 		
 		if($bookPublished > 0){
-		
-			$maxPage = ceil(($bookPublished)/2);
+			$bookPerPage = 2;
+			
+			$maxPage = ceil(($bookPublished)/$bookPerPage);
 			//check, if page number >> max --> show last page
 			if($actualPage > $maxPage)
 				$actualPage = $maxPage;
@@ -82,34 +83,37 @@
 				$actualPage = 1;
 			
 			
-			$firstToView = ($actualPage-1)*2;
+			$firstToView = ($actualPage-1)*$bookPerPage;
 
+			$cont = -1;
 			
+			echo"<div id='BooksPublished'>";
 			
-			$sql2 = "SELECT * FROM book WHERE Author LIKE '%".$find."%' OR Title LIKE '%".$find."%' OR Description LIKE '%".$find."%' LIMIT ".$firstToView.", 2";
-			
-			$result2 = mySQLi_query($conn, $sql2) or die("Error query");
-			
-			$cont = mysqli_num_rows($result1)-1;
-			
-			while($row2 = mySQLi_fetch_array($result2)){
-				echo"
-					
-					<div class='book-content'>
-						<div class='cover' onclick='goToPageBook(".$row2['ID'].");'>
-							<img src='data:image/jpeg;base64,".base64_encode($row2['Cover'])."' alt='cover'/>
-						</div>
-						<div class='description'>
-						<h3>".$row2['Title']."</h3>
-						<br>
-						<p>".$row2['Description']."</p>
-						</div>
-					</div>";
-					
-					if($cont > 0){
-						echo"<div class='separation-line'></div>";
-						$cont--;
-					}
+			while($row1 = mySQLi_fetch_array($result1)){
+				$cont ++;
+				//echo "Cont ".$cont;
+				if($cont < $firstToView){
+					continue;
+				}
+				else if($cont >= $firstToView + $bookPerPage)
+					break;
+				else{
+					echo"						
+						<div class='book-content'>
+							<div class='cover' onclick='goToPageBook(".$row1['ID'].");'>
+								<img src='data:image/jpeg;base64,".base64_encode($row1['Cover'])."' alt='cover'/>
+							</div>
+							<div class='description'>
+							<h3>".$row1['Title']."</h3>
+							<br>
+							<p>".$row1['Description']."</p>
+							</div>
+						</div>";
+						
+						if($cont < $firstToView+$bookPerPage-1){
+							echo"<div class='separation-line'></div>";
+						}
+				}
 			}
 			
 			if($actualPage-1 < 1)
@@ -190,8 +194,9 @@
 		$bookPublished = $result1->num_rows;
 		
 		if($bookPublished > 0){
-		
-			$maxPage = ceil(($bookPublished)/2);
+			$bookPerPage = 2;
+			
+			$maxPage = ceil(($bookPublished)/$bookPerPage);
 			//check, if page number >> max --> show last page
 			if($actualPage > $maxPage)
 				$actualPage = $maxPage;
@@ -199,32 +204,37 @@
 				$actualPage = 1;
 			
 			
-			$firstToView = ($actualPage-1)*2;
+			$firstToView = ($actualPage-1)*$bookPerPage;
+
+			$cont = -1;
 			
-			$sql2 = "SELECT book.* FROM book,concern,category,faculty WHERE book.ID = concern.Book and concern.Category = category.ID and category.Faculty = faculty.ID and faculty.Name = '".$cat."' LIMIT ".$firstToView.", 2";
+			echo"<div id='BooksPublished'>";
 			
-			$result2 = mySQLi_query($conn, $sql2) or die("Error query");
-			
-			$cont = mysqli_num_rows($result1)-1;
-			
-			while($row2 = mySQLi_fetch_array($result2)){
-				echo"
-					
-					<div class='book-content'>
-						<div class='cover' onclick='goToPageBook(".$row2['ID'].");'>
-							<img src='data:image/jpeg;base64,".base64_encode($row2['Cover'])."' alt='cover'/>
-						</div>
-						<div class='description'>
-						<h3>".$row2['Title']."</h3>
-						<br>
-						<p>".$row2['Description']."</p>
-						</div>
-					</div>";
-					
-					if($cont > 0){
-						echo"<div class='separation-line'></div>";
-						$cont--;
-					}
+			while($row1 = mySQLi_fetch_array($result1)){
+				$cont ++;
+				//echo "Cont ".$cont;
+				if($cont < $firstToView){
+					continue;
+				}
+				else if($cont >= $firstToView + $bookPerPage)
+					break;
+				else{
+					echo"						
+						<div class='book-content'>
+							<div class='cover' onclick='goToPageBook(".$row1['ID'].");'>
+								<img src='data:image/jpeg;base64,".base64_encode($row1['Cover'])."' alt='cover'/>
+							</div>
+							<div class='description'>
+							<h3>".$row1['Title']."</h3>
+							<br>
+							<p>".$row1['Description']."</p>
+							</div>
+						</div>";
+						
+						if($cont < $firstToView+$bookPerPage-1){
+							echo"<div class='separation-line'></div>";
+						}
+				}
 			}
 			
 			if($actualPage-1 < 1)

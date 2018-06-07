@@ -2,20 +2,19 @@
 <html lang="en">
 <?php
 	session_start();
-	$userProfile = $_GET['user'];
+	$userProfile = "";
 	
-	if(!isset($_GET['user'])) {
-        if(!isset($_SESSION['username'])) {
-            header("location: index.php");
-        }
-        $userProfile = $_SESSION['username'];
+	if(!isset($_SESSION['username'])) {
+        header("location: index.php");
     }
+	else
+		$userProfile = $_SESSION['username'];
 	
 	if(isset($_GET['page']))
 		$actualPage = $_GET['page'];
 	else
 		$actualPage = 1;
-	$_SESSION['PrevPage'] = "show_profile.php?user=".$userProfile."&page=".$actualPage;
+	$_SESSION['PrevPage'] = "my_publications.php?user=".$userProfile."&page=".$actualPage;
 ?>
   <head>
     <title>Site Name</title>
@@ -65,34 +64,8 @@
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		}
-
-		$sql = "SELECT user.*, city.Name as CityName, province.Name as ProvName, Region FROM user, city,province WHERE city.ID = City AND province.ID = Province AND Username = '$userProfile'";
-		$result = mySQLi_query($conn, $sql) or die("Error query");
 		
-		
-		while($row = mySQLi_fetch_array($result)){
-			echo"
-			<div id='UserInfo'>
-				<div id='ProfilePic'>";
-				
-			if($row['ProfilePic'] != null)
-				echo"<img src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='cover'/>";
-			else
-				echo"<img src='https://bootdey.com/img/Content/user_1.jpg'>";
-			
-			echo"
-				</div>
-				
-				<div id='UserDetail'>
-					<div id='Username'><p>".$row['Username']."</p></div>
-					<div class='OtherInfo'><p>".$row['Name']."</p><p>".$row['Surname']."</p></div>
-					<div class='OtherInfo'><p>".$row['ProvName']." in ".$row['Region']."</p></div>
-					<div class='OtherInfo'><a href='view_chat.php?user_to=".$userProfile."'>Contact here</a></div>
-					
-				</div>
-			</div>
-			";
-		}
+		echo"<div class='TitlePage'><p> My Publications</p></div>";
 		
 		$sql1 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id";
 		
@@ -132,6 +105,7 @@
 							</div>
 							<div class='description'>
 							<h3>".$row1['Title']."</h3>
+							<a href='modify_book.php?id=".$row1['BookID']."'><i class='icon-pencil'></i></a>
 							<br>
 							<p>".$row1['Description']."</p>
 							</div>
@@ -141,61 +115,61 @@
 							echo"<div class='separation-line'></div>";
 						}
 				}
-			}
+			}	
 			
 			if($actualPage-1 < 1)
 				$prev="#";
 			else
-				$prev="show_profile.php?user=".$userProfile."&page=".($actualPage-1);
+				$prev="my_publications.php?user=".$userProfile."&page=".($actualPage-1);
 			
 			if($actualPage+1 > $maxPage)
 				$next="#";
 			else
-				$next="show_profile.php?user=".$userProfile."&page=".($actualPage+1);
+				$next="my_publications.php?user=".$userProfile."&page=".($actualPage+1);
 			
 			echo"
 			<div class='pagination-position'>
 				  <ul class='pagination'>
 					<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=1'>1</a></li>";
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=1'>1</a></li>";
 			//if there are less than 6 pages -> show them
 			if($maxPage < 6)
 				for ($i = 2; $i <= $maxPage; $i++)
-				echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$i."'>".$i."</a></li>";
+				echo"<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".$i."'>".$i."</a></li>";
 			//otherwise if there are more than 5 pages --> ...
 			else if($maxPage > 5)
 			{
 				if($actualPage == 1)
-					echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+					echo"<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=2'>2</a></li>
 						<li class='page-item'><p class='page-link'>...</p></li>";
 				else if($actualPage == $maxPage)
 					echo"<li class='page-item'><p class='page-link'>...</p></li>
-						<li class='page-item'><a class='page-link'href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+						<li class='page-item'><a class='page-link'href='my_publications.php?user=".$userProfile."&page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
 				else if($actualPage == 2)
-					echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=3'>3</a></li>
+					echo"<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=3'>3</a></li>
 					<li class='page-item'><p class='page-link'>...</p></li>";
 				else if($actualPage == 3)
-					echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=3'>3</a></li><li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=4'>4</a></li>
+					echo"<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=3'>3</a></li><li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=4'>4</a></li>
 					<li class='page-item'><p class='page-link'>...</p></li>";
 				else if($actualPage == $maxPage-2)
 					echo"<li class='page-item'><p class='page-link'>...</p></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
 				else if($actualPage == $maxPage-1)
 					echo"<li class='page-item'><p class='page-link'>...</p></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
-					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
 				else 
 					echo"<li class='page-item'><p class='page-link'>...</p></li>
-						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
-						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$actualPage."'>".$actualPage."</a></li>
-						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
+						  <li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
+						  <li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".$actualPage."'>".$actualPage."</a></li>
+						  <li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
 						<li class='page-item'><p class='page-link'>...</p></li>";
 				//page max
-				echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$maxPage."''>".$maxPage."</a></li>";
+				echo"<li class='page-item'><a class='page-link' href='my_publications.php?user=".$userProfile."&page=".$maxPage."''>".$maxPage."</a></li>";
 			}
 			echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
 				  </ul>

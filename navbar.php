@@ -15,7 +15,10 @@
                     <li class="divider-vertical"></li>
                     <?php
                     if(isset($_SESSION['username'])) {
-
+						//TODO -> Togliere alla fine (link icone)
+						// http://zikula.github.io/bootstrap-docs/icons/
+						
+						
                         require "db/mysql_credentials.php";
 
                         // Create connection
@@ -59,6 +62,8 @@
                                             <li><a href="insert_new.php"><i class="icon-plus"></i>Add Book</a></li>
                                             <li class="divider"></li>
                                             <li><a href="favourite.php?page=1"><i class="icon-heart"></i> Wish List</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="my_publications.php?page=1"><i class="icon-book"></i> My Publications</a></li>
                                             <li class="divider"></li>
                                             <li><a href="setting.php"><i class="icon-wrench"></i> Settings</a></li>
                                             <li class="divider"></li>

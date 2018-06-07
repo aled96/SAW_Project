@@ -45,7 +45,10 @@
 		// Create connection
 		$conn = new mysqli($servername, $username, $password, $dbname);
 	
-		$id = $_GET['Id'];
+		if(isset($_GET['Id']))
+			$id = $_GET['Id'];
+		else
+			$id = 0;
 	
 		$_SESSION['PrevPage']="PageBook.php?Id=".$id;
 		
