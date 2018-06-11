@@ -93,7 +93,7 @@
 						if($row2['IsThere'] == 1)
 							$star_status="icon-star";
 					}
-					$link="add_favourite.php?Book=".$id;
+					$link="script/add_favourite.php?Book=".$id;
 				}
 				
 				echo"<div class='AddFavourite'>

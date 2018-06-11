@@ -23,7 +23,7 @@ function selectCategory(id){
 
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_select_category.php" + "?faculty=" + faculty);
+    url = encodeURI("./script/async_select_category.php" + "?faculty=" + faculty);
 
     xmlreq.onreadystatechange = asyncSelCategory;
     xmlreq.open("GET", url, true);
@@ -51,7 +51,7 @@ function addNewCategory(){
 
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_add_category.php" + "?count=" + currentCatNumber);
+    url = encodeURI("./script/async_add_category.php" + "?count=" + currentCatNumber);
 
     xmlreq.onreadystatechange = asyncAddCategory;
     xmlreq.open("GET", url, true);

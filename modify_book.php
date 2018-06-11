@@ -45,7 +45,7 @@ require "navbar.php";
 <div class="backimginsert">
     <br><br>
     <div id="form-div">
-        <form class="montform" action="#" method="POST" id="reused_form" enctype="multipart/form-data">
+        <form class="montform" action="script/commit_modify_book.php" method="POST" id="reused_form" enctype="multipart/form-data">
             <p class="title">Book Information</p>
             <p class="author">
                 <input name="author" type="text" class="feedback-input" required placeholder="Author" id="author" />

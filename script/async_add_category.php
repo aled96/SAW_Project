@@ -1,5 +1,5 @@
 <?php
-require "db/mysql_credentials.php";
+require "../db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

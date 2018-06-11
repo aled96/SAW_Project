@@ -31,7 +31,7 @@
 <div class="backimg">
 
     <div class="body" id="logIn">
-        <form action="login_user.php" method="POST" name="login" class="sky-form">
+        <form action="script/login_user.php" method="POST" name="login" class="sky-form">
             <header>Log In form</header>
 
             <fieldset>
@@ -78,7 +78,7 @@
     </div>
 
     <div class="body" id="signUpForm">
-    <form action="signup.php" method="POST" name="signupform" class="sky-form">
+    <form action="script/signup.php" method="POST" name="signupform" class="sky-form" enctype="multipart/form-data">
         <header>Registration form</header>
 
         <fieldset>

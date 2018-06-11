@@ -1,6 +1,6 @@
 <?php
 
-require "db/mysql_credentials.php";
+require "../db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -32,6 +32,6 @@ $sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
 //TODO -> aggiungere reindirizzamento a pagina precedente (??)
-header("location: index.php");
+header("location: ../index.php");
 
 ?>

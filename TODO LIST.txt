@@ -1,6 +1,6 @@
 TODO
 
-- CARICARE FOTO SU DB !!! (signUp.php) !!!!!!!!!
+- CARICARE FOTO SU DB !!! (signUp.php) => FATTO
 
 - Controllo mail e password in registrazione e in settings (accetta di tutto adesso)
 

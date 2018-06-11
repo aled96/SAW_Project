@@ -1,6 +1,6 @@
 <?php
 
-require "db/mysql_credentials.php";
+require "../db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -46,6 +46,6 @@ while($row = mySQLi_fetch_array($result)){
 		}	
 	}
 }
-header("location: PageBook.php?Id=".$book."");
+header("location: ../PageBook.php?Id=".$book."");
 
 ?>

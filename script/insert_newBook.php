@@ -1,6 +1,6 @@
 <?php
 
-require "db/mysql_credentials.php";
+require "../db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -80,6 +80,6 @@ if ($conn->query($sql3) === TRUE) {
     die("Error: " . $sql3 . "<br>" . $conn->error);
 }
 
-header("location: PageBook.php?Id=".$id."");
+header("location: ../PageBook.php?Id=".$id."");
 
 ?>

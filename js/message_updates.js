@@ -17,7 +17,7 @@ function getXMLHttpRequestObject() {
 function websocket(){
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_socket.php");
+    url = encodeURI("./script/async_socket.php");
     xmlreq.onreadystatechange = check_socket;
     xmlreq.open("GET", url, true);
     xmlreq.send();

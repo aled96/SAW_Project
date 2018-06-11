@@ -68,7 +68,7 @@ function checkSettings(){
 	
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_checkemailModify.php" + "?email=" + email+"&username=" + user);
+    url = encodeURI("./script/async_checkemailModify.php" + "?email=" + email+"&username=" + user);
     xmlreq.onreadystatechange = asyncEmail;
     xmlreq.open("GET", url, true);
     xmlreq.send();
@@ -100,7 +100,7 @@ function selectCity(){
 
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_select_city.php" + "?province=" + province);
+    url = encodeURI("./script/async_select_city.php" + "?province=" + province);
 
     xmlreq.onreadystatechange = asyncSelCity;
     xmlreq.open("GET", url, true);

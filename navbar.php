@@ -67,7 +67,7 @@
                                             <li class="divider"></li>
                                             <li><a href="setting.php"><i class="icon-wrench"></i> Settings</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="logout.php"><i class="icon-share"></i>Logout</a></li>
+                                            <li><a href="script/logout.php"><i class="icon-share"></i>Logout</a></li>
                                         </ul>
                                     </li>
                                 </ul>';

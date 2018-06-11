@@ -1,6 +1,6 @@
 <?php
 
-require "db/mysql_credentials.php";
+require "../db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -38,9 +38,9 @@ if($login){
     $_SESSION['username'] = $user;
 	
 	if(isset($_SESSION['PrevPage']))
-		header("location: ".$_SESSION['PrevPage']);
+		header("location: ../".$_SESSION['PrevPage']);
 	else
-		header("location: index.php");
+		header("location: ../index.php");
 }
 
 ?>

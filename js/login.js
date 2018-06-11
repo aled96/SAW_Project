@@ -47,7 +47,7 @@ function ajaxcheckPassword(){
 
 	xmlreq = getXMLHttpRequestObject();
 
-	url = encodeURI("async_login.php" + "?username=" + user + "&password=" + encrypt_psw);
+	url = encodeURI("./script/async_login.php" + "?username=" + user + "&password=" + encrypt_psw);
 	xmlreq.onreadystatechange = checklogin;
 	xmlreq.open("GET", url, true);
 	xmlreq.send();
@@ -158,7 +158,7 @@ function checkSignUp(){
 
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_checkemail.php" + "?email=" + email+"&username=" + user);
+    url = encodeURI("./script/async_checkemail.php" + "?email=" + email+"&username=" + user);
     xmlreq.onreadystatechange = checkEmail;
     xmlreq.open("GET", url, true);
     xmlreq.send();
@@ -194,7 +194,7 @@ function selectCity(){
 
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("async_select_city.php" + "?province=" + province);
+    url = encodeURI("./script/async_select_city.php" + "?province=" + province);
 
     xmlreq.onreadystatechange = asyncSelCity;
     xmlreq.open("GET", url, true);

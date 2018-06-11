@@ -1,6 +1,6 @@
 <?php
 
-require "db/mysql_credentials.php";
+require "../db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -20,8 +20,6 @@ $gender = $_POST['gender'];
 $date_birth = $_POST['dateSign'];
 $city = $_POST['citySign'];
 
-
-//TODO -> NON VAAAA
 $imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 
 $sql2 = "SELECT ID from city where NAME = '".$city."'";
@@ -33,7 +31,7 @@ while($row2 = mySQLi_fetch_array($result2)){
 }
 
 $sql = "INSERT INTO user (Username, Email, Password, Name, Surname, Gender, Date_of_birth, City, ProfilePic)
-VALUES ('$user', '$email', '$pwd', '$name', '$surname', '$gender', '$date_birth', '$city','$imgData')";
+VALUES ('".$user."', '".$email."', '".$pwd."', '".$name."', '".$surname."', '".$gender."', '".$date_birth."', '".$city."','".$imgData."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -47,8 +45,8 @@ session_start();
 $_SESSION['username'] = $user;
 
 if(isset($_SESSION['PrevPage']))
-	header("location: ".$_SESSION['PrevPage']);
+	header("location: ../".$_SESSION['PrevPage']);
 else
-	header("location: index.php");
+	header("location: ../index.php");
 
 ?>
