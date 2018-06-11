@@ -105,7 +105,7 @@
 							</div>
 							<div class='description'>
 							<h3>".$row1['Title']."</h3>
-							<a href='modify_book.php?id=".$row1['BookID']."'><i class='icon-pencil'></i></a>
+							<a href='modify_book.php?Id=".$row1['BookID']."'><i class='icon-pencil'></i></a>
 							<br>
 							<p>".$row1['Description']."</p>
 							</div>

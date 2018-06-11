@@ -26,4 +26,6 @@ TODO
 
 - "My publications" -> dove vedi cosa hai pubblicato e puoi modificarlo !
 
+- InsertBook / MyPublications (ajax -> visualizza foto nuova)
+
 - Controlli con campi passati con GET (esempio se id libro = 0 non si vede nulla)

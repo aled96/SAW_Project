@@ -5,7 +5,7 @@
 session_start();
 
 if(!isset($_SESSION['username'])) {
-    header("location: index.php");
+    header('location: index.php');
 }
 ?>
 <head>
@@ -45,93 +45,114 @@ require "navbar.php";
 <div class="backimginsert">
     <br><br>
     <div id="form-div">
-        <form class="montform" action="script/commit_modify_book.php" method="POST" id="reused_form" enctype="multipart/form-data">
-            <p class="title">Book Information</p>
-            <p class="author">
-                <input name="author" type="text" class="feedback-input" required placeholder="Author" id="author" />
-            </p>
-            <p class="title">
-                <input name="title" type="text" required class="feedback-input" id="title" placeholder="Title" />
-            </p>
-            <p class="text">
-                <textarea name="description" class="feedback-input" id="description" placeholder="Description"></textarea>
-            </p>
-            <p class="pages">
-                <input name="pages" type="number" required class="feedback-input" id="pages" placeholder="Number of Pages"/>
-            </p>
-            <p class="edition">
-                <input name="edition" type="text" required class="feedback-input" id="edition" placeholder="Edition"/>
-            </p>
-            <p class="isbn">
-                <input name="isbn" type="text" required class="feedback-input" id="isbn" placeholder="ISBN"/>
-            </p>
-            <p>Cover</p>
-            <p class="file">
-                <input name="image" type="file" required id="image" class="feedback-input"/>
-            </p>
-            <p class="title">Book Categories</p>
-            <div class="categories" id="categories">
-                <input name="number_of_categories" type="hidden" value="1" id="number_of_categories">
-                <section class="col col-6">
-                    <select name="fac1" id="fac1" class="feedback-input" required onchange="selectCategory(1)">
-                        <option value="not-selected" selected disabled>Faculty</option>
-                        <?php
+	 <?php
 
-                        require "db/mysql_credentials.php";
+		require "db/mysql_credentials.php";
 
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $dbname);
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
 
-                        // Check connection
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        }
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
 
-                        $sql = "SELECT distinct Name FROM faculty";
-                        $result = $conn->query($sql);
+		$id = 0;
+		if(isset($_GET['Id']))
+			$id = $_GET['Id'];
+		else
+			echo"THERE IS AN ERROR";
+			
+		$sql = "SELECT book.*,Price, Place FROM book,insertion WHERE book.ID = Material_offered AND book.ID = '".$id."';";
+		$result = $conn->query($sql);
 
-                        while($row = $result->fetch_assoc()) {
-                            $fac = $row['Name'];
-                            if(strlen($fac) != 0) {
-                                echo "<option value='" . $fac . "'>" . $fac . "</option>";
-                            }
-                        }
+		while($row = $result->fetch_assoc()) {
+			echo"
+			<form class='montform' action='script/commit_modify_book.php' method='POST' id='reused_form' enctype='multipart/form-data'>
+				<input name='id' type='hidden' value='".$id."' id='id' />
+				<p class='title'>Book Information</p>
+				<p class='author'>
+					<input name='author' type='text' class='feedback-input' value='".$row['Author']."' required placeholder='Author' id='author' />
+				</p>
+				<p class='title'>
+					<input name='title' type='text' required class='feedback-input' value='".$row['Title']."' id='title' placeholder='Title' />
+				</p>
+				<p class='text'>
+					<textarea name='description' class='feedback-input' id='description' placeholder='Description'>".$row['Description']."</textarea>
+				</p>
+				<p class='pages'>
+					<input name='pages' type='number' required class='feedback-input' value='".$row['PageNum']."' id='pages' placeholder='Number of Pages'/>
+				</p>
+				<p class='edition'>
+					<input name='edition' type='text' required class='feedback-input' value='".$row['Edition']."' id='edition' placeholder='Edition'/>
+				</p>
+				<p class='isbn'>
+					<input name='isbn' type='text' required class='feedback-input' value='".$row['ISBN']."' id='isbn' placeholder='ISBN'/>
+				</p>
+				<p>Cover</p>
+				<div id='BookCover'>
+					<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
+				</div>
+				<p class='file'>
+					<input name='image' type='file' id='image' class='feedback-input'/>
+				</p>
+				<p class='title'>Book Categories</p>
+				<div class='categories' id='categories'>
+					<input name='number_of_categories' type='hidden' value='1' id='number_of_categories'>
+					<section class='col col-6'>
+						<select name='fac1' id='fac1' class='feedback-input' required onchange='selectCategory(1)'>
+							<option value='not-selected' selected disabled>Faculty</option>";
+						   
+							$sql1 = "SELECT distinct Name FROM faculty";
+							$result1 = $conn->query($sql);
 
-                        $conn->close();
+							while($row1 = $result->fetch_assoc()) {
+								$fac = $row1['Name'];
+								if(strlen($fac) != 0) {
+									echo "<option value='" . $fac . "'>" . $fac . "</option>";
+								}
+							}
 
-                        ?>
-                    </select>
-                </section>
-                <section class="col col-6">
-                    <select name="cat1" class="feedback-input" required  id="cat1" >
-                        <option value="not-selected" selected disabled>Category</option>
-                    </select>
-                </section>
-            </div>
-            <br>
-            <p class="categories">
-                <button type="button" class="button-plus" onclick="addNewCategory()">Add New Category</button>
-                <br><br>
-            </p>
-            <p class="title">Selling Information</p>
-            <p class="price">
-                <input name="price" type="number" required class="feedback-input" id="price" placeholder="Price"/>
-            </p>
-            <p class="place">
-                <input name="place" type="text" required class="feedback-input" id="place" placeholder="Place"/>
-            </p>
-            <div class="submit">
-                <button type="#" class="button-blue">Submit</button>
-                <div class="ease"></div>
-            </div>
-        </form>
+							$conn->close();
+
+					echo"   </select>
+					</section>
+					<section class='col col-6'>
+						<select name='cat1' class='feedback-input' required  id='cat1' >
+							<option value='not-selected' selected disabled>Category</option>
+						</select>
+					</section>
+				</div>
+				<br>
+				<p class='categories'>
+					<button type='button' class='button-plus' onclick='addNewCategory()'>Add New Category</button>
+					<br><br>
+				</p>
+				<p class='title'>Selling Information</p>
+				<p class='price'>
+					<input name='price' type='number' required class='feedback-input' value='".$row['Price']."' id='price' placeholder='Price'/>
+				</p>
+				<p class='place'>
+					<input name='place' type='text' required class='feedback-input' value='".$row['Place']."' id='place' placeholder='Place'/>
+				</p>
+				<div class='submit'>
+					<button type='submit' class='button-blue'>Submit</button>
+					<div class='ease'></div>	
+				<div class='submit'>
+					<button type='#' onclick='' class='button-red'>Delete</button>
+					<div class='ease'></div>
+				</div>
+				
+				</form>";
+			}
+         ?>
         <br>
     </div>
 </div>
 
 
 <?php
-require "footer.php";
+require 'footer.php';
 
 ?>
 
