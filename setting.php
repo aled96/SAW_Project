@@ -62,6 +62,11 @@ $_SESSION['PrevPage'] ="setting.php";
             <fieldset>
                 <section>
                     <label class="input" >
+                        <a href="change_password.php"><button type="button" class="change-password-button" >Change Password </button></a>
+                    </label>
+                </section>
+                <section>
+                    <label class="input" >
                         <p class="errorLogin" id="errorSettingsBox"><br></p>
                     </label>
                 </section>

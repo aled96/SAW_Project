@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+    session_start();
+    if(isset($_SESSION['username']))
+    {
+        header("location: index.php");
+    }
+?>
+
   <head>
     <title>Site Name</title>
 
