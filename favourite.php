@@ -48,10 +48,8 @@
 
 
 <div class="content">
-	
-	<div class='typeHome'>
-		<h1>My Wish List</h1>
-	</div>
+
+    <div class='TitlePage'><p> Wish List</p></div>
 	<?php
 
     require "db/mysql_credentials.php";
@@ -192,8 +190,7 @@
 </div>
 
   <?php
-  //TODO
-  //require "footer.php";
+  require "footer.php";
 
   ?>
  

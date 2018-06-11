@@ -23,15 +23,15 @@ $surname = $_POST['surnameChange'];
 $gender = $_POST['gender'];
 $date_of_birth = $_POST['dateChange'];
 $city = $_POST['cityChange'];
+$img = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 
-//TODO -> Aggiungere parte di immagine -> se vuota, non aggiornare !
-//TODO -> NON VAAAA
-$imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-
-$sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$surname."',Gender = '".$gender."',Date_of_birth = '".$date_of_birth."', City = '".$city."' WHERE Username = '".$user."'";
+if($img == null)
+	$sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$surname."',Gender = '".$gender."',Date_of_birth = '".$date_of_birth."', City = '".$city."' WHERE Username = '".$user."'";
+else
+	$sql = "UPDATE user SET Email = '".$email."', Name = '".$name."', Surname = '".$surname."',Gender = '".$gender."',Date_of_birth = '".$date_of_birth."', City = '".$city."', ProfilePic = '".$img."' WHERE Username = '".$user."'";
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
 //TODO -> aggiungere reindirizzamento a pagina precedente (??)
-header("location: ../index.php");
+header("location: ../show_profile.php?user=".$user."&page=1");
 
 ?>

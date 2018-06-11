@@ -42,7 +42,7 @@ $_SESSION['PrevPage'] ="setting.php";
             echo'
               <div class="backimg">
                 <div class="body" id="settings">
-                    <form action="script/changeSettings.php" method="POST" name="settingsForm" class="sky-form">
+                    <form action="script/changeSettings.php" method="POST" name="settingsForm" class="sky-form" enctype="multipart/form-data">
                         <header>Update Information</header>';
 
             require "db/mysql_credentials.php";
