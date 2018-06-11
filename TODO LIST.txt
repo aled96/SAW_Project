@@ -1,6 +1,6 @@
 TODO
 
-- CARICARE FOTO SU DB !!! (signUp.php) => FATTO
+- CARICARE FOTO SU DB !!! (signUp.php) !!!!!!!!!
 
 - Controllo mail e password in registrazione e in settings (accetta di tutto adesso)
 
@@ -24,6 +24,9 @@ TODO
 
 - Scritte HOME aggiornare e cambiare a seguito del login, tipo REGISTER NOW ti manda a login.php anche se hai già fatto l'accesso
 
+- Divisione in Pagine --> Cambiare e cercare di fare un file esterno invece che tante copie
+
+- MyPublications è identica alla pagine degli utenti, magari fare una pagina unica in cui si verifica se l'utente che si vede sono io
 
 - "My publications" -> dove vedi cosa hai pubblicato e puoi modificarlo !
 

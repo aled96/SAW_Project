@@ -74,7 +74,6 @@
 /* Books */
 
 .book-content{
-	cursor:pointer;
 	display:block;
 	max-height:20vw;
 	margin-bottom:1vw;
@@ -96,6 +95,7 @@
 
 /* Prova con max-height/max-width*/
 .cover>img{	
+	cursor:pointer;
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
@@ -115,12 +115,17 @@
 }
 
 /*modify button*/
+.description>a{
+	text-decoration:none;
+}
+
 .description>a>i{
 	margin-top:0.5vw;
 	margin-right:0.5vw;
 	float:right;
 	font-size:2vw;
-}}
+}
+
 
 .description>p{
 	font-size:1.2vw;
