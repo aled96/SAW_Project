@@ -1,7 +1,5 @@
 TODO
 
-- CARICARE FOTO SU DB !!! (signUp.php) !!!!!!!!!
-
 - Controllo mail e password in registrazione e in settings (accetta di tutto adesso)
 
 - Login non è centrato (chissene)
@@ -14,15 +12,13 @@ TODO
 
 - Sfondo in chat.php --> vedo praticamente tutto nero e non arriva a fine pagine (si ferma a metà chat circa) (io non vedo proprio lo sfondo, quindi)
 
-- Cambio password in Settings
-
 - Qualcosa per identificare numero pagina attuale (intendi come search.php?pag=numero??)
 
 - WARNING - BEWARE - ACTHUNG (cit.) ---> Se query falliscono -> non si vede nulla (showProfile, Settings etc) ==> facciamo in modo che torni alla pagina precedente con un errore (oppure facciamo pagina di 	errore a mo di 404 not found)
 
 - Search si può fare meglio (filtri multipli)
 
-- Scritte HOME aggiornare e cambiare a seguito del login, tipo REGISTER NOW ti manda a login.php anche se hai già fatto l'accesso
+- Scritte HOME aggiornare e cambiare a seguito del login, tipo REGISTER NOW ti manda a login.php anche se hai già fatto l'accesso (ho fatto il controllo, la roba possiamo anche tenerla, o nasconderla, come preferisci)
 
 - Divisione in Pagine --> Cambiare e cercare di fare un file esterno invece che tante copie
 
