@@ -30,8 +30,6 @@
 	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-
-
 	<link rel="stylesheet" media="all" href="css/footer.css" />
 	<link rel="stylesheet" media="all" href="css/common.css" />
 	<link rel="stylesheet" media="all" href="css/profileStyle.css" />
@@ -53,8 +51,7 @@
 	    require "navbar.php";
 	?>
 
-	
-	<?php
+    <?php
 
         require "db/mysql_credentials.php";
 
@@ -68,38 +65,56 @@
 
 		$sql = "SELECT user.*, city.Name as CityName, province.Name as ProvName, Region FROM user, city,province WHERE city.ID = City AND province.ID = Province AND Username = '$userProfile'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
-		
-		
-		while($row = mySQLi_fetch_array($result)){
-			echo"
-			<div id='UserInfo'>
-				<div id='ProfilePic'>";
-				
-			if($row['ProfilePic'] != null)
-				echo"<img src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='cover'/>";
-			else
-				echo"<img src='https://bootdey.com/img/Content/user_1.jpg'>";
-			
-			echo"
-				</div>
-				
-				<div id='UserDetail'>
-					<div id='Username'><p>".$row['Username']."</p></div>
-					<div class='OtherInfo'><p>".$row['Name']."</p><p>".$row['Surname']."</p></div>
-					<div class='OtherInfo'><p>".$row['ProvName']." in ".$row['Region']."</p></div>
-					<div class='OtherInfo'><a href='view_chat.php?user_to=".$userProfile."'>Contact here</a></div>
-					
-				</div>
-			</div>
-			";
-		}
-		
-		$sql1 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id";
-		
-		$result1 = mySQLi_query($conn, $sql1) or die("Error query1");
-		$bookPublished = $result1->num_rows;
-		
+
+        $sql1 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id ORDER BY book.ID DESC";
+
+        $result1 = mySQLi_query($conn, $sql1) or die("Error query1");
+        $bookPublished = $result1->num_rows;
+
+        while($row = mySQLi_fetch_array($result)) {
+
+            $date = new DateTime($row['Date_of_birth']);
+            $date_of_birth = $date->format('d-m-Y');
+            echo '
+                <div class="row UserInfo">
+                    <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                        <div class="well profile">
+                            <div class="col-sm-12">
+                            
+                            <div class="col-xs-12 col-sm-4 text-center">
+                                    <figure>';
+                if ($row['ProfilePic'] != null)
+                    echo "<img src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='cover'/>";
+                else
+                    echo "<img src='https://bootdey.com/img/Content/user_1.jpg'>";
+
+                echo '
+                                    </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <h2>' . $row["Username"] . '</h2>
+                                    <p><strong>Name: </strong>' . $row['Name'] . ' ' . $row['Surname'] . '</p>
+                                    <p><strong>Born on </strong>' . $date_of_birth . '</p>
+                                    <p><strong>City: </strong>' . $row['ProvName'] . ' in ' . $row['Region'] . '</p>
+            
+                                </div>
+                                
+                            </div>
+                            <div class="col-xs-12 divider text-center">
+                                <a class="col-xs-12 col-sm-4 emphasis">
+                                    <h2><strong>'.$bookPublished.'</strong></h2>
+                                    <p><small>Books Published</small></p>
+                                    <a href="view_chat.php?user_to='.$userProfile.'"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Contact Now! </button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+        }
+
 		if($bookPublished > 0){
+
+		    echo "<br><br><div class='center_title'><p>Last Book Added</p></div>";
 			$bookPerPage = 2;
 			
 			$maxPage = ceil(($bookPublished)/$bookPerPage);
@@ -199,16 +214,15 @@
 			}
 			echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
 				  </ul>
-			</div>
+			</div><br><br>
 			
-			</div>";
+			</div>
+			";
 		}
 		else
 			echo"<h2> No books published</h2>";
 	
 	?>
-		
-	</div>  
   
 	<?php
 	require "footer.php";

@@ -1,61 +1,67 @@
 .navbar{
 	margin-bottom:0px;
 }
+.profile
+{
+	min-height: 355px;
+	display: inline-block;
+	width:100%;
+}
+figcaption.ratings
+{
+	margin-top:20px;
+}
+figcaption.ratings a
+{
+	color:#f1c40f;
+	font-size:11px;
+}
+figcaption.ratings a:hover
+{
+	color:#f39c12;
+	text-decoration:none;
+}
+.divider
+{
+	border-top:1px solid rgba(0,0,0,0.1);
+}
+.emphasis
+{
+	border-top: 4px solid transparent;
+}
+.emphasis:hover
+{
+	border-top: 4px solid #1abc9c;
+}
+.emphasis h2
+{
+	margin-bottom:0;
+}
+span.tags
+{
+	background: #1abc9c;
+	border-radius: 2px;
+	color: #f5f5f5;
+	font-weight: bold;
+	padding: 2px 4px;
+}
 /*Content*/
 
-#UserInfo{
-	width:76vw;
-	margin-left:12vw;
-	margin-right:12vw;
-	margin-bottom:4.5vw;
-	height:19vw;
+.UserInfo{
+	margin-top: 50px;
+	margin-bottom:10px;
+	margin-left:20%;
+	height:auto;
+	width:60%;
 }
 
-.TitlePage{
-	margin-left:16vw;
-	margin-bottom:1.2vw;
-	margin-top:1.2vw;
-	display:block;
-	font-size:2.6vw;
-	font-weight:bold;
-}
-/* Profile Page */
-
-#ProfilePic{
-	float:left;
-	margin-right:2vw;
-	margin-top:3vw;
-}
-
-#ProfilePic>img{
-	box-shadow: 0.2vw 0.2vw 0.1vw grey; 	
-	height:18vw;
-	width:18vw;
-}
-
-#UserDetail{
-	float:left;
-	line-height:1.5vw;
-	margin-right:2vw;
-	margin-top:3vw;
-	width:38vw;
-}
-
-#Username{
-	display:block;
-	font-size:3vw;
-	font-weight:bold;
-	margin-bottom:1vw;
-	line-height:2.5vw;
-}
-
-.OtherInfo{
-	display:block;
-	font-size:1.8vw;
-	font-weight:bold;
-	margin-bottom:1vw;
-	margin-top:2vw;
-	line-height:1.5vw;
+@media (max-width: 700px){
+	.UserInfo{
+		width:calc(100% - 60px);
+		margin-left:10px;
+		margin-right:10px;
+		margin-bottom:50px;
+	}
 }
 
 #BooksPublished{
@@ -69,6 +75,19 @@
 	border-width:0.3vw 0.3vw 0.3vw 0.3vw;
 	border-radius:0.3vw;
 }
+
+
+@media (max-width: 800px){
+	#BooksPublished{
+		position:relative;
+		width:90%;
+		margin-left:5%;
+		margin-right:5%;
+		margin-bottom:15px;
+	}
+
+}
+
 
 
 /* Books */
@@ -129,4 +148,17 @@
 
 .description>p{
 	font-size:1.2vw;
+}
+
+.center_title{
+	text-align: center;
+	font-family: "Bookman Old Style";
+	font-size: 40px;
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: 800;
+
+	p{
+		text-align: center;
+	}
 }
