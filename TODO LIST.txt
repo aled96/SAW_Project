@@ -12,7 +12,7 @@ TODO
 
 - Sfondo in chat.php --> vedo praticamente tutto nero e non arriva a fine pagine (si ferma a metà chat circa) (io non vedo proprio lo sfondo, quindi)
 
-- Qualcosa per identificare numero pagina attuale (intendi come search.php?pag=numero??)
+- Qualcosa per identificare numero pagina attuale (intendi come search.php?pag=numero??    Non so cosa intendevo ahahahah)
 
 - WARNING - BEWARE - ACTHUNG (cit.) ---> Se query falliscono -> non si vede nulla (showProfile, Settings etc) ==> facciamo in modo che torni alla pagina precedente con un errore (oppure facciamo pagina di 	errore a mo di 404 not found)
 
@@ -22,10 +22,12 @@ TODO
 
 - Divisione in Pagine --> Cambiare e cercare di fare un file esterno invece che tante copie
 
-- MyPublications è identica alla pagine degli utenti, magari fare una pagina unica in cui si verifica se l'utente che si vede sono io
+- MyPublications è identica alla pagine degli utenti, magari fare una pagina unica in cui si verifica se l'utente che si vede sono io (ovvero abilita il tasto "modifica")
 
 - "My publications" -> dove vedi cosa hai pubblicato e puoi modificarlo !
 
 - InsertBook / MyPublications (ajax -> visualizza foto nuova)
 
 - Controlli con campi passati con GET (esempio se id libro = 0 non si vede nulla)
+
+- MyPublications -> se il titolo è lungo e va a capo, la matita non è in alto a destra ma scende un pò (si allinea con l'ultima riga del titolo)

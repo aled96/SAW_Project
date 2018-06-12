@@ -89,39 +89,57 @@ require "navbar.php";
 				<p class='isbn'>
 					<input name='isbn' type='text' required class='feedback-input' value='".$row['ISBN']."' id='isbn' placeholder='ISBN'/>
 				</p>
-				<p>Cover</p>
+				<p class='title'>Cover</p>
 				<div id='BookCover'>
 					<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 				</div>
 				<p class='file'>
 					<input name='image' type='file' id='image' class='feedback-input'/>
-				</p>
+				</p>			
 				<p class='title'>Book Categories</p>
-				<div class='categories' id='categories'>
-					<input name='number_of_categories' type='hidden' value='1' id='number_of_categories'>
-					<section class='col col-6'>
-						<select name='fac1' id='fac1' class='feedback-input' required onchange='selectCategory(1)'>
-							<option value='not-selected' selected disabled>Faculty</option>";
-						   
-							$sql1 = "SELECT distinct Name FROM faculty";
-							$result1 = $conn->query($sql);
+			";
+			
+			
+			$sql1 = "SELECT Category.Name as Category, Faculty.Name as Faculty FROM concern, category, faculty WHERE concern.Category = category.ID AND category.Faculty = Faculty.ID AND concern.Book = '".$id."';";
+			$result1 = $conn->query($sql1);
 
-							while($row1 = $result->fetch_assoc()) {
-								$fac = $row1['Name'];
-								if(strlen($fac) != 0) {
-									echo "<option value='" . $fac . "'>" . $fac . "</option>";
-								}
+			echo"	
+			<div class='categories' id='categories'>
+				<input name='number_of_categories' type='hidden' value='1' id='number_of_categories'>";
+				
+				while($row1 = $result1->fetch_assoc()) {
+					echo"<section class='col col-6'>
+					<input type='text' name='fac0' id='fac0' class='feedback-input' readonly value='".$row1['Faculty']."'>
+					</section>
+					<section class='col col-6'>					
+					<input type='text' name='cat0' id='cat0' class='feedback-input' readonly value='".$row1['Category']."'>
+					</section>";
+					
+				}
+				echo"
+				<section class='col col-6'>
+					<select name='fac1' id='fac1' class='feedback-input' required onchange='selectCategory(1)'>
+						<option value='not-selected' selected disabled>Faculty</option>";
+					   
+						$sql2 = "SELECT distinct Name FROM faculty";
+						$result2 = $conn->query($sql2);
+
+						while($row2 = $result2->fetch_assoc()) {
+							$fac = $row2['Name'];
+							if(strlen($fac) != 0) {
+								echo "<option value='" . $fac . "'>" . $fac . "</option>";
 							}
+						}
 
-							$conn->close();
+						$conn->close();
 
-					echo"   </select>
-					</section>
-					<section class='col col-6'>
-						<select name='cat1' class='feedback-input' required  id='cat1' >
-							<option value='not-selected' selected disabled>Category</option>
-						</select>
-					</section>
+				echo"   </select>
+				</section>
+				<section class='col col-6'>
+					<select name='cat1' class='feedback-input' required  id='cat1' >
+						<option value='not-selected' selected disabled>Category</option>
+					</select>
+				</section>
 				</div>
 				<br>
 				<p class='categories'>
@@ -139,7 +157,11 @@ require "navbar.php";
 					<button type='submit' class='button-blue'>Submit</button>
 					<div class='ease'></div>	
 				<div class='submit'>
-					<button type='#' onclick='' class='button-red'>Delete</button>
+				</form>
+				
+				<form action='script/delete_publication.php' method='GET'>
+					<input type='hidden' id='Id' name='Id' value='".$id."'/>
+					<button type='submit' class='button-red'>Delete</button>
 					<div class='ease'></div>
 				</div>
 				
