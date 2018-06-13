@@ -1,4 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<?php
+	session_start();
+	$_SESSION['PrevPage'] = "index.php";
+?>
 <head>
     <title>BookTrader</title>
     
@@ -21,9 +26,8 @@
 	<!--ImageHome-->
     <section>
         <div class="homePic">
-			<img src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Library-HD-Background.jpg">
-            
-            </div>
+			<img src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Library-HD-Background.jpg"> 
+        </div>
     </section>
 
 	
@@ -83,117 +87,60 @@
                 <p class="sub-title">Here you can see the last book added ! Don't let them go</p>
             </div>
             <div class="width100">
-                    <div class="col-md-2 my-shop-animation">
-                        <div class="box-prod group-book">
-                            <div class="box-img-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/41Pfbiqa4AL._SX331_BO1,204,203,200_.jpg">
-                                <div class="box-btn-shop">
-                                    <div class="bt-img"><a class="btn btn-det-cart" href="#/products/1"><i class="fa fa-list"></i></a></div>
-                                    <div class="bt-img"><button type="button" class="btn btn-det-cart"><i class="fa fa-heart"></i></button></div>
-                                </div>
-                            </div>
-                            <h2 class="title-book">Divina Commedia</h2>
+			
+				<?php
+				require "db/mysql_credentials.php";
 
-                            <p class="author-txt">Dante Alighieri</p>
+				// Create connection
+				$conn = new mysqli($servername, $username, $password, $dbname);
 
-                            <p class="category-txt">Art</p>
+				// Check connection
+				if ($conn->connect_error) {
+					die("Connection failed: " . $conn->connect_error);
+				}
+				
+				$sql = "SELECT *, book.ID as BookID FROM book,insertion WHERE book.ID = Material_offered ORDER BY Book.ID desc LIMIT 12 ";
+				$result = mySQLi_query($conn, $sql) or die("Error query");
 
-                            <p class="book-price"> $7.89</p>
-                        </div>
-                    </div>
-						
-					<div class="col-md-2 my-shop-animation">
-                        <div class="box-prod group-book">
-                            <div class="box-img-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/51UQg72AiDL._SY346_.jpg">
-                                <div class="box-btn-shop">
-                                    <div class="bt-img"><a class="btn btn-det-cart" href="#/products/1"><i class="fa fa-list"></i></a></div>
-                                    <div class="bt-img"><button type="button" class="btn btn-det-cart"><i class="fa fa-heart"></i></button></div>
-                                </div>
-                            </div>
-                            <h2 class="title-book">Divina Commedia</h2>
+				while($row = mySQLi_fetch_array($result)){
+				
+				
+				#Check if logged
+				$fav_status="fa fa-heart-o";
+				$link = "login.php";
+				if(isset($_SESSION['username'])){
+					$user = $_SESSION['username'];
+					#Check if in wishlist
+					$sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='".$row['BookID']."' and Username='".$user."';";
 
-                            <p class="author-txt">Dante Alighieri</p>
-
-                            <p class="category-txt">Art</p>
-
-                            <p class="book-price"> $7.89</p>
-                        </div>
-                    </div>
-					<div class="col-md-2 my-shop-animation">
-                        <div class="box-prod group-book">
-                            <div class="box-img-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/41Pfbiqa4AL._SX331_BO1,204,203,200_.jpg">
-                                <div class="box-btn-shop">
-                                    <div class="bt-img"><a class="btn btn-det-cart" href="#/products/1"><i class="fa fa-list"></i></a></div>
-                                    <div class="bt-img"><button type="button" class="btn btn-det-cart"><i class="fa fa-heart"></i></button></div>
-                                </div>
-                            </div>
-                            <h2 class="title-book">Divina Commedia</h2>
-
-                            <p class="author-txt">Dante Alighieri</p>
-
-                            <p class="category-txt">Art</p>
-
-                            <p class="book-price"> $7.89</p>
-                        </div>
-                    </div>
-						
-					<div class="col-md-2 my-shop-animation">
-                        <div class="box-prod group-book">
-                            <div class="box-img-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/51UQg72AiDL._SY346_.jpg">
-                                <div class="box-btn-shop">
-                                    <div class="bt-img"><a class="btn btn-det-cart" href="#/products/1"><i class="fa fa-list"></i></a></div>
-                                    <div class="bt-img"><button type="button" class="btn btn-det-cart"><i class="fa fa-heart"></i></button></div>
-                                </div>
-                            </div>
-                            <h2 class="title-book">Divina Commedia</h2>
-
-                            <p class="author-txt">Dante Alighieri</p>
-
-                            <p class="category-txt">Art</p>
-
-                            <p class="book-price"> $7.89<span>$8.89</span></p>
-                        </div>
-                    </div>
-					
-					<div class="col-md-2 my-shop-animation">
-                        <div class="box-prod group-book">
-                            <div class="box-img-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/41Pfbiqa4AL._SX331_BO1,204,203,200_.jpg">
-                                <div class="box-btn-shop">
-                                    <div class="bt-img"><a class="btn btn-det-cart" href="#/products/1"><i class="fa fa-list"></i></a></div>
-                                    <div class="bt-img"><button type="button" class="btn btn-det-cart"><i class="fa fa-heart"></i></button></div>
-                                </div>
-                            </div>
-                            <h2 class="title-book">Divina Commedia</h2>
-
-                            <p class="author-txt">Dante Alighieri</p>
-
-                            <p class="category-txt">Art</p>
-
-                            <p class="book-price"> $7.89</p>
-                        </div>
-                    </div>
-					<div class="col-md-2 my-shop-animation">
-                        <div class="box-prod group-book">
-                            <div class="box-img-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/51UQg72AiDL._SY346_.jpg">
-                                <div class="box-btn-shop">
-                                    <div class="bt-img"><a class="btn btn-det-cart" href="#/products/1"><i class="fa fa-list"></i></a></div>
-                                    <div class="bt-img"><button type="button" class="btn btn-det-cart"><i class="fa fa-heart"></i></button></div>
-                                </div>
-                            </div>
-                            <h2 class="title-book">Divina Commedia</h2>
-
-                            <p class="author-txt">Dante Alighieri</p>
-
-                            <p class="category-txt">Art</p>
-
-                            <p class="book-price"> $7.89</p>
-                        </div>
-                    </div>
+					$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+					#If is in list -> change calss for star icon
+					while($row2 = mySQLi_fetch_array($result2)){
+						if($row2['IsThere'] == 1)
+							$fav_status="fa fa-heart";
+					}
+					$link="script/add_favourite.php?Book=".$row['BookID'];
+				}
+				
+				echo"
+						<div class='col-md-2 my-shop-animation'>
+							<div class='box-prod group-book'>
+								<div class='box-img-book'>
+									<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
+									<div class='box-btn-shop'>
+										<div class='bt-img'><a class='btn btn-det-cart' href='PageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>
+										<div class='bt-img'><a class='btn btn-det-cart' href='".$link."'><i class='".$fav_status."'></i></a></div>
+									</div>
+								</div>
+								<h2 class='title-book'>".$row['Title']."</h2>
+								<p class='author-txt'>".$row['Author']."</p>
+								<p class='category-txt'>".$row['Price']."</p>
+								<p class='book-price'>".$row['Price']."</p>
+							</div>
+						</div>
+							";
+				}
+				?>
             </div>
         </div>
     </section>

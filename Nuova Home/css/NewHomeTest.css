@@ -149,7 +149,7 @@ header {
   width: 34%;
 }
 .mainmenu ul li:hover a {
-  color: #c38748;
+  color: #6f9a37;
   background: #fff;
 }
 .mainmenu .nav > ul > li a:focus {
@@ -157,7 +157,7 @@ header {
 }
 .mainmenu ul li:hover .mega-menu span a:hover,
 .mainmenu ul li ul.sub-menu li a:hover {
-  color: #c38748;
+  color: #6f9a37;
 }
 .mainmenu ul li ul.sub-menu {
   left: 0;
@@ -170,7 +170,7 @@ header {
 }
 .mega-menu {
   background-color: #ffffff;
-  border-color: #c38748 #ffffff #ffffff;
+  border-color: #6f9a37 #ffffff #ffffff;
   border-image: none;
   border-style: solid;
   border-width: 2px;
@@ -208,6 +208,18 @@ header {
 .mainmenu ul li ul.sub-menu li {
   display: block;
   transition: all 0.3s ease 0s;
+}
+
+.little-menu{
+	left:10px;
+	width:170px !important;
+}
+
+.red-message{
+	color:red;
+	position:absolute;
+	margin-top:-47px;
+	font-size:23px !important;
 }
 
 /******
@@ -585,18 +597,20 @@ END MENU
   margin-top: 5px;
 }
 .box-prod .title-book {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   color: #111;
   margin-top: 15px;
   margin-bottom: 0;
 }
 .box-prod .author-txt {
+  font-size:14px;
   font-weight: 400;
   font-style: italic;
   margin-bottom: 0;
 }
 .box-prod .category-txt {
+  font-size:13px;
   font-weight: 400;
   font-style: italic;
 }
@@ -634,6 +648,9 @@ END MENU
   -ms-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
+  
+  width:150px;
+  height:200px;
 }
 .box-prod .box-btn-shop {
   position: absolute;

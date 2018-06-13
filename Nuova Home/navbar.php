@@ -19,41 +19,60 @@
                         <div class="collapse navbar-collapse" id="navbar-collapse-1">
                             <ul class="menu-first-level">
                                 <li class="expand">
-                                    <a href="home.html">Home</a>
+                                    <a href="homeProva.php">Home</a>
                                 </li>
-                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#">Messages</a></li>
                                 <li class="exp-mega">
                                     <a href="">Categories</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu">
                                         <span>
                                             <a class="mega-title" href="">Top Categories</a>
-                                            <a href="products.html">Tv-Lcd</a>
-                                            <a href="products.html">Computer</a>
-                                            <a href="products.html">Smartphone</a>
-                                            <a href="products.html">Software</a>
+                                            <a href="#">Tv-Lcd</a>
+                                            <a href="#">Computer</a>
+                                            <a href="#">Smartphone</a>
+                                            <a href="#">Software</a>
                                         </span>
                                         <span>
                                             <a class="mega-title" href="">New Categories</a>
-                                            <a href="products.html">Accessories</a>
-                                            <a href="products.html">Video</a>
-                                            <a href="products.html">HeadPhone</a>
-                                            <a href="products.html">Hi-Fi</a>
+                                            <a href="#">Accessories</a>
+                                            <a href="#">Video</a>
+                                            <a href="#">HeadPhone</a>
+                                            <a href="#">Hi-Fi</a>
                                         </span>
                                         <span>
                                             <a class="mega-title" href="">Other Categories</a>
-                                            <a href="products.html">Notebook</a>
-                                            <a href="products.html">Photography</a>
-                                            <a href="products.html">Ebook</a>
-                                            <a href="products.html">IPhone</a>
+                                            <a href="#">Notebook</a>
+                                            <a href="#">Photography</a>
+                                            <a href="#">Ebook</a>
+                                            <a href="#">IPhone</a>
                                         </span>
                                         <span class="mega-menu-img">
                                             <a href="#"><img src="images/open-book.png" alt=""></a>
                                         </span>
                                     </div>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="#">Contact</a></li>
+								
+								<li class="exp-mega">
+                                    <div class="item">
+											<i class='fa fa-user'></i>
+											<i class='fa fa-exclamation-circle red-message' id="message-alert" name="message-alert"></i>
+										</div>
+                                    <!-- Menu One Column -->
+                                    <div class="mega-menu little-menu">
+                                        <span>
+                                            <a href="#">Dashboard</a>
+                                            <a href="#">AddBook</a>
+                                            <a href="#">Wishlist</a>
+                                            <a href="#">MyPublications</a>
+                                            <a href="#">Settings</a>
+                                            <a href="#">Logout</a>
+                                        </span>
+                                    </div>
+                                </li>
                             </ul>
+							
                         </div>
                     </div>
                 </nav>
