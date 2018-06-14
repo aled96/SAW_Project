@@ -54,23 +54,31 @@
                                 </li>
                                 <li><a href="#">Contact</a></li>
 								
-								<li class="exp-mega">
-                                    <div class="item">
-											<i class='fa fa-user'></i>
-											<i class='fa fa-exclamation-circle red-message' id="message-alert" name="message-alert"></i>
+								<?php
+								
+								if(!isset($_SESSION['username']))
+									echo"<li><a href='login.php'>Login</a></li>";
+								else{
+									echo"
+									<li class='exp-mega'>
+										<div class='item'>
+												<i class='fa fa-user'></i>
+												<i class='fa fa-exclamation-circle red-message' id='message-alert' name='message-alert'></i>
+											</div>
+										<!-- Menu One Column -->
+										<div class='mega-menu little-menu'>
+											<span>
+												<a href='#'>Dashboard</a>
+												<a href='#'>AddBook</a>
+												<a href='#'>Wishlist</a>
+												<a href='#'>MyPublications</a>
+												<a href='#'>Settings</a>
+												<a href='#'>Logout</a>
+											</span>
 										</div>
-                                    <!-- Menu One Column -->
-                                    <div class="mega-menu little-menu">
-                                        <span>
-                                            <a href="#">Dashboard</a>
-                                            <a href="#">AddBook</a>
-                                            <a href="#">Wishlist</a>
-                                            <a href="#">MyPublications</a>
-                                            <a href="#">Settings</a>
-                                            <a href="#">Logout</a>
-                                        </span>
-                                    </div>
-                                </li>
+									</li>";
+									}
+								?>
                             </ul>
 							
                         </div>
