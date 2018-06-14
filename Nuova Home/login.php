@@ -23,7 +23,6 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	
 	
-	<script src="js/common.js"></script>
     <script src="js/login.js"></script>
 
 </head>
@@ -36,20 +35,20 @@
   ?>
   
 	<section class="container">
-		<div class="loginForm">
+		<div class="loginForm" id="logIn">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">Login</div>
 				</div>
 				
                 <section>
-                    <label class="input" >
-                        <p class='errorLogin' id="errorLoginBox"><br></p>
+                    <label class="errorLogin" >
+                        <p id="errorLoginBox"><br></p>
                     </label>
                 </section>
 				<div class="panel-body">
 					<form action="script/login_user.php" method="POST" name="login">
-						<div class="input-group">
+						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" onclick="removeError()" onkeyup="removeError()" placeholder="Username" id="usernameLog" name="usernameLog" class="form-control">
 						</div>
@@ -74,42 +73,37 @@
 		</div>
 
 
-		<div class="signUpForm" id="signUpForm" style="visibility:visible">
+		<div class="signUpForm" id="signUpForm">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">Registration</div>
 				</div>
                 <section>
-                    <label class="input" >
-                        <p class='errorLogin' id="errorLoginBox"><br></p>
+                    <label class="errorLogin" >
+                        <p id="errorSignupBox"><br></p>
                     </label>
                 </section>
 				<div class="panel-body">
 					<form form action="script/signup.php" method="POST" name="signupform" enctype="multipart/form-data">
-						<div class="input-group">
+						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" placeholder="Username" id="userSign" name="userSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">
-							<b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
 						</div>						
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 							<input type="text" placeholder="Email address" id="emailSign" name="emailSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">
-							<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
 						</div>
 					
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 							<input type="password" placeholder="Password" id="pswSign" name="pswSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">
-							<b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
-							<input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
 						</div>
 
 
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 							<input type="password" placeholder="Confirm password" id="pswConfirmSign" name="pswConfirmSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">
-							<b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
 							<input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
 						</div>
 
@@ -131,7 +125,7 @@
 						</div>
 						
 						<div class="input-group loginMargin">
-							<select  onchange="removeErrorSignup()" name="gender" id="gender">
+							<select  onchange="removeErrorSignup()" name="gender" id="gender" class="form-control">
 								<option value="not-selected" selected disabled>Gender</option>
 								<option value="male">Male</option>
 								<option value="female">Female</option>
@@ -139,7 +133,7 @@
 						</div>
 							
 						<div class="input-group loginMargin">
-							<select onclick="removeErrorSignup()" name="province" id="province" onchange="selectCity()">
+							<select onclick="removeErrorSignup()" name="province" id="province" onchange="selectCity()" class="form-control">
 								<option value="not-selected" selected disabled>Province</option>
 								<?php
 
@@ -169,7 +163,7 @@
 						</div>
 													
 						<div class="input-group loginMargin">
-							<select onclick="removeErrorSignup()" name="citySign" id="citySign">
+							<select onclick="removeErrorSignup()" name="citySign" id="citySign" class="form-control">
 								<option value="not-selected" selected disabled>City</option>
 							</select>
 						</div>

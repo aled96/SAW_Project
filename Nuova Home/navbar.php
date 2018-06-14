@@ -19,7 +19,7 @@
                         <div class="collapse navbar-collapse" id="navbar-collapse-1">
                             <ul class="menu-first-level">
                                 <li class="expand">
-                                    <a href="homeProva.php">Home</a>
+                                    <a href="index.php">Home</a>
                                 </li>
                                 <li><a href="#">Messages</a></li>
                                 <li class="exp-mega">
@@ -72,8 +72,8 @@
 												<a href='#'>AddBook</a>
 												<a href='#'>Wishlist</a>
 												<a href='#'>MyPublications</a>
-												<a href='#'>Settings</a>
-												<a href='#'>Logout</a>
+												<a href='settings.php'>Settings</a>
+												<a href='script/logout.php'>Logout</a>
 											</span>
 										</div>
 									</li>";

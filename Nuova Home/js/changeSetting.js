@@ -121,7 +121,7 @@ function asyncSelCity() {
     }
 }
 
-function removeErrorSignup(){
+function removeErrorSettings(){
     document.getElementById("errorSettingsBox").innerHTML = "<br>";
     document.getElementById("emailChange").style.borderColor = "white";
     document.getElementById("nameChange").style.borderColor = "white";
