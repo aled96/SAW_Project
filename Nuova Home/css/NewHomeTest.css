@@ -93,6 +93,100 @@ h2 {
 	END LOGIN
 **********************/
 
+
+/**********************
+	PAGEBOOK
+**********************/
+
+ p {    
+	font-family: "Open sans", Arial, sans-serif;
+    line-height: 23px;
+    color: #666;
+}
+
+.title-product{
+	font-weight:900;
+	font-size:21px;
+}
+
+.author-txt{
+	font-style:italic;
+}
+.author-txt>span{
+	font-style:normal;
+	font-weight:600;
+	color:#222;
+}
+.detail-box-desc{
+	margin-bottom:10px;
+	border-top: 1px solid #ddd;
+	padding-top: 10px;
+	margin-top: 40px;
+}
+
+.info-box{
+	margin-top:40px;
+}                
+
+.txt-info{
+	font-size:90px;
+}
+
+.cat-txt>span{
+	font-weight:600;
+	color:#222;
+}
+
+.book-price {
+	color: #b80909;
+	font-family: Lato,sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+	width: 100%;
+}
+
+.bt-img button{
+	text-align:center;
+	background:@default_principalcolor;
+	padding: 9px 30px 7px 30px;
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+
+.product-page{
+	margin-top:20px;
+	font-size:20px;
+}
+
+.image-product{
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  
+  width:100%;
+  max-width:200px;
+  height:100%;
+}
+
+.alignLeft{
+	float:left;
+	text-align:left;
+}
+
+.list-product{
+	border:0px;
+	display:block;
+}
+/**********************
+	END PAGEBOOK
+**********************/
 .homePic{
 	position:relative;
 }
@@ -334,12 +428,6 @@ END MENU
   text-align: center;
   text-transform: uppercase;
   margin-top: 160px;
-  font-family: 'Poppins', sans-serif;
-}
- p {
-  text-align: center;
-  color: #111;
-  font-size: 17px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -601,10 +689,10 @@ END MENU
 *********************************************************************************************/
 
 /********************************************************************************************
-    CATEGORY PRODUCT                                                                                         
+    PRODUCT                                                                                         
 *********************************************************************************************/
 
-/* Serve per animazioni tasti*/
+/* Buttons animations*/
 .my-shop-animation.ng-enter,
 .my-shop-animation.ng-leave {
   -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
@@ -679,13 +767,7 @@ END MENU
   color: #b80909;
   width: 100%;
 }
-.box-prod .book-price span {
-  font-size: 11px;
-  font-weight: 400;
-  color: #999;
-  text-decoration: line-through;
-  margin-left: 10px;
-}
+
 .box-prod .box-img-book {
   position: relative;
 }
@@ -806,7 +888,7 @@ END MENU
 .footer-bottom {
   background: #080b15;
   padding: 10px 0;
-  margin-top:110px;
+  margin-top:40px;
   line-height: 14px;
   color: #fff;
 }
@@ -913,6 +995,42 @@ END MENU
     }
     .mega-menu span{width:33.3%;}
     /*End Mini Menu*/
+	
+	
+    /*Products*/
+    .img-man{width:50%;}
+    .price-range .content-filter-price .search-btn .btn{margin-top:20px;float:right;}
+    .price-range .content-filter-price input{width:95%;}
+    .price-range .content-filter-price .inp-price span{width:5%;}
+    .special-offers .list-offers-column ul li{width:25%;float:left;}
+    .special-offers h3.offers-book-title{margin-top:15px;}
+    .panel-info-full,.service-banner{float:left;width:100%;}
+    .flexslider .slides img{margin:0 auto;width:40%;}
+    .box-blog{width:100%;float:left;}
+    .price-range .content-filter-price .data-price{padding-right:0}
+
+    /*Products List*/
+    .grid-product .my-shop-animation {width:100%;}
+    .grid-product .box-list-prod{width:27%;float:left;}
+    .grid-product .book-desc{width:70%;float:left;}
+
+    /*Orders*/
+    .cart-column-img{width:40%;}
+    .content-table-cart{padding:0 15px;}
+
+    /*Product Details*/
+
+    .page-details-product .list-product{width:100%;float:left;}
+    .page-details-product .list-product .box-desc-detail{float:left;width:65%;}
+    .page-details-product .list-product .detail-box-desc{width:100%;float:left;}
+    .page-details-product .list-product .detail-box-desc {
+        -webkit-transform: translateY(0px) rotate(0deg);
+        -moz-transform: translateY(0px) rotate(0deg);
+        -ms-transform: translateY(0px) rotate(0deg);
+        -o-transform: translateY(0px) rotate(0deg);
+        transform: translateY(0px) rotate(0deg);
+    }
+	
 
     .my-shop-animation {
         padding: 0 8px;
@@ -927,14 +1045,23 @@ END MENU
 
 @media only screen and (max-width: 500px) {
 
-     .item{font-size:26px;}
-     .item .title{font-size:36px;}
-     .item {padding-right:10px;}
+    .item{font-size:26px;}
+    .item .title{font-size:36px;}
+    .item {padding-right:10px;}
 
     .mega-menu span{width:100%}
-     .mainmenu{padding:0;}
-     .mainmenu ul li{float:right;}
+    .mainmenu{padding:0;}
+    .mainmenu ul li{float:right;}
     .my-shop-animation {width: 50%;}
+	
+	 /*Product List*/
+    .grid-product .box-list-prod {width: 100%;float: left;padding-left:15px;}
+    .grid-product .book-desc{width:100%;}
+    .grid-product .box-prod:hover .book-cover-shadow{
+                width:92%;
+                height:100%;
+                position:absolute;
+    }
     
 }
 
@@ -943,8 +1070,14 @@ END MENU
    
     .navbar-toggle{margin-top: 30px;}
     /*Products*/
-     .my-shop-animation{height:340px;}
+    #dataMix .my-shop-animation{height:340px;}
 
+    /*Products List*/
+    #dataMix.grid-product .my-shop-animation{height:auto;}
+    .grid-product .box-prod:hover .book-cover-shadow{width:91%;}
+
+    /*Product Details*/
+    .page-details-product .service-banner .flexslider{padding:20px 15px;}
 }
 
 @media only screen and (max-width: 370px) {
@@ -952,5 +1085,13 @@ END MENU
     .item{height:450px;}
 	.item{padding-top:110px;}
     .item{font-size:26px;}
-    .my-shop-animation {width: 100%; height: auto;}
+	/*Products*/
+    #dataMix .my-shop-animation{height:340px;}
+
+    /*Products List*/
+    #dataMix.grid-product .my-shop-animation{height:auto;}
+    .grid-product .box-prod:hover .book-cover-shadow{width:91%;}
+
+    /*Product Details*/
+    .page-details-product .service-banner .flexslider{padding:20px 15px;}
 }

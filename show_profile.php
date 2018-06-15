@@ -81,12 +81,12 @@
                         <div class="well profile">
                             <div class="col-sm-12">
                             
-                            <div class="col-xs-12 col-sm-4 text-center image">
+                            <div class="col-xs-12 col-sm-4 text-center">
                                     <figure>';
                 if ($row['ProfilePic'] != null)
-                    echo "<img class='profile-image' src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='cover'>";
+                    echo "<img src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='cover'/>";
                 else
-                    echo "<img class='profile-image' src='https://bootdey.com/img/Content/user_1.jpg'>";
+                    echo "<img src='https://bootdey.com/img/Content/user_1.jpg'>";
 
                 echo '
                                     </figure>
@@ -101,10 +101,10 @@
                                 
                             </div>
                             <div class="col-xs-12 divider text-center">
+                                <a class="col-xs-12 col-sm-4 emphasis">
                                     <h2><strong>'.$bookPublished.'</strong></h2>
                                     <p><small>Books Published</small></p>
-                                    <p><a href="view_chat.php?user_to='.$userProfile.'"><button class="btn mybtn btn-info"><span class="fa fa-user"></span> Contact Now! 
-                                        </button></a></p>
+                                    <a href="view_chat.php?user_to='.$userProfile.'"><button class="btn btn-info btn-block"><span class="fa fa-user"></span> Contact Now! </button></a>
                                 </div>
                             </div>
                         </div>

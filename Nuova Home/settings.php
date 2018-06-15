@@ -67,9 +67,8 @@
                 $cityName = $row['Cityname'];
                 echo '
 						<div class="input-group loginMargin">
-							<a href="change_password.php"><button type="button" class="change-password-button" >Change Password </button></a>
-						</div>	
-				
+								<a href="change_password.php"><button type="button" class="btn btn-success login-btn">Change Password </button></a>
+						</div>
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" placeholder="Username" id="userChange" name="userChange" readonly value="'.$row['Username'].'"class="form-control">
@@ -163,10 +162,11 @@
 						</div>
 						<br>
 						<button type="button" onclick="checkSettings()" class="btn btn-success login-btn">Submit</button>
-					</form>
+					</form>	
 				</div>
 			</div>
-		</div>';
+		</div>
+		</section>';
 		}
 		}else
                 header("location: index.php");

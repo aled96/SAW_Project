@@ -8,10 +8,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-    header("location: ../index.php");
 }
 
-$province = $conn->real_escape_string($_GET['province']);
+$province = $_GET['province'];
 
 $sql = "SELECT distinct ID FROM province where name = '".$province."'";
 $result = $conn->query($sql);
