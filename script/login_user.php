@@ -8,10 +8,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+    header("location: ../index.php");
 }
 
-$user = $_POST['usernameLog'];
-$pwd = $_POST['pswEncryptLog'];
+$user = $conn->real_escape_string($_POST['usernameLog']);
+$pwd = $conn->real_escape_string($_POST['pswEncryptLog']);
 
 $login = false;
 
@@ -41,6 +42,9 @@ if($login){
 		header("location: ../".$_SESSION['PrevPage']);
 	else
 		header("location: ../index.php");
+}
+else{
+    header("location: ../index.php");
 }
 
 ?>

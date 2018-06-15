@@ -86,7 +86,7 @@ $_SESSION['PrevPage'] ="setting.php";
                     </label>
                     <label class="input">
                         <i class="icon-append icon-envelope-alt"></i>
-                        <input type="text" placeholder="Email address" id="emailChange" name="emailChange"  onclick="removeErrorSettings()" onkeyup="removeErrorSettings()"  value="'.$row['Email'].'">
+                        <input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="'.$row['Email'].'">
                         <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                     </label>
                 </section>
@@ -100,7 +100,7 @@ $_SESSION['PrevPage'] ="setting.php";
                     </label>
                     <label class="input">
                         <i class="icon-append icon-calendar"></i>
-                        <input type="date" id="dateChange" name="dateChange"  onclick="removeErrorSettings()" onkeyup="removeErrorSettings()"  value="' . $row['Date_of_birth'] . '">
+                        <input type="date" id="dateChange" name="dateChange"  value="' . $row['Date_of_birth'] . '">
                     </label>
                 </section>
             </fieldset>
@@ -112,7 +112,7 @@ $_SESSION['PrevPage'] ="setting.php";
                             Name
                         </label>
                     <label class="input">
-                            <input type="text" placeholder="First name" id="nameChange" name="nameChange"  onclick="removeErrorSettings()" onkeyup="removeErrorSettings()"  value="' . $row['Name'] . '">
+                            <input type="text" placeholder="First name" id="nameChange" name="nameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $row['Name'] . '">
                         </label>
                     </section>
                     <section class="col col-6">
@@ -120,7 +120,7 @@ $_SESSION['PrevPage'] ="setting.php";
                         Surname
                     </label>
                     <label class="input">
-                            <input type="text" placeholder="Last name" id="surnameChange" name="surnameChange"  onclick="removeErrorSettings()" onkeyup="removeErrorSettings()"  value="' . $row['Surname'] . '">
+                            <input type="text" placeholder="Last name" id="surnameChange" name="surnameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $row['Surname'] . '">
                         </label>
                     </section>
                 </div>
@@ -132,14 +132,14 @@ $_SESSION['PrevPage'] ="setting.php";
                     <label class="select">';
                     if ($row['Gender'] == "male") {
                         echo "
-							<select onchange='removeErrorSettings()' name='gender' id='gender'>
+							<select name='gender' id='gender'>
 							<option value='male' selected>Male</option>
 							<option value='female'>Female</option>
 							</select>
 							";
                     } else {
                         echo "
-							<select onchange='removeErrorSettings()' name='gender' id='gender'>
+							<select name='gender' id='gender'>
 							<option value='male'>Male</option>
 							<option value='female' selected>Female</option>
 							</select>
@@ -157,7 +157,7 @@ $_SESSION['PrevPage'] ="setting.php";
                         Province of Birth
                     </label>
                     <label class="select">
-                        <select onchange="removeErrorSettings()" name="province" id="province" onchange="selectCity()">
+                        <select name="province" id="province" onchange="selectCity()">
                             <option value="not-selected" selected disabled>Province</option>';
                     $sql = "SELECT distinct Name FROM province";
                     $result = $conn->query($sql);
@@ -182,7 +182,7 @@ $_SESSION['PrevPage'] ="setting.php";
                         City of Birth
                     </label>
                     <label class="select">
-                        <select onchange="removeErrorSettings()" name="cityChange" id="cityChange">
+                        <select name="cityChange" id="cityChange">
                             <option value="not-selected" selected disabled>City</option>';
 
                     $sql = "SELECT distinct city.* FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";

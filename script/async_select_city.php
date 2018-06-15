@@ -8,9 +8,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+    header("location: ../index.php");
 }
 
-$province = $_GET['province'];
+$province = $conn->real_escape_string($_GET['province']);
 
 $sql = "SELECT distinct ID FROM province where name = '".$province."'";
 $result = $conn->query($sql);
@@ -31,7 +32,7 @@ while($row = $result->fetch_assoc()) {
     $city = $row['name'];
     $cityId = $row['ID'];
     if(strlen($city) != 0) {
-        $cities_to_return = $cities_to_return."<option value='" . $cityId. "'>" . $city . "</option>";
+    $cities_to_return = $cities_to_return."<option value='" . $cityId. "'>" . $city . "</option>";
     }
 }
 

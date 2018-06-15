@@ -8,8 +8,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-    header("location: index.php");
 }
+echo "Connected successfully";
 
 session_start();
 if(!isset($_SESSION['username'])) {
@@ -17,12 +17,12 @@ if(!isset($_SESSION['username'])) {
 }
 
 $user = $_SESSION['username'];
-$new = $conn->real_escape_string($_POST['pswEncryptChange']);
+$new = $_POST['pswEncryptChange'];
 
 $sql = "UPDATE user SET Password = '".$new."' WHERE Username = '".$user."'";
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
-
-header("location: ../setting.php");
+//TODO -> aggiungere reindirizzamento a pagina precedente (??)
+header("location: ../show_profile.php?user=".$user."&page=1");
 
 ?>

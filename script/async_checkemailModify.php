@@ -10,8 +10,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$email = $conn->real_escape_string($_GET['email']);
-$username = $conn->real_escape_string($_GET['username']);
+$email = $_GET['email'];
+$username = $_GET['username'];
 
 $sql = "SELECT email FROM user where email ='$email' AND Username !='$username'";
 $result = $conn->query($sql);

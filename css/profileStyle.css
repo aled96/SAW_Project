@@ -7,19 +7,13 @@
 	display: inline-block;
 	width:100%;
 }
-figcaption.ratings
-{
-	margin-top:20px;
-}
-figcaption.ratings a
-{
-	color:#f1c40f;
-	font-size:11px;
-}
-figcaption.ratings a:hover
-{
-	color:#f39c12;
-	text-decoration:none;
+
+.profile-image{
+	min-width: 100px;
+	min-height: 100px;
+
+	max-width: 200px;
+	min-height: 200px;
 }
 .divider
 {
@@ -44,6 +38,15 @@ span.tags
 	color: #f5f5f5;
 	font-weight: bold;
 	padding: 2px 4px;
+}
+
+.mybtn{
+	max-width: 150px;
+	width:100%;
+}
+
+.p-center{
+	text-align: center;
 }
 /*Content*/
 
