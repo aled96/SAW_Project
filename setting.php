@@ -100,7 +100,7 @@ $_SESSION['PrevPage'] ="setting.php";
                     </label>
                     <label class="input">
                         <i class="icon-append icon-calendar"></i>
-                        <input type="date" id="dateChange" name="dateChange"  value="' . $row['Date_of_birth'] . '">
+                        <input type="date" id="dateChange" name="dateChange" onclick="removeErrorChange()"  value="' . $row['Date_of_birth'] . '">
                     </label>
                 </section>
             </fieldset>
@@ -132,14 +132,14 @@ $_SESSION['PrevPage'] ="setting.php";
                     <label class="select">';
                     if ($row['Gender'] == "male") {
                         echo "
-							<select name='gender' id='gender'>
+							<select  onclick='removeErrorChange' name='gender' id='gender'>
 							<option value='male' selected>Male</option>
 							<option value='female'>Female</option>
 							</select>
 							";
                     } else {
                         echo "
-							<select name='gender' id='gender'>
+							<select onclick='removeErrorChange' name='gender' id='gender'>
 							<option value='male'>Male</option>
 							<option value='female' selected>Female</option>
 							</select>
@@ -157,7 +157,7 @@ $_SESSION['PrevPage'] ="setting.php";
                         Province of Birth
                     </label>
                     <label class="select">
-                        <select name="province" id="province" onchange="selectCity()">
+                        <select onclick="removeErrorChange()" name="province" id="province" onchange="selectCity()">
                             <option value="not-selected" selected disabled>Province</option>';
                     $sql = "SELECT distinct Name FROM province";
                     $result = $conn->query($sql);
@@ -182,7 +182,7 @@ $_SESSION['PrevPage'] ="setting.php";
                         City of Birth
                     </label>
                     <label class="select">
-                        <select name="cityChange" id="cityChange">
+                        <select  onclick="removeErrorChange()"name="cityChange" id="cityChange">
                             <option value="not-selected" selected disabled>City</option>';
 
                     $sql = "SELECT distinct city.* FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
@@ -211,7 +211,7 @@ $_SESSION['PrevPage'] ="setting.php";
 							Profile Picture
 						</label>
 						<label class="input">
-							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()" onkeyup="removeErrorChange()">
+							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()">
 						</label>
 				</section>
 				

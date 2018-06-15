@@ -245,7 +245,7 @@
                         Profile Picture
                     </label>
                     <label class="input">
-						<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" required>
+						<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorSignup()">
                     </label>
             </section>
 			
