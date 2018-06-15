@@ -10,7 +10,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$old_pass = $_GET['old'];
+$old_pass = $conn->real_escape_string($_GET['old']);
 
 session_start();
 $user = $_SESSION['username'];
@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
     echo "ok";
 }
 else
-	echo $sql;
+	echo "ko";
 
 $conn->close();
 ?>

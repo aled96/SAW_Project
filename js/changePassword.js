@@ -12,6 +12,9 @@ function getXMLHttpRequestObject() {
 
 function removeError(){
     document.getElementById("errorSettingsBox").innerHTML = "<br>";
+    document.getElementById("oldPassChange").style.borderColor = "white";
+    document.getElementById("newPassChange").style.borderColor = "white";
+    document.getElementById("repeatNewPassChange").style.borderColor = "white";
 }
 
 
@@ -38,6 +41,7 @@ function checkPassword(){
 		if(repeat_new != new_pass)
         {
             document.getElementById("repeatNewPassChange").style.borderColor = "red";
+            document.getElementById("newPassChange").style.borderColor = "red";
             document.getElementById("errorSettingsBox").innerHTML = "The Confirm Password is different!";
             return;
         }
@@ -61,8 +65,7 @@ function checkPassword(){
 	encrypt_new = SHA1(new_pass);
 	document.getElementById("pswEncryptChange").value = encrypt_new;
     url = encodeURI("./script/async_checkModifyPassword.php" + "?old=" + encrypt_old);
-    
-    alert(url);
+
     xmlreq.onreadystatechange = asyncPassword;
     xmlreq.open("GET", url, true);
     xmlreq.send();
@@ -71,7 +74,6 @@ function checkPassword(){
 function asyncPassword() {
     if (xmlreq.readyState == 4) {
         if (xmlreq.status == 200) {
-			alert(xmlreq.responseText);
             if (xmlreq.responseText != null)
             {
                 if (xmlreq.responseText == "ok"){
