@@ -128,14 +128,13 @@
 								<div class='box-img-book'>
 									<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 									<div class='box-btn-shop'>
-										<div class='bt-img'><a class='btn btn-det-cart' href='PageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>
+										<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>
 										<div class='bt-img'><a class='btn btn-det-cart' href='".$link."'><i class='".$fav_status."'></i></a></div>
 									</div>
 								</div>
 								<h2 class='title-book'>".$row['Title']."</h2>
 								<p class='author-txt'>".$row['Author']."</p>
-								<p class='category-txt'>".$row['Price']."</p>
-								<p class='book-price'>".$row['Price']."</p>
+								<p class='book-price'>".$row['Price']." €</p>
 							</div>
 						</div>
 							";
