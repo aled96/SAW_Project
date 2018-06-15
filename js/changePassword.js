@@ -81,7 +81,10 @@ function asyncPassword() {
 					document.changePasswordForm.submit();
 				}
                 else
+                {
                     document.getElementById("errorSettingsBox").innerHTML = "Old password does not match!";
+					document.getElementById("oldPassChange").style.borderColor = "red";
+				}
             }
             else alert("Ajax error: no data received");
         }
