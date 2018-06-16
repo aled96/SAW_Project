@@ -69,7 +69,7 @@
 										<div class='mega-menu little-menu'>
 											<span>
 												<a href='#'>Dashboard</a>
-												<a href='#'>AddBook</a>
+												<a href='insert_new.php'>AddBook</a>
 												<a href='#'>Wishlist</a>
 												<a href='#'>MyPublications</a>
 												<a href='setting.php'>Settings</a>

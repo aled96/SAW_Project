@@ -93,7 +93,28 @@ h2 {
 	END LOGIN
 **********************/
 
+textarea{
+	resize:none;
+}
 
+.cat-btn{
+	background-color:#ff2222;
+	border-color:#ff4c4c;
+	margin-top:7px;
+}
+
+.cat-btn:hover{
+	background-color:#ff1c1c;
+	border-color:#ff4c4c;
+}
+
+.marginTop-20{
+	margin-top:20px;
+}
+
+.marginTop-40{
+	margin-top:40px;
+}
 /**********************
 	PAGEBOOK
 **********************/

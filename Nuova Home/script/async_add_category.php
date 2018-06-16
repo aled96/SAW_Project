@@ -13,7 +13,7 @@ $count = $_GET['count'];
 
 $facName = "fac".$count;
 
-$returned_obj = "<section class='col col-6'><select name='".$facName."' id='".$facName."' class='feedback-input' required onchange='selectCategory(".$count.")'>
+$returned_obj = "<select name='".$facName."' id='".$facName."' class='form-control marginTop-40' required onchange='selectCategory(".$count.")'>
                         <option value='not-selected' selected disabled>Faculty</option>";
 
 
@@ -31,13 +31,15 @@ $conn->close();
 
 $catName = "cat".$count;
 
-$returned_obj = $returned_obj."</select></section>
-                <section class='col col-6'>
-                    <select name='".$catName."' class='feedback-input' required  id='".$catName."' >
+$returned_obj = $returned_obj."</select>
+                    <select name='".$catName."' class='form-control marginTop-20' required  id='".$catName."' >
                         <option value='not-selected' selected disabled>Category</option>
                     </select>";
 
-$returned_obj = $returned_obj."<button type='button' class='button-remove' id='removeButton".$count."' onclick='removeCategory(".$count.")'>Remove Category</button>";
+$returned_obj = $returned_obj."
+<div>
+<button type='button' class='btn btn-success cat-btn' id='removeButton".$count."' onclick='removeCategory(".$count.")'>Remove Category</button>
+</div>";
 
 echo $returned_obj;
 

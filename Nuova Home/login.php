@@ -31,7 +31,6 @@
 
   <?php
     require "navbar.php";
-
   ?>
   
 	<section class="container">
