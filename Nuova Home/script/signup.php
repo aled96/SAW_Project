@@ -8,17 +8,18 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+    header("location: ../index.php");
 }
 echo "Connected successfully";
 
-$user = $_POST['userSign'];
-$email = $_POST['emailSign'];
-$pwd = $_POST['pswEncryptSign'];
-$name = $_POST['nameSign'];
-$surname = $_POST['surnameSign'];
-$gender = $_POST['gender'];
-$date_birth = $_POST['dateSign'];
-$city = $_POST['citySign'];
+$user = $conn->real_escape_string($_POST['userSign']);
+$email = $conn->real_escape_string($_POST['emailSign']);
+$pwd = $conn->real_escape_string($_POST['pswEncryptSign']);
+$name = $conn->real_escape_string($_POST['nameSign']);
+$surname = $conn->real_escape_string($_POST['surnameSign']);
+$gender = $conn->real_escape_string($_POST['gender']);
+$date_birth = $conn->real_escape_string($_POST['dateSign']);
+$city = $conn->real_escape_string($_POST['citySign']);
 
 $imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 
@@ -35,18 +36,20 @@ VALUES ('".$user."', '".$email."', '".$pwd."', '".$name."', '".$surname."', '".$
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
+
+    $conn->close();
+
+    session_start();
+    $_SESSION['username'] = $user;
+
+    if(isset($_SESSION['PrevPage']))
+        header("location: ../".$_SESSION['PrevPage']);
+    else
+        header("location: ../index.php");
 } else {
-    die("Error: " . $sql . "<br>" . $conn->error);
+    $conn->close();
+    header("location: ../index.php");
 }
 
-$conn->close();
-
-session_start();
-$_SESSION['username'] = $user;
-
-if(isset($_SESSION['PrevPage']))
-	header("location: ../".$_SESSION['PrevPage']);
-else
-	header("location: ../index.php");
 
 ?>

@@ -72,7 +72,7 @@
 												<a href='#'>AddBook</a>
 												<a href='#'>Wishlist</a>
 												<a href='#'>MyPublications</a>
-												<a href='settings.php'>Settings</a>
+												<a href='setting.php'>Settings</a>
 												<a href='script/logout.php'>Logout</a>
 											</span>
 										</div>

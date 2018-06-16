@@ -4,7 +4,7 @@ function show(target) {
     document.getElementById(target).style.visibility = 'visible';
     document.getElementById(target).style.overflow = 'auto';
     document.getElementById(target).style.height = 'auto';
-}
+};
 
 function hide(target) {
     document.getElementById(target).style.visibility = 'hidden';
@@ -15,6 +15,7 @@ function hide(target) {
 
 function checkBeforeSubmit(){
     //fai cose
+
     document.signup.submit();
 }
 
@@ -72,6 +73,57 @@ function removeError(){
     document.getElementById("errorLoginBox").innerHTML = "<br>";
 }
 
+function checkuser(user){
+    var regexp1=/^[a-zA-Z0-9]+$/;
+    test = regexp1.test(user);
+    return test;
+}
+
+function checkemail(email){
+    var regexp1=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
+    test = regexp1.test(email);
+    return test;
+
+}
+
+function checkdate(date){
+    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    var dtArray = date.match(regEx); // is format OK?
+
+    if (dtArray == null)
+        return false;
+
+    //Checks for mm/dd/yyyy format.
+    dtMonth = dtArray[1];
+    dtDay= dtArray[3];
+    dtYear = dtArray[5];
+
+    if (dtMonth < 1 || dtMonth > 12)
+        return false;
+    else if (dtDay < 1 || dtDay> 31)
+        return false;
+    else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31)
+        return false;
+    else if (dtMonth == 2)
+    {
+        var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
+        if (dtDay> 29 || (dtDay ==29 && !isleap))
+            return false;
+    }
+
+    var d1 = new Date(date);
+    var d2 = new Date();
+    if(d1.getTime() >= d2.getTime())
+        return false;
+    return true;
+}
+
+function checkname(name){
+    var regexp1=/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+    test = regexp1.test(name);
+    return test;
+}
+
 function checkSignUp(){
     var user = document.getElementById("userSign").value;
     var email = document.getElementById("emailSign").value;
@@ -87,11 +139,11 @@ function checkSignUp(){
 
     var checks = 0;
 
-    if(user.length == 0 ) {
+    if(user.length == 0 || !checkuser(user)) {
         document.getElementById("userSign").style.borderColor = "red";
         checks = 1;
     }
-    if(email.length == 0 ) {
+    if(email.length == 0  || !checkemail(email)) {
         document.getElementById("emailSign").style.borderColor = "red";
         checks = 1;
     }
@@ -103,23 +155,23 @@ function checkSignUp(){
         document.getElementById("pswConfirmSign").style.borderColor = "red";
         checks = 1;
     }
-    else
-        if(passwordconfirm != password)
-        {
+    else {
+        if (passwordconfirm != password) {
             document.getElementById("pswConfirmSign").style.borderColor = "red";
             document.getElementById("errorSignupBox").innerHTML = "The Confirm Password is different!";
             return;
         }
-    if(name.length == 0 ) {
+    }
+    if(name.length == 0 || !checkname(name)) {
         document.getElementById("nameSign").style.borderColor = "red";
         checks = 1;
     }
-    if(surname.length == 0 ) {
+    if(surname.length == 0 || !checkname(surname)) {
         document.getElementById("surnameSign").style.borderColor = "red";
         checks = 1;
     }
 
-    if(date == "") {
+    if(date == "" || !checkdate(date)) {
         document.getElementById("dateSign").style.borderColor = "red";
         checks = 1;
     }
@@ -143,12 +195,11 @@ function checkSignUp(){
     }
 
     if(checks >= 1){
-        document.getElementById("errorSignupBox").innerHTML = "Some data are missing!";
+        document.getElementById("errorSignupBox").innerHTML = "Some Data are Missing or Wrong!";
         return;
     }
         
     var encrypt_psw = SHA1(password);
-    alert(encrypt_psw);
 	document.getElementById("pswEncryptSign").value = encrypt_psw;
 
     xmlreq = getXMLHttpRequestObject();

@@ -170,7 +170,7 @@
 							
 							
 						<div class="input-group loginMargin">
-							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" required>
+							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorSignup()" required>
 						</div>
 							
 							

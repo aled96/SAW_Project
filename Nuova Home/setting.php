@@ -38,7 +38,6 @@
 	<?php
 		if(isset($_SESSION['username'])){
             echo'
-			<section class="container">
 			<div class="loginForm" id="signUpForm">
 				<div class="panel panel-info">
 					<div class="panel-heading">
@@ -76,12 +75,12 @@
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-							<input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorSettings()" onkeyup="removeErrorSettings()" class="form-control" value="'.$row['Email'].'">
+							<input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()" class="form-control" value="'.$row['Email'].'">
 						</div>
 
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							<input onclick="removeErrorSettings()" type="date" id="dateChange" name="dateChange"  value="' . $row['Date_of_birth'] . '" class="form-control">
+							<input onclick="removeErrorChange()" type="date" id="dateChange" name="dateChange"  value="' . $row['Date_of_birth'] . '" class="form-control">
 						</div>
 						
 						<div class="input-group loginMargin">
@@ -112,7 +111,7 @@
 						</div>
 							
 						<div class="input-group loginMargin">
-							<select onclick="removeErrorSettings()" name="province" id="province" onchange="selectCity()" class="form-control">
+							<select onclick="removeErrorChange()" name="province" id="province" onchange="selectCity()" class="form-control">
 								<option value="not-selected" selected disabled>Province</option>';
 								
 															
@@ -134,7 +133,7 @@
 						</div>
 													
 						<div class="input-group loginMargin">
-							<select onclick="removeErrorSettings()" name="cityChange" id="cityChange" class="form-control">
+							<select onclick="removeErrorChange()" name="cityChange" id="cityChange" class="form-control">
 								<option value="not-selected" selected disabled>City</option>';
 						
 						 $sql = "SELECT distinct city.* FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
@@ -158,15 +157,14 @@
 							
 							
 						<div class="input-group loginMargin">
-							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorSettings()" onkeyup="removeErrorSettings()" required>
+							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()" required>
 						</div>
 						<br>
 						<button type="button" onclick="checkSettings()" class="btn btn-success login-btn">Submit</button>
 					</form>	
 				</div>
 			</div>
-		</div>
-		</section>';
+		</div>';
 		}
 		}else
                 header("location: index.php");
