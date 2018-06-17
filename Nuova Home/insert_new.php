@@ -47,7 +47,7 @@
                     </label>
                 </section>
 				<div class="panel-body">
-					<form form action="script/insert_newBook.php" method="POST" id="reused_form" enctype="multipart/form-data">
+					<form action="script/insert_newBook.php" method="POST" id="reused_form" enctype="multipart/form-data">
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input name="author" type="text" required placeholder="Author" id="author" class="form-control">
@@ -66,7 +66,6 @@
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-files-o"></i></span>
 							<input name="pages" type="number" required id="pages" placeholder="Number of Pages" class="form-control">
-							<input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
 						</div>
 
 						<div class="input-group loginMargin">

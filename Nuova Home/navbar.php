@@ -26,30 +26,39 @@
                                     <a href="">Categories</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu">
-                                        <span>
-                                            <a class="mega-title" href="">Top Categories</a>
-                                            <a href="#">Tv-Lcd</a>
-                                            <a href="#">Computer</a>
-                                            <a href="#">Smartphone</a>
-                                            <a href="#">Software</a>
-                                        </span>
-                                        <span>
-                                            <a class="mega-title" href="">New Categories</a>
-                                            <a href="#">Accessories</a>
-                                            <a href="#">Video</a>
-                                            <a href="#">HeadPhone</a>
-                                            <a href="#">Hi-Fi</a>
-                                        </span>
-                                        <span>
-                                            <a class="mega-title" href="">Other Categories</a>
-                                            <a href="#">Notebook</a>
-                                            <a href="#">Photography</a>
-                                            <a href="#">Ebook</a>
-                                            <a href="#">IPhone</a>
-                                        </span>
-                                        <span class="mega-menu-img">
-                                            <a href="#"><img src="images/open-book.png" alt=""></a>
-                                        </span>
+									<?php
+									
+										require "db/mysql_credentials.php";
+
+										// Create connection
+										$conn = new mysqli($servername, $username, $password, $dbname);
+
+										// Check connection
+										if ($conn->connect_error) {
+											die("Connection failed: " . $conn->connect_error);
+										}
+
+										$sql = "SELECT distinct Name FROM faculty";
+										$result = $conn->query($sql);
+
+										$i = 0;
+										$toClose=false;
+										while($row = $result->fetch_assoc()) {
+											if($i == 0){
+												echo'<span>';
+												$toClose=true;
+											}
+											$i++;
+											echo'<a href="#">'.$row['Name'].'</a>';
+											if($i == 3){
+												$i = 0;
+												$toClose=false;
+												echo'</span>';
+											}
+										}
+										if($toClose)
+											echo'</span>';
+										?>
                                     </div>
                                 </li>
                                 <li><a href="#">Contact</a></li>
