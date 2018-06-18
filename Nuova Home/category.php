@@ -159,12 +159,35 @@
                     <div id="dataMix">
                         <?php
 						
-						$sql = "SELECT *, book.ID as BookID FROM book,insertion WHERE book.ID = Material_offered LIMIT 8";
+						$sql = "SELECT DISTINCT( book.ID) as BookID, Author, Title, Cover, Price FROM book,insertion,concern WHERE concern.Book = book.ID AND book.ID = Material_offered";
 						
-						if(isset($_GET['cat']) and $_GET['cat'] != ""){
-							
+						#$catSelected = "";
+						#$search = "";
+						#$priceMin = "";
+						#$priceMax = "";
+						
+						//select the chosen category
+						if($catSelected != ""){
+							#$categories -> explode from catSelected (in previous section)
+							$sql = $sql." AND (";
+							for($i = 0; $i < sizeof($categories)-1; $i = $i+1){
+								if($i > 0)
+									$sql = $sql." OR ";
+								$sql = $sql."concern.Category = ".$categories[$i];
+							}
+							$sql = $sql.")";
 						}
-												
+						
+						if($priceMin != "")
+							$sql = $sql." AND Price >=".$priceMin;
+						if($priceMax != "")
+							$sql = $sql." AND Price <=".$priceMax;
+						
+						if($search != "")
+							$sql = $sql." AND (Title LIKE '%".$search."%' OR
+												Description LIKE '%".$search."%' OR
+												Author LIKE '%".$search."%')";
+						
 						$result = $conn->query($sql);
 
 						while($row = $result->fetch_assoc()) {
