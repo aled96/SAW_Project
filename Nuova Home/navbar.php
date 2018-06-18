@@ -23,7 +23,7 @@
                                 </li>
                                 <li><a href="#">Messages</a></li>
                                 <li class="exp-mega">
-                                    <a href="">Categories</a>
+                                    <a href="category.php">Categories</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu">
 									<?php

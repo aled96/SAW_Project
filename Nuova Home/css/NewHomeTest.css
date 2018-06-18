@@ -769,7 +769,6 @@ END MENU
     background: rgba(0, 0, 0, 0.1);
 }
 
-
 /********************************************************************************************
     HOME 5                                                                                  
 *********************************************************************************************/
@@ -880,7 +879,10 @@ END MENU
 
 .box-prod .box-img-book {
   position: relative;
+  width:140px;
+  height:185px;
 }
+
 .box-prod .box-btn-shop button {
   border-radius: 1px;
 }
@@ -895,8 +897,8 @@ END MENU
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   
-  width:150px;
-  height:200px;
+  width:140px;
+  height:185px;
 }
 .box-prod .box-btn-shop {
   position: absolute;
@@ -954,7 +956,10 @@ END MENU
     font-size: 16px;
 }
 
-.my-shop-animation{padding:0 8px;}
+.my-shop-animation{
+	padding:0 8px;
+	height:450px;
+}
 
 
 #dataMix{
@@ -1053,8 +1058,11 @@ END MENU
         .btn-det-cart{padding: 0px;background:@default_principalcolor;color:#fff;}
 }
 .box-prod:hover{border-color: #85a319;}
-.box-prod:hover .box-img-book{
-            
+
+.checkboxCategory{
+	float:left;
+	margin-top:5px; 
+	margin-right:3px !important;
 }
 
 /********************************************************************************************
@@ -1274,7 +1282,7 @@ END MENU
     /*Products*/
     .img-man{width:50%;}
     .price-range .content-filter-price .search-btn .btn{margin-top:20px;float:right;}
-    .price-range .content-filter-price input{width:95%;}
+    .price-range .content-filter-price input{ width:50px; margin-right:3%; }
     .price-range .content-filter-price .inp-price span{width:5%;}
     .special-offers .list-offers-column ul li{width:25%;float:left;}
     .special-offers h3.offers-book-title{margin-top:15px;}
