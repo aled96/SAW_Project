@@ -188,3 +188,69 @@ document.addEventListener("keyup", function(event) {
         submitNewBook();
     }
 });
+
+
+function submitModifyBook(){
+    var author = document.getElementById("author").value;
+    var title = document.getElementById("title").value;
+    var description = document.getElementById("description").value;
+    var pages = document.getElementById("pages").value;
+    var edition = document.getElementById("edition").value;
+    var isbn = document.getElementById("isbn").value;
+    var price = document.getElementById("price").value;
+    var place = document.getElementById("place").value;
+
+    var fac1 = document.getElementById("fac1").value;
+    var cat1 = document.getElementById("cat1").value;
+
+    var checks = 0;
+    if(author.length == 0 || !checkname(author)) {
+        document.getElementById("author").style.borderColor = "red";
+        checks = 1;
+    }
+    if(title.length == 0  || !checktitle(title)) {
+        document.getElementById("title").style.borderColor = "red";
+        checks = 1;
+    }
+    if(description.length == 0) {
+        document.getElementById("description").style.borderColor = "red";
+        checks = 1;
+    }
+    if(pages <= 0) {
+        document.getElementById("pages").style.borderColor = "red";
+        checks = 1;
+    }
+
+    if(edition == "") {
+        document.getElementById("edition").style.borderColor = "red";
+        checks = 1;
+    }
+    if(isbn == "" || !checkisbn(isbn)) {
+        document.getElementById("isbn").style.borderColor = "red";
+        checks = 1;
+    }
+
+    if(price <= 0) {
+        document.getElementById("price").style.borderColor = "red";
+        checks = 1;
+    }
+    if(place == "" || !checkname(place)) {
+        document.getElementById("place").style.borderColor = "red";
+        checks = 1;
+    }
+    if(fac1 == "not-selected") {
+        document.getElementById("fac1").style.borderColor = "red";
+        checks = 1;
+    }
+    if(cat1 == "not-selected") {
+        document.getElementById("cat1").style.borderColor = "red";
+        checks = 1;
+    }
+
+    if(checks >= 1){
+        document.getElementById("errorBox").innerHTML = "Some Data are missing or wrong!";
+        return;
+    }
+
+    document.modify_book.submit();
+}

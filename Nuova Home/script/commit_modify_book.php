@@ -9,7 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+
 
 session_start();
 if(!isset($_SESSION['username'])) {
@@ -17,16 +17,16 @@ if(!isset($_SESSION['username'])) {
 }
 
 $user = $_SESSION['username'];
-$id = $_POST['id'];
-$author = $_POST['author'];
-$title = $_POST['title'];
-$description = $_POST['description'];
-$pages = $_POST['pages'];
-$edition = $_POST['edition'];
-$isbn = $_POST['isbn'];
+$id = $conn->real_escape_string($_POST['id']);
+$author = $conn->real_escape_string($_POST['author']);
+$title = $conn->real_escape_string($_POST['title']);
+$description = $conn->real_escape_string($_POST['description']);
+$pages = $conn->real_escape_string($_POST['pages']);
+$edition = $conn->real_escape_string($_POST['edition']);
+$isbn = $conn->real_escape_string($_POST['isbn']);
 $img = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-$price = $_POST['price'];
-$place = $_POST['place'];
+$price = $conn->real_escape_string($_POST['price']);
+$place = $conn->real_escape_string($_POST['place']);
 
 $n_categories = $_POST['number_of_categories'];
 
@@ -84,6 +84,6 @@ $sql5 = "UPDATE insertion SET Place = '".$place."', Price = '".$price."' WHERE M
 
 $result5 = mySQLi_query($conn, $sql5) or die("Error query5");
 
-header("location: ../PageBook.php?Id=".$id);
+header("location: ../PageBook.php?id=".$id);
 
 ?>
