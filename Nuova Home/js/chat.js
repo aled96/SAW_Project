@@ -78,7 +78,7 @@ function check_socket() {
         if (xmlreq.status == 200) {
             if (xmlreq.responseText != null)
             {
-                if (xmlreq.responseText != "0")
+                if (xmlreq.responseText != "")
                 {
                     document.getElementById("message-panel-body").insertAdjacentHTML('beforeend', xmlreq.responseText);
                     var div = document.querySelector('#message-panel-body');

@@ -13,16 +13,14 @@ if ($conn->connect_error) {
 session_start();
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $other = $_GET['user_to'];
-    $message = $_GET['message'];
+    $other = $conn->real_escape_string($_GET['user_to']);
+    $message = $conn->real_escape_string($_GET['message']);
     $datetime = date('m/d/Y h:i:s a', time());
-
-
 
     $returned_obj = '<div class="msg_container base_sent">
                                 <div class="col-md-10 col-sm-11 col-xs-11">
                                     <div class="messages msg_sent">
-                                        <p class="message-body">'.$message.'</p>
+                                        <p class="message-body">'.$_GET['message'].'</p>
                                         <time>'.$datetime.'</time>
                                     </div>
                                 </div>

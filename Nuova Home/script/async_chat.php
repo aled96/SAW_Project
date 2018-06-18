@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 session_start();
 if(isset($_SESSION['username'])) {
     $user = $_SESSION['username'];
-    $other = $_GET['user_to'];
+    $other = $conn->real_escape_string($_GET['user_to']);
 
     $sql = "SELECT distinct * FROM chat WHERE Is_read = 0 and User_from = '".$other."' and User_to = '".$user."'";
     $result = mySQLi_query($conn, $sql) or die("Error query");

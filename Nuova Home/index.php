@@ -99,7 +99,7 @@
 					die("Connection failed: " . $conn->connect_error);
 				}
 				
-				$sql = "SELECT *, book.ID as BookID FROM book,insertion WHERE book.ID = Material_offered ORDER BY Book.ID desc LIMIT 6 ";
+				$sql = "SELECT book.*, insertion.*, book.ID as BookID FROM book,insertion WHERE book.ID = insertion.Material_offered ORDER BY book.ID desc LIMIT 6 ";
 				$result = mySQLi_query($conn, $sql) or die("Error query");
 
 				while($row = mySQLi_fetch_array($result)){

@@ -21,7 +21,12 @@
                                 <li class="expand">
                                     <a href="index.php">Home</a>
                                 </li>
-                                <li><a href="#">Messages</a></li>
+                                <?php
+                                session_start();
+                                if(isset($_SESSION['username']))
+                                    echo '<li><a href="chat.php">Messages</a></li>';
+
+                                ?>
                                 <li class="exp-mega">
                                     <a href="category.php">Categories</a>
                                     <!-- Mega Menu Four Column -->
