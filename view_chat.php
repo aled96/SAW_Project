@@ -2,35 +2,37 @@
 <html lang="en">
 
 <?php
-session_start();
-$other = $_GET['user_to'];
-$_SESSION['PrevPage'] = "view_chat.php?user_to=".$other;
-
-if(!isset($_SESSION['username'])) {
-    header("location: login.php");
-}
-
-$user = $_SESSION['username'];
-$other = $_GET['user_to'];
-
-if(strcmp($user, $other) == 0){
-    header("location: index.php");
-}
 
 require "db/mysql_credentials.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+session_start();
+if(!isset($_SESSION['username'])) {
+    header("location: login.php");
+}
+
+$user = $_SESSION['username'];
+$other = $conn->real_escape_string($_GET['user_to']);
+
+$_SESSION['PrevPage'] = "view_chat.php?user_to=".$other;
+
+if(strcmp($user, $other) == 0){
+    header("location: index.php");
+}
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+    header("location: login.php");
 }
 
 $sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to = '".$user."'";
 
 if (!($conn->query($sql) === TRUE)) {
     die("Error: " . $sql . "<br>" . $conn->error);
+    header("location: login.php");
 }
 
 ?>
@@ -79,6 +81,7 @@ require "navbar.php";
                     <div id="message-panel-body" class="panel-body msg_container_base">';
 
             $sql = "SELECT distinct * FROM chat WHERE (User_from = '".$user."' and User_to = '".$other."') or (User_from = '".$other."' and User_to = '".$user."')";
+
             $result = mySQLi_query($conn, $sql) or die("Error query");
             $list_users = array();
 
