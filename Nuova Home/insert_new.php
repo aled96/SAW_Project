@@ -43,39 +43,39 @@
 				</div>
                 <section>
                     <label class="errorLogin" >
-                        <p id="errorSignupBox"><br></p>
+                        <p id="errorBox"><br></p>
                     </label>
                 </section>
 				<div class="panel-body">
-					<form action="script/insert_newBook.php" method="POST" id="reused_form" enctype="multipart/form-data">
+					<form action="script/insert_newBook.php" method="POST" id="reused_form" name="add_new" enctype="multipart/form-data">
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input name="author" type="text" required placeholder="Author" id="author" class="form-control">
+							<input name="author" type="text" required placeholder="Author" id="author" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()">
 						</div>						
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-address-book"></i></span>
-							<input name="title" type="text" required id="title" placeholder="Title" class="form-control">
+							<input name="title" type="text" required id="title" placeholder="Title" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()">
 						</div>
 					
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-edit"></i></span>
-							<textarea name="description" class="form-control" id="description" placeholder="Description" rows="6"></textarea>
+							<textarea name="description" class="form-control" id="description" placeholder="Description" rows="6" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()"></textarea>
 						</div>
 
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-files-o"></i></span>
-							<input name="pages" type="number" required id="pages" placeholder="Number of Pages" class="form-control">
+							<input name="pages" type="number" required id="pages" placeholder="Number of Pages" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()">
 						</div>
 
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-book"></i></span>
-							<input name="edition" type="text" required id="edition" placeholder="Edition" class="form-control">
+							<input name="edition" type="text" required id="edition" placeholder="Edition" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()">
 						</div>
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-							<input name="isbn" type="text" required id="isbn" placeholder="ISBN" class="form-control">
+							<input name="isbn" type="text" required id="isbn" placeholder="ISBN" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()">
 						</div>
 							
 						<div class="input-group loginMargin">
@@ -128,16 +128,16 @@
 						<h4 class="loginMargin">Selling Information</h4>
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-tag"></i></span>
-							<input name="price" type="number" required id="price" placeholder="Price" class="form-control"/>
+							<input name="price" type="number" required id="price" placeholder="Price" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()"/>
 						</div>
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-map"></i></span>
-							<input name="place" type="text" required id="place" placeholder="Place" class="form-control"/>
+							<input name="place" type="text" required id="place" placeholder="Place" class="form-control" onclick="removeErrorNewBook()" onkeyup="removeErrorNewBook()"/>
 						</div>
 						
 						<div class="form-group loginMargin">
-							<input type="submit"class="btn btn-success login-btn" value="Submit">
+							<input type="button" class="btn btn-success login-btn" onclick="submitNewBook()" value="Submit">
 						</div>
 					</form>
 				</div>
