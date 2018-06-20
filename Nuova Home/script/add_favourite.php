@@ -22,7 +22,7 @@ while($row = mySQLi_fetch_array($result)){
 
 
 		if (mysqli_query($conn, $sql)) {
-			echo "New record created successfully.";
+			echo $book.";<i onClick='preferite(".$book.")' class='fa fa-heart'></i>";
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
@@ -31,12 +31,11 @@ while($row = mySQLi_fetch_array($result)){
 		$sql = "DELETE FROM wishlist WHERE Book='$book' and Username='$user';";
 
 		if (mysqli_query($conn, $sql)) {
-			echo "Record deleted successfully.";
+			echo $book.";<i onClick='preferite(".$book.")' class='fa fa-heart-o'></i>";
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}	
 	}
 }
-header("location: ../pageBook.php?Id=".$book."");
 
 ?>

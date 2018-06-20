@@ -20,6 +20,7 @@
     <link href="http://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300|Poppins:400,500,700,300,600" rel="stylesheet" type="text/css">
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="js/common.js"></script>
 
 </head>
 <body>
@@ -76,9 +77,9 @@
 											$sqlFav = "SELECT * FROM wishlist WHERE Username = '".$_SESSION['username']."' and Book = '".$id."';";
 											$result2 = mySQLi_query($conn, $sqlFav) or die("Error query");
 											if($result2->num_rows > 0)
-												echo'<a href="script/add_favourite.php?Book='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button></a>';
+												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button>';
 											else
-												echo'<a href="script/add_favourite.php?Book='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
+												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button>';
 										}
 									}
 								echo'</div>

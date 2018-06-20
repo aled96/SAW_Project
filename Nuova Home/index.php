@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/NewHomeTest.css">
+    <script src="js/common.js"></script>
 
     <link href="http://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300|Poppins:400,500,700,300,600" rel="stylesheet" type="text/css">
 
@@ -95,24 +96,33 @@
 				$result = mySQLi_query($conn, $sql) or die("Error query");
 
 				while($row = mySQLi_fetch_array($result)){
-				
-				
-				#Check if logged
-				$fav_status="fa fa-heart-o";
-				$link = "login.php";
-				if(isset($_SESSION['username'])){
-					$user = $_SESSION['username'];
-					#Check if in wishlist
-					$sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='".$row['BookID']."' and Username='".$user."';";
 
-					$result2 = mySQLi_query($conn, $sql2) or die("Error query");
-					#If is in list -> change calss for star icon
-					while($row2 = mySQLi_fetch_array($result2)){
-						if($row2['IsThere'] == 1)
-							$fav_status="fa fa-heart";
-					}
-					$link="script/add_favourite.php?Book=".$row['BookID'];
-				}
+
+                    #Check if logged
+                    $fav_status="fa fa-heart-o";
+                    $link = "login.php";
+                    if(isset($_SESSION['username'])){
+                        $user = $_SESSION['username'];
+
+                        #Check if user == userProfile
+
+                        if(strcmp($row['User_offerer'], $user) == 0){
+                            $fav_status = "fa fa-pencil-square-o";
+                            $link = "modify_book.php?Id=".$row['BookID'];
+                        }
+                        else {
+                            #Check if in wishlist
+                            $sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
+
+                            $result2 = mySQLi_query($conn, $sql2) or die("Error query");
+                            #If is in list -> change calss for star icon
+                            while ($row2 = mySQLi_fetch_array($result2)) {
+                                if ($row2['IsThere'] == 1)
+                                    $fav_status = "fa fa-heart";
+                            }
+                            $link = "preferite";
+                        }
+                    }
 				
 				echo"
 						<div class='col-md-2 my-shop-animation'>
@@ -120,8 +130,17 @@
 								<div class='box-img-book'>
 									<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 									<div class='box-btn-shop'>
-										<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>
-										<div class='bt-img'><a class='btn btn-det-cart' href='".$link."'><i class='".$fav_status."'></i></a></div>
+										<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>";
+                if(strcmp($link, "preferite") == 0){
+                    echo "
+                                                <div class='bt-img'><a class='btn btn-det-cart'><span id='heart-preferite".$row['BookID']."'><i onClick='preferite(".$row['BookID'].")' class='" . $fav_status . "'></i></span></a></div>";
+                }
+                else{
+                    echo "
+                                                <div class='bt-img'><a class='btn btn-det-cart' href='" . $link . "'><i class='" . $fav_status . "'></i></a></div>";
+                }
+
+                echo"
 									</div>
 								</div>
 								<h2 class='title-book'>".$row['Title']."</h2>
