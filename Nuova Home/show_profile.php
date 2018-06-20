@@ -31,9 +31,9 @@
 	  <link rel="stylesheet" media="all" href="css/paging.css" />
       <script src="js/login.js"></script>
       <?php
-      if(isset($_SESSION['username'])) {
-          echo '<script src="js/message_updates.js"></script>';
-      }
+      #if(isset($_SESSION['username'])) {
+          #echo '<script src="js/message_updates.js"></script>';
+      #}
 
       ?>
 	
@@ -69,7 +69,7 @@
 
             $date = new DateTime($row['Date_of_birth']);
             $date_of_birth = $date->format('d-m-Y');
-            echo '
+            echo '<section class="container">
                 <div class="row">
                     <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
                         <div class="well profile">
@@ -95,83 +95,160 @@
                                 
                             </div>
                             <div class="col-xs-12 divider text-center">
-                                    <h2><strong>'.$bookPublished.'</strong></h2>
+                                    <h2 style="margin-bottom: 0px;"><strong>'.$bookPublished.'</strong></h2>
                                     <p><small>Books Published</small></p>
-                                    <p><a href="view_chat.php?user_to='.$userProfile.'"><button class="btn mybtn btn-info"><span class="fa fa-user"></span> Contact Now! 
+                                    <p><a href="view_chat.php?user_to='.$userProfile.'"><button class="btn mybtn btn-success"><span class="fa fa-user"></span> Contact Now! 
                                         </button></a></p>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>';
+                </div>
+                </section>';
         }
 
-        ?>
+    if($bookPublished > 0){
 
-    <!--FEATURED PRODUCTS-->
-    <section class="container">
-        <div class="row">
-            <div class="width100 text-center">
-                <h1>LAST <span>ADDED</span></h1>
-                <p class="sub-title">Here you can see the last book added ! Don't let them go</p>
-            </div>
-            <div class="width100">
+        echo '<section class="container">
+                <div class="row">
+                    <div class="width100 text-center">
+                        <h1>LAST <span>ADDED</span></h1>
+                        <p class="sub-title">Here you can see the last book added ! Don\'t let them go</p>
+                    </div>';
 
-                <?php
-                require "db/mysql_credentials.php";
+        $bookPerPage = 6;
 
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                $sql = "SELECT book.*, insertion.*, book.ID as BookID FROM book,insertion WHERE book.ID = insertion.Material_offered ORDER BY book.ID desc LIMIT 6 ";
-                $result = mySQLi_query($conn, $sql) or die("Error query");
-
-                while($row = mySQLi_fetch_array($result)){
+        $maxPage = ceil(($bookPublished)/$bookPerPage);
+        //check, if page number >> max --> show last page
+        if($actualPage > $maxPage)
+            $actualPage = $maxPage;
+        else if($actualPage < 1)
+            $actualPage = 1;
 
 
-                    #Check if logged
-                    $fav_status="fa fa-heart-o";
-                    $link = "login.php";
-                    if(isset($_SESSION['username'])){
-                        $user = $_SESSION['username'];
-                        #Check if in wishlist
-                        $sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='".$row['BookID']."' and Username='".$user."';";
+        $firstToView = ($actualPage-1)*$bookPerPage;
 
-                        $result2 = mySQLi_query($conn, $sql2) or die("Error query");
-                        #If is in list -> change calss for star icon
-                        while($row2 = mySQLi_fetch_array($result2)){
-                            if($row2['IsThere'] == 1)
-                                $fav_status="fa fa-heart";
-                        }
-                        $link="script/add_favourite.php?Book=".$row['BookID'];
+
+        if($actualPage-1 < 1)
+            $prev="#";
+        else
+            $prev="show_profile.php?user=".$userProfile."&page=".($actualPage-1);
+
+        if($actualPage+1 > $maxPage)
+            $next="#";
+        else
+            $next="show_profile.php?user=".$userProfile."&page=".($actualPage+1);
+
+        echo"
+			<div class='pagination-position col-md-offset-5 col-md-2 col-lg-offset-5 col-lg-1 col-sm-offset-4 col-sm-6 col-xs-6 col-xs-offset-4'>
+				  <ul class='pagination'>
+					<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=1'>1</a></li>";
+        //if there are less than 6 pages -> show them
+        if($maxPage < 6)
+            for ($i = 2; $i <= $maxPage; $i++)
+                echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$i."'>".$i."</a></li>";
+        //otherwise if there are more than 5 pages --> ...
+        else if($maxPage > 5)
+        {
+            if($actualPage == 1)
+                echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+            else if($actualPage == $maxPage)
+                echo"<li class='page-item'><p class='page-link'>...</p></li>
+						<li class='page-item'><a class='page-link'href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+            else if($actualPage == 2)
+                echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=3'>3</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+            else if($actualPage == 3)
+                echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=2'>2</a></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=3'>3</a></li><li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=4'>4</a></li>
+					<li class='page-item'><p class='page-link'>...</p></li>";
+            else if($actualPage == $maxPage-2)
+                echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+            else if($actualPage == $maxPage-1)
+                echo"<li class='page-item'><p class='page-link'>...</p></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+            else
+                echo"<li class='page-item'><p class='page-link'>...</p></li>
+						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
+						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$actualPage."'>".$actualPage."</a></li>
+						  <li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
+						<li class='page-item'><p class='page-link'>...</p></li>";
+            //page max
+            echo"<li class='page-item'><a class='page-link' href='show_profile.php?user=".$userProfile."&page=".$maxPage."''>".$maxPage."</a></li>";
+        }
+        echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
+				  </ul>
+			</div><br><br>
+			";
+
+        echo '<div class="width100">';
+
+
+        $cont = -1;
+        while($row1 = mySQLi_fetch_array($result1)){
+
+            $cont ++;
+            //echo "Cont ".$cont;
+            if($cont < $firstToView){
+                continue;
+            }
+            else if($cont >= $firstToView + $bookPerPage)
+                break;
+            else {
+                #Check if logged
+                $fav_status = "fa fa-heart-o";
+                $link = "login.php";
+                if (isset($_SESSION['username'])) {
+                    $user = $_SESSION['username'];
+                    #Check if in wishlist
+                    $sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
+
+                    $result2 = mySQLi_query($conn, $sql2) or die("Error query");
+                    #If is in list -> change calss for star icon
+                    while ($row2 = mySQLi_fetch_array($result2)) {
+                        if ($row2['IsThere'] == 1)
+                            $fav_status = "fa fa-heart";
                     }
-
-                    echo"
-						<div class='col-md-2 my-shop-animation'>
-							<div class='box-prod group-book'>
-								<div class='box-img-book'>
-									<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
-									<div class='box-btn-shop'>
-										<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>
-										<div class='bt-img'><a class='btn btn-det-cart' href='".$link."'><i class='".$fav_status."'></i></a></div>
-									</div>
-								</div>
-								<h2 class='title-book'>".$row['Title']."</h2>
-								<p class='author-txt'>".$row['Author']."</p>
-								<p class='book-price'>".$row['Price']." €</p>
-							</div>
-						</div>
-							";
+                    $link = "script/add_favourite.php?Book=" . $row1['BookID'];
                 }
-                ?>
+
+                echo "
+                                <div class='col-md-2 my-shop-animation'>
+                                    <div class='box-prod group-book'>
+                                        <div class='box-img-book'>
+                                            <img src='data:image/jpeg;base64," . base64_encode($row1['Cover']) . "' alt='cover'/>
+                                            <div class='box-btn-shop'>
+                                                <div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=" . $row1['BookID'] . "'><i class='fa fa-list'></i></a></div>
+                                                <div class='bt-img'><a class='btn btn-det-cart' href='" . $link . "'><i class='" . $fav_status . "'></i></a></div>
+                                            </div>
+                                        </div>
+                                        <h2 class='title-book'>" . $row1['Title'] . "</h2>
+                                        <p class='author-txt'>" . $row1['Author'] . "</p>
+                                        <p class='book-price'>" . $row1['Price'] . " €</p>
+                                    </div>
+                                </div>
+                                    ";
+            }
+        }
+
+        echo '
             </div>
-        </div>
-    </section>
+            </div>
+            </section>';
+
+
+
+
+    }
+
+    ?>
+
   
 	<?php
 	require "footer.php";

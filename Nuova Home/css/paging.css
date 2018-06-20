@@ -1,8 +1,9 @@
 /* Paging */
 
-.pagination-position{
-    margin: auto;
-    width: 30%;
+@media (max-width: 400px){
+	.pagination-position{
+		margin-left: 0px;
+	}
 }
 
 
