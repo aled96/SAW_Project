@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	session_start();
+
+	require "connectionDB.php";
+	
 	$_SESSION['PrevPage'] = "index.php";
 ?>
 <head>
@@ -58,17 +60,7 @@
 										echo'
 										<div class="col-md-12" id="resetFilterButton"><button type="button" onclick="resetFilters();" class="btn default"><i class="fa fa-times"></i> <span>Remove all filters</span></button><br><br></div>
 										';
-										
-									require "db/mysql_credentials.php";
-
-									// Create connection
-									$conn = new mysqli($servername, $username, $password, $dbname);
-
-									// Check connection
-									if ($conn->connect_error) {
-										die("Connection failed: " . $conn->connect_error);
-									}
-										
+									
 									$sql = "SELECT COUNT(DISTINCT ID) as AllBooks FROM book;";
 									$result = $conn->query($sql);
 

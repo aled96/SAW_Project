@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	session_start();
+	require "connectionDB.php";
+	
 	if(isset($_GET['Id']))
 		$id = $_GET['Id'];
 	else
@@ -32,12 +33,6 @@
 			<div class="panel">
 				<?php
 				
-					require "db/mysql_credentials.php";
-
-					// Create connection
-					$conn = new mysqli($servername, $username, $password, $dbname);
-
-					
 					$sql = "SELECT *, book.description as BookDesc FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='".$id."'";
 					
 					$result = mySQLi_query($conn, $sql) or die("Error query".$sql);
@@ -46,7 +41,7 @@
 					
 					echo'<div class="product-page">
 							<div class="list-product">
-								<div class="col-md-3 my-shop-animation">
+								<div class="col-md-3 my-shop-animation heightAuto">
 									<div class="box-prod">
 										<div class="image-product">
 											<img src="data:image/jpeg;base64,'.base64_encode($row['Cover']).'" alt="cover" />
@@ -67,7 +62,25 @@
 									<p class="book-price">'.$row['Price'].' €</p>
 									<br>
 									<div class="box-btn-shop">
-										<div class="bt-img"><button type="button" class="btn btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button></div>
+										<div class="bt-img"><button type="button" class="btn btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button> ';
+									
+									if(isset($_SESSION['username']) and strcmp($_SESSION['username'],$row['User_offerer']) == 0){
+										echo'<a href="modify_book.php?Id='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-edit"></i>  Edit</button></a>';
+									}
+									else{
+										if(!isset($_SESSION['username'])){
+											echo'<a href="login.php"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
+										}
+										else{
+											$sqlFav = "SELECT * FROM wishlist WHERE Book = '".$id."';";
+											$result2 = mySQLi_query($conn, $sqlFav) or die("Error query");
+											if($result2->num_rows > 0)
+												echo'<a href="script/add_favourite.php?Book='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button></a>';
+											else
+												echo'<a href="script/add_favourite.php?Book='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
+										}
+									}
+								echo'</div>
 									</div>
 								</div>
 								<div class="col-md-12 detail-box-desc">

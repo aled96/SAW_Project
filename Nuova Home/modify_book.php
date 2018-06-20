@@ -2,26 +2,16 @@
 <html lang="en">
 
 <?php
-session_start();
+require "connectionDB.php";
+	
 if(!isset($_SESSION['username']))
 {
     header("location: index.php");
 }
 
-require "db/mysql_credentials.php";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    header("location: index.php");
-}
-
 $id = 0;
-if(isset($_GET['id']))
-    $id = $conn->real_escape_string($_GET['id']);
+if(isset($_GET['Id']))
+    $id = $conn->real_escape_string($_GET['Id']);
 else
     header("location: index.php");
 
@@ -40,8 +30,6 @@ else
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-
-    <script src="js/common.js"></script>
     <script src="js/insert.js"></script>
 
     <script>
@@ -59,8 +47,8 @@ else
 
 <?php
 require "navbar.php";
-
 ?>
+
 <?php
 $sql = "SELECT book.*,Price, Place FROM book,insertion WHERE book.ID = Material_offered AND book.ID = '".$id."';";
 $result = $conn->query($sql);

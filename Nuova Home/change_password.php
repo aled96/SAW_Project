@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
+
+require "connectionDB.php";
+	
 $_SESSION['PrevPage'] ="setting.php";
 ?>
   <head>

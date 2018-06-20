@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	session_start();
+	require "connectionDB.php";
+	
 	$_SESSION['PrevPage'] = "index.php";
 ?>
 <head>
@@ -89,15 +90,6 @@
             <div class="width100">
 			
 				<?php
-				require "db/mysql_credentials.php";
-
-				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
-
-				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				}
 				
 				$sql = "SELECT book.*, insertion.*, book.ID as BookID FROM book,insertion WHERE book.ID = insertion.Material_offered ORDER BY book.ID desc LIMIT 6 ";
 				$result = mySQLi_query($conn, $sql) or die("Error query");

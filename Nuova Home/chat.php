@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php
-session_start();
+require "connectionDB.php";
+	
 if(!isset($_SESSION['username'])) {
     header("location: index.php");
 }
@@ -52,16 +53,6 @@ require "navbar.php";
 
                             <?php
 
-                            require "db/mysql_credentials.php";
-
-                            $user = $_SESSION['username'];
-                            // Create connection
-                            $conn = new mysqli($servername, $username, $password, $dbname);
-
-                            // Check connection
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }
                             $sql = "SELECT distinct User_from, User_to, MAX(Datetime) as max_date FROM chat WHERE User_from = '".$user."' or User_to = '".$user."' GROUP BY User_from, User_to ORDER BY max_date desc";
                             $result = mySQLi_query($conn, $sql) or die("Error query1");
                             $list_users = array();

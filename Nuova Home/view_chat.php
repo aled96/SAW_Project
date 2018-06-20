@@ -3,12 +3,8 @@
 
 <?php
 
-require "db/mysql_credentials.php";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-session_start();
+require "connectionDB.php";
+	
 if(!isset($_SESSION['username'])) {
     header("location: login.php");
 }
@@ -20,12 +16,6 @@ $_SESSION['PrevPage'] = "view_chat.php?user_to=".$other;
 
 if(strcmp($user, $other) == 0){
     header("location: index.php");
-}
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    header("location: login.php");
 }
 
 $sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to = '".$user."'";
@@ -47,9 +37,9 @@ if (!($conn->query($sql) === TRUE)) {
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" media="all" href="css/chat.css" />
     <link rel="stylesheet" media="all" href="css/live_chat.css" />
-    <script src="js/common.js"></script>
+	
+	
     <script src="js/chat.js"></script>
 
 </head>
@@ -59,15 +49,19 @@ if (!($conn->query($sql) === TRUE)) {
 <?php
 require "navbar.php";
 ?>
-<div class="chat-window col-xs-11 col-md-10 col-lg-10" id="chat_window_1">
-    <div class="col-xs-12 col-md-12">
-        <?php
-            echo'
-                <div class="panel panel-default">
-                    <div class="panel-heading top-bar">
-                            <h3 class="panel-title"><i class="fa fa-comment my-comment"></i><chat_with> Chat with</chat_with> '.$other.'</h3>
-                    </div>
-                    <div id="message-panel-body" class="panel-body msg_container_base">';
+
+
+<?php
+echo'
+<section class="container">
+	<div class="chatView" id="logIn">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<div class="panel-title"><h3 class="panel-title"><i class="fa fa-comment my-comment"></i><chat_with> Chat with</chat_with> '.$other.'</h3></div>
+			</div>
+			
+			
+			<div id="message-panel-body" class="panel-body msg_container_base">';
 
             $sql = "SELECT distinct * FROM chat WHERE (User_from = '".$user."' and User_to = '".$other."') or (User_from = '".$other."' and User_to = '".$user."')";
 
@@ -85,7 +79,7 @@ require "navbar.php";
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="img-profile img-responsive ">
+                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-2.jpg" class="img-profile img-responsive ">
                             </div>
                         </div>';
                 } else if (strcmp($user, $row['User_to']) == 0) {
@@ -106,17 +100,20 @@ require "navbar.php";
 
             echo'
             </div>
-                <div class="panel-footer">
-                    <input type="hidden" id="user_to" value="'.$other.'">
-                    <textarea id="input-message" class="input-sm chat_input"></textarea>
-                    <span class="input-group-send">
-                    <button class="btn btn-primary btn-send" id="btn-chat" onclick="async_send_message()">Send <i class="fa fa-angle-right" style="color: black;"></i></button>
-                    </span>
-                </div>
-            </div>';
-        ?>
-    </div>
-</div>
+			<div class="panel-footer">
+				<input type="hidden" id="user_to" value="'.$other.'">
+				<textarea id="input-message" class="input-sm chat_input"></textarea>
+				<span class="input-group-send">
+				<button class="btn btn-primary btn-send" id="btn-chat" onclick="async_send_message()">Send <i class="fa fa-angle-right" style="color: black;"></i></button>
+				</span>
+			</div>			
+		</div>
+	</div>
+
+</section>
+';
+?>
+
 
 <?php
 require "footer.php";

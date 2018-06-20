@@ -38,7 +38,7 @@
 }
 
 .msg_container_base{
-  background: #e5e5e5;
+  background: #e4fbe64f;
   margin: 0;
   padding: 0 10px 10px;
   max-height: 600px;
@@ -55,22 +55,6 @@
   border-bottom-right-radius: 12px; 
 }
 
-.top-bar {
-  background: #666;
-  color: white;
-  padding: 10px;
-  position: relative;
-  overflow: hidden;
-  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-  -webkit-border-top-left-radius: 12px; 
-  -webkit-border-top-right-radius: 12px; 
-  /* Firefox 1-3.6 */
-  -moz-border-top-left-radius: 12px; 
-  -moz-border-top-right-radius: 12px; 
-  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-  border-top-left-radius: 12px; 
-  border-top-right-radius: 12px; 
-}
 .msg_receive{
     padding-left:0;
     margin-left:0;
@@ -130,9 +114,7 @@
 		height:0px;
 	}
 }
-.avatar {
-    position: relative;
-}
+
 .base_sent {
   justify-content: flex-end;
   align-items: flex-end;
@@ -165,17 +147,13 @@
     background-color: #555;
 }
 
-.btn-group.dropup{
-    position:fixed;
-    left:0px;
-    bottom:0;
-}
 
 .panel-footer{
   margin: 0;
   padding-top: 20px;
   padding-right: 5px;
   padding-left:5px;
+  background-color: #d9f7d9 !important;
 }
 
 @media (max-width: 500px){
@@ -198,23 +176,17 @@
 }
 
 .btn-send{
-	background-color: #8c9cbf;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8c9cbf), color-stop(50%, #546a9e), color-stop(50%, #36518f), color-stop(100%, #3d5691));
-    background-image: -webkit-linear-gradient(top, #8c9cbf 0%, #546a9e 50%, #36518f 50%, #3d5691 100%);
-    background-image: -moz-linear-gradient(top, #8c9cbf 0%, #546a9e 50%, #36518f 50%, #3d5691 100%);
-    background-image: -ms-linear-gradient(top, #8c9cbf 0%, #546a9e 50%, #36518f 50%, #3d5691 100%);
-    background-image: -o-linear-gradient(top, #8c9cbf 0%, #546a9e 50%, #36518f 50%, #3d5691 100%);
-    background-image: linear-gradient(top, #8c9cbf 0%, #546a9e 50%, #36518f 50%, #3d5691 100%);
-    border: 1px solid #172d6e;
-    border-bottom: 1px solid #0e1d45;
+	background-color: #8cbf8c;
+    background-image: -webkit-linear-gradient(top, #aabf8c 0%, #4c9551 50%, #418f36 50%, #5a913d 100%);
+   
+    border: 1px solid #1d9222;
+    border-bottom: 1px solid #175b05;
     border-radius: 5px;
-    -webkit-box-shadow: inset 0 1px 0 0 #b1b9cb;
-    box-shadow: inset 0 1px 0 0 #b1b9cb;
+    box-shadow: inset 0 1px 0 0 #b1cbb2;
     color: #fff;
     font: bold 16px/1 "helvetica neue", helvetica, arial, sans-serif;
     text-decoration: none;
     text-align: center;
-    text-shadow: 0 -1px 1px #000f4d;
 }
 
 .chat_input{

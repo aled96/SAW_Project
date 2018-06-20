@@ -1,7 +1,8 @@
  <!DOCTYPE html>
 <html lang="en">
 <?php
-	session_start();
+	require "connectionDB.php";
+	
 	$userProfile = $_GET['user'];
 	
 	if(!isset($_GET['user'])) {
@@ -45,17 +46,8 @@
     <?php
     require "navbar.php";
     ?>
+	
     <?php
-
-        require "db/mysql_credentials.php";
-
-		// Create connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
-
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
 
 		$sql = "SELECT user.*, city.Name as CityName, province.Name as ProvName, Region FROM user, city,province WHERE city.ID = City AND province.ID = Province AND Username = '$userProfile'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");

@@ -33,6 +33,25 @@ h2 {
   margin-top: 20px;
 }
 
+
+/**********************
+	CHAT
+**********************/
+
+.chatView{
+	margin-top:40px;
+}
+
+.floatRight{
+	float:right;
+}
+
+/**********************
+	END CHAT
+**********************/
+
+
+
 /**********************
 	LOGIN
 **********************/
@@ -173,6 +192,15 @@ textarea{
 	font-size: 14px;
 	letter-spacing: 1px;
 	font-weight: 600;
+}
+
+.editBook{
+	position:absolute;
+}
+
+.colorRed{
+	background-color:#ff1f1f !important;
+	border-color:red !important;
 }
 
 .product-page{
@@ -355,7 +383,7 @@ header {
   transform: scaleY(0);
   transform-origin: 0 0 0;
   transition: all 0.4s ease 0s;
-  width: 600px;
+  width: 455px;
   z-index: 3000;
 }
 .mega-menu span {
@@ -387,9 +415,38 @@ header {
 
 .red-message{
 	color:red;
-	position:absolute;
-	margin-top:-47px;
-	font-size:23px !important;
+	position:relative;
+	top:-10px;
+	margin-left:3px;
+	font-size:18px !important;
+}
+
+.message-alert{
+	background-color:red;
+	border-radius:50px;
+	color:white;
+}
+
+.minimenu{
+	visibility:hidden;
+	height:0px;
+	position:relative;
+}
+
+.minimenu ul li{
+	display: inline-block;
+}
+
+.minimenu ul li a{
+    color: #252525;
+	text-align:left;
+	display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 45px;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
 /******
@@ -961,6 +1018,9 @@ END MENU
 	height:450px;
 }
 
+.heightAuto{
+	height:auto !important;
+}
 
 #dataMix{
     min-height: 500px;
@@ -1233,6 +1293,7 @@ END MENU
         padding: 6px 10px;
         margin-top: 40px;
     }
+	
     .nav>li>a:focus, .nav>li>a:hover{background-color:#fff;}
     .navbar-collapse{padding:0;}
     .navbar-toggle .icon-bar {

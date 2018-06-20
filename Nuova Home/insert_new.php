@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php
-    session_start();
+	require "connectionDB.php";
+	
     if(!isset($_SESSION['username']))
     {
         header("location: index.php");
@@ -89,16 +90,6 @@
 							<select name="fac1" id="fac1" class="form-control" required onchange="selectCategory(1)">
 								<option value="not-selected" selected disabled>Faculty</option>
 								<?php
-
-								require "db/mysql_credentials.php";
-
-								// Create connection
-								$conn = new mysqli($servername, $username, $password, $dbname);
-
-								// Check connection
-								if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-								}
 
 								$sql = "SELECT distinct Name FROM faculty";
 								$result = $conn->query($sql);

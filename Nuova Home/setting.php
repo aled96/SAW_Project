@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php
-    session_start();
+	require "connectionDB.php";
+	
     if(!isset($_SESSION['username']))
     {
         header("location: index.php");
@@ -50,11 +51,6 @@
                 </section>
 				<div class="panel-body">
 					<form form action="script/changeSettings.php" method="POST" id="settingsForm" name="settingsForm" enctype="multipart/form-data">';
-
-            require "db/mysql_credentials.php";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
 
             $user = $_SESSION['username'];
 

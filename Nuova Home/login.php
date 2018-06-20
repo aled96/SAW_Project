@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php
-    session_start();
+	require "connectionDB.php";
+	
     if(isset($_SESSION['username']))
     {
         header("location: index.php");
@@ -135,16 +136,6 @@
 							<select onclick="removeErrorSignup()" name="province" id="province" onchange="selectCity()" class="form-control">
 								<option value="not-selected" selected disabled>Province</option>
 								<?php
-
-									require "db/mysql_credentials.php";
-
-									// Create connection
-									$conn = new mysqli($servername, $username, $password, $dbname);
-
-									// Check connection
-									if ($conn->connect_error) {
-										die("Connection failed: " . $conn->connect_error);
-									}
 
 									$sql = "SELECT distinct Name FROM province";
 									$result = $conn->query($sql);
