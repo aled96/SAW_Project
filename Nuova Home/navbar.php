@@ -82,7 +82,7 @@
 										<!-- Menu One Column -->
 										<div class='mega-menu little-menu'>
 											<span>
-												<a href='#'>Dashboard</a>
+												<a href='show_profile.php?user=".$_SESSION['username']."'>Dashboard</a>
 												<a href='insert_new.php'>AddBook</a>
 												<a href='#'>Wishlist</a>
 												<a href='#'>MyPublications</a>

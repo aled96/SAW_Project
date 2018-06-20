@@ -46,6 +46,6 @@ while($row = mySQLi_fetch_array($result)){
 		}	
 	}
 }
-header("location: ../PageBook.php?Id=".$book."");
+header("location: ../pageBook.php?Id=".$book."");
 
 ?>
