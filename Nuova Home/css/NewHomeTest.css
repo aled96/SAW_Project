@@ -1283,6 +1283,12 @@ END MENU
 			Responsive
 ************************************************************************/
 
+
+.page-details-product {
+	min-height: calc(100% - 189px);
+}
+
+
 @media only screen and (max-width: 1025px){
 
     .block-service.block-service-opt .item{text-align:center;}
@@ -1391,7 +1397,7 @@ END MENU
     .content-table-cart{padding:0 15px;}
 
     /*Product Details*/
-
+    
     .page-details-product .list-product{width:100%;float:left;}
     .page-details-product .list-product .box-desc-detail{float:left;width:65%;}
     .page-details-product .list-product .detail-box-desc{width:100%;float:left;}

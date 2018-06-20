@@ -45,10 +45,7 @@
     <!--Navbar-->
     <?php
     require "navbar.php";
-    ?>
-
-    <br><br>
-    <?php
+    
 		$sql = "SELECT user.*, city.Name as CityName, province.Name as ProvName, Region FROM user, city,province WHERE city.ID = City AND province.ID = Province AND Username = '$userProfile'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 
@@ -61,8 +58,8 @@
 
             $date = new DateTime($row['Date_of_birth']);
             $date_of_birth = $date->format('d-m-Y');
-            echo '<section class="container">
-                <div class="row">
+            echo '<section class="container min-height-login">
+                <div class="row profile-container">
                     <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
                         <div class="well profile">
                             <div class="col-sm-12">
@@ -94,14 +91,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                </section>';
+                </div>';
         }
 
     if($bookPublished > 0){
 
-        echo '<section class="container">
-                <div class="row">
+        echo '<div class="row">
                     <div class="width100 text-center">
                         <h1>LAST <span>ADDED</span></h1>
                         <p class="sub-title">Here you can see the last book added ! Don\'t let them go</p>
@@ -203,7 +198,7 @@
 
                     if(strcmp($userProfile, $user) == 0){
                         $fav_status = "fa fa-pencil-square-o";
-                        $link = "modify_book.php?id=".$row1['BookID'];
+                        $link = "modify_book.php?Id=".$row1['BookID'];
                     }
                     else {
                         #Check if in wishlist
