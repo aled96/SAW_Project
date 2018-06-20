@@ -80,9 +80,14 @@ function check_socket() {
             {
                 if (xmlreq.responseText != "")
                 {
-                    document.getElementById("message-panel-body").insertAdjacentHTML('beforeend', xmlreq.responseText);
+					var updates = xmlreq.responseText.split('§§§');
+                    document.getElementById("message-panel-body").insertAdjacentHTML('beforeend', updates[0]);
                     var div = document.querySelector('#message-panel-body');
                     div.scrollTop = div.scrollHeight;
+                    if(updates[1] == "new"){
+						document.getElementById("all_messages").innerHTML = '';
+						document.getElementById("all_messages").insertAdjacentHTML('beforeend', "<li><a href='chat.php'>Messages<i class='fa fa-exclamation-circle red-message' id='message-alert' name='message-alert'></i></a></li>");
+					}
                     setTimeout(function() { webchat(); }, 5000);
                 }
                 else{

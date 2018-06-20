@@ -43,7 +43,7 @@ function check_socket_all_chat() {
                             }
                             else{
                                 document.getElementById("all_messages").innerHTML = '';
-                                document.getElementById("all_messages").insertAdjacentHTML('beforeend', "<a href='chat.php'><i class='icon-envelope icon-white'></i> Messagges <i class='fa fa-exclamation' style='color: red;'></i> ("+fields[j]+")</a>");
+                                document.getElementById("all_messages").insertAdjacentHTML('beforeend', "<li><a href='chat.php'>Messages<i class='fa fa-exclamation-circle red-message' id='message-alert' name='message-alert'></i></a></li>");
 							}
                         }
 					}

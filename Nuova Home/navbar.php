@@ -46,14 +46,14 @@ function minimenu(){
 										$row = mySQLi_fetch_array($result);
 										$unread_count = $row['count'];
 										
-										echo '<li>
+										echo '<span id="all_messages"><li>
 												<a href="chat.php">Messages';
 													
 										if($unread_count > 0)
 											echo'<i class="fa fa-exclamation-circle red-message" id="message-alert" name="message-alert"></i>';
 													
 										echo'	</a>
-											</li>';
+											</li></span>';
 									}
 
                                 ?>

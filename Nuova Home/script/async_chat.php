@@ -14,6 +14,10 @@ if(isset($_SESSION['username'])) {
 		$otherPic = "data:image/jpeg;base64,".base64_encode($rowPic['ProfilePic']);
 	}
 	
+	$sql = "SELECT distinct * FROM chat WHERE Is_read = 0 and User_from <> '".$other."' and User_to = '".$user."'";
+    $result = mySQLi_query($conn, $sql) or die("Error query");
+    $othermsg = $result->num_rows;
+	
     $sql = "SELECT distinct * FROM chat WHERE Is_read = 0 and User_from = '".$other."' and User_to = '".$user."'";
     $result = mySQLi_query($conn, $sql) or die("Error query");
     $list_users = array();
@@ -38,6 +42,14 @@ if(isset($_SESSION['username'])) {
 
     if (!($conn->query($sql) === TRUE)) {
         die("Error: " . $sql . "<br>" . $conn->error);
+    }
+
+    if($othermsg > 0)
+    {
+        $returned_obj = $returned_obj."§§§new";
+    }
+    else{
+        $returned_obj = $returned_obj."§§§no";
     }
 
     echo $returned_obj;

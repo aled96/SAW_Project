@@ -31,6 +31,11 @@ else
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <script src="js/insert.js"></script>
+    <?php
+    if(isset($_SESSION['username'])) {
+        echo '<script src="js/message_updates.js"></script>';
+    }
+    ?>
 
     <script>
         document.addEventListener("keyup", function(event) {

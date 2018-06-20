@@ -20,6 +20,12 @@
     <script src="js/search.js"></script>
     <script src="js/common.js"></script>
 
+    <?php
+    if(isset($_SESSION['username'])) {
+        echo '<script src="js/message_updates.js"></script>';
+    }
+    ?>
+
 </head>
 <body>
 

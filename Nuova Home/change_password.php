@@ -21,6 +21,11 @@ $_SESSION['PrevPage'] ="setting.php";
 	
 	
     <script src="js/changePassword.js"></script>
+      <?php
+      if(isset($_SESSION['username'])) {
+          echo '<script src="js/message_updates.js"></script>';
+      }
+      ?>
 
 </head>
 

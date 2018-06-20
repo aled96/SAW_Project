@@ -28,10 +28,10 @@ function check_socket() {
         if (xmlreq.status == 200) {
             if (xmlreq.responseText != null)
             {
-                if (xmlreq.responseText != "0")
+                if (xmlreq.responseText != "")
                 {
-                    document.getElementById("all_messages").innerHTML = '';
-                    document.getElementById("all_messages").insertAdjacentHTML('beforeend', xmlreq.responseText);
+					document.getElementById("all_messages").innerHTML = '';
+					document.getElementById("all_messages").insertAdjacentHTML('beforeend', xmlreq.responseText);
                     setTimeout(function() { websocket(); }, 5000);
                 }
                 else{

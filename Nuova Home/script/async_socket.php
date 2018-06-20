@@ -10,10 +10,8 @@ if(isset($_SESSION['username'])) {
     $row = mySQLi_fetch_array($result);
     $unread_count = $row['count'];
 
-    if($unread_count == 0)
-        echo "<a href='chat.php'><i class='icon-envelope icon-white'></i> Messagges </a>";
-    else
-        echo "<a href='chat.php'><i class='icon-envelope icon-white'></i> Messagges <i class='fa fa-exclamation' style='color: red;'></i> (".$unread_count.")</a>";
+    if($unread_count != 0)
+        echo "<li><a href='chat.php'>Messages<i class='fa fa-exclamation-circle red-message' id='message-alert' name='message-alert'></i></a></li>";
 
 }
 
