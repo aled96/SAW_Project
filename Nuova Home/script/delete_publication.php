@@ -12,5 +12,5 @@ $sql = "DELETE FROM book WHERE ID = '".$id."'";
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
 
-header("location: ../my_publications.php?page=1");
+header("location: ../show_profile.php?user=".$_SESSION['username']."&page=1");
 ?>
