@@ -48,24 +48,21 @@ if (mysqli_query($conn, $sql)) {
             }
             $sql2 = "INSERT INTO concern (Book, Category)
                 VALUES ('" . $id . "', '" . $id_cat . "')";
-
-            if ($conn->query($sql2) === TRUE) {
-                #Insert in Insertion
-                $sql3 = "INSERT INTO insertion (ID, User_offerer, Material_offered, Date_of_pubblication, Place, Price) VALUES (NULL, '".$user."', '".$id."', '".$date_of_pubblication."', '".$place."', '".$price."');";
-
-                if ($conn->query($sql3) === TRUE) {
-                    header("location: ../PageBook.php?Id=".$id."");
-                } else {
-                    die("Error: " . $sql3 . "<br>" . $conn->error);
-                    header("location: ../index.php");
-                }
-
-            } else {
-                die("Error: " . $sql2 . "<br>" . $conn->error);
-                header("location: ../index.php");
-            }
+			if ($conn->query($sql2) === FALSE) {
+				die("Error: " . $sql2 . "<br>" . $conn->error);
+				header("location: ../index.php");
+			}
         }
     }
+    
+	$sql3 = "INSERT INTO insertion (ID, User_offerer, Material_offered, Date_of_pubblication, Place, Price) VALUES (NULL, '".$user."', '".$id."', '".$date_of_pubblication."', '".$place."', '".$price."');";
+
+	if ($conn->query($sql3) === TRUE) {
+		header("location: ../pageBook.php?Id=".$id."");
+	} else {
+		die("Error: " . $sql3 . "<br>" . $conn->error);
+		header("location: ../index.php");
+	}
 
 
 } else {

@@ -80,6 +80,6 @@ if ($conn->query($sql3) === TRUE) {
     die("Error: " . $sql3 . "<br>" . $conn->error);
 }
 
-header("location: ../PageBook.php?Id=".$id."");
+header("location: ../pageBook.php?Id=".$id."");
 
 ?>
