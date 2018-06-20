@@ -73,7 +73,7 @@
 											echo'<a href="login.php"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
 										}
 										else{
-											$sqlFav = "SELECT * FROM wishlist WHERE Book = '".$id."';";
+											$sqlFav = "SELECT * FROM wishlist WHERE Username = '".$_SESSION['username']."' and Book = '".$id."';";
 											$result2 = mySQLi_query($conn, $sqlFav) or die("Error query");
 											if($result2->num_rows > 0)
 												echo'<a href="script/add_favourite.php?Book='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button></a>';
