@@ -1,17 +1,9 @@
 <?php
 
-require "../db/mysql_credentials.php";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require "../connectionDB.php";
 
 $email = $conn->real_escape_string($_GET['email']);
-session_start();
+
 if(!isset($_SESSION['username'])) {
     die("Error");
 }

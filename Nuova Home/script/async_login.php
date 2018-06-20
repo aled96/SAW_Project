@@ -1,15 +1,6 @@
 <?php
 
-require "../db/mysql_credentials.php";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    header("location: ../index.php");
-}
+require "../connectionDB.php";
 
 $user = $conn->real_escape_string($_GET['username']);
 $pwd = $conn->real_escape_string($_GET['password']);

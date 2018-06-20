@@ -1,16 +1,6 @@
 <?php
 
-require "../db/mysql_credentials.php";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    header("location: ../index.php");
-}
-echo "Connected successfully";
+require "../connectionDB.php";
 
 $author = $conn->real_escape_string($_POST['author']);
 $title = $conn->real_escape_string($_POST['title']);
@@ -28,7 +18,6 @@ $date_of_pubblication = date('Y/m/d', time());
 $place = $conn->real_escape_string($_POST['place']);
 $price = $conn->real_escape_string($_POST['price']);
 
-session_start();
 if(!isset($_SESSION['username'])) {
     header("location: index.php");
 }
