@@ -1,8 +1,8 @@
  <!DOCTYPE html>
 <html lang="en">
 <?php
-	require "connectionDB.php";
-	
+
+    require "connectionDB.php";
 	$userProfile = $_GET['user'];
 	
 	if(!isset($_GET['user'])) {
@@ -46,9 +46,9 @@
     <?php
     require "navbar.php";
     ?>
-	
-    <?php
 
+    <br><br>
+    <?php
 		$sql = "SELECT user.*, city.Name as CityName, province.Name as ProvName, Region FROM user, city,province WHERE city.ID = City AND province.ID = Province AND Username = '$userProfile'";
 		$result = mySQLi_query($conn, $sql) or die("Error query");
 
@@ -198,16 +198,25 @@
                 $link = "login.php";
                 if (isset($_SESSION['username'])) {
                     $user = $_SESSION['username'];
-                    #Check if in wishlist
-                    $sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
 
-                    $result2 = mySQLi_query($conn, $sql2) or die("Error query");
-                    #If is in list -> change calss for star icon
-                    while ($row2 = mySQLi_fetch_array($result2)) {
-                        if ($row2['IsThere'] == 1)
-                            $fav_status = "fa fa-heart";
+                    #Check if user == userProfile
+
+                    if(strcmp($userProfile, $user) == 0){
+                        $fav_status = "fa fa-pencil-square-o";
+                        $link = "modify_book.php?id=".$row1['BookID'];
                     }
-                    $link = "script/add_favourite.php?Book=" . $row1['BookID'];
+                    else {
+                        #Check if in wishlist
+                        $sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row1['BookID'] . "' and Username='" . $user . "';";
+
+                        $result2 = mySQLi_query($conn, $sql2) or die("Error query");
+                        #If is in list -> change calss for star icon
+                        while ($row2 = mySQLi_fetch_array($result2)) {
+                            if ($row2['IsThere'] == 1)
+                                $fav_status = "fa fa-heart";
+                        }
+                        $link = "script/add_favourite.php?Book=" . $row1['BookID'];
+                    }
                 }
 
                 echo "
