@@ -10,8 +10,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$email = $_GET['email'];
-$username = $_GET['username'];
+$email = $conn->real_escape_string($_GET['email']);
+$username = $conn->real_escape_string($_GET['username']);
 
 $login = false;
 

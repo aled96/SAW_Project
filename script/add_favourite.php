@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-$book = $_GET['Book'];
+$book = $conn->real_escape_string($_GET['Book']);
 
 session_start();
 if(!isset($_SESSION['username'])) {
@@ -46,6 +46,6 @@ while($row = mySQLi_fetch_array($result)){
 		}	
 	}
 }
-header("location: ../PageBook.php?Id=".$book."");
+header("location: ../pageBook.php?Id=".$book."");
 
 ?>

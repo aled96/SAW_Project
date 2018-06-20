@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$count = $_GET['count'];
+$count = $conn->real_escape_string($_GET['count']);
 
 $facName = "fac".$count;
 
