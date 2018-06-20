@@ -54,7 +54,7 @@ require "navbar.php";
 
 <?php
 echo'
-<section class="container">
+<section class="container min-height-login">
 	<div class="chatView" id="logIn">
 		<div class="panel panel-info">
 			<div class="panel-heading">

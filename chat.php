@@ -35,7 +35,7 @@ $_SESSION['PrevPage'] = "index.php";
 require "navbar.php";
 ?>
 <h1><i class="fa fa-comments" style="font-size:40px"></i> Recent Chat</h1>
-<div class="container bootstrap snippet">
+<div class="container snippet">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
