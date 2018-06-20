@@ -58,6 +58,20 @@ h2 {
 	float:right;
 }
 
+.minHeightChat{
+	min-height:370px;
+}
+
+.messageReceived{
+	max-width:60%;
+	float:left;
+}
+
+.messageSent{
+	max-width:60%;
+	float:right;
+}
+
 /**********************
 	END CHAT
 **********************/

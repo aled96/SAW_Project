@@ -31,7 +31,7 @@ $_SESSION['PrevPage'] ="setting.php";
 
   ?>
   
-	<section class="container">
+	<section class="container min-height-login">
      <?php
 
         if(isset($_SESSION['username'])){

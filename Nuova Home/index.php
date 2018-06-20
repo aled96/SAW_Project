@@ -84,7 +84,7 @@
     <section class="container">
         <div class="row">
             <div class="width100 text-center">
-                <h1>LAST <span>ADDED</span></h1>
+                <h1>LAST ADDED</h1>
                 <p class="sub-title">Here you can see the last book added ! Don't let them go</p>
             </div>
             <div class="width100">

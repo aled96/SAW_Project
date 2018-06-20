@@ -56,18 +56,19 @@
 
 									<p class="author-txt"><span>Author: </span>'.$row['Author'].'</p>
 									<br>
-									<p class="author-txt"><span>Sold by: </span>'.$row['User_offerer'].'</p>
+									<p class="author-txt"><span>Sold by: </span><a href="show_profile.php?user='.$row['User_offerer'].'">'.$row['User_offerer'].'</a></p>
 										
 									<br>
 									<p class="book-price">'.$row['Price'].' €</p>
 									<br>
-									<div class="box-btn-shop">
-										<div class="bt-img"><button type="button" class="btn btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button> ';
+									<div class="box-btn-shop">';
 									
 									if(isset($_SESSION['username']) and strcmp($_SESSION['username'],$row['User_offerer']) == 0){
 										echo'<a href="modify_book.php?Id='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-edit"></i>  Edit</button></a>';
 									}
 									else{
+										echo'<div class="bt-img"><a href="view_chat.php?user_to='.$row['User_offerer'].'"><button type="button" class="btn btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button></a> ';
+										
 										if(!isset($_SESSION['username'])){
 											echo'<a href="login.php"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
 										}

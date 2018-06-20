@@ -99,11 +99,8 @@
 }
 .img-profile {
     display: block;
-    width: 100%;
-    max-width: 120px;
-    max-height: 120px;
-    min-width: 80px;
-    min-height: 80px;
+	width:100px;
+	height:100px;
 }
 
 @media (max-width: 500px){
@@ -113,6 +110,12 @@
 		width:0px;
 		height:0px;
 	}
+	
+	.col-xs-2{
+		width:0px;
+	}
+	
+	
 }
 
 .base_sent {

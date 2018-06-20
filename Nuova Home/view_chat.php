@@ -5,13 +5,15 @@
 
 require "connectionDB.php";
 	
+	
+	
 if(!isset($_SESSION['username'])) {
     header("location: login.php");
 }
 
 $user = $_SESSION['username'];
-$other = $conn->real_escape_string($_GET['user_to']);
 
+$other = $conn->real_escape_string($_GET['user_to']);
 $_SESSION['PrevPage'] = "view_chat.php?user_to=".$other;
 
 if(strcmp($user, $other) == 0){
@@ -50,7 +52,6 @@ if (!($conn->query($sql) === TRUE)) {
 require "navbar.php";
 ?>
 
-
 <?php
 echo'
 <section class="container">
@@ -61,9 +62,21 @@ echo'
 			</div>
 			
 			
-			<div id="message-panel-body" class="panel-body msg_container_base">';
+			<div id="message-panel-body" class="panel-body msg_container_base minHeightChat">';
 
-            $sql = "SELECT distinct * FROM chat WHERE (User_from = '".$user."' and User_to = '".$other."') or (User_from = '".$other."' and User_to = '".$user."')";
+			$sqlPic = "SELECT T.ProfilePic as MyPic, T2.ProfilePic as OtherPic FROM
+						(SELECT ProfilePic FROM user WHERE username = '".$user."') as T,
+						(SELECT ProfilePic FROM user WHERE username = '".$other."') as T2";
+						
+            $resultPic = mySQLi_query($conn, $sqlPic) or die("Error query Pic");
+			$myPic = "";
+			$otherPic = "";
+            while($rowPic = mySQLi_fetch_array($resultPic)) {
+				$myPic = "data:image/jpeg;base64,".base64_encode($rowPic['MyPic']);
+				$otherPic = "data:image/jpeg;base64,".base64_encode($rowPic['OtherPic']);
+			}
+						
+            $sql = "SELECT distinct * FROM chat WHERE (User_from = '".$user."' and User_to = '".$other."') or (User_from = '".$other."' and User_to = '".$user."') ORDER BY Datetime ASC";
 
             $result = mySQLi_query($conn, $sql) or die("Error query");
             $list_users = array();
@@ -72,23 +85,23 @@ echo'
                 if (strcmp($user, $row['User_from']) == 0) {
                     echo '
                         <div class="msg_container base_sent">
-                            <div class="col-md-10 col-sm-11 col-xs-11">
+                            <div class="messageSent">
                                 <div class="messages msg_sent">
                                     <p class="message-body">'.$row['Message'].'</p>
                                     <time>'.$row['Datetime'].'</time>
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-2.jpg" class="img-profile img-responsive ">
+                                <img src="'.$myPic.'" class="img-profile floatRight">
                             </div>
                         </div>';
                 } else if (strcmp($user, $row['User_to']) == 0) {
                     echo '
                         <div class="msg_container base_receive">
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class="img-profile img-responsive ">
+                                <img src="'.$otherPic.'" class="img-profile">
                             </div>
-                            <div class="col-md-10 col-sm-11 col-xs-11">
+                            <div class="messageReceived">
                                 <div class="messages msg_receive">
                                     <p class="message-body">'.$row['Message'].'</p>
                                     <time>'.$row['Datetime'].'</time>

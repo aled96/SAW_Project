@@ -85,9 +85,12 @@
                             </div>
                             <div class="col-xs-12 divider text-center">
                                     <h2 style="margin-bottom: 0px;"><strong>'.$bookPublished.'</strong></h2>
-                                    <p><small>Books Published</small></p>
-                                    <p><a href="view_chat.php?user_to='.$userProfile.'"><button class="btn mybtn btn-success"><span class="fa fa-user"></span> Contact Now! 
-                                        </button></a></p>
+                                    <p><small>Books Published</small></p>';
+								if(!isset($_SESSION['username']) || strcmp($_SESSION['username'],$_GET['user']) != 0)
+                                    echo'<p><a href="view_chat.php?user_to='.$userProfile.'"><button class="btn mybtn btn-success"><span class="fa fa-user"></span> Contact Now! 
+                                        </button></a></p>';
+										
+							echo'
                             </div>
                         </div>
                     </div>
