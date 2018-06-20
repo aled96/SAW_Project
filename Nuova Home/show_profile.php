@@ -254,6 +254,11 @@
 
 
     }
+    else{
+        echo '
+            </div>
+            </section>';
+    }
 
     ?>
 

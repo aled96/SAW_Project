@@ -57,40 +57,40 @@
             $sql = "SELECT user.*, city.Name as Cityname, province.Name as Provincename FROM user, city, province WHERE Username='" . $user . "' and user.City = city.ID and city.Province = province.ID ";
             $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
 
-            while ($row = mySQLi_fetch_array($result)) {
-                $provinceName = $row['Provincename'];
-                $cityName = $row['Cityname'];
+            while ($user_info = mySQLi_fetch_array($result)) {
+                $provinceName = $user_info['Provincename'];
+                $cityName = $user_info['Cityname'];
                 echo '
 						<div class="input-group loginMargin">
 								<a href="change_password.php"><button type="button" class="btn btn-success login-btn">Change Password </button></a>
 						</div>
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" placeholder="Username" id="userChange" name="userChange" readonly value="'.$row['Username'].'"class="form-control">
+							<input type="text" placeholder="Username" id="userChange" name="userChange" readonly value="'.$user_info['Username'].'"class="form-control">
 						</div>						
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-							<input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()" class="form-control" value="'.$row['Email'].'">
+							<input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()" class="form-control" value="'.$user_info['Email'].'">
 						</div>
 
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							<input onclick="removeErrorChange()" type="date" id="dateChange" name="dateChange"  value="' . $row['Date_of_birth'] . '" class="form-control">
+							<input onclick="removeErrorChange()" type="date" id="dateChange" name="dateChange"  value="' . $user_info['Date_of_birth'] . '" class="form-control">
 						</div>
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" placeholder="First name" id="nameChange" name="nameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $row['Name'] . '" class="form-control">
+							<input type="text" placeholder="First name" id="nameChange" name="nameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $user_info['Name'] . '" class="form-control">
 						</div>
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" placeholder="Last name" id="surnameChange" name="surnameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $row['Surname'] . '" class="form-control">
+							<input type="text" placeholder="Last name" id="surnameChange" name="surnameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $user_info['Surname'] . '" class="form-control">
 						</div>
 						
 						<div class="input-group loginMargin">';
-						 if ($row['Gender'] == "male") {
+						 if ($user_info['Gender'] == "male") {
 						 echo '
 							<select name="gender" id="gender" class="form-control">
 								<option value="male" selected>Male</option>
@@ -152,7 +152,7 @@
 						</div>
 							
 							
-						<div class="input-group loginMargin">
+						<div class="input-group loginMargin"><img src="data:image/jpeg;base64,'.base64_encode($user_info['ProfilePic']).'" alt="cover"/>
 							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()" required>
 						</div>
 						<br>
