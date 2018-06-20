@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$faculty = $_GET['faculty'];
+$faculty = $conn->real_escape_string($_GET['faculty']);
 
 $sql = "SELECT distinct ID FROM faculty where name = '".$faculty."'";
 $result = $conn->query($sql);

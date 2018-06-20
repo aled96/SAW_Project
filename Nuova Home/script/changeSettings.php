@@ -14,7 +14,7 @@ $gender = $conn->real_escape_string($_POST['gender']);
 $date_of_birth = $conn->real_escape_string($_POST['dateChange']);
 $city = $conn->real_escape_string($_POST['cityChange']);
 
-if ($_FILES['image']['size'] == 0 && $_FILES['image']['error'] == 0){
+if ($_FILES['image']['size'] == 0){
     $img = null;
 }
 else{

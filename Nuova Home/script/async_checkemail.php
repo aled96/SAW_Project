@@ -2,8 +2,8 @@
 
 require "../connectionDB.php";
 
-$email = $_GET['email'];
-$username = $_GET['username'];
+$email = $conn->real_escape_string($_GET['email']);
+$username = $conn->real_escape_string($_GET['username']);
 
 $login = false;
 

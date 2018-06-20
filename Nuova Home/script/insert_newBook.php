@@ -9,14 +9,19 @@ $pages = $conn->real_escape_string($_POST['pages']);
 $ed = $conn->real_escape_string($_POST['edition']);
 $isbn = $conn->real_escape_string($_POST['isbn']);
 
-//Get the content of the image and then add slashes to it
-$imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 $n_categories = $conn->real_escape_string($_POST['number_of_categories']);
 
 $date_of_pubblication = date('Y/m/d', time());
 
 $place = $conn->real_escape_string($_POST['place']);
 $price = $conn->real_escape_string($_POST['price']);
+
+if ($_FILES['image']['size'] == 0){
+    $imgData = null;
+}
+else{
+	$imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+}
 
 if(!isset($_SESSION['username'])) {
     header("location: index.php");

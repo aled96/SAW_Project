@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$count = $_GET['count'];
+$count = $conn->real_escape_string($_GET['count']);
 
 $facName = "fac".$count;
 

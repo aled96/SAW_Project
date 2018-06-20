@@ -11,7 +11,12 @@ $gender = $conn->real_escape_string($_POST['gender']);
 $date_birth = $conn->real_escape_string($_POST['dateSign']);
 $city = $conn->real_escape_string($_POST['citySign']);
 
-$imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+if ($_FILES['image']['size'] == 0){
+    $imgData = null;
+}
+else{
+	$imgData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+}
 
 $sql2 = "SELECT ID from city where NAME = '".$city."'";
 

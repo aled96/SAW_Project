@@ -14,9 +14,15 @@ $description = $conn->real_escape_string($_POST['description']);
 $pages = $conn->real_escape_string($_POST['pages']);
 $edition = $conn->real_escape_string($_POST['edition']);
 $isbn = $conn->real_escape_string($_POST['isbn']);
-$img = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 $price = $conn->real_escape_string($_POST['price']);
 $place = $conn->real_escape_string($_POST['place']);
+
+if ($_FILES['image']['size'] == 0){
+    $img = null;
+}
+else{
+	$img = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+}
 
 $n_categories = $_POST['number_of_categories'];
 
