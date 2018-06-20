@@ -5,6 +5,18 @@ body {
   line-height: 22px;
 }
 
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+.min-height-login{
+	min-height: calc(100% - 189px);
+}
+
 img {
   max-width: 100%;
 }
@@ -1243,12 +1255,29 @@ END MENU
   font-size: 11px;
   margin-top: 5px;
 }
+
+
+@media (max-width: 400px){
+	.copyright{
+		display: none;
+	}
+}
+
 .footer-icon i {
   margin-left: 5px;
 }
 .footer-icon {
   text-align: right;
 }
+
+@media (max-width: 400px){
+	.footer-icon{
+		justify-content: space-around;
+		margin-left: calc(50% - 80px);
+	}
+}
+
+
 
 /***********************************************************************
 			Responsive

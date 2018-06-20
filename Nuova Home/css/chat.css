@@ -1,5 +1,9 @@
 .msgln { margin:0 0 2px 0; }
 
+.snippet{
+	min-height: calc(100% - 273px);
+}
+
 h1{
     text-align: center;
     font-family: "Bookman Old Style";

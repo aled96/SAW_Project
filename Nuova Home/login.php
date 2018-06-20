@@ -34,7 +34,7 @@
     require "navbar.php";
   ?>
   
-	<section class="container">
+	<section class="container min-height-login">
 		<div class="loginForm" id="logIn">
 			<div class="panel panel-info">
 				<div class="panel-heading">
