@@ -102,8 +102,7 @@
 
         echo '<div class="row">
                     <div class="width100 text-center">
-                        <h1>LAST <span>ADDED</span></h1>
-                        <p class="sub-title">Here you can see the last book added ! Don\'t let them go</p>
+                        <h1>UPLOADED BY <span>'.strtoupper($userProfile).'</span></h1>
                     </div>';
 
         $bookPerPage = 6;
