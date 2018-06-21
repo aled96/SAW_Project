@@ -233,7 +233,7 @@ function checkEmail() {
 }
 
 function selectCity(){
-    var province = document.getElementById("province").value;
+    var province = (document.getElementById("province").value);
 
     if(province == "not-selected")
         return;
