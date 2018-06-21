@@ -106,6 +106,25 @@ h2 {
 	overflow:hidden;
 }
 
+
+@media (max-width: 500px){
+	.loginForm, .signUpForm{
+		width:80%;
+		margin-left:10%;
+		overflow:hidden;
+	}
+}
+
+
+@media (max-width: 400px){
+	.loginForm, .signUpForm{
+		width:90%;
+		margin-left:5%;
+		overflow:hidden;
+	}
+}
+
+
 .loginForm{
 	margin-top:50px;
 }
