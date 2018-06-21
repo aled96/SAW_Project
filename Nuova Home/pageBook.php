@@ -95,7 +95,19 @@
 										<p class="cat-txt"><span>Pages: </span>'.$row['PageNum'].'</p>
 										<p class="cat-txt"><span>Date of pubblication: </span>'.$row['Date_of_pubblication'].'</p>
 										<p class="cat-txt"><span>Edition: </span>'.$row['Edition'].'</p>
-										<p class="cat-txt"><span>Category: </span>Art</p>
+										<p class="cat-txt"><span>Categories: </span></p>';
+
+                                $sql = "SELECT category.Name as Cat, faculty.Name as Fac FROM concern, category, faculty WHERE concern.Book='".$id."' and concern.Category = category.ID and category.Faculty = faculty.ID";
+
+                                $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
+
+                                while ($row = mySQLi_fetch_array($result)) {
+
+
+                                    echo '<p class="cat-txt cat-p" ><span >'.$row['Fac'].'</span > > '.$row['Cat'].'</p >';
+                                }
+
+                        echo'
 									</div>
 								</div>
 							</div>

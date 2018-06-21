@@ -220,6 +220,11 @@ textarea{
 	font-size:90px;
 }
 
+.cat-p{
+	padding-left: 20px;
+
+}
+
 .cat-txt>span{
 	font-weight:600;
 	color:#222;
