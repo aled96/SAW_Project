@@ -48,10 +48,7 @@ if(isset($_SESSION['username'])) {
     {
         $returned_obj = $returned_obj."§§§new";
     }
-    else{
-        $returned_obj = $returned_obj."§§§no";
-    }
-
+    
     echo $returned_obj;
 
 }

@@ -24,7 +24,7 @@ else{
 	$img = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 }
 
-$n_categories = $_POST['number_of_categories'];
+$n_categories = $conn->real_escape_string($_POST['number_of_categories']);
 
 if($img == null)
 	$sql = "UPDATE book SET Author = '".$author."', Title = '".$title."', Description = '".$description."',PageNum = '".$pages."',Edition = '".$edition."', ISBN = '".$isbn."' WHERE ID = '".$id."'";
