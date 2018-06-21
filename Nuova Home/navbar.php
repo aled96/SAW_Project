@@ -112,7 +112,7 @@ function minimenu(){
 											<span>
 												<a href='show_profile.php?user=".$_SESSION['username']."'>Dashboard</a>
 												<a href='insert_new.php'>AddBook</a>
-												<a href='#'>Wishlist</a>
+												<a href='favourite.php?page=1'>Wishlist</a>
 												<a href='setting.php'>Settings</a>
 												<a href='script/logout.php'>Logout</a>
 											</span>
