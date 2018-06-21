@@ -47,12 +47,16 @@
 							<div class="list-category-column">
 								<ul>
 								<?php		
-
+								
+									$fac = "";
 									$catSelected = "";
 									$search = "";
 									$priceMin = "";
 									$priceMax = "";
-									
+																										
+									//fac used only for search by nav(pressing on a faculty)
+									if(isset($_GET['fac']) and $_GET['fac'] != "")
+										$fac = $_GET['fac'];
 									if(isset($_GET['catSearched']) and $_GET['catSearched'] != "")
 										$catSelected = $_GET['catSearched'];
 									if(isset($_GET['search']) and $_GET['search'] != "")
@@ -62,7 +66,7 @@
 									if(isset($_GET['priceMax']) and $_GET['priceMax'] != "")
 										$priceMax = $_GET['priceMax'];
 										
-										
+									
 									if($catSelected != "" or $search != null or $priceMin != null or $priceMax != null)
 										echo'
 										<div class="col-md-12" id="resetFilterButton"><button type="button" onclick="resetFilters();" class="btn default"><i class="fa fa-times"></i> <span>Remove all filters</span></button><br><br></div>
@@ -97,16 +101,21 @@
 									
 									$categories = explode(" ",$catSelected);
 									
+									$catAsChild = "";
 									while($row = $result->fetch_assoc()) {	
 										if(strcmp($prevFac,$row['FacultyName']) != 0)
 										{
+											if($prevFac != ""){
+												echo'<input type="hidden" id="'.$prevFac.'" value="'.$catAsChild.'"/>';
+											}
 											$prevFac =$row['FacultyName'];
 											echo'
-											<li class="filter"><h4 class="facultyList">'.$prevFac.'</h4>
+											<li class="filter"><button type="button" class="noneButton" onclick="pressFaculty('.$prevFac.')"><h4 class="facultyList">'.$prevFac.'</h4></button>
 												<div class="line-separator"></div>
 											</li>';
+											$catAsChild = "";
 										}
-										
+										$catAsChild = $catAsChild.$row['ID']." ";
 										$checked = "";
 										if(in_array($row['ID'],$categories))
 											$checked=" checked";
@@ -115,6 +124,10 @@
 											<li class="filter"><input type="checkbox" id="cat'.$row['ID'].'" class="checkboxCategory" '.$checked.'/>'.$row['Name'].' ('.$row['NumCat'].')
 												<div class="line-separator"></div>
 											</li>';
+									}
+									//To print the last one
+									if($prevFac != ""){
+										echo'<input type="hidden" id="'.$prevFac.'" value="'.$catAsChild.'"/>';
 									}
 									?>
 								</ul>
@@ -158,12 +171,7 @@
                     <div id="dataMix">
                         <?php
 						
-						$sql = "SELECT DISTINCT( book.ID) as BookID, Author, Title, Cover, Price, User_offerer FROM book,insertion,concern WHERE concern.Book = book.ID AND book.ID = Material_offered";
-						
-						#$catSelected = "";
-						#$search = "";
-						#$priceMin = "";
-						#$priceMax = "";
+						$sql = "SELECT DISTINCT( book.ID) as BookID, Author, Title, Cover, Price, User_offerer, concern.Category as catId FROM book,insertion,concern WHERE concern.Book = book.ID AND book.ID = Material_offered";
 						
 						//select the chosen category
 						if($catSelected != ""){
@@ -187,65 +195,70 @@
 												Description LIKE '%".$search."%' OR
 												Author LIKE '%".$search."%')";
 						
-						$result = $conn->query($sql);
-
-						while($row = $result->fetch_assoc()) {
+						if($fac != "")
+							$sql = "SELECT T.* from category, (".$sql.") as T WHERE category.ID = T.catID AND category.faculty = '".$fac."';";
 						
-							#Check if logged
-							$fav_status="fa fa-heart-o";
-							$link = "login.php";
-							if(isset($_SESSION['username'])){
-                                $user = $_SESSION['username'];
-
-                                #Check if user == userProfile
-
-                                if(strcmp($row['User_offerer'], $user) == 0){
-                                    $fav_status = "fa fa-pencil-square-o";
-                                    $link = "modify_book.php?Id=".$row['BookID'];
-                                }
-                                else {
-                                    #Check if in wishlist
-                                    $sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
-
-                                    $result2 = mySQLi_query($conn, $sql2) or die("Error query");
-                                    #If is in list -> change calss for star icon
-                                    while ($row2 = mySQLi_fetch_array($result2)) {
-                                        if ($row2['IsThere'] == 1)
-                                            $fav_status = "fa fa-heart";
-                                    }
-                                    $link = "preferite";
-                                }
-							}
-							echo'
-							<div class="col-md-3 my-shop-animation mix">
-								<div class="box-prod group-book">
-									<div class="box-img-book">
-										<img src="data:image/jpeg;base64,'.base64_encode($row['Cover']).'" alt="cover"/>
-
-										<div class="box-btn-shop">
-											<div class="bt-img"><a class="btn btn-det-cart" href="pageBook.php?Id='.$row['BookID'].'"><i class="fa fa-list"></i></a></div>';
-                if(strcmp($link, "preferite") == 0){
-                    echo "
-                                                <div class='bt-img'><a class='btn btn-det-cart' ><span id='heart-preferite".$row['BookID']."'><i onClick='preferite(".$row['BookID'].")' class='" . $fav_status . "'></i></span></a></div>";
-                }
-                else{
-                    echo "
-                                                <div class='bt-img'><a class='btn btn-det-cart' href='" . $link . "'><i class='" . $fav_status . "'></i></a></div>";
-                }
-
-                echo'
-										</div>
-									</div>
-									<h2 class="title-book">'.$row['Title'].'</h2>
-									<p class="author-txt">'.$row['Author'].'</p>
-
-									<p class="category-txt">Art</p>
-
-									<p class="book-price"> '.$row['Price'].' €</p>
-								</div>
-							</div>';
+						$result = $conn->query($sql);
+					
+						if($result->num_rows == 0)
+							echo'<h4 class="noResults">There are not any results !</h4>';
+						else{
+							while($row = $result->fetch_assoc()) {
 							
-							//TODO -> Paging 
+								#Check if logged
+								$fav_status="fa fa-heart-o";
+								$link = "login.php";
+								if(isset($_SESSION['username'])){
+									$user = $_SESSION['username'];
+
+									#Check if user == userProfile
+
+									if(strcmp($row['User_offerer'], $user) == 0){
+										$fav_status = "fa fa-pencil-square-o";
+										$link = "modify_book.php?Id=".$row['BookID'];
+									}
+									else {
+										#Check if in wishlist
+										$sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
+
+										$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+										#If is in list -> change calss for star icon
+										while ($row2 = mySQLi_fetch_array($result2)) {
+											if ($row2['IsThere'] == 1)
+												$fav_status = "fa fa-heart";
+										}
+										$link = "preferite";
+									}
+								}
+								echo'
+								<div class="col-md-3 my-shop-animation mix">
+									<div class="box-prod group-book">
+										<div class="box-img-book">
+											<img src="data:image/jpeg;base64,'.base64_encode($row['Cover']).'" alt="cover"/>
+
+											<div class="box-btn-shop">
+												<div class="bt-img"><a class="btn btn-det-cart" href="pageBook.php?Id='.$row['BookID'].'"><i class="fa fa-list"></i></a></div>';
+								if(strcmp($link, "preferite") == 0){
+									echo "
+											<div class='bt-img'><a class='btn btn-det-cart' ><span id='heart-preferite".$row['BookID']."'><i onClick='preferite(".$row['BookID'].")' class='" . $fav_status . "'></i></span></a></div>";
+								}
+								else{
+									echo "
+											<div class='bt-img'><a class='btn btn-det-cart' href='" . $link . "'><i class='" . $fav_status . "'></i></a></div>";
+								}
+
+								echo'
+											</div>
+										</div>
+										<h2 class="title-book">'.$row['Title'].'</h2>
+										<p class="author-txt">'.$row['Author'].'</p>
+
+										<p class="book-price"> '.$row['Price'].' €</p>
+									</div>
+								</div>';
+								
+								//TODO -> Paging 
+							}
 						}
 							
 						?>                    

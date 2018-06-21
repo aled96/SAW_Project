@@ -14,6 +14,14 @@ function resetFilters(){
 }
 
 
+function pressFaculty(idCategories){
+
+	var objs = idCategories.value.split(" ");
+	for(var i = 0; i < objs.length-1; i++)
+		document.getElementById("cat"+objs[i]).checked = true;
+}
+
+
 function checkPrice(min,max){
 	min = parseInt(min);
 	max = parseInt(max);

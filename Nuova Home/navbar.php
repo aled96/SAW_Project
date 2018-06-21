@@ -73,7 +73,7 @@ function minimenu(){
 											die("Connection failed: " . $conn->connect_error);
 										}
 
-										$sql = "SELECT distinct Name FROM faculty";
+										$sql = "SELECT * FROM faculty";
 										$result = $conn->query($sql);
 
 										$i = 0;
@@ -84,7 +84,7 @@ function minimenu(){
 												$toClose=true;
 											}
 											$i++;
-											echo'<a href="#">'.$row['Name'].'</a>';
+											echo'<a href="category.php?fac='.$row['ID'].'">'.$row['Name'].'</a>';
 											if($i == 3){
 												$i = 0;
 												$toClose=false;

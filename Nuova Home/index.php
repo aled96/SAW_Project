@@ -44,7 +44,7 @@
         <div class="block-service block-service-opt">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 height200">
                         <div class="item">
                             <div class="simbol-ft"><i class="fa fa-life-ring" aria-hidden="true"></i></div>
                             <div class="simbol-desc">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 height200">
                         <div class="item">
                             <div class="simbol-ft"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
                             <div class="simbol-desc">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 height200">
                         <div class="item">
                             <div class="simbol-ft"><i class="fa fa-user" aria-hidden="true"></i></div>
                             <div class="simbol-desc">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 height200">
                         <div class="item">
                             <div class="simbol-ft"><i class="fa fa-headphones" aria-hidden="true"></i></div>
                             <div class="simbol-desc">
