@@ -47,6 +47,5 @@ if ($handle) {
     echo "Error: opening file";
 }
 
-
 $conn->close();
 ?>

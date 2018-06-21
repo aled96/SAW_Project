@@ -42,8 +42,6 @@ if ($handle) {
 
         $stmt->execute();
         $stmt->store_result();
-        if($stmt->num_rows === 0)
-            $id = 921;
         $stmt->bind_result($ids);
         while($stmt->fetch()) {
             $id = $ids;
