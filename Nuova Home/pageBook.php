@@ -97,7 +97,7 @@
 										<p class="cat-txt"><span>Edition: </span>'.$row['Edition'].'</p>
 										<p class="cat-txt"><span>Categories: </span></p>';
 
-                                $sql = "SELECT category.Name as Cat, faculty.Name as Fac FROM concern, category, faculty WHERE concern.Book='".$id."' and concern.Category = category.ID and category.Faculty = faculty.ID";
+                                $sql = "SELECT category.ID as Cat_ID, category.Name as Cat, faculty.ID as Fac_ID, faculty.Name as Fac FROM concern, category, faculty WHERE concern.Book='".$id."' and concern.Category = category.ID and category.Faculty = faculty.ID";
 
                                 $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
 
