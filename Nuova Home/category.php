@@ -197,6 +197,9 @@
 												Description LIKE '%".$search."%' OR
 												Author LIKE '%".$search."%')";
 						
+						//Select just once if a book has more categories
+						$sql = $sql." GROUP BY book.ID;";
+						
 						if($fac != "")
 							$sql = "SELECT T.* from category, (".$sql.") as T WHERE category.ID = T.catID AND category.faculty = '".$fac."';";
 						
