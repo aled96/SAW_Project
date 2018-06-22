@@ -74,7 +74,7 @@ function removeError(){
 }
 
 function checkuser(user){
-    var regexp1=/^[a-zA-Z0-9]+$/;
+    var regexp1=/^[a-z0-9]+$/;
     test = regexp1.test(user);
     return test;
 }

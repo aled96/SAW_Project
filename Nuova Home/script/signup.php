@@ -11,6 +11,8 @@ $gender = $conn->real_escape_string($_POST['gender']);
 $date_birth = $conn->real_escape_string($_POST['dateSign']);
 $city = $conn->real_escape_string($_POST['citySign']);
 
+$user = strtolower($user);
+
 if ($_FILES['image']['size'] == 0){
     $imgData = null;
 }
