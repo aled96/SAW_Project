@@ -195,7 +195,7 @@
                     Province of Birth
                 </label>
                 <label class="select">
-                    <select onclick="removeErrorSignup()" name="province" id="province" onchange="selectCity()">
+                    <select onclick="removeErrorSignup()" name="province" id="province">
                         <option value="not-selected" selected disabled>Province</option>
                         <?php
 
@@ -209,13 +209,14 @@
                             die("Connection failed: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT distinct Name FROM province";
+                        $sql = "SELECT ID, Name FROM province";
                         $result = $conn->query($sql);
 
                         while($row = $result->fetch_assoc()) {
                             $prov = $row['Name'];
+                            $id = $row['ID'];
                             if(strlen($prov) != 0) {
-                                echo "<option value='" . $prov . "'>" . $prov . "</option>";
+                                echo "<option onchange='selectCity('.$id.')' value='" . $prov . "'>" . $prov . "</option>";
                             }
                         }
 

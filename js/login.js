@@ -236,11 +236,16 @@ function checkEmail() {
     }
 }
 
-function selectCity(){
+function selectCity(id){
     var province = document.getElementById("province").value;
 
     if(province == "not-selected")
         return;
+
+
+    alert("QUI");
+
+    alert(id);
 
     xmlreq = getXMLHttpRequestObject();
 

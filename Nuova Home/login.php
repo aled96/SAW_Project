@@ -137,13 +137,14 @@
 								<option value="not-selected" selected disabled>Province</option>
 								<?php
 
-									$sql = "SELECT distinct Name FROM province";
+									$sql = "SELECT ID, Name FROM province";
 									$result = $conn->query($sql);
 
 									while($row = $result->fetch_assoc()) {
 										$prov = $row['Name'];
+                                        $id = $row['ID'];
 										if(strlen($prov) != 0) {
-											echo "<option value='" . $prov . "'>" . $prov . "</option>";
+											echo "<option value='" . $id . "'>" . $prov . "</option>";
 										}
 									}
 

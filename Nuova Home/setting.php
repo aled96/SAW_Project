@@ -116,16 +116,17 @@
 								<option value="not-selected" selected disabled>Province</option>';
 								
 															
-									$sql = "SELECT distinct Name FROM province";
+									$sql = "SELECT distinct ID, Name FROM province";
 									$result = $conn->query($sql);
 
 									while($row = $result->fetch_assoc()) {
 										$prov = $row['Name'];
+                                        $id = $row['ID'];
 										if(strlen($prov) != 0) {
 											if(strcmp($provinceName, $prov) == 0)			
-												echo "<option selected value='" . $prov . "'>" . $prov . "</option>";
+												echo "<option selected value='" . $id . "'>" . $prov . "</option>";
 											else{
-												echo "<option value='" . $prov . "'>" . $prov . "</option>";
+												echo "<option value='" . $id . "'>" . $prov . "</option>";
 											}
 										}
 									}
