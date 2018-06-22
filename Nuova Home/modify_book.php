@@ -15,6 +15,16 @@ if(isset($_GET['Id']))
 else
     header("location: index.php");
 
+$sql = "SELECT User_offerer FROM insertion WHERE Material_offered = '".$id."';";
+$result = $conn->query($sql);
+$check = $result->fetch_assoc();
+if($result->num_rows == 0)
+{
+    header("location: index.php");
+}
+else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
+    header("location: index.php");
+}
 ?>
 
 <head>
@@ -55,8 +65,10 @@ require "navbar.php";
 ?>
 
 <?php
-$sql = "SELECT book.*,Price, Place FROM book,insertion WHERE book.ID = Material_offered AND book.ID = '".$id."';";
+
+$sql = "SELECT insertion.User_offerer, book.*,Price, Place FROM book,insertion WHERE book.ID = Material_offered AND book.ID = '".$id."';";
 $result = $conn->query($sql);
+
 
 while($book = $result->fetch_assoc()) {
     echo'
@@ -76,7 +88,7 @@ while($book = $result->fetch_assoc()) {
                                   </label>
                               </section>
                               <div class="panel-body">
-						        <form action="script/commit_modify_book.php" method="POST" id="reused_form" name="modify_book" enctype="multipart/form-data">
+                                <form action="script/commit_modify_book.php" method="POST" id="reused_form" name="modify_book" enctype="multipart/form-data">
                                       <div class="input-group loginMargin">
                                           <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                           <input name="id" type="hidden" value="'.$id.'" id="id" />
