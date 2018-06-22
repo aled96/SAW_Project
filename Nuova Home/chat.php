@@ -7,7 +7,7 @@ require "connectionDB.php";
 if(!isset($_SESSION['username'])) {
     header("location: index.php");
 }
-$_SESSION['PrevPage'] = "index.php";
+$_SESSION['PrevPage'] = "chat.php";
 ?>
 <head>
     <title>Site Name</title>
@@ -37,6 +37,8 @@ require "navbar.php";
 <h1><i class="fa fa-comments" style="font-size:40px"></i> Recent Chat</h1>
 
 <?php
+
+$user = $_SESSION['username'];
 
 $sql = "SELECT distinct User_from, User_to, MAX(Datetime) as max_date FROM chat WHERE User_from = '".$user."' or User_to = '".$user."' GROUP BY User_from, User_to ORDER BY max_date desc";
 $result = mySQLi_query($conn, $sql) or die("Error query1");
