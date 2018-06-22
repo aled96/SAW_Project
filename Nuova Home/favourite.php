@@ -48,6 +48,9 @@ require "navbar.php";
 
 <section class="container min-height-login">
     <div class="row profile-container">
+	<div>
+		<h1 class="txt-info centerText">Wishlist</h1>
+	</div>
     <?php
     
 		$sql1 = "SELECT *,book.ID as BookID FROM book, wishlist,insertion WHERE Username = '".$user."' AND book.ID = wishlist.Book AND book.ID = insertion.Material_offered ORDER BY book.ID DESC";
