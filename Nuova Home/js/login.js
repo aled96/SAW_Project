@@ -13,12 +13,6 @@ function hide(target) {
 };
 
 
-function checkBeforeSubmit(){
-    //fai cose
-
-    document.signup.submit();
-}
-
 function getXMLHttpRequestObject() {
 	var request = null;
 	if (window.XMLHttpRequest) {
