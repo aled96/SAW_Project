@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+    header("location: login.php");
 <html lang="en">
 
 <?php
@@ -78,7 +79,7 @@ while($book = $result->fetch_assoc()) {
                               <div class="panel-heading">
                                   <div class="panel-title">Modify Book</div>
                               </div>
-                              <form action="script/delete_publication.php" method="GET" class="loginMargin">
+                              <form action="script/delete_publication.php" method="POST" class="loginMargin">
                                     <input type="hidden" id="id" name="id" value="'.$id.'"/>
                                     <button type="submit" class="btn btn-success cat-btn">Delete Book</button>	
                                </form>

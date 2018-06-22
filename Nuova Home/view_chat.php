@@ -31,7 +31,6 @@ $sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to =
 
 if (!($conn->query($sql) === TRUE)) {
     die("Error: " . $sql . "<br>" . $conn->error);
-    header("location: login.php");
 }
 
 ?>

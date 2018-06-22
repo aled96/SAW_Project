@@ -24,6 +24,17 @@ else{
 	$img = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 }
 
+$sql = "SELECT User_offerer FROM insertion WHERE Material_offered = '".$id."';";
+$result = $conn->query($sql);
+$check = $result->fetch_assoc();
+if($result->num_rows == 0)
+{
+    header("location: index.php");
+}
+else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
+    header("location: index.php");
+}
+
 $n_categories = $conn->real_escape_string($_POST['number_of_categories']);
 
 if($img == null)

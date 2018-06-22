@@ -3,7 +3,11 @@
 <?php
 
 require "connectionDB.php";
-	
+
+if(!isset($_SESSION['username'])) {
+    header("location: login.php");
+}
+
 $_SESSION['PrevPage'] ="setting.php";
 ?>
   <head>
@@ -40,8 +44,6 @@ $_SESSION['PrevPage'] ="setting.php";
      <?php
 
         if(isset($_SESSION['username'])){
-		
-		
             echo'<div class="loginForm" id="signUpForm">
 					<div class="panel panel-info">
 						<div class="panel-heading">
