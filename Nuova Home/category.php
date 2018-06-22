@@ -171,7 +171,8 @@
                     <div id="dataMix">
                         <?php
 						
-						$sql = "SELECT DISTINCT( book.ID) as BookID, Author, Title, Cover, Price, User_offerer, concern.Category as catId FROM book,insertion,concern WHERE concern.Book = book.ID AND book.ID = Material_offered";
+						$sql = "SELECT distinct book.ID as BookID, Author, Title, Cover, Price, User_offerer FROM book
+							INNER JOIN concern ON concern.Book = book.ID INNER JOIN insertion ON book.ID = insertion.Material_offered";
 						
 						//select the chosen category
 						if($catSelected != ""){
@@ -198,7 +199,7 @@
 												Author LIKE '%".$search."%')";
 						
 						//Select just once if a book has more categories
-						$sql = $sql." GROUP BY book.ID;";
+						$sql = $sql." GROUP BY book.ID, Author, Title, Cover, Price, User_offerer, concern.Category;";
 						
 						if($fac != "")
 							$sql = "SELECT T.* from category, (".$sql.") as T WHERE category.ID = T.catID AND category.faculty = '".$fac."';";
