@@ -62,6 +62,7 @@ function checkPassword(){
     xmlreq = getXMLHttpRequestObject();
 
 	encrypt_old = SHA1(old_pass);
+	document.getElementById("pswEncryptOldChange").value = encrypt_old;
 	encrypt_new = SHA1(new_pass);
 	document.getElementById("pswEncryptChange").value = encrypt_new;
     url = encodeURI("./script/async_checkModifyPassword.php" + "?old=" + encrypt_old);

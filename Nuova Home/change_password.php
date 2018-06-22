@@ -64,6 +64,7 @@ $_SESSION['PrevPage'] ="setting.php";
 									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
 									<input type="password" placeholder="New Password" id="newPassChange" name="newPassChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()" value="" class="form-control">
 									<input type="hidden" id="pswEncryptChange" name="pswEncryptChange" value="">
+									<input type="hidden" id="pswEncryptOldChange" name="pswEncryptOldChange" value="">
 								</div>
 					
 								<div class="input-group loginMargin">

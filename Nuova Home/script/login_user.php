@@ -8,7 +8,7 @@ $pwd = $conn->real_escape_string($_POST['pswEncryptLog']);
 $user = strtolower($user);
 $login = false;
 
-$sql = "SELECT Username, Password FROM user where Username ='".$user."'";
+$sql = "SELECT Password FROM user where Username ='".$user."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
