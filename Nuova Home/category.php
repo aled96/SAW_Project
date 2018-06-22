@@ -198,8 +198,8 @@
 						if($fac != "")
 							$sql = "SELECT T.* from category, (".$sql.") as T WHERE category.ID = T.catID AND category.faculty = '".$fac."';";
 						
-						$result = $conn->query($sql);
-					
+						
+						$result = $conn->query($sql) or die("Error query");
 						if($result->num_rows == 0)
 							echo'<h4 class="noResults">There are not any results !</h4>';
 						else{

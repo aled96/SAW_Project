@@ -103,8 +103,7 @@
 
                                 while ($row = mySQLi_fetch_array($result)) {
 
-
-                                    echo '<p class="cat-txt cat-p" ><span >'.$row['Fac'].'</span > > '.$row['Cat'].'</p >';
+                                    echo '<a class="cat-txt cat-p" href="category.php?fac='.$row['Fac_ID'].'"><span >'.$row['Fac'].'</span ></a> ><a href="category.php?catSearched='.$row['Cat_ID'].'+"> '.$row['Cat'].'</a ><br>';
                                 }
 
                         echo'
