@@ -177,10 +177,12 @@
 						if($catSelected != ""){
 							#$categories -> explode from catSelected (in previous section)
 							$sql = $sql." AND (";
-							for($i = 0; $i < sizeof($categories)-1; $i = $i+1){
-								if($i > 0)
-									$sql = $sql." OR ";
-								$sql = $sql."concern.Category = ".$categories[$i];
+							for($i = 0; $i < sizeof($categories); $i = $i+1){
+							    if($categories[$i] != "") {
+                                    if ($i > 0)
+                                        $sql = $sql . " OR ";
+                                    $sql = $sql . "concern.Category = " . $categories[$i];
+                                }
 							}
 							$sql = $sql.")";
 						}
@@ -199,7 +201,7 @@
 							$sql = "SELECT T.* from category, (".$sql.") as T WHERE category.ID = T.catID AND category.faculty = '".$fac."';";
 						
 						
-						$result = $conn->query($sql) or die("Error query");
+						$result = $conn->query($sql) or die("Error query".$sql);
 						if($result->num_rows == 0)
 							echo'<h4 class="noResults">There are not any results !</h4>';
 						else{
@@ -221,7 +223,7 @@
 										#Check if in wishlist
 										$sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
 
-										$result2 = mySQLi_query($conn, $sql2) or die("Error query");
+										$result2 = mySQLi_query($conn, $sql2) or die("Error query".$sql2);
 										#If is in list -> change calss for star icon
 										while ($row2 = mySQLi_fetch_array($result2)) {
 											if ($row2['IsThere'] == 1)
