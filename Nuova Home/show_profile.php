@@ -16,6 +16,14 @@
 		$actualPage = $_GET['page'];
 	else
 		$actualPage = 1;
+
+    $sql = "SELECT Email FROM user WHERE Username = '".$userProfile."';";
+    $result = $conn->query($sql);
+    $check = $result->fetch_assoc();
+    if($result->num_rows == 0)
+    {
+        header("location: index.php");
+    }
 	$_SESSION['PrevPage'] = "show_profile.php?user=".$userProfile."&page=".$actualPage;
 ?>
   <head>
