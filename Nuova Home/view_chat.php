@@ -5,8 +5,6 @@
 
 require "connectionDB.php";
 	
-	
-	
 if(!isset($_SESSION['username'])) {
     header("location: login.php");
 }
@@ -19,6 +17,15 @@ $_SESSION['PrevPage'] = "view_chat.php?user_to=".$other;
 if(strcmp($user, $other) == 0){
     header("location: index.php");
 }
+
+$sql = "SELECT email FROM user WHERE Username = '".$other."' ";
+$result = $conn->query($sql);
+$check = $result->fetch_assoc();
+if($result->num_rows == 0)
+{
+    header("location: index.php");
+}
+
 
 $sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to = '".$user."'";
 

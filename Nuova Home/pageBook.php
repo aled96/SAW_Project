@@ -6,9 +6,18 @@
 	if(isset($_GET['Id']))
 		$id = $_GET['Id'];
 	else
-		$id = 0;
+        header("location: index.php");
 
 	$_SESSION['PrevPage']="pageBook.php?Id=".$id;
+
+
+    $sql = "SELECT book.Author FROM book WHERE ID = '".$id."';";
+    $result = $conn->query($sql);
+    $check = $result->fetch_assoc();
+    if($result->num_rows == 0)
+    {
+        header("location: index.php");
+    }
 ?>
 <head>
     <title>BookTrader</title>
