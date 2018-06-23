@@ -1,15 +1,5 @@
 function resetFilters(){
-	document.getElementById("priceMin").value = "";
-	document.getElementById("priceMax").value = "";
-	document.getElementById("search").value = "";
-	
-	var maxCat = document.getElementById("maxCat").value;
-	for(var i = 1; i <= maxCat; i++)
-		document.getElementById("cat"+i).checked = false;
-		
-	document.getElementById("catSearched").value = "";
-	
-	document.getElementById("resetFilterButton").style.visibility = "hidden";
+	window.location.replace('category.php');
 	return false;
 }
 
@@ -88,3 +78,12 @@ function removePriceError(){
 		document.getElementById("priceMin").style.background = "#ffffff";
 		document.getElementById("priceMax").style.background = "#ffffff";
 }
+
+
+document.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+		searchFilter();
+
+    }
+});

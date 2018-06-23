@@ -42,7 +42,7 @@
             <div class="col-md-12 table-padding">
                 <div class="col-md-3 column-box">
                     
-					<form action="category.php" id="formCat" method="GET">
+					<form action="category.php" name="searchform" id="formCat" method="GET">
 						<!--FILTER CATEGORIES-->
 						<div class="filter-table">
 					
