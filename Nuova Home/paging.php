@@ -1,7 +1,5 @@
 <?php
 
-	$bookPerPage = 12;
-	
 	$maxPage = ceil(($bookNumber)/$bookPerPage);
 	//check, if page number >> max --> show last page
 	if($actualPage > $maxPage)

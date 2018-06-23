@@ -15,6 +15,7 @@
 		$actualPage = $_GET['page'];
 	else
 		$actualPage = 1;
+		
 	$_SESSION['PrevPage'] = "favourite.php?page=".$actualPage;
 ?>
   <head>
@@ -62,6 +63,7 @@ require "navbar.php";
 
 		$linkPage = "favourite.php?";
 		$typeClassWidth = "col-md-2";
+		$bookPerPage = 12;
 		
 		if($bookNumber > 0){
 			require "paging.php";
