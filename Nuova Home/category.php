@@ -4,7 +4,10 @@
 
 	require "connectionDB.php";
 	
-	$_SESSION['PrevPage'] = "index.php";
+	if(isset($_GET['page']))
+		$actualPage = $_GET['page'];
+	else
+		$actualPage = 1;
 ?>
 <head>
     <title>BookTrader</title>
@@ -66,6 +69,7 @@
 									if(isset($_GET['priceMax']) and $_GET['priceMax'] != "")
 										$priceMax = $_GET['priceMax'];
 										
+									$_SESSION['PrevPage'] = $linkPage = "category.php?fac=".$fac."&catSearched=".$catSelected."&search=".$search."&priceMin=".$priceMin."&priceMax=".$priceMax."&page=".$actualPage;
 									
 									if($catSelected != "" or $search != null or $priceMin != null or $priceMax != null)
 										echo'
@@ -160,6 +164,8 @@
 							</article>
 						</div>';
 						?>
+						
+						<input type="hidden" name="page" value="1">
 					</form>
                 </div>
 
@@ -198,74 +204,21 @@
 												Description LIKE '%".$search."%' OR
 												Author LIKE '%".$search."%')";
 						
-						//Select just once if a book has more categories
-						$sql = $sql." GROUP BY book.ID, Author, Title, Cover, Price, User_offerer, concern.Category;";
-						
 						if($fac != "")
-							$sql = "SELECT T.* from category, (".$sql.") as T WHERE category.ID = T.catID AND category.faculty = '".$fac."';";
+							$sql = "SELECT distinct book.ID as BookID, Author, Title, Cover, Price, User_offerer from insertion,category,concern,book WHERE category.ID = concern.Category AND concern.Book = book.ID AND book.ID = insertion.Material_offered AND category.faculty = '".$fac."';";
 						
+						$result1 = $conn->query($sql) or die("Error query".$sql);
+						$bookNumber = $result1->num_rows;
 						
-						$result = $conn->query($sql) or die("Error query".$sql);
-						if($result->num_rows == 0)
-							echo'<h4 class="noResults">There are not any results !</h4>';
-						else{
-							while($row = $result->fetch_assoc()) {
-							
-								#Check if logged
-								$fav_status="fa fa-heart-o";
-								$link = "login.php";
-								if(isset($_SESSION['username'])){
-									$user = $_SESSION['username'];
-
-									#Check if user == userProfile
-
-									if(strcmp($row['User_offerer'], $user) == 0){
-										$fav_status = "fa fa-pencil-square-o";
-										$link = "modify_book.php?Id=".$row['BookID'];
-									}
-									else {
-										#Check if in wishlist
-										$sql2 = "SELECT COUNT(*) as IsThere FROM wishlist WHERE Book='" . $row['BookID'] . "' and Username='" . $user . "';";
-
-										$result2 = mySQLi_query($conn, $sql2) or die("Error query".$sql2);
-										#If is in list -> change calss for star icon
-										while ($row2 = mySQLi_fetch_array($result2)) {
-											if ($row2['IsThere'] == 1)
-												$fav_status = "fa fa-heart";
-										}
-										$link = "preferite";
-									}
-								}
-								echo'
-								<div class="col-md-3 my-shop-animation mix">
-									<div class="box-prod group-book">
-										<div class="box-img-book">
-											<img src="data:image/jpeg;base64,'.base64_encode($row['Cover']).'" alt="cover"/>
-
-											<div class="box-btn-shop">
-												<div class="bt-img"><a class="btn btn-det-cart" href="pageBook.php?Id='.$row['BookID'].'"><i class="fa fa-list"></i></a></div>';
-								if(strcmp($link, "preferite") == 0){
-									echo "
-											<div class='bt-img'><a class='btn btn-det-cart' ><span id='heart-preferite".$row['BookID']."'><i onClick='preferite(".$row['BookID'].")' class='" . $fav_status . "'></i></span></a></div>";
-								}
-								else{
-									echo "
-											<div class='bt-img'><a class='btn btn-det-cart' href='" . $link . "'><i class='" . $fav_status . "'></i></a></div>";
-								}
-
-								echo'
-											</div>
-										</div>
-										<h2 class="title-book">'.$row['Title'].'</h2>
-										<p class="author-txt">'.$row['Author'].'</p>
-
-										<p class="book-price"> '.$row['Price'].' €</p>
-									</div>
-								</div>';
-								
-								//TODO -> Paging 
-							}
+						if($bookNumber >= 0){
+						
+							$linkPage = "category.php?fac=".$fac."&catSearched=".$catSelected."&search=".$search."&priceMin=".$priceMin."&priceMax=".$priceMax."&";
+							$typeClassWidth = "col-md-3";
+						
+							require "paging.php";
 						}
+						else
+							echo'<h4 class="noResults">There are not any results !</h4>';
 							
 						?>                    
                 </div>

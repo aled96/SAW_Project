@@ -58,7 +58,7 @@ function minimenu(){
 
                                 ?>
                                 <li class="exp-mega">
-                                    <a href="category.php">Categories</a>
+                                    <a href="category.php?page=1">Categories</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu">
 									<?php
@@ -84,7 +84,7 @@ function minimenu(){
 												$toClose=true;
 											}
 											$i++;
-											echo'<a href="category.php?fac='.$row['ID'].'">'.$row['Name'].'</a>';
+											echo'<a href="category.php?fac='.$row['ID'].'&page=1">'.$row['Name'].'</a>';
 											if($i == 3){
 												$i = 0;
 												$toClose=false;
@@ -138,7 +138,7 @@ function minimenu(){
 
                                 echo'
 								<li>
-                                    <a href="category.php">Categories</a>
+                                    <a href="category.php?page=1">Categories</a>
                                 </li>';
 								
 								if(!isset($_SESSION['username']))
