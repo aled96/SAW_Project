@@ -51,7 +51,8 @@ h1{
 }
 .mini-image {
     position: relative;
-    max-width: 50px;
+    width: 50px;
+    height: 50px;
     float: left;
     margin-right: 15px;
 }
