@@ -66,7 +66,7 @@ else {
                                     <th class="text-center"><span>Status</span></th>
                                 </tr>
                                 </thead>
-                                <tbody>';
+                                <tbody id="tbody_chat">';
 
 
                                     while ($row = mySQLi_fetch_array($result)) {
@@ -86,7 +86,7 @@ else {
                                         $row2 = mySQLi_fetch_array($result2);
                                         $unread_count = $row2['count'];
                                         echo '
-                                            <td>
+                                            <tr><td>
                                                 <img class="mini-image" src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                                                 <a class="name" href="view_chat.php?user_to=' . $other . '">' . $other . '</a>
                                             </td>

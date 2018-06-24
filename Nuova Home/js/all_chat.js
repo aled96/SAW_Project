@@ -38,8 +38,18 @@ function check_socket_all_chat() {
                         {
                         	if(fields[j+1] != null) {
                                 var statName = "status" + fields[j];
-                                document.getElementById(statName).innerHTML = '';
-                                document.getElementById(statName).insertAdjacentHTML('beforeend', '<span class="label label-warning">Unread ('+fields[j+1]+')</span>');
+                                if(document.getElementById(statName) == null)
+                                {
+                                    var now = new Date();
+                                    var d = now.getFullYear()  + "-" + (now.getMonth()+1) + "-" + now.getDate() + " " +
+                                    now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+                                    var html_to_insert = '<tr><td><img class="mini-image" src="https://bootdey.com/img/Content/user_1.jpg" alt=""><a class="name" href="view_chat.php?user_to='+fields[j]+'">'+fields[j]+'</a></td>'+ '<td>'+d+'</td><td id=status'+fields[j]+' class="text-center"><span class="label label-warning">Unread ('+fields[j+1]+')</span></td></tr>';
+                                    document.getElementById("tbody_chat").insertAdjacentHTML('afterbegin', html_to_insert);
+                                }
+                                else {
+                                    document.getElementById(statName).innerHTML = '';
+                                    document.getElementById(statName).insertAdjacentHTML('beforeend', '<span class="label label-warning">Unread (' + fields[j + 1] + ')</span>');
+                                }
                             }
                             else{
                                 document.getElementById("all_messages").innerHTML = '';
