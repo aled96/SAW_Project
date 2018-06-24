@@ -68,3 +68,20 @@ function ajax_pref2() {
 		alert("Ajax error: " + xmlreq.statusText);
 	}
 }
+
+window.onresize = function(event) {
+    document.getElementById("minimenu").style.visibility = "hidden";
+    document.getElementById("minimenu").style.height = "0px";
+};
+
+function submenu(){
+	if(document.getElementById("submenu").style.visibility == "visible")
+	{
+		document.getElementById("submenu").style.visibility = "hidden";
+		document.getElementById("submenu").style.height = "0px";
+	}
+	else{
+		document.getElementById("submenu").style.visibility = "visible";
+		document.getElementById("submenu").style.height = "auto";
+    }
+}

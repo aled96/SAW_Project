@@ -139,21 +139,53 @@ function minimenu(){
                                 echo'
 								<li>
                                     <a href="category.php?page=1">Categories</a>
-                                </li>';
+                                </li><br>';
 								
 								if(!isset($_SESSION['username']))
-									echo"<li><a href='login.php'>Login</a></li>";
+									echo"<li><a href='login.php'>Login</a></li><br>";
 								else{
 									echo"
-									<li class='exp-mega'>
-										<a href='#'>User Info</a>
-									</li>";
+									<li>
+										<a onclick='submenu()'>User Info</a>
+									</li><br>";
 									}
 								?>
 								
                             </ul>
                         </div>
                     </div>
+                    
+                    <?php
+                    if(isset($_SESSION['username']))
+                                    echo '
+                    <div class="col-md-8 mainmenu minimenu" id="submenu">
+                        <div class="navbar-collapse">
+                            <ul>
+                                <li>
+                                    <a href="show_profile.php">Dashboard</a>
+                                </li>
+								<br>
+                                <li>
+                                    <a href="show_profile.php">Dashboard</a>
+                                </li>
+								<br>
+                                <li>
+                                    <a href="show_profile.php">Dashboard</a>
+                                </li>
+								<br>
+                                <li>
+                                    <a href="show_profile.php">Dashboard</a>
+                                </li>
+								<br>
+                                <li>
+                                    <a href="show_profile.php">Dashboard</a>
+                                </li>
+								<br>
+								
+                            </ul>
+                        </div>
+                    </div>';
+                    ?>
 					
                 </nav>
 
