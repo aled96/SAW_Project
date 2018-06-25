@@ -10,13 +10,15 @@ function minimenu(){
 	else{
 		document.getElementById("minimenu").style.visibility = "hidden";
 		document.getElementById("minimenu").style.height = "0px";
+		document.getElementById("submenu").style.visibility = "hidden";
+		document.getElementById("submenu").style.height = "0px";
 	}
 }
 
 </script>
 
     <header>
-        <div id="top" class="container box-logo-menu">
+        <div id="top" class="container box-logo-menu" style="width: auto;">
             <div class="row">
                 <nav class="navigation-menu">
 
