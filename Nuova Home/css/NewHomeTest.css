@@ -336,6 +336,12 @@ header {
 /**********************
 	MENU
 ***********************/
+
+.my-container{
+	padding-left: 10px;
+	padding-right: 60px;
+}
+
 .mainmenu {
   text-align: right;
 }
@@ -1368,6 +1374,10 @@ END MENU
 }
 @media only screen and (max-width: 1000px){
 
+	.my-container{
+		padding-right: 10px;
+	}
+
      .mainmenu ul{float:right;}
      .mainmenu ul li{float:left}
      .mainmenu ul li a{margin:0 8px;}
@@ -1385,6 +1395,10 @@ END MENU
     .navbar-header{
         float:right;
     }
+    
+    .container{
+		width: auto;
+	}
 
     /*Mini Menu*/
     .content-logo{width:100%;float:left;}

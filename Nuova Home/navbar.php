@@ -18,7 +18,7 @@ function minimenu(){
 </script>
 
     <header>
-        <div id="top" class="container box-logo-menu" style="width: auto;">
+        <div id="top" class="my-container box-logo-menu">
             <div class="row">
                 <nav class="navigation-menu">
 
