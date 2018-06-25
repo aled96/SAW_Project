@@ -64,11 +64,10 @@
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 							<input type="text" placeholder="Email address" id="emailChange" name="emailChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()" class="form-control" value="'.$user_info['Email'].'">
 						</div>
+						
+						
+                        <h4 class="loginMargin">Personal Information</h4>
 
-						<div class="input-group loginMargin">
-							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							<input onclick="removeErrorChange()" type="date" id="dateChange" name="dateChange"  value="' . $user_info['Date_of_birth'] . '" class="form-control">
-						</div>
 						
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -78,6 +77,12 @@
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" placeholder="Last name" id="surnameChange" name="surnameChange" onclick="removeErrorChange()" onkeyup="removeErrorChange()"  value="' . $user_info['Surname'] . '" class="form-control">
+						</div>
+						
+						
+						<div class="input-group loginMargin">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<input onclick="removeErrorChange()" type="date" id="dateChange" name="dateChange"  value="' . $user_info['Date_of_birth'] . '" class="form-control">
 						</div>
 						
 						<div class="input-group loginMargin">';
@@ -96,6 +101,8 @@
 						}
 						echo'
 						</div>
+						
+                        <h4 class="loginMargin">City of Birth</h4>
 							
 						<div class="input-group loginMargin">
 							<select onclick="removeErrorChange()" name="province" id="province" onchange="selectCity()" class="form-control">
@@ -144,6 +151,7 @@
 						</div>
 							
 							
+                        <h4 class="loginMargin">Profile Pic</h4>
 						<div class="input-group loginMargin"><img src="data:image/jpeg;base64,'.base64_encode($user_info['ProfilePic']).'" alt="cover"/>
 							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()" required>
 						</div>
