@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-    header("location: login.php");
 <html lang="en">
 
 <?php
