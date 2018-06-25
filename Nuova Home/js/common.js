@@ -38,10 +38,7 @@ function ajax_pref() {
                 document.getElementById(idspan).insertAdjacentHTML('beforeend', content);
 				    
 			}
-			else alert("Ajax error: no data received");
 		}
-		else
-		alert("Ajax error: " + xmlreq.statusText);
 	}
 }
 
@@ -62,19 +59,18 @@ function ajax_pref2() {
 				location.reload();
 				    
 			}
-			else alert("Ajax error: no data received");
 		}
-		else
-		alert("Ajax error: " + xmlreq.statusText);
 	}
 }
 
+/*
 window.onresize = function(event) {
     document.getElementById("minimenu").style.visibility = "hidden";
     document.getElementById("minimenu").style.height = "0px";
 	document.getElementById("submenu").style.visibility = "hidden";
 	document.getElementById("submenu").style.height = "0px";
 };
+*/
 
 function submenu(){
 	if(document.getElementById("submenu").style.visibility == "visible")
