@@ -87,12 +87,18 @@ h2 {
 	LOGIN
 **********************/
 
+.panel-title{
+	font-weight: bold;
+	font-size: 20px;
+}
+
 .loginSentence>a{
 	font-size:15px !important;
 }
 
 .panel-info{
     border-color: #c6f1bc;
+    overflow-x: hidden;
 }
 
 .panel-info>.panel-heading {
@@ -105,7 +111,7 @@ h2 {
 	display:block;
 	width:60%;
 	margin-left:20%;
-	overflow:hidden;
+	overflow-x:hidden;
 }
 
 
@@ -1515,6 +1521,28 @@ END MENU
         
 }
 
+
+@media only screen and (max-width: 850px) {
+
+	.info-big{
+		display: none;
+	}
+	
+	.info-box{
+		width: 100%;
+	}
+}
+
+
+@media only screen and (max-width: 750px) {
+    .info-book-div {width: 100%;}
+    
+    .btn-book{
+		margin-bottom: 20px;
+	}
+    
+}
+
 @media only screen and (max-width: 500px) {
 
     .item{font-size:26px;}
@@ -1525,6 +1553,7 @@ END MENU
     .mainmenu{padding:0;}
     .mainmenu ul li{float:right;}
     .my-shop-animation {width: 50%;}
+    
 	
 	 /*Product List*/
     .grid-product .box-list-prod {width: 100%;float: left;padding-left:15px;}

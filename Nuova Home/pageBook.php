@@ -43,7 +43,7 @@
 					
 					echo'<div class="product-page">
 							<div class="list-product">
-								<div class="col-md-3 my-shop-animation heightAuto">
+								<div class="col-md-3 col-sm-3 col-xs-3 my-shop-animation info-book-div heightAuto">
 									<div class="box-prod">
 										<div class="image-product">
 											<img src="data:image/jpeg;base64,'.base64_encode($row['Cover']).'" alt="cover" />
@@ -53,7 +53,7 @@
 
 								</div>
 								
-								<div class="col-md-9 box-desc-detail">
+								<div class="col-md-9  col-sm-9 col-xs-9 box-desc-detail info-book-div">
 									<h2 class="title-product">'.$row['Title'].'</h2>
 
 									<p class="author-txt"><span>Author: </span>'.$row['Author'].'</p>
@@ -66,29 +66,29 @@
 									<div class="box-btn-shop">';
 									
 									if(isset($_SESSION['username']) and strcmp($_SESSION['username'],$row['User_offerer']) == 0){
-										echo'<a href="modify_book.php?Id='.$id.'"><button type="button" class="btn btn-success colorRed"><i class="fa fa-edit"></i>  Edit</button></a>';
+										echo'<a href="modify_book.php?Id='.$id.'"><button type="button" class="btn btn-book btn-success colorRed"><i class="fa fa-edit"></i>  Edit</button></a>';
 									}
 									else{
-										echo'<div class="bt-img"><a href="view_chat.php?user_to='.$row['User_offerer'].'"><button type="button" class="btn btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button></a> ';
+										echo'<div class="bt-img"><a href="view_chat.php?user_to='.$row['User_offerer'].'"><button type="button" class="btn btn-book btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button></a> ';
 										
 										if(!isset($_SESSION['username'])){
-											echo'<a href="login.php"><button type="button" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
+											echo'<a href="login.php"><button type="button" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
 										}
 										else{
 											$sqlFav = "SELECT * FROM wishlist WHERE Username = '".$_SESSION['username']."' and Book = '".$id."';";
 											$result2 = mySQLi_query($conn, $sqlFav) or die("Error query");
 											if($result2->num_rows > 0)
-												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button>';
+												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-book btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button>';
 											else
-												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button>';
+												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button>';
 										}
 									}
 								echo'</div>
 									</div>
 								</div>
-								<div class="col-md-12 detail-box-desc">
-									<div class="col-md-3"><h1 class="txt-info">Info</h1></div>
-									<div class="col-md-9 info-box">
+								<div class="col-md-12 col-sm-12 col-xs-12 detail-box-desc">
+									<div class="col-md-3 col-sm-3 col-xs-3 info-big"><h1 class="txt-info">Info</h1></div>
+									<div class="col-md-9 col-sm-9 col-xs-9 info-box">
 
 										<p class="cat-txt"><span>Description: </span>'.$row['Description'].'</p>
 										<br><br>

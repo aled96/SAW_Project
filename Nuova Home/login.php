@@ -99,13 +99,8 @@
 							<input type="hidden" id="pswEncryptSign" name="pswEncryptSign">
 						</div>
 
-						<div class="input-group loginMargin">
-							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							<input onclick="removeErrorSignup()" type="date" id="dateSign" name="dateSign" class="form-control">
-						</div>
-						
-						
-						
+
+                        <h4 class="loginMargin">Personal Information</h4>
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" placeholder="First name" id="nameSign" name="nameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">
@@ -115,15 +110,21 @@
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" placeholder="Last name" id="surnameSign" name="surnameSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">
 						</div>
-						
-						<div class="input-group loginMargin">
+
+                        <div class="input-group loginMargin">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input onclick="removeErrorSignup()" type="date" id="dateSign" name="dateSign" class="form-control">
+                        </div>
+
+                        <div class="input-group loginMargin">
 							<select  onchange="removeErrorSignup()" name="gender" id="gender" class="form-control">
 								<option value="not-selected" selected disabled>Gender</option>
 								<option value="male">Male</option>
 								<option value="female">Female</option>
 							</select>
 						</div>
-							
+
+                        <h4 class="loginMargin">City of Birth</h4>
 						<div class="input-group loginMargin">
 							<select onclick="removeErrorSignup()" name="province" id="province" onchange="selectCity()" class="form-control">
 								<option value="not-selected" selected disabled>Province</option>
@@ -150,8 +151,8 @@
 								<option value="not-selected" selected disabled>City</option>
 							</select>
 						</div>
-							
-							
+
+                        <h4 class="loginMargin">Profile Pic</h4>
 						<div class="input-group loginMargin">
 							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorSignup()" required>
 						</div>
