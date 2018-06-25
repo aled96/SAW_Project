@@ -148,7 +148,7 @@ function minimenu(){
 								else{
 									echo"
 									<li>
-										<a onclick='submenu()'>User Info</a>
+										<a onclick='submenu()' style='cursor: pointer'>User Info</a>
 									</li><br>";
 									}
 								?>
