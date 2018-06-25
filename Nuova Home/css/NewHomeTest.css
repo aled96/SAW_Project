@@ -1382,6 +1382,7 @@ END MENU
      .mainmenu ul{
 		float:right;
 		padding-right: 20px;
+		background-color: white;
      }
      
      .submenu ul{
@@ -1422,7 +1423,6 @@ END MENU
     .nav>li>a:focus, .nav>li>a:hover{background-color:#fff;}
     .navbar-collapse{
 		padding:0;
-		background-color: transparent;
     }
     
     .navbar-toggle .icon-bar {
