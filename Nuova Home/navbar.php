@@ -160,7 +160,7 @@ function minimenu(){
                     <?php
                     if(isset($_SESSION['username']))
                                     echo '
-                    <div class="col-md-8 mainmenu minimenu" id="submenu">
+                    <div class="col-md-8 mainmenu minimenu submenu" id="submenu">
                         <div class="navbar-collapse">
                             <ul>
                                 <li>

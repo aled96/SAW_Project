@@ -1379,7 +1379,15 @@ END MENU
 		padding-right: 10px;
 	}
 
-     .mainmenu ul{float:right;}
+     .mainmenu ul{
+		float:right;
+		padding-right: 20px;
+     }
+     
+     .submenu ul{
+		padding-right: 10px;
+	}
+	
      .mainmenu ul li{float:left}
      .mainmenu ul li a{margin:0 8px;}
      .mainmenu ul li:last-child a{margin:0;}
