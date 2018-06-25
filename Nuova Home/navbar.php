@@ -3,7 +3,7 @@
 <!-- for minimenu-->
 <script>
 function minimenu(){
-	if(document.getElementById("minimenu").style.visibility == "hidden"){
+	if(document.getElementById("minimenu").style.visibility != "" && document.getElementById("minimenu").style.visibility == "hidden"){
 		document.getElementById("minimenu").style.visibility = "visible";
 		document.getElementById("minimenu").style.height = "auto";
 	}
@@ -127,7 +127,7 @@ function minimenu(){
                         </div>
                     </div>
 					<!-- Mini Menu (after pressed hamburger)-->
-					<div class="col-md-8 mainmenu minimenu" id="minimenu">
+					<div class="col-md-8 mainmenu minimenu" id="minimenu" style="visibility: hidden;">
                         <div class="navbar-collapse">
                             <ul>
                                 <li>
@@ -168,19 +168,19 @@ function minimenu(){
                                 </li>
 								<br>
                                 <li>
-                                    <a href="show_profile.php">Dashboard</a>
+                                    <a href="insert_new.php">Add Book</a>
                                 </li>
 								<br>
                                 <li>
-                                    <a href="show_profile.php">Dashboard</a>
+                                    <a href="favourite.php?page=1">Wishlist</a>
                                 </li>
 								<br>
                                 <li>
-                                    <a href="show_profile.php">Dashboard</a>
+                                    <a href="setting.php">Settings</a>
                                 </li>
 								<br>
                                 <li>
-                                    <a href="show_profile.php">Dashboard</a>
+                                    <a href="script/logout.php">Logout</a>
                                 </li>
 								<br>
 								

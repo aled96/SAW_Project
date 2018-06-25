@@ -493,6 +493,7 @@ header {
 	visibility:hidden;
 	height:0px;
 	position:relative;
+	background-color: transparent;
 }
 
 .minimenu ul li{
@@ -1411,7 +1412,11 @@ END MENU
     }
 	
     .nav>li>a:focus, .nav>li>a:hover{background-color:#fff;}
-    .navbar-collapse{padding:0;}
+    .navbar-collapse{
+		padding:0;
+		background-color: transparent;
+    }
+    
     .navbar-toggle .icon-bar {
         background-color: #333;
     }
