@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$id = $conn->real_escape_string($_GET['province']);
+$id = $conn->real_escape_string(trim($_GET['province']));
 
 $sql = "SELECT distinct Name,ID FROM city where Province = '".$id."'";
 $result = $conn->query($sql);

@@ -14,14 +14,14 @@ if(isset($_SESSION['username'])) {
 		$myPic = "data:image/jpeg;base64,".base64_encode($rowPic['ProfilePic']);
 	}
 	
-    $other = $conn->real_escape_string($_GET['user_to']);
-    $message = $conn->real_escape_string($_GET['message']);
+    $other = $conn->real_escape_string(trim($_GET['user_to']));
+    $message = $conn->real_escape_string(trim(nl2br($_GET['message'])));
     $datetime = date('d/m/Y h:i:s', time());
 
     $returned_obj = '<div class="msg_container base_sent">
                                 <div class="messageSent">
                                     <div class="messages msg_sent">
-                                        <p class="message-body">'.$_GET['message'].'</p>
+                                        <p class="message-body">'.$message.'</p>
                                         <time>'.$datetime.'</time>
                                     </div>
                                 </div>

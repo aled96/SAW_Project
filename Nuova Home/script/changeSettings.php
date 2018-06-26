@@ -7,12 +7,12 @@ if(!isset($_SESSION['username'])) {
 }
 
 $user = $_SESSION['username'];
-$email = $conn->real_escape_string($_POST['emailChange']);
-$name = $conn->real_escape_string($_POST['nameChange']);
-$surname = $conn->real_escape_string($_POST['surnameChange']);
-$gender = $conn->real_escape_string($_POST['gender']);
-$date_of_birth = $conn->real_escape_string($_POST['dateChange']);
-$city = $conn->real_escape_string($_POST['cityChange']);
+$email = $conn->real_escape_string(trim($_POST['emailChange']));
+$name = $conn->real_escape_string(trim($_POST['nameChange']));
+$surname = $conn->real_escape_string(trim($_POST['surnameChange']));
+$gender = $conn->real_escape_string(trim($_POST['gender']));
+$date_of_birth = $conn->real_escape_string(trim($_POST['dateChange']));
+$city = $conn->real_escape_string(trim($_POST['cityChange']));
 
 if ($_FILES['image']['size'] == 0){
     $img = null;

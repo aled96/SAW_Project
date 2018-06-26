@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$user = $conn->real_escape_string($_GET['username']);
+$user = $conn->real_escape_string(trim($_GET['username']));
 $pwd = $conn->real_escape_string($_GET['password']);
 
 $login = false;

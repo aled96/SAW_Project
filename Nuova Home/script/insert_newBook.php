@@ -2,19 +2,19 @@
 
 require "../connectionDB.php";
 
-$author = $conn->real_escape_string($_POST['author']);
-$title = $conn->real_escape_string($_POST['title']);
-$description = $conn->real_escape_string($_POST['description']);
-$pages = $conn->real_escape_string($_POST['pages']);
-$ed = $conn->real_escape_string($_POST['edition']);
-$isbn = $conn->real_escape_string($_POST['isbn']);
+$author = $conn->real_escape_string(trim($_POST['author']));
+$title = $conn->real_escape_string(trim($_POST['title']));
+$description = $conn->real_escape_string(trim(nl2br($_POST['description'])));
+$pages = $conn->real_escape_string(trim($_POST['pages']));
+$ed = $conn->real_escape_string(trim($_POST['edition']));
+$isbn = $conn->real_escape_string($_POST['isbn']));
 
-$n_categories = $conn->real_escape_string($_POST['number_of_categories']);
+$n_categories = $conn->real_escape_string(trim($_POST['number_of_categories']));
 
 $date_of_pubblication = date('Y/m/d', time());
 
-$place = $conn->real_escape_string($_POST['place']);
-$price = $conn->real_escape_string($_POST['price']);
+$place = $conn->real_escape_string(trim($_POST['place']));
+$price = $conn->real_escape_string(trim($_POST['price']));
 
 if ($_FILES['image']['size'] == 0){
     $imgData = null;
@@ -42,7 +42,7 @@ if (mysqli_query($conn, $sql)) {
     {
         $CatPostName = "cat".$i;
         if(isset($_POST[$CatPostName])) {
-            $category = $_POST[$CatPostName];
+            $category = trim($_POST[$CatPostName]);
             $sql = "SELECT distinct ID FROM category where name = '" . $category . "'";
             $result_cat = $conn->query($sql);
 

@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$email = $conn->real_escape_string($_GET['email']);
+$email = $conn->real_escape_string(trim($_GET['email']));
 
 if(!isset($_SESSION['username'])) {
     die("Error");

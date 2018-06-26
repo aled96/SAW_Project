@@ -4,7 +4,7 @@ require "../connectionDB.php";
 
 if(isset($_SESSION['username'])) {
     $user = $_SESSION['username'];
-    $other = $conn->real_escape_string($_GET['user_to']);
+    $other = $conn->real_escape_string(trim($_GET['user_to']));
 
 	$sqlPic = "SELECT ProfilePic FROM user WHERE username = '".$other."'";
 						

@@ -6,7 +6,7 @@ if(!isset($_SESSION['username'])) {
     header("location: index.php");
 }
 
-$id = $conn->real_escape_string($_POST['id']);
+$id = $conn->real_escape_string(trim($_POST['id']));
 
 $sql = "SELECT User_offerer FROM insertion WHERE Material_offered = '".$id."';";
 $result = $conn->query($sql);

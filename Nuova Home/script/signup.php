@@ -2,14 +2,14 @@
 
 require "../connectionDB.php";
 
-$user = $conn->real_escape_string($_POST['userSign']);
-$email = $conn->real_escape_string($_POST['emailSign']);
+$user = $conn->real_escape_string(trim($_POST['userSign']));
+$email = $conn->real_escape_string(trim($_POST['emailSign']));
 $pwd = $conn->real_escape_string($_POST['pswEncryptSign']);
-$name = $conn->real_escape_string($_POST['nameSign']);
-$surname = $conn->real_escape_string($_POST['surnameSign']);
-$gender = $conn->real_escape_string($_POST['gender']);
-$date_birth = $conn->real_escape_string($_POST['dateSign']);
-$city = $conn->real_escape_string($_POST['citySign']);
+$name = $conn->real_escape_string(trim($_POST['nameSign']));
+$surname = $conn->real_escape_string(trim($_POST['surnameSign']));
+$gender = $conn->real_escape_string(trim($_POST['gender']));
+$date_birth = $conn->real_escape_string(trim($_POST['dateSign']));
+$city = $conn->real_escape_string(trim($_POST['citySign']));
 
 $user = strtolower($user);
 

@@ -7,15 +7,15 @@ if(!isset($_SESSION['username'])) {
 }
 
 $user = $_SESSION['username'];
-$id = $conn->real_escape_string($_POST['id']);
-$author = $conn->real_escape_string($_POST['author']);
-$title = $conn->real_escape_string($_POST['title']);
-$description = $conn->real_escape_string($_POST['description']);
-$pages = $conn->real_escape_string($_POST['pages']);
-$edition = $conn->real_escape_string($_POST['edition']);
-$isbn = $conn->real_escape_string($_POST['isbn']);
-$price = $conn->real_escape_string($_POST['price']);
-$place = $conn->real_escape_string($_POST['place']);
+$id = $conn->real_escape_string(trim($_POST['id']));
+$author = $conn->real_escape_string(trim($_POST['author']));
+$title = $conn->real_escape_string(trim($_POST['title']));
+$description = $conn->real_escape_string(trim(nl2br($_POST['description'])));
+$pages = $conn->real_escape_string(trim($_POST['pages']));
+$edition = $conn->real_escape_string(trim($_POST['edition']));
+$isbn = $conn->real_escape_string(trim($_POST['isbn']));
+$price = $conn->real_escape_string(trim($_POST['price']));
+$place = $conn->real_escape_string(trim($_POST['place']));
 
 if ($_FILES['image']['size'] == 0){
     $img = null;
@@ -35,7 +35,7 @@ else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
     header("location: index.php");
 }
 
-$n_categories = $conn->real_escape_string($_POST['number_of_categories']);
+$n_categories = $conn->real_escape_string(trim($_POST['number_of_categories']));
 
 if($img == null)
 	$sql = "UPDATE book SET Author = '".$author."', Title = '".$title."', Description = '".$description."',PageNum = '".$pages."',Edition = '".$edition."', ISBN = '".$isbn."' WHERE ID = '".$id."'";
@@ -54,7 +54,7 @@ for($i = 1; $i <= $n_categories; $i++)
 {
 	$CatPostName = "cat".$i;
 	if(isset($_POST[$CatPostName])) {
-		$category = $_POST[$CatPostName];
+		$category = trim($_POST[$CatPostName]);
 		$sql3 = "SELECT distinct ID FROM category where name = '" . $category . "'";
 		$result_cat3 = $conn->query($sql3);
 

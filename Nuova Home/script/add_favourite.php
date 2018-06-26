@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$book = $conn->real_escape_string($_GET['Book']);
+$book = $conn->real_escape_string(trim($_GET['Book']));
 
 
 if(!isset($_SESSION['username'])) {

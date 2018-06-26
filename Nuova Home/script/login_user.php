@@ -2,7 +2,7 @@
 
 require "../connectionDB.php";
 
-$user = $conn->real_escape_string($_POST['usernameLog']);
+$user = $conn->real_escape_string(trim($_POST['usernameLog']));
 $pwd = $conn->real_escape_string($_POST['pswEncryptLog']);
 
 $user = strtolower($user);
