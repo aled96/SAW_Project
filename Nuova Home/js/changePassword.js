@@ -87,10 +87,11 @@ function asyncPassword() {
 					document.getElementById("oldPassChange").style.borderColor = "red";
 				}
             }
-            else alert("Ajax error: no data received");
+            else
+				document.getElementById("errorSettingsBox").innerHTML = "Server Unavailable!";
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+			document.getElementById("errorSettingsBox").innerHTML = "Check Internet Connection!";
     }
 }
 

@@ -37,10 +37,10 @@ function send() {
                 div.scrollTop = div.scrollHeight;
                 document.getElementById("input-message").value = "";
             }
-			else alert("Ajax error: no data received");
+			else alert("Check Internet Connection!");
 		}
 		else
-		alert("Ajax error: " + xmlreq.statusText);
+			alert("Check Internet Connection!");
 	}
 }
 
@@ -56,9 +56,8 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
-//when page is loaded
+
 window.addEventListener('load',function(){
-    //jump to bottom of the div
     var div = document.querySelector('#message-panel-body');
     div.scrollTop = div.scrollHeight;
 });
@@ -96,10 +95,14 @@ function check_socket() {
                     setTimeout(function() { webchat(); }, 5000);
                 }
             }
-            else alert("Ajax error: no data received");
+            else 
+				setTimeout(function() { webchat(); }, 10000);
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+        {
+			alert("Check Internet Connection!");
+			setTimeout(function() { webchat(); }, 10000);
+		}
     }
 }
 

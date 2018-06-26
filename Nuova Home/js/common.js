@@ -59,14 +59,12 @@ function ajax_pref2() {
 	}
 }
 
-/*
 window.onresize = function(event) {
     document.getElementById("minimenu").style.visibility = "hidden";
     document.getElementById("minimenu").style.height = "0px";
 	document.getElementById("submenu").style.visibility = "hidden";
 	document.getElementById("submenu").style.height = "0px";
 };
-*/
 
 function submenu(){
 	if(document.getElementById("submenu").style.visibility == "visible")

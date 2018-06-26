@@ -38,10 +38,10 @@ function asyncSelCategory() {
                 var catName = "cat"+currentCatNumber;
                 document.getElementById(catName).innerHTML = xmlreq.responseText;
             }
-            else alert("Ajax error: no data received");
+            else alert("Check Internet Connection!");
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+            alert("Check Internet Connection!");
     }
 }
 
@@ -77,11 +77,11 @@ function asyncAddCategory() {
             {
                 document.getElementById("categories").insertAdjacentHTML('beforeend', xmlreq.responseText);
             }
-            else alert("Ajax error: no data received");
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+            alert("Check Internet Connection!");
     }
+    else alert("Check Internet Connection!");
 }
 
 

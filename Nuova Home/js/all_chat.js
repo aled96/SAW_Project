@@ -1,3 +1,5 @@
+
+
 window.onload = function() {
 	websocketallchat();
 };
@@ -63,9 +65,9 @@ function check_socket_all_chat() {
                     setTimeout(function() { websocketallchat(); }, 5000);
                 }
             }
-            else alert("Ajax error: no data received");
+            else setTimeout(function() { websocketallchat(); }, 10000);
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+            setTimeout(function() { websocketallchat(); }, 10000);
     }
 }

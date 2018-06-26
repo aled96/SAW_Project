@@ -31,6 +31,8 @@ else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
     <?php
 		require "head.php";
 	?>
+	
+    <script src="js/insert.js"></script>
 
     <script>
         document.addEventListener("keyup", function(event) {

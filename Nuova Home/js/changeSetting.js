@@ -146,10 +146,11 @@ function asyncEmail() {
                     document.getElementById("emailChange").style.borderColor = "red";
                 }
             }
-            else alert("Ajax error: no data received");
+            else
+				document.getElementById("errorSettingsBox").innerHTML = "Server Unavailable!";
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+			document.getElementById("errorSettingsBox").innerHTML = "Check Internet Connection!";
     }
 }
 
@@ -175,10 +176,10 @@ function asyncSelCity() {
             {
                 document.getElementById("cityChange").innerHTML = xmlreq.responseText;
             }
-            else alert("Ajax error: no data received");
+            else alert("Check Internet Connection!");
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+            alert("Check Internet Connection!");
     }
 }
 

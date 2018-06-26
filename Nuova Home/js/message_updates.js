@@ -38,9 +38,9 @@ function check_socket() {
                     setTimeout(function() { websocket(); }, 5000);
                 }
             }
-            else alert("Ajax error: no data received");
+            else setTimeout(function() { websocket(); }, 10000);
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+            setTimeout(function() { websocket(); }, 10000);
     }
 }

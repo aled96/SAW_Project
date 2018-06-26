@@ -56,10 +56,10 @@ function checklogin() {
 				else
 				    document.getElementById("errorLoginBox").innerHTML = "Wrong Username or Password!";
 			}
-			else alert("Ajax error: no data received");
+			else document.getElementById("errorLoginBox").innerHTML = "Server unavailable!";
 		}
 		else
-		alert("Ajax error: " + xmlreq.statusText);
+			document.getElementById("errorLoginBox").innerHTML = "Check Internet Connection!";
 	}
 }
 
@@ -219,10 +219,11 @@ function checkEmail() {
                 else if(xmlreq.responseText == "username")
                     document.getElementById("errorSignupBox").innerHTML = "Username Already Taken!";
             }
-            else alert("Ajax error: no data received");
+            else 
+				document.getElementById("errorSignupBox").innerHTML = "Server Unavailable!";
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+			document.getElementById("errorSignupBox").innerHTML = "Check Internet Connection!";
     }
 }
 
@@ -248,10 +249,10 @@ function asyncSelCity() {
             {
                 document.getElementById("citySign").innerHTML = xmlreq.responseText;
             }
-            else alert("Ajax error: no data received");
+            else alert("Check Internet Connection!");
         }
         else
-            alert("Ajax error: " + xmlreq.statusText);
+            alert("Check Internet Connection!");
     }
 }
 
@@ -267,13 +268,6 @@ function removeErrorSignup(){
     document.getElementById("gender").style.borderColor = "white";
     document.getElementById("province").style.borderColor = "white";
     document.getElementById("citySign").style.borderColor = "white";
-}
-
-function checkSettings(){
-
-    document.settings.submit();
-
-
 }
 
 document.addEventListener("keyup", function(event) {
