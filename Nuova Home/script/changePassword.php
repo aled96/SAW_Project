@@ -20,6 +20,8 @@ if ($result->num_rows > 0) {
 	$result2 = mySQLi_query($conn, $sql2) or die("Error query");
 }
 
+$conn->close();
+
 header("location: ../setting.php");
 
 ?>

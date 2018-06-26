@@ -63,17 +63,18 @@ if (mysqli_query($conn, $sql)) {
 	$sql3 = "INSERT INTO insertion (ID, User_offerer, Material_offered, Date_of_pubblication, Place, Price) VALUES (NULL, '".$user."', '".$id."', '".$date_of_pubblication."', '".$place."', '".$price."');";
 
 	if ($conn->query($sql3) === TRUE) {
+		$conn->close();
 		header("location: ../pageBook.php?Id=".$id."");
 	} else {
 		die("Error: " . $sql3 . "<br>" . $conn->error);
+		$conn->close();
 		header("location: ../index.php");
 	}
 
 
 } else {
     echo "Error: ". mysqli_error($conn);
+	$conn->close();
     header("location: ../index.php");
 }
-
-
 ?>

@@ -38,4 +38,6 @@ while($row = mySQLi_fetch_array($result)){
 	}
 }
 
+$conn->close();
+
 ?>

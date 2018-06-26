@@ -91,6 +91,8 @@ $sql5 = "UPDATE insertion SET Place = '".$place."', Price = '".$price."' WHERE M
 
 $result5 = mySQLi_query($conn, $sql5) or die("Error query5");
 
+$conn->close();
+
 header("location: ../pageBook.php?Id=".$id);
 
 ?>

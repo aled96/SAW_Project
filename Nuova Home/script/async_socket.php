@@ -16,6 +16,4 @@ if(isset($_SESSION['username'])) {
 }
 
 $conn->close();
-
-
 ?>

@@ -28,6 +28,8 @@ else
 
 $result = mySQLi_query($conn, $sql) or die("Error query");
 
+$conn->close();
+
 header("location: ../show_profile.php?user=".$user."&page=1");
 
 ?>
