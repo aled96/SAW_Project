@@ -66,13 +66,13 @@
 									<div class="box-btn-shop">';
 									
 									if(isset($_SESSION['username']) and strcmp($_SESSION['username'],$row['User_offerer']) == 0){
-										echo'<a href="modify_book.php?Id='.$id.'"><button type="button" class="btn btn-book btn-success colorRed"><i class="fa fa-edit"></i>  Edit</button></a>';
+										echo'<a href="modify_book.php?Id='.$id.'" class="btn btn-book btn-success colorRed"><i class="fa fa-edit"></i>  Edit</a>';
 									}
 									else{
-										echo'<div class="bt-img"><a href="view_chat.php?user_to='.$row['User_offerer'].'"><button type="button" class="btn btn-book btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button></a> ';
+										echo'<div class="bt-img"><a href="view_chat.php?user_to='.$row['User_offerer'].'" class="btn btn-book btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</a> ';
 										
 										if(!isset($_SESSION['username'])){
-											echo'<a href="login.php"><button type="button" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button></a>';
+											echo'<a href="login.php" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</a>';
 										}
 										else{
 											$sqlFav = "SELECT * FROM wishlist WHERE Username = '".$_SESSION['username']."' and Book = '".$id."';";

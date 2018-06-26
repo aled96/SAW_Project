@@ -115,7 +115,7 @@
 						<div class='box-img-book'>
 							<img src='data:image/jpeg;base64," . base64_encode($row1['Cover']) . "' alt='cover'/>
 							<div class='box-btn-shop'>
-								<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=" . $row1['BookID'] . "'><i class='fa fa-list'></i></a></div>";
+								<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=".$row1['BookID']."'><i class='fa fa-list'></i></a></div>";
 			if(strcmp($link, "preferite") == 0){
 				echo "
 					<div class='bt-img'><a class='btn btn-det-cart'><span id='heart-preferite".$row1['BookID']."'><i onClick='preferite(".$row1['BookID'].")' class='" . $fav_status . "'></i></span></a></div>";

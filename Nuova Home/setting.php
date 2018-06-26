@@ -54,7 +54,7 @@
                 $cityName = $user_info['Cityname'];
                 echo '
 						<div class="input-group loginMargin">
-								<a href="change_password.php"><button type="button" class="btn btn-success login-btn">Change Password </button></a>
+								<a href="change_password.php" class="btn btn-success login-btn">Change Password </a>
 						</div>
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
