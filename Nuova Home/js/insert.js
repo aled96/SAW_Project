@@ -77,11 +77,11 @@ function asyncAddCategory() {
             {
                 document.getElementById("categories").insertAdjacentHTML('beforeend', xmlreq.responseText);
             }
+			else alert("Check Internet Connection!");
         }
         else
             alert("Check Internet Connection!");
     }
-    else alert("Check Internet Connection!");
 }
 
 
