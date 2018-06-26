@@ -16,3 +16,8 @@
             </div>
         </div>
     </section>
+
+<?php
+	if(isset($conn) and mysqli_ping($conn))
+		$conn->close();
+?>

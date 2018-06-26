@@ -141,7 +141,6 @@
 										}
 									}
 
-									$conn->close();
 								?>
 							</select>
 						</div>

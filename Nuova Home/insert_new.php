@@ -91,8 +91,6 @@
 									}
 								}
 
-								$conn->close();
-
 								?>
 							</select>
 							<br><br>
