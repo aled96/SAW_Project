@@ -55,9 +55,6 @@
         $result1 = mySQLi_query($conn, $sql1) or die("Error query1");
         $bookNumber = $result1->num_rows;
 		
-		mysqli_free_result($result1);
-
-		
         while($row = mySQLi_fetch_array($result)) {
 
             $date = new DateTime($row['Date_of_birth']);
@@ -121,6 +118,8 @@
 	echo '
 		</div>
 		</section>';
+	
+	mysqli_free_result($result1);
     ?>
 
   
