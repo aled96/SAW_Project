@@ -17,6 +17,7 @@
 	?>
     <script src="js/changeSetting.js"></script>
 
+
 </head>
 
   <body>
@@ -152,8 +153,8 @@
 							
 							
                         <h4 class="loginMargin">Profile Pic</h4>
-						<div class="input-group loginMargin"><img src="data:image/jpeg;base64,'.base64_encode($user_info['ProfilePic']).'" alt="cover"/>
-							<input type="file" accept="image/*" id="image" name="image" onclick="removeErrorChange()" required>
+						<div class="input-group loginMargin"><img id="imageShow" src="data:image/jpeg;base64,'.base64_encode($user_info['ProfilePic']).'" alt="cover"/>
+							<input type="file" accept="image/*" id="imageChange" name="image" onclick="removeErrorChange()" onchange="loadFile(event)" required>
 						</div>
 						<br>
 						<button type="button" onclick="checkSettings()" class="btn btn-success login-btn">Submit</button>

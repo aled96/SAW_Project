@@ -254,3 +254,13 @@ function submitModifyBook(){
 
     document.modify_book.submit();
 }
+
+
+var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('imageShow');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+ };
