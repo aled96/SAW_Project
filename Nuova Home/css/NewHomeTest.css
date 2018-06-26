@@ -200,6 +200,11 @@ textarea{
     color: #666;
 }
 
+
+.btn-book{
+	margin-right: 20px !important;
+}
+	
 .title-product{
 	font-weight:900;
 	font-size:21px;
@@ -1544,6 +1549,7 @@ END MENU
     
     .btn-book{
 		margin-bottom: 20px;
+		margin-right: 20px !important;
 	}
     
 }
