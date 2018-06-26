@@ -20,7 +20,10 @@ while($row = $result->fetch_assoc()) {
     }
 }
 
+mysqli_free_result($result);
+
 $conn->close();
+
 
 $catName = "cat".$count;
 

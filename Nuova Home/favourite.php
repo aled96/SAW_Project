@@ -59,6 +59,8 @@ require "navbar.php";
             }
             else
                 echo'<h4 class="noResults">Your wishlist is empty !</h4>';
+
+			mysqli_free_result($result1);
         ?>
         </div>
 	</div>

@@ -29,12 +29,13 @@ $result = $conn->query($sql);
 $check = $result->fetch_assoc();
 if($result->num_rows == 0)
 {
+	mysqli_free_result($result);
     header("location: index.php");
 }
 else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
     header("location: index.php");
 }
-
+mysqli_free_result($result);
 $n_categories = $conn->real_escape_string(trim($_POST['number_of_categories']));
 
 if($img == null)
@@ -63,6 +64,7 @@ for($i = 1; $i <= $n_categories; $i++)
 		while ($row_cat3 = $result_cat3->fetch_assoc()) {
 			$id_cat = $row_cat3['ID'];
 		}
+		mysqli_free_result($result_cat3);
 		
 		$alreadyInserted = false;
 		
@@ -86,6 +88,7 @@ for($i = 1; $i <= $n_categories; $i++)
 		
 	}
 }	
+mysqli_free_result($result_cat2);
 
 $sql5 = "UPDATE insertion SET Place = '".$place."', Price = '".$price."' WHERE Material_offered = '".$id."'";
 

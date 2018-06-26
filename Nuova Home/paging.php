@@ -105,6 +105,7 @@
 						if ($row2['IsThere'] == 1)
 							$fav_status = "fa fa-heart";
 					}
+					mysqli_free_result($result2);
 					$link = "preferite";
 				}
 			}

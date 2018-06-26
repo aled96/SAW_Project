@@ -21,9 +21,11 @@
     $result = $conn->query($sql);
     $check = $result->fetch_assoc();
     if($result->num_rows == 0)
-    {
+    {	
+		mysqli_free_result($result);
         header("location: index.php");
     }
+	mysqli_free_result($result);
 	$_SESSION['PrevPage'] = "show_profile.php?user=".$userProfile."&page=".$actualPage;
 ?>
   <head>
@@ -52,6 +54,8 @@
 
         $result1 = mySQLi_query($conn, $sql1) or die("Error query1");
         $bookNumber = $result1->num_rows;
+		
+		mysqli_free_result($result1);
 
 		
         while($row = mySQLi_fetch_array($result)) {
@@ -96,6 +100,7 @@
                     </div>
                 </div>';
         }
+		mysqli_free_result($result);
 
 	echo '<div class="row">
 			<div class="width100 text-center">

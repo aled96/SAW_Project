@@ -22,9 +22,12 @@ $sql = "SELECT email FROM user WHERE Username = '".$other."' ";
 $result = $conn->query($sql);
 $check = $result->fetch_assoc();
 if($result->num_rows == 0)
-{
+{	
+	mysqli_free_result($result);
     header("location: index.php");
 }
+
+mysqli_free_result($result);
 
 
 $sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to = '".$user."'";
@@ -32,6 +35,7 @@ $sql = "UPDATE chat SET Is_read = 1 WHERE User_from = '".$other."' and User_to =
 if (!($conn->query($sql) === TRUE)) {
     die("Error: " . $sql . "<br>" . $conn->error);
 }
+
 
 ?>
 <head>
@@ -73,7 +77,9 @@ echo'
 				$myPic = "data:image/jpeg;base64,".base64_encode($rowPic['MyPic']);
 				$otherPic = "data:image/jpeg;base64,".base64_encode($rowPic['OtherPic']);
 			}
-						
+			
+			mysqli_free_result($resultPic);	
+			
             $sql = "SELECT distinct * FROM chat WHERE (User_from = '".$user."' and User_to = '".$other."') or (User_from = '".$other."' and User_to = '".$user."') ORDER BY Datetime ASC";
 
             $result = mySQLi_query($conn, $sql) or die("Error query");
@@ -108,6 +114,8 @@ echo'
                         </div>';
                 }
             }
+			
+			mysqli_free_result($result);
 
             echo'
             </div>

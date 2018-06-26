@@ -18,7 +18,7 @@ if($result->num_rows == 0)
 else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
     header("location: index.php");
 }
-
+mysqli_free_result($result);
 //Delete from DB (just in Book -> cascade, it will be deleted from the other tables
 $sql = "DELETE FROM book WHERE ID = '".$id."'";
 

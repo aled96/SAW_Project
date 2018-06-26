@@ -48,6 +48,8 @@ function minimenu(){
 										$row = mySQLi_fetch_array($result);
 										$unread_count = $row['count'];
 										
+										mysqli_free_result($result);
+										
 										echo '<span id="all_messages"><li>
 												<a href="chat.php">Messages';
 													
@@ -65,16 +67,6 @@ function minimenu(){
                                     <div class="mega-menu">
 									<?php
 									
-										require "db/mysql_credentials.php";
-
-										// Create connection
-										$conn = new mysqli($servername, $username, $password, $dbname);
-
-										// Check connection
-										if ($conn->connect_error) {
-											die("Connection failed: " . $conn->connect_error);
-										}
-
 										$sql = "SELECT * FROM faculty";
 										$result = $conn->query($sql);
 
@@ -93,6 +85,8 @@ function minimenu(){
 												echo'</span>';
 											}
 										}
+										mysqli_free_result($result);
+										
 										if($toClose)
 											echo'</span>';
 										?>

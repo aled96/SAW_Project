@@ -52,6 +52,9 @@ if(isset($_SESSION['username'])) {
     echo $returned_obj;
 
 }
+mysqli_free_result($result);
+
 $conn->close();
+
 
 ?>

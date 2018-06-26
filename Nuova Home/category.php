@@ -73,17 +73,18 @@
 										</li>';
 									}
 										
+									mysqli_free_result($result);
 									//TODO !!! POCO ROBUSTO PERCHE' ASSUMO CHE SIANO PRESENTI TUTTI I VALORI NEL DB, DA 1 A MAX !!
 									//SE ALCUNI VENGONO ELIMINATI, IMPAZZISCE
 									
-									$sql = "SELECT faculty.Name as FacultyName, COUNT(book.ID) as NumCat, T.Name, T.ID 
+									$sql1 = "SELECT faculty.Name as FacultyName, COUNT(book.ID) as NumCat, T.Name, T.ID 
 											FROM (SELECT category.Faculty, concern.book, category.ID, category.Name 
 														FROM `category` LEFT OUTER JOIN concern ON concern.Category = category.ID) as T LEFT OUTER JOIN book ON T.book = book.ID, faculty 
 											WHERE faculty.ID = T.Faculty GROUP BY (T.ID) ORDER BY T.Faculty";
-									$result = $conn->query($sql);
+									$result1 = $conn->query($sql1);
 
 									$prevFac = "";
-									$cont = $result->num_rows;
+									$cont = $result1->num_rows;
 									
 									echo'<input type="hidden" value="'.$cont.'" id="maxCat"/>';
 									
@@ -93,29 +94,30 @@
 									$categories = explode(" ",$catSelected);
 									
 									$catAsChild = "";
-									while($row = $result->fetch_assoc()) {	
-										if(strcmp($prevFac,$row['FacultyName']) != 0)
+									while($row1 = $result1->fetch_assoc()) {	
+										if(strcmp($prevFac,$row1['FacultyName']) != 0)
 										{
 											if($prevFac != ""){
 												echo'<input type="hidden" id="'.$prevFac.'" value="'.$catAsChild.'"/>';
 											}
-											$prevFac =$row['FacultyName'];
+											$prevFac =$row1['FacultyName'];
 											echo'
 											<li class="filter"><button type="button" class="noneButton" onclick="pressFaculty('.$prevFac.')"><h4 class="facultyList">'.$prevFac.'</h4></button>
 												<div class="line-separator"></div>
 											</li>';
 											$catAsChild = "";
 										}
-										$catAsChild = $catAsChild.$row['ID']." ";
+										$catAsChild = $catAsChild.$row1['ID']." ";
 										$checked = "";
-										if(in_array($row['ID'],$categories))
+										if(in_array($row1['ID'],$categories))
 											$checked=" checked";
 										
 										echo'
-											<li class="filter"><input type="checkbox" id="cat'.$row['ID'].'" class="checkboxCategory" '.$checked.'/>'.$row['Name'].' ('.$row['NumCat'].')
+											<li class="filter"><input type="checkbox" id="cat'.$row1['ID'].'" class="checkboxCategory" '.$checked.'/>'.$row1['Name'].' ('.$row1['NumCat'].')
 												<div class="line-separator"></div>
 											</li>';
 									}
+									mysqli_free_result($result1);
 									//To print the last one
 									if($prevFac != ""){
 										echo'<input type="hidden" id="'.$prevFac.'" value="'.$catAsChild.'"/>';
@@ -207,7 +209,8 @@
 						}
 						else
 							echo'<h4 class="noResults">There are not any results !</h4>';
-							
+						
+						mysqli_free_result($result1);
 						?>                    
                 </div>
 				</div>

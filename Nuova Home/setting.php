@@ -110,12 +110,12 @@
 								<option value="not-selected" selected disabled>Province</option>';
 								
 															
-									$sql = "SELECT distinct ID, Name FROM province";
-									$result = $conn->query($sql);
+									$sql1 = "SELECT distinct ID, Name FROM province";
+									$result1 = $conn->query($sql1);
 
-									while($row = $result->fetch_assoc()) {
-										$prov = $row['Name'];
-                                        $id = $row['ID'];
+									while($row1 = $result1->fetch_assoc()) {
+										$prov = $row1['Name'];
+                                        $id = $row1['ID'];
 										if(strlen($prov) != 0) {
 											if(strcmp($provinceName, $prov) == 0)			
 												echo "<option selected value='" . $id . "'>" . $prov . "</option>";
@@ -124,6 +124,7 @@
 											}
 										}
 									}
+									mysqli_free_result($result1);
 						echo'
 							</select>
 						</div>
@@ -132,12 +133,12 @@
 							<select onclick="removeErrorChange()" name="cityChange" id="cityChange" class="form-control">
 								<option value="not-selected" selected disabled>City</option>';
 						
-						 $sql = "SELECT distinct city.* FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
-						$result = $conn->query($sql);
+						 $sql2 = "SELECT distinct city.* FROM city, province where city.Province = province.ID and province.Name = '".$provinceName."'";
+						$result2 = $conn->query($sql2);
 
-						while ($row = $result->fetch_assoc()) {
-							$city = $row['Name'];
-							$cityId = $row['ID'];
+						while ($row2 = $result2->fetch_assoc()) {
+							$city = $row2['Name'];
+							$cityId = $row2['ID'];
 							if (strlen($city) != 0) {
 								if(strcmp($cityName, $city) == 0)
 									echo "<option selected value='".$cityId."'>" . $city . "</option>";
@@ -145,6 +146,7 @@
 									echo "<option value='".$cityId."'>" . $city . "</option>";
 							}
 						}
+						mysqli_free_result($result2);
 						
 						echo'
 									
@@ -162,7 +164,8 @@
 				</div>
 			</div>
 		</div>';
-		}
+			}
+			mysqli_free_result($result);
 		}else
                 header("location: index.php");
 		?>

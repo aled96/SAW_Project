@@ -25,10 +25,10 @@ while($row = $result->fetch_assoc()) {
     $categories_to_return = $categories_to_return."<option value='" . $cat . "'>" . $cat . "</option>";
     }
 }
-
-echo $categories_to_return;
-
+mysqli_free_result($result);
 
 $conn->close();
+
+echo $categories_to_return;
 
 ?>

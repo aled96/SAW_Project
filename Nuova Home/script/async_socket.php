@@ -14,6 +14,6 @@ if(isset($_SESSION['username'])) {
         echo "<li><a href='chat.php'>Messages<i class='fa fa-exclamation-circle red-message' id='message-alert' name='message-alert'></i></a></li>";
 
 }
-
+mysqli_free_result($result);
 $conn->close();
 ?>

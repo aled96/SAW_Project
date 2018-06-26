@@ -13,6 +13,7 @@ if(isset($_SESSION['username'])) {
 	while($rowPic = mySQLi_fetch_array($resultPic)) {
 		$myPic = "data:image/jpeg;base64,".base64_encode($rowPic['ProfilePic']);
 	}
+	mysqli_free_result($resultPic);
 	
     $other = $conn->real_escape_string(trim($_GET['user_to']));
     $message = $conn->real_escape_string(trim(nl2br($_GET['message'])));

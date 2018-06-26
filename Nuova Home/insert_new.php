@@ -90,6 +90,8 @@
 										echo "<option value='" . $fac . "'>" . $fac . "</option>";
 									}
 								}
+								
+								mysqli_free_result($result);
 
 								?>
 							</select>

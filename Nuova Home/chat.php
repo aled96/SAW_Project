@@ -80,12 +80,14 @@ else {
 									if($result2->num_rows > 0)
 										$otherPic = "data:image/jpeg;base64,".base64_encode($row2['ProfilePic']);
 									
+									mysqli_free_result($result2);
 									
 									$sql3 = "SELECT COUNT(*) as count FROM chat WHERE Is_read = false and User_from = '" . $other . "' and User_to = '" . $user . "'";
 									$result3 = mySQLi_query($conn, $sql3) or die("Error query");
 									$row3 = mySQLi_fetch_array($result3);
 									$unread_count = $row3['count'];
 									
+									mysqli_free_result($result3);
 									echo '
 										<tr><td>
 											<img src="'.$otherPic.'" alt="" class="mini-image"/>
@@ -111,6 +113,8 @@ else {
         </div>
     </div>';
 }
+
+mysqli_free_result($result);
 
 	?>
 

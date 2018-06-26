@@ -25,6 +25,8 @@ if($result->num_rows == 0)
 else if(strcmp($check['User_offerer'], $_SESSION['username']) != 0){
     header("location: index.php");
 }
+
+mysqli_free_result($result);
 ?>
 
 <head>
@@ -126,7 +128,8 @@ while($book = $result->fetch_assoc()) {
                     <input type="text" name="cat1" id="cat1" class="form-control" readonly value="'.$row1['Category'].'"/>
                     </div>';
             }
-
+			mysqli_free_result($result1);
+										
             echo '
                                       <div class="input-group loginMargin" id="categories">
                                         <input name="number_of_categories" type="hidden" value="0" id="number_of_categories">
@@ -159,6 +162,8 @@ while($book = $result->fetch_assoc()) {
                   </section>';
 }
 
+mysqli_free_result($result);
+										
 ?>
 
 

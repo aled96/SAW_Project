@@ -1,5 +1,6 @@
 <title>BookTrader</title>
     
+<meta name="Lapolla, De Luca" content ="Lapolla Marco, De Luca Alessio" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 

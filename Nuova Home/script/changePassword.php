@@ -19,6 +19,7 @@ if ($result->num_rows > 0) {
 
 	$result2 = mySQLi_query($conn, $sql2) or die("Error query");
 }
+mysqli_free_result($result);
 
 $conn->close();
 

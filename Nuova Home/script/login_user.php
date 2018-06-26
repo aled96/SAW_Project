@@ -23,7 +23,8 @@ if ($result->num_rows > 0) {
 }
 else
     echo $sql;
-
+	
+mysqli_free_result($result);
 $conn->close();
 
 if($login){

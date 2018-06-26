@@ -140,6 +140,7 @@
 											echo "<option value='" . $id . "'>" . $prov . "</option>";
 										}
 									}
+									mysqli_free_result($result);
 
 								?>
 							</select>

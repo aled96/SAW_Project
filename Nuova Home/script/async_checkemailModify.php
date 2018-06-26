@@ -17,6 +17,9 @@ if ($result->num_rows > 0) {
 }
 else
 	echo "ok";
+	
+mysqli_free_result($result);
 
 $conn->close();
+
 ?>

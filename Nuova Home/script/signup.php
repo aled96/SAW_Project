@@ -28,6 +28,8 @@ while($row2 = mySQLi_fetch_array($result2)){
     $city = $row2['ID'];
 }
 
+mysqli_free_result($result2);
+
 $sql = "INSERT INTO user (Username, Email, Password, Name, Surname, Gender, Date_of_birth, City, ProfilePic)
 VALUES ('".$user."', '".$email."', '".$pwd."', '".$name."', '".$surname."', '".$gender."', '".$date_birth."', '".$city."','".$imgData."')";
 

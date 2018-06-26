@@ -16,8 +16,11 @@
     $check = $result->fetch_assoc();
     if($result->num_rows == 0)
     {
+		mysqli_free_result($result);
         header("location: index.php");
     }
+	
+	mysqli_free_result($result);
 ?>
 <head>   
     <?php
@@ -81,6 +84,7 @@
 												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-book btn-success colorRed"><i class="fa fa-heart"></i>  Remove Favourite</button>';
 											else
 												echo'<button type="button" onClick="preferite2('.$id.')" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button>';
+											mysqli_free_result($result2);
 										}
 									}
 								echo'</div>
@@ -98,21 +102,23 @@
 										<p class="cat-txt"><span>Edition: </span>'.$row['Edition'].'</p>
 										<p class="cat-txt"><span>Categories: </span></p>';
 
-                                $sql = "SELECT category.ID as Cat_ID, category.Name as Cat, faculty.ID as Fac_ID, faculty.Name as Fac FROM concern, category, faculty WHERE concern.Book='".$id."' and concern.Category = category.ID and category.Faculty = faculty.ID";
+                                $sql3 = "SELECT category.ID as Cat_ID, category.Name as Cat, faculty.ID as Fac_ID, faculty.Name as Fac FROM concern, category, faculty WHERE concern.Book='".$id."' and concern.Category = category.ID and category.Faculty = faculty.ID";
 
-                                $result = mySQLi_query($conn, $sql) or die("Error query".$sql);
+                                $result3 = mySQLi_query($conn, $sql3) or die("Error query".$sql3);
 
-                                while ($row = mySQLi_fetch_array($result)) {
+                                while ($row3 = mySQLi_fetch_array($result3)) {
 
-                                    echo '<a class="cat-txt cat-p" href="category.php?fac='.$row['Fac_ID'].'&page=1"><span >'.$row['Fac'].'</span ></a> ><a href="category.php?catSearched='.$row['Cat_ID'].'&page=1"> '.$row['Cat'].'</a ><br>';
+                                    echo '<a class="cat-txt cat-p" href="category.php?fac='.$row3['Fac_ID'].'&page=1"><span >'.$row3['Fac'].'</span ></a> ><a href="category.php?catSearched='.$row3['Cat_ID'].'&page=1"> '.$row3['Cat'].'</a ><br>';
                                 }
-
+								
+								mysqli_free_result($result3);
                         echo'
 									</div>
 								</div>
 							</div>
 						</div>';
 					}
+					mysqli_free_result($result);
 				?>
 				
 			</div>

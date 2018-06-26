@@ -20,7 +20,7 @@ if(isset($_SESSION['username'])) {
     $unread_count = $row['count'];
     echo $row['count'];
 }
-
+mysqli_free_result($result);
 $conn->close();
 
 ?>

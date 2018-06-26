@@ -112,6 +112,7 @@
                                 if ($row2['IsThere'] == 1)
                                     $fav_status = "fa fa-heart";
                             }
+							mysqli_free_result($result2);
                             $link = "preferite";
                         }
                     }
@@ -123,16 +124,16 @@
 									<img src='data:image/jpeg;base64,".base64_encode($row['Cover'])."' alt='cover'/>
 									<div class='box-btn-shop'>
 										<div class='bt-img'><a class='btn btn-det-cart' href='pageBook.php?Id=".$row['BookID']."'><i class='fa fa-list'></i></a></div>";
-                if(strcmp($link, "preferite") == 0){
-                    echo "
+									if(strcmp($link, "preferite") == 0){
+										echo "
                                                 <div class='bt-img'><a class='btn btn-det-cart'><span id='heart-preferite".$row['BookID']."'><i onClick='preferite(".$row['BookID'].")' class='" . $fav_status . "'></i></span></a></div>";
-                }
-                else{
-                    echo "
+									}
+									else{
+										echo "
                                                 <div class='bt-img'><a class='btn btn-det-cart' href='" . $link . "'><i class='" . $fav_status . "'></i></a></div>";
-                }
+									}
 
-                echo"
+									echo"
 									</div>
 								</div>
 								<h2 class='title-book'>".$row['Title']."</h2>
@@ -142,6 +143,7 @@
 						</div>
 							";
 				}
+				mysqli_free_result($result);
 				?>
             </div>
         </div>

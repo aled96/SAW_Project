@@ -23,5 +23,8 @@ else{
         echo "ok";
 }
 
+mysqli_free_result($result);
+
 $conn->close();
+
 ?>

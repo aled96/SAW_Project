@@ -17,9 +17,9 @@ while($row = $result->fetch_assoc()) {
     }
 }
 
-echo $cities_to_return;
-
+mysqli_free_result($result);
 
 $conn->close();
 
+echo $cities_to_return;
 ?>
