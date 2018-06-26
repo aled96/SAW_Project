@@ -110,7 +110,7 @@ function minimenu(){
 												<i class='fa fa-user'></i>
 											</div>
 										<!-- Menu One Column -->
-										<div class='mega-menu little-menu'>
+										<div class='mega-menu little-menu user-menu'>
 											<span>
 												<a href='show_profile.php?user=".$_SESSION['username']."'>Dashboard</a>
 												<a href='insert_new.php'>AddBook</a>

@@ -466,6 +466,10 @@ header {
 .mega-menu.two-column span {
   width: 50%;
 }
+.user-menu{
+	left:-10px !important;
+	padding-left:20px;
+}
 .expand:hover  {
   opacity: 1;
   transform: scaleY(1);
@@ -674,6 +678,7 @@ END MENU
 
 .simbol-desc>p{
 	font-size:15px;
+    text-align: center;
 }
 
 .block-service.block-service-opt .item .simbol-desc {
