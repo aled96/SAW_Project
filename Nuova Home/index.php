@@ -20,7 +20,7 @@
 	<!--ImageHome-->
     <section>
         <div class="homePic">
-			<img src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Library-HD-Background.jpg"> 
+			<img src="img/home_background.jpg"> 
         </div>
     </section>
 

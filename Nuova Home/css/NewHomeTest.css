@@ -1244,7 +1244,7 @@ END MENU
 
 .column-box {
     padding-top:30px;
-    span.input-icon input, span.input-icon, .sw-search{width:100%;}
+    span.input-icon input, span.input-icon, .sw-searchsearch{width:100%;}
 
     .sw-search{margin-top:20px;}
 
@@ -1285,6 +1285,43 @@ END MENU
             }
         }
     }
+}
+
+.filter-button{
+	margin-left: 20px;
+	visibility: hidden;
+}
+
+.filter-big{
+	visibility: visible;
+	display:block;
+}
+
+.filter-small{
+	visibility: hidden;
+	display:none;
+}
+
+.filter-small h3{
+	margin-top: 0px;
+	font-size: 30px;
+	
+}
+
+@media only screen and (max-width: 991px){
+	.filter-button{
+		visibility: visible;
+	}
+	.filter-big{
+		visibility: hidden;
+		display:none;
+	}
+
+	.filter-small{
+		visibility: visible;
+		display:block;
+	}
+
 }
 
 .column-box.products-right-column{float:right;}

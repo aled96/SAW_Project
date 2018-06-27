@@ -27,13 +27,18 @@
     <section class="container">
         <div class="row">
             <div class="col-md-12 table-padding">
-                <div class="col-md-3 column-box">
+					
+				<div class="filter-small">
+					<h3>Categories<button type="button" onclick="filter_button()" class="filter-button" id="filter-button-minus"><i class="fa fa-angle-up"></i></button></h3>
+				</div>
+                <div id="filter-container" style="visibility: visible;" class="col-md-3 column-box">
                     
 					<form action="category.php" name="searchform" id="formCat" method="GET">
 						<!--FILTER CATEGORIES-->
 						<div class="filter-table">
-					
-							<h3>Categories</h3>
+							<div class="filter-big" id="filter-container-none">
+								<h3>Categories</h3>
+							</div>
 							<div class="list-category-column">
 								<ul>
 								<?php		

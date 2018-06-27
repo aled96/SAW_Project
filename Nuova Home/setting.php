@@ -155,7 +155,10 @@
 							
 							
                         <h4 class="loginMargin">Profile Pic</h4>
-						<div class="input-group loginMargin"><img id="imageShow" src="data:image/jpeg;base64,'.base64_encode($user_info['ProfilePic']).'" alt="cover"/>
+						<div class="input-group loginMargin">
+							<div class="col-md-10 col-sm-12 col-xs-10 col-lg-10 show-img-modify">
+								<img id="imageShow" src="data:image/jpeg;base64,'.base64_encode($user_info['ProfilePic']).'" alt="cover"/>
+							</div>
 							<input type="file" accept="image/*" id="imageChange" name="image" onclick="removeErrorChange()" onchange="loadFile(event)" required>
 						</div>
 						<br>

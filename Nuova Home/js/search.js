@@ -87,3 +87,18 @@ document.addEventListener("keyup", function(event) {
 
     }
 });
+
+function filter_button(){
+	if(document.getElementById("filter-container").style.visibility == "visible")
+	{
+		document.getElementById("filter-container").style.visibility = "hidden";
+		document.getElementById("filter-container").style.display = "none";
+		document.getElementById("filter-button-minus").innerHTML = "<i class='fa fa-angle-down'></i>";
+	}
+	else{
+		document.getElementById("filter-container").style.visibility = "visible";
+		document.getElementById("filter-container").style.display = "block";
+		document.getElementById("filter-button-minus").innerHTML = "<i class='fa fa-angle-up'></i>";
+    }
+}
+	
