@@ -15,6 +15,7 @@
 		require "head.php";
 	?>
     <script src="js/search.js"></script>
+    
 
 </head>
 <body>
