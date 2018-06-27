@@ -109,7 +109,10 @@ while($book = $result->fetch_assoc()) {
                                       </div>
                 
                                       <div class="input-group loginMargin">
-                                          <h4>Cover</h4><img id="imageShow" src="data:image/jpeg;base64,'.base64_encode($book['Cover']).'" alt="cover"/>
+                                          <h4>Cover</h4>
+                                          <div class="col-md-10 col-sm-12 col-xs-10 col-lg-10 show-img-modify">
+											<img id="imageShow" src="data:image/jpeg;base64,'.base64_encode($book['Cover']).'" alt="cover"/>
+										  </div>
                                           <input type="file" accept="image/*" id="image" onchange="loadFile(event)" name="image" required>
                                       </div>
                 

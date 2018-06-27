@@ -164,6 +164,13 @@ h2 {
 	float:left;
 }
 
+.show-img-modify img{
+	max-height: 300px;
+}
+
+.show-img-modify{
+	margin-bottom:10px;
+}
 /**********************
 	END LOGIN
 **********************/
