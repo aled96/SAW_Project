@@ -1,3 +1,5 @@
+'use strict';
+
 var xmlreq;
 
 function getXMLHttpRequestObject() {
@@ -65,7 +67,7 @@ function checkPassword(){
 	document.getElementById("pswEncryptOldChange").value = encrypt_old;
 	encrypt_new = SHA1(new_pass);
 	document.getElementById("pswEncryptChange").value = encrypt_new;
-    url = encodeURI("./script/async_checkModifyPassword.php" + "?old=" + encrypt_old);
+    var url = encodeURI("./script/async_checkModifyPassword.php" + "?old=" + encrypt_old);
 
     xmlreq.onreadystatechange = asyncPassword;
     xmlreq.open("GET", url, true);

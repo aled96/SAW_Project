@@ -1,3 +1,5 @@
+'use strict';
+
 var xmlreq;
 
 function getXMLHttpRequestObject() {
@@ -21,7 +23,7 @@ function async_send_message(){
 
 	xmlreq = getXMLHttpRequestObject();
 
-	url = encodeURI("./script/async_send_message.php" + "?message=" + message + "&user_to=" + user_to);
+	var url = encodeURI("./script/async_send_message.php" + "?message=" + message + "&user_to=" + user_to);
 	xmlreq.onreadystatechange = send;
 	xmlreq.open("GET", url, true);
 	xmlreq.send();
@@ -66,7 +68,7 @@ function webchat(){
     xmlreq = getXMLHttpRequestObject();
 
     var user_to = document.getElementById("user_to").value;
-    url = encodeURI("./script/async_chat.php?user_to=" + user_to);
+    var url = encodeURI("./script/async_chat.php?user_to=" + user_to);
     xmlreq.onreadystatechange = check_socket;
     xmlreq.open("GET", url, true);
     xmlreq.send();

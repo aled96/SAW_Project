@@ -1,3 +1,5 @@
+'use strict';
+
 function goToPageBook(id){
 	window.location.href = "pageBook.php?Id="+id;
 }
@@ -15,7 +17,7 @@ function getXMLHttpRequestObject() {
 function preferite(id){
 	xmlreq = getXMLHttpRequestObject();
 
-	url = encodeURI("./script/add_favourite.php" + "?Book=" + id);
+	var url = encodeURI("./script/add_favourite.php" + "?Book=" + id);
 	xmlreq.onreadystatechange = ajax_pref;
 	xmlreq.open("GET", url, true);
 	xmlreq.send();
@@ -41,7 +43,7 @@ function ajax_pref() {
 function preferite2(id){
 	xmlreq = getXMLHttpRequestObject();
 
-	url = encodeURI("./script/add_favourite.php" + "?Book=" + id);
+	var url = encodeURI("./script/add_favourite.php" + "?Book=" + id);
 	xmlreq.onreadystatechange = ajax_pref2;
 	xmlreq.open("GET", url, true);
 	xmlreq.send();

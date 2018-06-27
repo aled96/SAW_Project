@@ -1,4 +1,4 @@
-
+'use strict';
 
 window.onload = function() {
 	websocketallchat();
@@ -19,7 +19,7 @@ function getXMLHttpRequestObject() {
 function websocketallchat(){
     xmlreq = getXMLHttpRequestObject();
 
-    url = encodeURI("./script/async_socket_all_chat.php");
+    var url = encodeURI("./script/async_socket_all_chat.php");
     xmlreq.onreadystatechange = check_socket_all_chat;
     xmlreq.open("GET", url, true);
     xmlreq.send();

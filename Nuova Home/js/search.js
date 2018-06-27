@@ -1,3 +1,5 @@
+'use strict';
+
 function resetFilters(){
 	window.location.replace('category.php');
 	return false;
