@@ -89,19 +89,19 @@ function asyncAddCategory() {
 
 function checkname(name){
     var regexp1=/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-    test = regexp1.test(name);
+    var test = regexp1.test(name);
     return test;
 }
 
 function checktitle(name){
     var regexp1=/^[a-zA-Z]+(([',. -][a-zA-Z0-9 ])?[a-zA-Z0-9]*)*$/;
-    test = regexp1.test(name);
+    var test = regexp1.test(name);
     return test;
 }
 
 function checkisbn(isbn){
     var regexp1=/^(97(8|9))?\d{9}(\d|X)$/;
-    test = regexp1.test(isbn);
+    var test = regexp1.test(isbn);
     return test;
 }
 

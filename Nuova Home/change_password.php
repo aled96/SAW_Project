@@ -37,7 +37,7 @@ $_SESSION['PrevPage'] ="setting.php";
 						</div>
 						<section>
 						<label class="errorLogin" >
-							<p id="errorSettingsBox"><br></p>
+							<span id="errorSettingsBox"><br></span>
 						</label>
 						</section>
 						<div class="panel-body">

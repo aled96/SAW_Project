@@ -71,13 +71,13 @@ function removeError(){
 
 function checkuser(user){
     var regexp1=/^[a-z0-9]+$/;
-    test = regexp1.test(user);
+    var test = regexp1.test(user);
     return test;
 }
 
 function checkemail(email){
     var regexp1=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
-    test = regexp1.test(email);
+    var test = regexp1.test(email);
     return test;
 
 }
@@ -90,9 +90,9 @@ function checkdate(date){
         return false;
 
     //Checks for mm/dd/yyyy format.
-    dtMonth = dtArray[1];
-    dtDay= dtArray[3];
-    dtYear = dtArray[5];
+    var dtMonth = dtArray[1];
+    var dtDay= dtArray[3];
+    var dtYear = dtArray[5];
 
     if (dtMonth < 1 || dtMonth > 12)
         return false;
@@ -116,7 +116,7 @@ function checkdate(date){
 
 function checkname(name){
     var regexp1=/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-    test = regexp1.test(name);
+    var test = regexp1.test(name);
     return test;
 }
 

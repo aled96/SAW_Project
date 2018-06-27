@@ -69,14 +69,14 @@
 									<div class="box-btn-shop"><div class="bt-img">';
 									
 									if(isset($_SESSION['username']) and strcmp($_SESSION['username'],$row['User_offerer']) == 0){
-										echo'<button type="button" onclick= "window.location.replace(\'modify_book.php?Id='.$id.'\');" class="btn btn-book btn-success colorRed"><i class="fa fa-edit"></i>  Edit</a>';
+										echo'<button type="button" onclick= "window.location.replace(\'modify_book.php?Id='.$id.'\');" class="btn btn-book btn-success colorRed"><i class="fa fa-edit"></i>  Edit</button>';
 									}
 									else{
 										echo'
-											<button type="button" onclick="window.location.replace(\'view_chat.php?user_to='.$row['User_offerer'].'\')" class="btn btn-book btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</a> ';
+											<button type="button" onclick="window.location.replace(\'view_chat.php?user_to='.$row['User_offerer'].'\')" class="btn btn-book btn-success"><i class="fa fa-envelope"></i>  Contact '.$row['User_offerer'].'</button> ';
 										
 										if(!isset($_SESSION['username'])){
-											echo'<button type="button" onclick= "window.location.replace(\'login.php\')" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</a>';
+											echo'<button type="button" onclick= "window.location.replace(\'login.php\')" class="btn btn-book btn-success colorRed"><i class="fa fa-heart-o"></i>  Add Favourite</button>';
 										}
 										else{
 											$sqlFav = "SELECT * FROM wishlist WHERE Username = '".$_SESSION['username']."' and Book = '".$id."';";

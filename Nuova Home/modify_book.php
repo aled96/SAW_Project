@@ -67,12 +67,12 @@ while($book = $result->fetch_assoc()) {
                                   <div class="panel-title">Modify Book</div>
                               </div>
                               <form action="script/delete_publication.php" method="POST" class="loginMargin">
-                                    <input type="hidden" id="id" name="id" value="'.$id.'"/>
+                                    <input type="hidden" name="id" value="'.$id.'"/>
                                     <button type="submit" class="btn btn-success cat-btn">Delete Book</button>	
                                </form>
                               <section>
                                   <label class="errorLogin" >
-                                      <p id="errorBox"><br></p>
+                                      <span id="errorBox"><br></span>
                                   </label>
                               </section>
                               <div class="panel-body">

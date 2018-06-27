@@ -73,7 +73,7 @@
 
 									while($row = $result->fetch_assoc()) {
 										echo'
-										<li class="filter active"><h4 class="facultyList">All ('.$row['AllBooks'].')</h4>
+										<li class="filter active facultyList">All ('.$row['AllBooks'].')
 											<div class="line-separator"></div>
 										</li>';
 									}
@@ -107,7 +107,7 @@
 											}
 											$prevFac =$row1['FacultyName'];
 											echo'
-											<li class="filter"><button type="button" class="noneButton" onclick="pressFaculty('.$prevFac.')"><h4 class="facultyList">'.$prevFac.'</h4></button>
+											<li class="filter"><button type="button" class="noneButton facultyList" onclick="pressFaculty('.$prevFac.')">'.$prevFac.'</button>
 												<div class="line-separator"></div>
 											</li>';
 											$catAsChild = "";

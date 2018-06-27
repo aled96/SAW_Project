@@ -27,7 +27,7 @@ if(isset($_SESSION['username'])) {
     while($row = mySQLi_fetch_array($result)) {
         $returned_obj = $returned_obj.'<div class="msg_container base_receive">
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="'.$otherPic.'" class="img-profile">
+                                <img src="'.$otherPic.'" class="img-profile" alt="other profile img">
                             </div>
                             <div class="messageReceived">
                                 <div class="messages msg_receive">

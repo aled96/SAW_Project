@@ -20,7 +20,7 @@
 	<!--ImageHome-->
     <section>
         <div class="homePic">
-			<img src="img/home_background.jpg"> 
+			<img src="img/home_background.jpg" alt="background"> 
         </div>
     </section>
 

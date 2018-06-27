@@ -7,7 +7,7 @@ $title = $conn->real_escape_string(trim($_POST['title']));
 $description = $conn->real_escape_string(trim(nl2br($_POST['description'])));
 $pages = $conn->real_escape_string(trim($_POST['pages']));
 $ed = $conn->real_escape_string(trim($_POST['edition']));
-$isbn = $conn->real_escape_string($_POST['isbn']));
+$isbn = $conn->real_escape_string(trim($_POST['isbn']));
 
 $n_categories = $conn->real_escape_string(trim($_POST['number_of_categories']));
 

@@ -60,7 +60,7 @@ echo'
 	<div class="chatView" id="logIn">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<div class="panel-title"><h3 class="panel-title"><i class="fa fa-comment my-comment"></i><chat_with> Chat with</chat_with> '.$other.'</h3></div>
+				<div class="panel-title"><h3 class="panel-title"><i class="fa fa-comment my-comment"></i> Chat with '.$other.'</h3></div>
 			</div>
 			
 			
@@ -96,14 +96,14 @@ echo'
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="'.$myPic.'" class="img-profile floatRight">
+                                <img src="'.$myPic.'" class="img-profile floatRight" alt="my profile img">
                             </div>
                         </div>';
                 } else if (strcmp($user, $row['User_to']) == 0) {
                     echo '
                         <div class="msg_container base_receive">
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="'.$otherPic.'" class="img-profile">
+                                <img src="'.$otherPic.'" class="img-profile" alt="other profile img">
                             </div>
                             <div class="messageReceived">
                                 <div class="messages msg_receive">

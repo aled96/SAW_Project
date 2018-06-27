@@ -34,7 +34,7 @@
 				</div>
                 <section>
                     <label class="errorLogin" >
-                        <p id="errorBox"><br></p>
+                        <span id="errorBox"><br></span>
                     </label>
                 </section>
 				<div class="panel-body">

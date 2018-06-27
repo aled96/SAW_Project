@@ -38,7 +38,7 @@
 }
 
 .msg_container_base{
-  background: #e4fbe64f;
+  background: rgba(228, 251, 230, 0.35);
   margin: 0;
   padding: 0 10px 10px;
   max-height: 600px;

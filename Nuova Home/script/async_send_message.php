@@ -27,7 +27,7 @@ if(isset($_SESSION['username'])) {
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-xs-2 avatar">
-                                    <img src="'.$myPic.'" class="img-profile floatRight">
+                                    <img src="'.$myPic.'" class="img-profile floatRight" alt="my profile img">
                                 </div>
                             </div>';
 

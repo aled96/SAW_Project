@@ -35,7 +35,7 @@
 				
                 <section>
                     <label class="errorLogin" >
-                        <p id="errorLoginBox"><br></p>
+                        <span id="errorLoginBox"><br></span>
                     </label>
                 </section>
 				<div class="panel-body">
@@ -72,11 +72,11 @@
 				</div>
                 <section>
                     <label class="errorLogin" >
-                        <p id="errorSignupBox"><br></p>
+                        <span id="errorSignupBox"><br></span>
                     </label>
                 </section>
 				<div class="panel-body">
-					<form form action="script/signup.php" method="POST" name="signupform" enctype="multipart/form-data">
+					<form action="script/signup.php" method="POST" name="signupform" enctype="multipart/form-data">
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" placeholder="Username" id="userSign" name="userSign" onclick="removeErrorSignup()" onkeyup="removeErrorSignup()" class="form-control">

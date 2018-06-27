@@ -38,11 +38,11 @@
 					</div>
 					<section>
                     <label class="errorLogin" >
-                        <p id="errorSettingsBox"><br></p>
+                        <span id="errorSettingsBox"><br></span>
                     </label>
                 </section>
 				<div class="panel-body">
-					<form form action="script/changeSettings.php" method="POST" id="settingsForm" name="settingsForm" enctype="multipart/form-data">';
+					<form action="script/changeSettings.php" method="POST" id="settingsForm" name="settingsForm" enctype="multipart/form-data">';
 
             $user = $_SESSION['username'];
 
@@ -58,7 +58,7 @@
 						</div>
 						<div class="input-group loginMargin">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" placeholder="Username" id="userChange" name="userChange" readonly value="'.$user_info['Username'].'"class="form-control">
+							<input type="text" placeholder="Username" id="userChange" name="userChange" readonly value="'.$user_info['Username'].'" class="form-control">
 						</div>						
 						
 						<div class="input-group loginMargin">

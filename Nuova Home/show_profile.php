@@ -68,9 +68,9 @@
                             <div class="col-xs-12 col-sm-4 text-center image">
                                     <figure>';
                 if ($row['ProfilePic'] != null)
-                    echo "<img class='profile-image' src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='cover'>";
+                    echo "<img class='profile-image' src='data:image/jpeg;base64,".base64_encode($row['ProfilePic'])."' alt='profile image'>";
                 else
-                    echo "<img class='profile-image' src='https://bootdey.com/img/Content/user_1.jpg'>";
+                    echo "<img class='profile-image' src='https://bootdey.com/img/Content/user_1.jpg' alt='profile image'>";
 
                 echo '
                                     </figure>
