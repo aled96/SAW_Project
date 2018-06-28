@@ -180,14 +180,14 @@ textarea{
 }
 
 .cat-btn{
-	background-color:#ff2222;
-	border-color:#ff4c4c;
+	background-color:#ff2222 !important;
+	border-color:#ff4c4c !important	;
 	margin-top:7px;
 }
 
 .cat-btn:hover{
-	background-color:#ff1c1c;
-	border-color:#ff4c4c;
+	background-color:#ff1c1c !important;
+	border-color:#ff4c4c !important;
 }
 
 .marginTop-20{

@@ -42,7 +42,8 @@ mysqli_free_result($result);
             if (event.keyCode === 13) {
                 submitModifyBook();
             }
-        });
+        });	
+		
     </script>
 </head>
 
@@ -68,7 +69,7 @@ while($book = $result->fetch_assoc()) {
                               </div>
                               <form action="script/delete_publication.php" method="POST" class="loginMargin">
                                     <input type="hidden" name="id" value="'.$id.'"/>
-                                    <button type="submit" class="btn btn-success cat-btn">Delete Book</button>	
+                                    <button type="submit" onclick="return deleteBook();" class="btn btn-success cat-btn">Delete Book</button>	
                                </form>
                               <section>
                                   <label class="errorLogin" >

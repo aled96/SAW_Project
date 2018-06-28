@@ -12,6 +12,13 @@ function getXMLHttpRequestObject() {
     return request;
 }
 
+function deleteBook(){
+	var result = window.confirm("Are you sure?");
+	
+	alert(result);
+	
+	return result;
+}
 
 var currentCatNumber = 1;
 
