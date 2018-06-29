@@ -9,6 +9,7 @@
     <?php
 		require "head.php";
 	?>
+	<link rel="stylesheet" href="css/product.css">
 </head>
 <body>
 

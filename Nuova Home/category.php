@@ -11,10 +11,14 @@
 ?>
 <head>
     
+	<link rel="stylesheet" href="css/product.css">
+	<link rel="stylesheet" href="css/category.css">
+	
     <?php
 		require "head.php";
 	?>
-    <script src="js/search.js"></script>
+    
+	<script src="js/search.js"></script>
     
 
 </head>
@@ -28,7 +32,6 @@
     <section class="container">
         <div class="row">
             <div class="col-md-12 table-padding">
-					
 				<div class="filter-small">
 					<h3>Categories<button type="button" onclick="filter_button()" class="filter-button" id="filter-button-minus"><i class="fa fa-angle-up"></i></button></h3>
 				</div>
@@ -206,7 +209,7 @@
 						$bookNumber = $result1->num_rows;
 						$bookPerPage = 12;
 						
-						if($bookNumber >= 0){
+						if($bookNumber > 0){
 						
 							$linkPage = "category.php?fac=".$fac."&catSearched=".$catSelected."&search=".$search."&priceMin=".$priceMin."&priceMax=".$priceMax."&";
 							$typeClassWidth = "col-md-3";

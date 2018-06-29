@@ -20,6 +20,8 @@
 ?>
   <head>
      
+	<link rel="stylesheet" href="css/product.css">
+	
     <?php
 		require "head.php";
 	?>

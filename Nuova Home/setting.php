@@ -12,6 +12,8 @@
 
   <head>
     
+	<link rel="stylesheet" href="css/form.css">
+	
     <?php
 		require "head.php";
 	?>

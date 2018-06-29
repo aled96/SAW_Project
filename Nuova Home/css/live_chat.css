@@ -207,3 +207,27 @@
 	overflow-x: auto;
 
 }
+
+.chatView{
+	margin-top:40px;
+}
+
+.floatRight{
+	float:right;
+}
+
+.minHeightChat{
+	min-height:370px;
+}
+
+.messageReceived{
+	max-width:60%;
+	float:left;
+	padding-left:20px;
+}
+
+.messageSent{
+	max-width:60%;
+	float:right;
+	padding-right:20px;
+}

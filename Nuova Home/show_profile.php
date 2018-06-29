@@ -3,7 +3,6 @@
 <?php
 
     require "connectionDB.php";
-	$userProfile = $_GET['user'];
 	
 	if(!isset($_GET['user'])) {
         if(!isset($_SESSION['username'])) {
@@ -11,6 +10,8 @@
         }
         $userProfile = $_SESSION['username'];
     }
+	else
+		$userProfile = $_GET['user'];
 	
 	if(isset($_GET['page']))
 		$actualPage = $_GET['page'];
@@ -30,6 +31,7 @@
 ?>
   <head>
 
+	<link rel="stylesheet" href="css/product.css">
     <?php
 		require "head.php";
 	?>
@@ -87,7 +89,7 @@
                             <div class="col-xs-12 divider text-center">
                                     <h2 style="margin-bottom: 0px;"><strong>'.$bookNumber.'</strong></h2>
                                     <p><small>Books Published</small></p>';
-								if(!isset($_SESSION['username']) || strcmp($_SESSION['username'],$_GET['user']) != 0)
+								if(!isset($_SESSION['username']) || strcmp($_SESSION['username'],$userProfile) != 0)
                                     echo'<p><a href="view_chat.php?user_to='.$userProfile.'" class="btn mybtn btn-success"><span class="fa fa-user"></span> Contact Now! 
                                         </a></p>';
 										

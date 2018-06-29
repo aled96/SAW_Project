@@ -11,6 +11,8 @@ if(!isset($_SESSION['username'])) {
 $_SESSION['PrevPage'] ="setting.php";
 ?>
   <head>
+  
+	<link rel="stylesheet" href="css/form.css">
     
     <?php
 		require "head.php";

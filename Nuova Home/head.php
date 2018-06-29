@@ -8,7 +8,11 @@
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="css/NewHomeTest.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/footer.css">
+
+<link rel="stylesheet" href="css/responsive.css">
+
 <script src="js/common.js"></script>
 
 <?php

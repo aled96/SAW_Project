@@ -1,0 +1,231 @@
+
+/********************************************************************************************
+    PRODUCT                                                                                         
+*********************************************************************************************/
+
+/* Buttons animations*/
+.my-shop-animation.ng-enter,
+.my-shop-animation.ng-leave {
+  -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  position: relative;
+  display: block;
+}
+.my-shop-animation.ng-leave.ng-leave-active,
+.my-shop-animation.ng-enter {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  opacity: 0;
+}
+.my-shop-animation.ng-enter.ng-enter-active,
+.my-shop-animation.ng-leave {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.box-prod {
+  padding: 10px;
+  transition: width 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+  -o-transition: 1s;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+.box-prod .book-name {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+.box-prod .title-book {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.box-prod .author-txt {
+  font-size:14px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 0;
+}
+.box-prod .category-txt {
+  font-size:13px;
+  font-weight: 400;
+  font-style: italic;
+}
+.box-prod .title-product {
+  font-weight: 600;
+  font-size: 16px;
+}
+.box-prod .book-price {
+  font-size: 18px;
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  color: #b80909;
+  width: 100%;
+}
+
+.box-prod .box-img-book {
+  position: relative;
+  width:140px;
+  height:185px;
+}
+
+.box-prod .box-btn-shop button {
+  border-radius: 1px;
+}
+.box-prod .box-img-book img {
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  
+  width:140px;
+  height:185px;
+}
+.box-prod .box-btn-shop {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  z-index: 9999;
+}
+.box-prod .btn-add-cart {
+  padding: 0px;
+  text-transform: uppercase;
+  font-size: 13px;
+  background: #6f9a37;
+  color: #fff;
+}
+.box-prod .bt-img {
+  width: 40px;
+  opacity: 0;
+  height: 40px;
+  text-align: center;
+  background: #6f9a37;
+  margin-bottom: 3px;
+  transform: scaleY(0);
+  transition: all 0.5s ease 0s;
+}
+.box-prod .btn-add-cart i,
+.box-prod .btn-det-cart i {
+  font-size: 16px;
+  margin: 11px 5px 10px 5px;
+  padding: 0;
+}
+.box-prod .btn-det-cart {
+  padding: 0px;
+  background: #6f9a37;
+  color: #fff;
+}
+.box-prod:hover {
+  border-color: #85a319;
+}
+.box-prod:hover .box-btn-shop .bt-img {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: all 0.5s ease 0s;
+}
+
+.my-shop-animation{
+	padding:0 8px;
+	height:450px;
+}
+
+.heightAuto{
+	height:auto !important;
+}
+
+.box-prod{
+         padding:10px;
+         transition: width 1s;
+        -moz-transition: 1s;
+        -webkit-transition: 1s;
+        -o-transition: 1s;
+        width:100%;
+        float:left;
+        position:relative;
+
+        .book-name{text-transform:uppercase;font-weight:500;margin-bottom:0;margin-top:5px;}
+
+        .title-book{font-size:14px;font-weight:600;color:#111;margin-top:15px;margin-bottom:0;}
+        .author-txt{font-weight:400; font-style:italic;margin-bottom:0;}
+        .category-txt{font-weight:400; font-style:italic;}
+        
+        .book-price{
+            font-size:18px;
+            font-family: Lato,sans-serif;
+            font-weight:600;
+            color:#b80909;
+            width:100%;
+
+            span{
+                font-size: 11px;
+                font-weight: 400;
+                color:#999;
+                text-decoration:line-through;
+                margin-left:10px;
+            }
+        }
+        .box-img-book{position:relative;}
+        .box-btn-shop button{
+            border-radius:1px;
+        }
+        .box-img-book img{
+            -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+            -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+            opacity:1;
+            -webkit-transition: opacity 1s ease-in-out;
+            -moz-transition: opacity 1s ease-in-out;
+            -ms-transition: opacity 1s ease-in-out;
+            -o-transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .box-btn-shop{
+            position:absolute;
+            bottom:20px;
+            width:100%;
+            z-index:9999;
+        }
+        .btn-add-cart{
+            padding: 0px;
+            text-transform: uppercase;
+            font-size: 13px;
+            background:@default_principalcolor;
+            color:#fff;
+        }
+        .bt-img{
+            width:40px;
+            opacity:0;
+            height:40px;
+            text-align:center;
+            background:@default_principalcolor;
+            margin-bottom:3px;
+            transform: scaleY(0);
+            transition: all 0.5s ease 0s;
+        }
+        .btn-add-cart i,.btn-det-cart i{font-size:16px;margin:11px 5px 10px 5px;padding:0;}
+        .btn-det-cart{padding: 0px;background:@default_principalcolor;color:#fff;}
+}
+
+.box-prod:hover{border-color: #85a319;}

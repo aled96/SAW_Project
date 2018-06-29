@@ -15,9 +15,14 @@ function pressFaculty(idCategories){
 
 
 function checkPrice(min,max){
-	min = parseInt(min);
-	max = parseInt(max);
-	if((min > max) || min < 0 || max < 0)
+	
+	var min2 = parseInt(min);
+	var max2 = parseInt(max);
+	
+	if(((min != "") && !Number.isFinite(min2)) || ((max != "") && !Number.isFinite(max2)))
+		return false;
+	
+	if((min2 > max2) || min2 < 0 || max2 < 0)
 		return false;
 	return true;
 }

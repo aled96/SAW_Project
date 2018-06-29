@@ -30,6 +30,9 @@ mysqli_free_result($result);
 ?>
 
 <head>
+
+	<link rel="stylesheet" href="css/form.css">
+	
     <?php
 		require "head.php";
 	?>

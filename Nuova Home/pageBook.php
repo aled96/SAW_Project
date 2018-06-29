@@ -23,7 +23,10 @@
 	mysqli_free_result($result);
 ?>
 <head>   
-    <?php
+	
+	<link rel="stylesheet" href="css/pageProduct.css">
+    
+	<?php
 		require "head.php";
 	?>
 </head>
