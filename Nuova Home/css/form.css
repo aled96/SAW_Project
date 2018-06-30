@@ -85,3 +85,22 @@
 .marginTop-40{
 	margin-top:40px;
 }
+
+.marginTop-200{
+	margin-top:200px;
+}
+
+
+
+.deleteConfirm{
+	height: 100%;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(180,180,180,0.2);
+    z-index: 10;
+}
+
+.confirmDiv{
+	margin-bottom:15px;
+	text-align:center;
+}

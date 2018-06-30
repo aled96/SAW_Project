@@ -53,8 +53,27 @@ mysqli_free_result($result);
 <body>
 
 <?php
+	echo'
+	<div id="deleteConfirm" class="deleteConfirm" style="visibility:hidden;">
+		<div class="loginForm marginTop-200">
+			<div class="panel panel-info">
+				<form action="script/delete_publication.php" method="POST" class="loginMargin" style="z-index:11;">
+					<div class="confirmDiv">
+					<input type="hidden" name="id" value="'.$id.'"/>
+					<h4>Are you sure you want to delete the book?</h4>
+					<button type="submit" class="btn btn-success">Yes</button>	
+					<button type="button" onclick="deleteBook(false);" class="btn btn-success">No</button>
+					</div>
+			   </form>
+			</div>
+		</div>
+	</div>';
+?>
+
+<?php
 require "navbar.php";
 ?>
+
 
 <?php
 
@@ -70,10 +89,6 @@ while($book = $result->fetch_assoc()) {
                               <div class="panel-heading">
                                   <div class="panel-title">Modify Book</div>
                               </div>
-                              <form action="script/delete_publication.php" method="POST" class="loginMargin">
-                                    <input type="hidden" name="id" value="'.$id.'"/>
-                                    <button type="submit" onclick="return deleteBook();" class="btn btn-success cat-btn">Delete Book</button>	
-                               </form>
                               <section>
                                   <label class="errorLogin" >
                                       <span id="errorBox"><br></span>
@@ -81,6 +96,10 @@ while($book = $result->fetch_assoc()) {
                               </section>
                               <div class="panel-body">
                                 <form action="script/commit_modify_book.php" method="POST" id="reused_form" name="modify_book" enctype="multipart/form-data">
+								
+                                      <div class="form-group loginMargin">
+										<button type="button" onclick="deleteBook(true);" class="btn btn-success cat-btn">Delete Book</button>
+										</div>
                                       <div class="input-group loginMargin">
                                           <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                           <input name="id" type="hidden" value="'.$id.'" id="id" />

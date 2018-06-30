@@ -12,12 +12,11 @@ function getXMLHttpRequestObject() {
     return request;
 }
 
-function deleteBook(){
-	var result = window.confirm("Are you sure?");
-	
-	alert(result);
-	
-	return result;
+function deleteBook(show){
+	if(show)
+		document.getElementById("deleteConfirm").style.visibility = "visible";
+	else
+		document.getElementById("deleteConfirm").style.visibility = "hidden";
 }
 
 var currentCatNumber = 1;
