@@ -63,7 +63,7 @@ function minimenu(){
                                 ?>
                                 <li class="exp-mega">
                                     <a href="category.php?page=1">Categories</a>
-                                    <!-- Mega Menu Four Column -->
+                                    <!-- Mega Menu -->
                                     <div class="mega-menu">
 									<?php
 									
@@ -120,7 +120,7 @@ function minimenu(){
 							
                         </div>
                     </div>
-					<!-- Mini Menu (after pressed hamburger)-->
+					<!-- Mini Menu (after pressing hamburger)-->
 					<div class="col-md-8 mainmenu minimenu" id="minimenu" style="visibility: hidden;">
                         <div class="navbar-collapse">
                             <ul>

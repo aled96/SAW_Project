@@ -4,7 +4,7 @@
 	require "connectionDB.php";
 	
 	if(isset($_GET['Id']))
-		$id = $_GET['Id'];
+		$id = $conn->real_escape_string(trim($_GET['Id']));
 	else
         header("location: index.php");
 
@@ -41,7 +41,7 @@
 			<div class="panel">
 				<?php
 				
-					$sql = "SELECT *, book.description as BookDesc FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='".$id."'";
+					$sql = "SELECT * FROM book, insertion WHERE insertion.Material_offered = book.ID and book.ID='".$id."'";
 					
 					$result = mySQLi_query($conn, $sql) or die("Error query".$sql);
 

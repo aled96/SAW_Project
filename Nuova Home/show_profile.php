@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <?php
 
@@ -11,10 +11,10 @@
         $userProfile = $_SESSION['username'];
     }
 	else
-		$userProfile = $_GET['user'];
+		$userProfile = $conn->real_escape_string(trim($_GET['user']));
 	
 	if(isset($_GET['page']))
-		$actualPage = $_GET['page'];
+		$actualPage = $conn->real_escape_string(trim($_GET['page']));
 	else
 		$actualPage = 1;
 
@@ -32,11 +32,11 @@
   <head>
 
 	<link rel="stylesheet" href="css/product.css">
+	<link rel="stylesheet" media="all" href="css/profileStyle.css" />
+	<link rel="stylesheet" media="all" href="css/paging.css" />
     <?php
 		require "head.php";
 	?>
-	  <link rel="stylesheet" media="all" href="css/profileStyle.css" />
-	  <link rel="stylesheet" media="all" href="css/paging.css" />
       <script src="js/login.js"></script>
 	
 </head>
@@ -54,6 +54,7 @@
 
         $sql1 = "SELECT *,book.ID as BookID FROM book, insertion WHERE User_offerer = '$userProfile' AND Material_offered = book.Id ORDER BY book.ID DESC";
 
+		//Query now because we need bookNumber
         $result1 = mySQLi_query($conn, $sql1) or die("Error query1");
         $bookNumber = $result1->num_rows;
 		

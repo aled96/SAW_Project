@@ -5,7 +5,7 @@
 	require "connectionDB.php";
 	
 	if(isset($_GET['page']))
-		$actualPage = $_GET['page'];
+		$actualPage = $conn->real_escape_string(trim($_GET['page']));
 	else
 		$actualPage = 1;
 ?>
@@ -13,6 +13,7 @@
     
 	<link rel="stylesheet" href="css/product.css">
 	<link rel="stylesheet" href="css/category.css">
+	<link rel="stylesheet" href="css/paging.css">
 	
     <?php
 		require "head.php";
@@ -55,15 +56,15 @@
 																										
 									//fac used only for search by nav(pressing on a faculty)
 									if(isset($_GET['fac']) and $_GET['fac'] != "")
-										$fac = $_GET['fac'];
+										$fac = $conn->real_escape_string(trim($_GET['fac']));
 									if(isset($_GET['catSearched']) and $_GET['catSearched'] != "")
-										$catSelected = $_GET['catSearched'];
+										$catSelected = $conn->real_escape_string(trim($_GET['catSearched']));
 									if(isset($_GET['search']) and $_GET['search'] != "")
-										$search = $_GET['search'];
+										$search = $conn->real_escape_string(trim($_GET['search']));
 									if(isset($_GET['priceMin']) and $_GET['priceMin'] != "")
-										$priceMin = $_GET['priceMin'];
+										$priceMin = $conn->real_escape_string(trim($_GET['priceMin']));
 									if(isset($_GET['priceMax']) and $_GET['priceMax'] != "")
-										$priceMax = $_GET['priceMax'];
+										$priceMax = $conn->real_escape_string(trim($_GET['priceMax']));
 										
 									$_SESSION['PrevPage'] = $linkPage = "category.php?fac=".$fac."&catSearched=".$catSelected."&search=".$search."&priceMin=".$priceMin."&priceMax=".$priceMax."&page=".$actualPage;
 									
@@ -83,8 +84,6 @@
 									}
 										
 									mysqli_free_result($result);
-									//TODO !!! POCO ROBUSTO PERCHE' ASSUMO CHE SIANO PRESENTI TUTTI I VALORI NEL DB, DA 1 A MAX !!
-									//SE ALCUNI VENGONO ELIMINATI, IMPAZZISCE
 									
 									$sql1 = "SELECT faculty.Name as FacultyName, COUNT(book.ID) as NumCat, T.Name, T.ID 
 											FROM (SELECT category.Faculty, concern.book, category.ID, category.Name 
@@ -207,7 +206,7 @@
 						
 						$result1 = $conn->query($sql) or die("Error query".$sql);
 						$bookNumber = $result1->num_rows;
-						$bookPerPage = 12;
+						$bookPerPage = 3;
 						
 						if($bookNumber > 0){
 						

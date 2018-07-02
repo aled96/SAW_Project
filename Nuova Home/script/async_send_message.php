@@ -20,16 +20,16 @@ if(isset($_SESSION['username'])) {
     $datetime = date('d/m/Y h:i:s', time());
 
     $returned_obj = '<div class="msg_container base_sent">
-                                <div class="messageSent">
-                                    <div class="messages msg_sent">
-                                        <p class="message-body">'.$message.'</p>
-                                        <time>'.$datetime.'</time>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-xs-2 avatar">
-                                    <img src="'.$myPic.'" class="img-profile floatRight" alt="my profile img">
-                                </div>
-                            </div>';
+						<div class="messageSent">
+							<div class="messages msg_sent">
+								<p class="message-body">'.$message.'</p>
+								<time>'.$datetime.'</time>
+							</div>
+						</div>
+						<div class="col-md-2 col-xs-2 avatar">
+							<img src="'.$myPic.'" class="img-profile floatRight" alt="my profile img">
+						</div>
+					</div>';
 
 
     $sql = "INSERT INTO chat (User_from, User_to, Message, Datetime) VALUES ('".$username."', '".$other."', '".$message."', CURRENT_TIMESTAMP);";

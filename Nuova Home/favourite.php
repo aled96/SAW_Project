@@ -4,7 +4,6 @@
 
     require "connectionDB.php";
 	
-	
 	if(!isset($_SESSION['username'])) {
 		header("location: index.php");
 	}
@@ -12,7 +11,7 @@
 	$user = $_SESSION['username'];
 	
 	if(isset($_GET['page']))
-		$actualPage = $_GET['page'];
+		$actualPage = $conn->real_escape_string(trim($_GET['page']));
 	else
 		$actualPage = 1;
 		

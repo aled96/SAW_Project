@@ -6,10 +6,10 @@
 	$_SESSION['PrevPage'] = "index.php";
 ?>
 <head>
+	<link rel="stylesheet" href="css/product.css">
     <?php
 		require "head.php";
 	?>
-	<link rel="stylesheet" href="css/product.css">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-3 height200">
                         <div class="item">
-                            <div class="simbol-ft"><i class="fa fa-life-ring" aria-hidden="true"></i></div>
+                            <div class="simbol-ft"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
                             <div class="simbol-desc">
                                 <p class="title">Safe Shopping</p>
                                 <p>Safe Shopping Guarantee</p>
@@ -74,7 +74,7 @@
     </section>
 
 
-    <!--FEATURED PRODUCTS-->
+    <!--LAST BOOK ADDED-->
     <section class="container">
         <div class="row">
             <div class="width100 text-center">
@@ -82,7 +82,6 @@
                 <p class="sub-title">Here you can see the last book added ! Don't let them go</p>
             </div>
             <div class="width100">
-			
 				<?php
 				
 				$sql = "SELECT book.*, insertion.*, book.ID as BookID FROM book,insertion WHERE book.ID = insertion.Material_offered ORDER BY book.ID desc LIMIT 6 ";

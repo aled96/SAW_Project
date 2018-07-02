@@ -22,7 +22,7 @@
 
 </head>
 
-  <body>
+<body>
 
   <?php
     require "navbar.php";
@@ -36,7 +36,7 @@
 			<div class="loginForm" id="signUpForm">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<div class="panel-title">Registration</div>
+						<div class="panel-title">Settings</div>
 					</div>
 					<section>
                     <label class="errorLogin" >
