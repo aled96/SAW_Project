@@ -20,56 +20,69 @@
 		$next="#";
 	else
 		$next=$linkPage."page=".($actualPage+1);
-
-	echo"
-		<div class='pagination-position col-md-offset-5 col-md-2 col-lg-offset-5 col-lg-1 col-sm-offset-4 col-sm-6 col-xs-6 col-xs-offset-4 width100'>
-			<ul class='pagination'>
-				<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>
-				<li class='page-item'><a class='page-link' href='".$linkPage."page=1'>1</a></li>";
-	//if there are less than 6 pages -> show them
-	if($maxPage < 6)
-		for ($i = 2; $i <= $maxPage; $i++)
-			echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=".$i."'>".$i."</a></li>";
-	//otherwise if there are more than 5 pages --> ...
-	else if($maxPage > 5)
+		
+	if($maxPage > 1)
 	{
-		if($actualPage == 1)
-			echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=2'>2</a></li>
-				 <li class='page-item'><p class='page-link'>...</p></li>";
-		else if($actualPage == $maxPage)
-			echo"<li class='page-item'><p class='page-link'>...</p></li>
-				 <li class='page-item'><a class='page-link'href='".$linkPage."page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
-		else if($actualPage == 2)
-			echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=2'>2</a></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=3'>3</a></li>
-				 <li class='page-item'><p class='page-link'>...</p></li>";
-		else if($actualPage == 3)
-			echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=2'>2</a></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=3'>3</a></li><li class='page-item'><a class='page-link' href='".$linkPage."page=4'>4</a></li>
-				 <li class='page-item'><p class='page-link'>...</p></li>";
-		else if($actualPage == $maxPage-2)
-			echo"<li class='page-item'><p class='page-link'>...</p></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
-		else if($actualPage == $maxPage-1)
-			echo"<li class='page-item'><p class='page-link'>...</p></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
-		else
-			echo"<li class='page-item'><p class='page-link'>...</p></li>
-				 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
-				  <li class='page-item'><a class='page-link' href='".$linkPage."page=".$actualPage."'>".$actualPage."</a></li>
-				  <li class='page-item'><a class='page-link' href='".$linkPage."page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
-				  <li class='page-item'><p class='page-link'>...</p></li>";
-		//page max
-		echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=".$maxPage."''>".$maxPage."</a></li>";
+		echo"
+			<div class='pagination-position col-md-offset-5 col-md-2 col-lg-offset-5 col-lg-1 col-sm-offset-4 col-sm-6 col-xs-6 col-xs-offset-4 width100'>
+				<ul class='pagination'>
+					<li class='page-item'><a class='page-link' href='".$prev."'>Previous</a></li>";
+					if($actualPage == 1)
+						echo"<li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=1'>1</a></li>";
+					else
+						echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=1'>1</a></li>";
+		//if there are less than 6 pages -> show them
+		if($maxPage < 6)
+			for ($i = 2; $i <= $maxPage; $i++){
+					if($i == $actualPage)
+						echo"<li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=".$i."'>".$i."</a></li>";
+					else
+						echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=".$i."'>".$i."</a></li>";
+				}
+		//otherwise if there are more than 5 pages --> ...
+		else if($maxPage > 5)
+		{
+			if($actualPage == 1)
+				echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=2'>2</a></li>
+					 <li class='page-item'><a class='page-link'>...</a></li>";
+			else if($actualPage == $maxPage)
+				echo"<li class='page-item'><a class='page-link'>...</a></li>
+					 <li class='page-item'><a class='page-link'href='".$linkPage."page=".($maxPage-1)."'>".($maxPage-1)."</a></li>";
+			else if($actualPage == 2)
+				echo"<li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=2'>2</a></li>
+					 <li class='page-item'><a class='page-link' href='".$linkPage."page=3'>3</a></li>
+					 <li class='page-item'><a class='page-link'>...</a></li>";
+			else if($actualPage == 3)
+				echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=2'>2</a></li>
+					 <li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=3'>3</a></li><li class='page-item'><a class='page-link' href='".$linkPage."page=4'>4</a></li>
+					 <li class='page-item'><a class='page-link'>...</a></li>";
+			else if($actualPage == $maxPage-2)
+				echo"<li class='page-item'><a class='page-link'>...</a></li>
+					 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-3)."''>".($maxPage-3)."</a></li>
+					 <li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+			else if($actualPage == $maxPage-1)
+				echo"<li class='page-item'><a class='page-link'>...</a></li>
+					 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($maxPage-2)."''>".($maxPage-2)."</a></li>
+					 <li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=".($maxPage-1)."''>".($maxPage-1)."</a></li>";
+			else
+				echo"<li class='page-item'><a class='page-link'>...</a></li>
+					 <li class='page-item'><a class='page-link' href='".$linkPage."page=".($actualPage-1)."'>".($actualPage-1)."</a></li>
+					  <li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=".$actualPage."'>".$actualPage."</a></li>
+					  <li class='page-item'><a class='page-link' href='".$linkPage."page=".($actualPage+1)."'>".($actualPage+1)."</a></li>
+					  <li class='page-item'><a class='page-link'>...</a></li>";
+			//page max
+			if($actualPage == $maxPage)
+				echo"<li class='page-item'><a class='page-link currentPage' href='".$linkPage."page=".$maxPage."''>".$maxPage."</a></li>";
+			else
+				echo"<li class='page-item'><a class='page-link' href='".$linkPage."page=".$maxPage."''>".$maxPage."</a></li>";
+		}
+		echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
+				  </ul>
+			</div><br><br>
+			";
 	}
-	echo"<li class='page-item'><a class='page-link' href='".$next."'>Next</a></li>
-			  </ul>
-		</div><br><br>
-		";
-
+	
 	echo '<div class="width100">';
 
 
