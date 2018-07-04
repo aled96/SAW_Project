@@ -23,7 +23,7 @@ function minimenu(){
                 <nav class="navigation-menu">
 
                     <div class="col-md-3 content-logo">
-                        <h2>Book<span>Trader</span></h2>
+                        <a class="title-link" href="index.php"><h2>Book<span>Trader</span></h2></a>
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" onclick="minimenu();">
                                 <span class="icon-bar"></span>

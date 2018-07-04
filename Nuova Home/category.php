@@ -206,7 +206,7 @@
 						
 						$result1 = $conn->query($sql) or die("Error query".$sql);
 						$bookNumber = $result1->num_rows;
-						$bookPerPage = 12;
+						$bookPerPage = 3;
 						
 						if($bookNumber > 0){
 						

@@ -93,6 +93,10 @@ textarea{
 	margin-right:auto;
 }
 
+.title-link{
+	text-decoration: none !important;
+}
+
 /***MENU***/
 
 .mainmenu ul li a {
